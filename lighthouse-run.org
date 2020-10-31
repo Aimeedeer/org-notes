@@ -2,7 +2,7 @@
 #+date: 2020-08-12
 #+HUGO_BASE_DIR: . 
 
-** 2020-08-12
+** 2020-08-12 Testing
 
 ```
 validator_client_1  | Your wallet's 12-word BIP-39 mnemonic is:

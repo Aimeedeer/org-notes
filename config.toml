@@ -9,3 +9,4 @@ theme = "hugo-bare-min-theme"
 [module]
   [[module.imports]]
     disabled = true
+

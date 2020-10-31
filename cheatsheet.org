@@ -2,7 +2,7 @@
 #+date: 2020-10-29
 #+HUGO_BASE_DIR: . 
 
-** Git
+** Git commands
 
 remote .git
 
