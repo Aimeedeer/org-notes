@@ -1,0 +1,120 @@
+#+title: My Cheatsheet
+#+date: 2020-10-29
+#+HUGO_BASE_DIR: . 
+
+** Git
+
+remote .git
+
+```
+$ ls .git
+
+$ rm .git
+
+rm: .git: is a directory
+
+$ rm -rf .git
+```
+
+download a file from command line
+
+```
+curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
+
+curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
+```
+
+Cherry pick
+
+```
+$ git remote add some_github_id https://github.com/some_github_id/rust-in-blockchain.git
+$ git fetch some_github_id
+
+$ git log some_github_id/master
+$ git cherry-pick some_commit_hash
+
+$ git diff HEAD^..HEAD
+$ git push origin master
+
+```
+
+Reset a commit
+
+```
+$ git reset HEAD^
+
+$ git rm */~
+
+$ git rm */*~
+
+$ git commit --amend
+
+$ git log
+
+commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
+
+```
+
+Hide changes and do not commit
+
+```
+git stash
+```
+
+Cancel hiding
+
+```
+git stash pop 
+```
+
+Add submodule to rib
+
+```
+ln -> means link
+```
+
+Creat an aliase for syncing file 
+
+```
+ln -s ../awesome-blockchain-rust/README.md awesome-blockchain-rust.md 
+
+```
+
+Recover to previous clean code
+
+```
+git checkout -f 
+```
+
+About PATH
+
+```
+$ pwd
+
+$ echo $PWD
+
+$ export PATH=$PATH:$PWD
+```
+
+SSH
+
+```
+eval `ssh-agent`
+
+ssh-add
+
+ssh -T git@github.com 
+```
+
+Generated a new key
+
+```
+ssh-keygen -C your@email.com 
+```
+
+
+Move a file to current
+
+```
+git mv www/contracts .
+```

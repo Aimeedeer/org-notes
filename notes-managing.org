@@ -1,0 +1,13 @@
+#+title: Notes Managing
+#+date: 2020-10-29
+#+HUGO_BASE_DIR: . 
+
+Notes from 
+[[https://zettelkasten.de/posts/three-layers-structure-zettelkasten/][Tale of Complexity – Structural Layers in Note Taking]]
+
+- Bottom Layer: Content  
+  Tiny, tiny bits of content.
+- Middle Layer: Structure Notes.
+  Tables of contents.
+- Top Layer: 
+  Main Structure Notes and Double Hashes
