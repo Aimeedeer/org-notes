@@ -11,6 +11,6 @@ theme = "hugo-bare-min-theme"
     disabled = true
 
 [Params.source]
-url = "https://Aimeedeer/org-notes"   # Needed if you want to see .GitInfo for a page
+url = "https://github/Aimeedeer/org-notes"   # Needed if you want to see .GitInfo for a page
 md_dir = "content"                   # Needed if you want to get a link to Markdown source for each page
 org_dir = ""      
