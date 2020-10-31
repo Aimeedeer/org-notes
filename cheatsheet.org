@@ -1,6 +1,11 @@
-#+title: My Cheatsheet
+#+title: Cheatsheet
 #+date: 2020-10-29
 #+HUGO_BASE_DIR: . 
+
+:PROPERTIES:
+:EXPORT_FILE_NAME: Cheatsheet
+:EXPORT_DESCRIPTION: My cheatsheet
+:END:
 
 ** Git commands
 
