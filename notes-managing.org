@@ -2,6 +2,12 @@
 #+date: 2020-10-29
 #+HUGO_BASE_DIR: . 
 
+#+begin_description
+
+Notes about notes management.
+
+#+end_description
+
 Notes from 
 [[https://zettelkasten.de/posts/three-layers-structure-zettelkasten/][Tale of Complexity – Structural Layers in Note Taking]]
 

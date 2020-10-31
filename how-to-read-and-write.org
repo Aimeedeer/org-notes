@@ -2,6 +2,12 @@
 #+date: 2020-10-29
 #+HUGO_BASE_DIR: . 
 
+#+begin_description
+
+Notes about reading and writing.
+
+#+end_description
+
 ** Read books
 
 [[https://zettelkasten.de/posts/barbell-method-reading/][The Barbell Method of Reading]]
@@ -78,13 +84,11 @@ the paper. You can also decide whether you need to do any
 more passes. This pass should take about five to ten minutes
 and consists of the following steps:
 1. Carefully read the title, abstract, and introduction
-2. Read the section and sub-section headings, but ignore
-everything else
+2. Read the section and sub-section headings, but ignore everything else
 3. Read the conclusions
-4. Glance over the references, mentally ticking off the
-ones you’ve already read
-At the end of the first pass, you should be able to answer
-the five Cs:
+4. Glance over the references, mentally ticking off the ones you’ve already read
+
+At the end of the first pass, you should be able to answer the five Cs:
 1. Category: What type of paper is this? 
 A measurement paper? An analysis of an existing system? 
 A description of a research prototype?
@@ -102,13 +106,10 @@ cannot understand the gist after one pass, the paper will
 likely be rejected; if a reader cannot understand 
 the highlights of the paper after five minutes, the paper will likely
 never be read.
-- My notes on 2020-10-29:
-This is also true for a business plan, or a blog post
 
 In the second pass, read the paper with greater care, but
 ignore details such as proofs. It helps to jot down the key
 points, or to make comments in the margins, as you read.
-
 
 To fully understand a paper, particularly if you are 
 reviewer, requires a third pass. The key to the third pass
@@ -136,9 +137,6 @@ identify its strong and weak points. In particular, you should
 be able to pinpoint implicit assumptions, missing citations
 to relevant work, and potential issues with experimental or
 analytical techniques.
-- My notes: 
-Pretent I am an investor, to review my business plan.
-
 
 I’ve used this approach for the last 15 years 
 to read conference proceedings, write reviews, 

@@ -1,6 +1,7 @@
 +++
 title = "Notes Managing"
 author = ["Aimee Z"]
+description = "Notes about notes management."
 date = 2020-10-29
 draft = false
 +++

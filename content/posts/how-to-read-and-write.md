@@ -1,6 +1,7 @@
 +++
 title = "How to Read and Write"
 author = ["Aimee Z"]
+description = "Notes about reading and writing."
 date = 2020-10-29
 draft = false
 +++
@@ -89,16 +90,11 @@ more passes. This pass should take about five to ten minutes
 and consists of the following steps:
 
 1.  Carefully read the title, abstract, and introduction
-2.  Read the section and sub-section headings, but ignore
+2.  Read the section and sub-section headings, but ignore everything else
+3.  Read the conclusions
+4.  Glance over the references, mentally ticking off the ones you’ve already read
 
-everything else
-
-1.  Read the conclusions
-2.  Glance over the references, mentally ticking off the
-
-ones you’ve already read
-At the end of the first pass, you should be able to answer
-the five Cs:
+At the end of the first pass, you should be able to answer the five Cs:
 
 1.  Category: What type of paper is this?
 
@@ -121,10 +117,6 @@ cannot understand the gist after one pass, the paper will
 likely be rejected; if a reader cannot understand
 the highlights of the paper after five minutes, the paper will likely
 never be read.
-
--   My notes on 2020-10-29:
-
-This is also true for a business plan, or a blog post
 
 In the second pass, read the paper with greater care, but
 ignore details such as proofs. It helps to jot down the key
@@ -155,10 +147,6 @@ identify its strong and weak points. In particular, you should
 be able to pinpoint implicit assumptions, missing citations
 to relevant work, and potential issues with experimental or
 analytical techniques.
-
--   My notes:
-
-Pretent I am an investor, to review my business plan.
 
 I’ve used this approach for the last 15 years
 to read conference proceedings, write reviews,
