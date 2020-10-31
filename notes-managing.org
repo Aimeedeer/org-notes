@@ -1,6 +1,9 @@
 #+title: Notes Managing
 #+date: 2020-10-29
-#+HUGO_BASE_DIR: . 
+#+hugo_tags: notes writing content
+#+hugo_categories: writing
+#+hugo_base_dir: . 
+#+hugo_section: writing
 
 #+begin_description
 

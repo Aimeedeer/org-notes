@@ -3,6 +3,8 @@ title = "Cheatsheet"
 author = ["Aimee Z"]
 description = "Mostly Git commands."
 date = 2020-10-29
+tags = ["hack", "git", "notes"]
+categories = ["hacking"]
 draft = false
 +++
 

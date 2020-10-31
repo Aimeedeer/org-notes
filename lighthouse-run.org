@@ -1,7 +1,9 @@
 #+title: Lighthouse Run
 #+date: 2020-08-12
-#+HUGO_BASE_DIR: . 
-
+#+hugo_tags: blockchain lighthouse
+#+hugo_categories: blockchain
+#+hugo_base_dir: . 
+#+hugo_section: blockchain
 
 #+begin_description
 

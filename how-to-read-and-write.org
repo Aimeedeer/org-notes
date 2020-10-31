@@ -1,6 +1,9 @@
 #+title: How to Read and Write
 #+date: 2020-10-29
-#+HUGO_BASE_DIR: . 
+#+hugo_tags: writing notes
+#+hugo_categories: writing
+#+hugo_base_dir: . 
+#+hugo_section: writing
 
 #+begin_description
 
@@ -9,17 +12,18 @@ Notes about reading and writing.
 #+end_description
 
 ** Read books
-
-[[https://zettelkasten.de/posts/barbell-method-reading/][The Barbell Method of Reading]]
+[[https://zettelkasten.de/posts/barbell-method-reading/][
+The Barbell Method of Reading]]
 
 The Barbell Method takes this into account by integrating 
 your reading habit into your knowledge work with two steps:
 
-- Read the book. Read swiftly but don’t skip any parts 
+**Read the book**. Read swiftly but don’t skip any parts 
 unless they make you vomit or put you to sleep. 
 Mark all the passages that stand out and contain useful, 
 interesting or inspiring information.
-- Read the book a second time. But now you read 
+
+**Read the book a second time**. But now you read 
 the marked parts only. This time you make notes, 
 connect them to past notes (Zettelkasten Method!) 
 and think about what you’ve read. 
@@ -32,7 +36,6 @@ Sometimes, a book is not that important and
 only provides a few shallow pieces of information. 
 The second step could only take 
 a very short period of time. But a good book is dense. 
-
 
 True reading is not a passive process in which 
 you just create an influx of information. 
@@ -57,12 +60,9 @@ and properly, practice it.
 
 The Zettelkasten Method is designed to serve several different purposes:
 
-- Optimize the amount of information you process. 
-You should read a lot.
-- Produce an archive which consists of true knowledge, 
-not just a collection of half-understood bits of random points.
-- Learn to think deeply and thoroughly by 
-making it a habit to practice it.
+- Optimize the amount of information you process. You should read a lot.
+- Produce an archive which consists of true knowledge, not just a collection of half-understood bits of random points.
+- Learn to think deeply and thoroughly by making it a habit to practice it.
 
 ** Read papers
 

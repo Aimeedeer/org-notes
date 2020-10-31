@@ -3,6 +3,8 @@ title = "Lighthouse Run"
 author = ["Aimee Z"]
 description = "Lighthouse first try."
 date = 2020-08-12
+tags = ["blockchain", "lighthouse"]
+categories = ["blockchain"]
 draft = false
 +++
 

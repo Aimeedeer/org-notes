@@ -3,14 +3,22 @@ languageCode = "en-us"
 title = "Aimee's Study Notes"
 theme = "hugo-bare-min-theme"
 
-[Params]
-  description = "Aimee's Study Notes"
+enableEmoji = true
+enableGitInfo = true
 
-[module]
-  [[module.imports]]
-    disabled = true
+[Params]
+description = "Aimee's Study Notes"
+intro = """
+
+"""
+footer = """
+[<a href="/">Aimee's Study Notes</a>]
+"""
+disable_debug = true
 
 [Params.source]
 url = "https://github.com/Aimeedeer/org-notes"   # Needed if you want to see .GitInfo for a page
 md_dir = "content"                   # Needed if you want to get a link to Markdown source for each page
-org_dir = ""      
+org_dir = "/"      
+
+

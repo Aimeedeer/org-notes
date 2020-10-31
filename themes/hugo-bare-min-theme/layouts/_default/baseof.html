@@ -47,7 +47,7 @@
              line-height: 1.2;
          }
          .masthead-title {
-             font-size: 40px;
+             font-size: 2em;
              font-weight: bold;
          }
          .masthead-title a {
@@ -91,13 +91,12 @@
     <body lang="{{ .Site.Language.Lang }}">
 
         {{ block "top" . }}
-
+<!--
         <div style="float: left;">
             <small>
                 {{ printf `<span style="font-variant: small-caps;">.Kind</span> (<strong>%s</strong>):` .Kind | safeHTML }}
                 {{ printf `<span style="font-variant: small-caps;">.Type</span> (<strong>%s</strong>) /` .Type | safeHTML }}
                 {{ printf `<span style="font-variant: small-caps;">.Layout</span> (<strong>%s</strong>)` .Layout | safeHTML }}
-
                 <br />
                 {{ $bundle_type := "n/a" }}
                 {{ with .File }}
@@ -116,6 +115,7 @@
                 {{ printf `<span style="font-variant: small-caps;">Bundle</span>: <strong>%s</strong>` $bundle_type | safeHTML }}
             </small>
         </div>
+-->
 
         {{ with .Site.Taxonomies }}
             <div style="float: right;">
@@ -147,7 +147,7 @@
                     <code>{{ .url | replaceRE "^.*/" "" }}</code> repo</a>.
                     It was last updated on <i>{{ now.Format "Jan 02, 2006 15:04 MST" }}</i>.
                 </p>
-                <ul>
+<!--                <ul>
                     {{ if .org_dir }}
                         <li>The <i>actual <b>source</b></i>.. <a href="{{ .url }}/tree/master/{{ .org_dir }}">Org source dir</a></li>
                         <li>
@@ -159,7 +159,7 @@
                     {{ if .md_dir }}
                         <li><a href="{{ .url }}/tree/master/{{ .md_dir }}">Markdown source dir</a></li>
                     {{ end }}
-                </ul>
+                </ul> -->
             {{ end }}
             <hr>
         </div>
@@ -198,11 +198,6 @@
                 <a href="https://github.com/kaushalmodi/ox-hugo"><b>ox-hugo</b></a> package for Emacs/Org-mode +
             {{ end }}
             <a href="https://github.com/kaushalmodi/hugo-bare-min-theme"><code>hugo-bare-min-theme</code></a> + Hugo <b>{{ hugo.Version }}</b>
-            {{ with hugo.CommitHash }}
-                (commit
-                {{ . | replaceRE "^[0-9a-f]{7,}" `<a href="https://github.com/gohugoio/hugo/commit/${0}">${0}</a>` | replaceRE ":chroma-([0-9a-f]{7,})" `, using Chroma commit <a href="https://github.com/alecthomas/chroma/commit/${1}">${1}</a>` | safeHTML -}}
-                )
-            {{ end }}.
         </small>
         {{ with .Site.Params.footer }}
             {{- . | safeHTML -}}

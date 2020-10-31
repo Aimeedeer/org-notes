@@ -1,6 +1,10 @@
 #+title: Cheatsheet
 #+date: 2020-10-29
-#+HUGO_BASE_DIR: . 
+
+#+hugo_tags: hack git notes
+#+hugo_categories: hacking
+#+hugo_base_dir: . 
+#+hugo_section: hacking
 
 #+begin_description
 Mostly Git commands.

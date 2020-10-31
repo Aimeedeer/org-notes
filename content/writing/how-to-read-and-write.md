@@ -3,24 +3,25 @@ title = "How to Read and Write"
 author = ["Aimee Z"]
 description = "Notes about reading and writing."
 date = 2020-10-29
+tags = ["writing", "notes"]
+categories = ["writing"]
 draft = false
 +++
 
 ## Read books {#read-books}
 
-[The Barbell Method of Reading](https://zettelkasten.de/posts/barbell-method-reading/)
+[
+The Barbell Method of Reading](https://zettelkasten.de/posts/barbell-method-reading/)
 
 The Barbell Method takes this into account by integrating
 your reading habit into your knowledge work with two steps:
 
--   Read the book. Read swiftly but don’t skip any parts
-
+****Read the book****. Read swiftly but don’t skip any parts
 unless they make you vomit or put you to sleep.
 Mark all the passages that stand out and contain useful,
 interesting or inspiring information.
 
--   Read the book a second time. But now you read
-
+****Read the book a second time****. But now you read
 the marked parts only. This time you make notes,
 connect them to past notes (Zettelkasten Method!)
 and think about what you’ve read.
@@ -57,17 +58,9 @@ and properly, practice it.
 
 The Zettelkasten Method is designed to serve several different purposes:
 
--   Optimize the amount of information you process.
-
-You should read a lot.
-
--   Produce an archive which consists of true knowledge,
-
-not just a collection of half-understood bits of random points.
-
--   Learn to think deeply and thoroughly by
-
-making it a habit to practice it.
+-   Optimize the amount of information you process. You should read a lot.
+-   Produce an archive which consists of true knowledge, not just a collection of half-understood bits of random points.
+-   Learn to think deeply and thoroughly by making it a habit to practice it.
 
 
 ## Read papers {#read-papers}

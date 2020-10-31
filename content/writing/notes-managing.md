@@ -3,6 +3,8 @@ title = "Notes Managing"
 author = ["Aimee Z"]
 description = "Notes about notes management."
 date = 2020-10-29
+tags = ["notes", "writing", "content"]
+categories = ["writing"]
 draft = false
 +++
 
