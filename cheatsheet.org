@@ -11,7 +11,7 @@
 
 remote .git
 
-```
+#+begin_src
 $ ls .git
 
 $ rm .git
@@ -19,15 +19,15 @@ $ rm .git
 rm: .git: is a directory
 
 $ rm -rf .git
-```
+#+end_src
 
 download a file from command line
 
-```
+#+begin_src
 curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
 
 curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
-```
+#+end_src
 
 Cherry pick
 

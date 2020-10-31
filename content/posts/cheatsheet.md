@@ -13,7 +13,7 @@ draft = false
 
 remote .git
 
-\`\`\`
+```nil
 $ ls .git
 
 $ rm .git
@@ -21,15 +21,15 @@ $ rm .git
 rm: .git: is a directory
 
 $ rm -rf .git
-\`\`\`
+```
 
 download a file from command line
 
-\`\`\`
-curl -LO ![](https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg)
+```nil
+curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
 
-curl -L ![](https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2%5F1f47b.svg) > ghost.svg
-\`\`\`
+curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
+```
 
 Cherry pick
 
