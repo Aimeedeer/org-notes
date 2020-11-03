@@ -223,7 +223,7 @@ to learn more about the subject being reviewed, and it makes you look good in fr
 of your peers. Surprisingly, it can also be fun – even writing a review for a really bad
 paper can be rewarding if it forces you to explain concepts afresh in a new context.
 
-** Articles about wrting
+** Articles about writing
 
 [[http://www.paulgraham.com/useful.html][How to write usefully]]
 

@@ -228,7 +228,7 @@ of your peers. Surprisingly, it can also be fun – even writing a review for a 
 paper can be rewarding if it forces you to explain concepts afresh in a new context.
 
 
-## Articles about wrting {#articles-about-wrting}
+## Articles about writing {#articles-about-writing}
 
 [How to write usefully](http://www.paulgraham.com/useful.html)
 
