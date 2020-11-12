@@ -1,0 +1,30 @@
+#+title: Governance
+#+date: 2020-11-12
+#+hugo_tags: community governance
+#+hugo_categories: community
+#+hugo_base_dir: . 
+#+hugo_section: community
+
+#+begin_description
+
+Notes about governance in open source communities,
+including developer communities and blockchain projects' communities.
+
+#+end_description
+
+[[https://www.djangoproject.com/weblog/2020/mar/12/governance/][New governance model for the Django project]]
+- James Bennett on March 12, 2020
+
+[[https://github.com/django/deps/blob/master/accepted/0010-new-governance.rst][DEP 0010: New governance for the Django project]]
+- Created:	2018-09-22
+- Last-Modified:	2020-03-12
+
+
+[[https://github.com/rust-lang/wg-governance/blob/master/CHARTER.md][Rust-lang: Governance WG Charter]]
+- last updated: [May 25th 2019] 
+
+[[https://ziglang.org/news/announcing-zig-software-foundation.html][Announcing the Zig Software Foundation]]
+- Zig language
+
+[[https://modelviewculture.com/pieces/codes-of-conduct-when-being-excellent-is-not-enough][Codes of Conduct: When Being Excellent is Not Enough]]
+- December 10th, 2014
