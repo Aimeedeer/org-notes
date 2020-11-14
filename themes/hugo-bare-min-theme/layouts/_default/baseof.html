@@ -194,11 +194,11 @@
         {{ block "main" . }}{{ end }}
 
         <hr>
-        <small>This site is generated using the
+        <small>This site is generated with
             {{ with .Site.Params.source.org_dir }}
-                <a href="https://github.com/kaushalmodi/ox-hugo"><b>ox-hugo</b></a> package for Emacs/Org-mode +
+                <a href="https://github.com/kaushalmodi/ox-hugo"><b>ox-hugo</b></a> for Emacs/Org-mode +
             {{ end }}
-            <a href="https://github.com/kaushalmodi/hugo-bare-min-theme"><code>hugo-bare-min-theme</code></a> + Hugo <b>{{ hugo.Version }}</b>
+            <a href="https://github.com/kaushalmodi/hugo-bare-min-theme">hugo-bare-min-theme</a>
         </small>
         {{ with .Site.Params.footer }}
             {{- . | safeHTML -}}
