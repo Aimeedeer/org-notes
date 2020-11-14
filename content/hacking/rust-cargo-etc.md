@@ -3,7 +3,7 @@ title = "Rust Cargo and More"
 author = ["Aimee Z"]
 description = "Understand Rust programming language."
 date = 2020-11-14
-tags = ["hack", "log", "rust", "cargo", "command"]
+tags = ["hack", "log", "rust", "cargo", "rustup", "commandline"]
 categories = ["hacking"]
 draft = false
 +++
@@ -71,6 +71,15 @@ total 496760
 
 
 ## Rustup toolchains {#rustup-toolchains}
+
+[The rustup book](https://rust-lang.github.io/rustup/installation/index.html)
+>rustup installs rustc, cargo, rustup and other standard tools
+to Cargo's bin directory. On Unix it is located at $HOME/.cargo/bin
+and on Windows at %USERPROFILE%\\.cargo\bin.
+This is the same directory that cargo install will
+install Rust programs and Cargo plugins.
+
+Toolchains on my mac:
 
 ```nil
 $ ls ~/.rustup/
