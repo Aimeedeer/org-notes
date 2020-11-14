@@ -2,8 +2,8 @@
 #+date: 2020-11-14
 #+hugo_tags: hack log rust cargo rustup commandline
 #+hugo_categories: hacking
-#+hugo_base_dir: . 
 #+hugo_section: hacking
+#+hugo_base_dir: . 
 
 #+begin_description
 
@@ -11,7 +11,7 @@ Understand Rust programming language.
 
 #+end_description
 
-** Cargo bin
+* Cargo bin
 
 #+begin_src shell
 $ ~/.cargo/bin
@@ -72,7 +72,7 @@ total 496760
 -rw-r--r--   1 aimeez  staff    54B Oct 29 14:21 wasm-pack.stamp
 #+end_src
 
-** Rustup toolchains
+* Rustup toolchains
 
 [[https://rust-lang.github.io/rustup/installation/index.html][The rustup book]]
 >rustup installs rustc, cargo, rustup and other standard tools 
@@ -101,7 +101,7 @@ $ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/bin/
 cargo		cargo-fmt	rls		rust-gdbgui	rustc		rustfmt
 cargo-clippy	clippy-driver	rust-gdb	rust-lldb	rustdoc
 #+end_src
-** Rustc: #[lang = "start"]
+* Rustc: #[lang = "start"]
 
 [[https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs#L60][fn lang_start<T: crate::process::Termination + 'static>(main: fn() -> T, argc: isize, argv: *const *const u8,)]]
 

@@ -1,9 +1,9 @@
-#+title: Books, Reading Collection
+#+title: Books
 #+date: 2020-11-13
-#+hugo_tags: read book collection
-#+hugo_categories: book
-#+hugo_base_dir: . 
+#+hugo_tags: reading books
+#+hugo_categories: reading
 #+hugo_section: reading
+#+hugo_base_dir: . 
 
 #+begin_description
 
@@ -13,7 +13,7 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 
 #+end_description
 
-** 2020
+* 2020
 
 - Guns, Germs, and Steel: The Fates of Human Societies
 - [[https://www.amazon.com/Art-War-AmazonClassics-Sun-Tzu-ebook/dp/B073QR86XF/ref=sr_1_4][The Art of War]]

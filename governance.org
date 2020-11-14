@@ -2,8 +2,8 @@
 #+date: 2020-11-12
 #+hugo_tags: community governance
 #+hugo_categories: community
-#+hugo_base_dir: . 
 #+hugo_section: community
+#+hugo_base_dir: . 
 
 #+begin_description
 

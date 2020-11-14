@@ -10,126 +10,100 @@
 Mostly Git commands.
 #+end_description
 
-** Git commands
+* Git commands
 
-*** Remote .git
+** Remote .git
 
-#+begin_src
-
+#+begin_src shell
 $ ls .git
 $ rm .git
 rm: .git: is a directory
 $ rm -rf .git
-
 #+end_src
 
-*** Download a file from command line
+** Download a file from command line
 
-#+begin_src
-
+#+begin_src shell
 $ curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
 $ curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
-
 #+end_src
 
-*** Cherry pick
+** Cherry pick
 
-#+begin_src
-
+#+begin_src shell
 $ git remote add some_github_id https://github.com/some_github_id/rust-in-blockchain.git
 $ git fetch some_github_id
 $ git log some_github_id/master
 $ git cherry-pick some_commit_hash
 $ git diff HEAD^..HEAD
 $ git push origin master
-
 #+end_src
 
-*** Reset a commit
+** Reset a commit
 
-#+begin_src
-
+#+begin_src shell
 $ git reset HEAD^
 $ git rm */~
 $ git rm */*~
 $ git commit --amend
 $ git log
 commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
-
 #+end_src
 
-*** Hide changes and do not commit
+** Hide changes and do not commit
 
-#+begin_src
-
+#+begin_src shell
 $ git stash
-
 #+end_src
 
-*** Cancel hiding
+** Cancel hiding
 
-#+begin_src
-
+#+begin_src shell
 $ git stash pop 
-
 #+end_src
 
-*** Add submodule to rib
+** Add submodule to rib
 
-#+begin_src
-
+#+begin_src shell
 $ ln -> means link
-
 #+end_src
 
-*** Creat an aliase for syncing file 
+** Creat an aliase for syncing file 
 
-#+begin_src
-
+#+begin_src shell
 $ ln -s ../awesome-blockchain-rust/README.md awesome-blockchain-rust.md 
-
 #+end_src
 
-*** Recover to previous clean code
+** Recover to previous clean code
 
-#+begin_src
-
-$ git checkout -f 
-
+#+begin_src shell
+$ git checkout -f
 #+end_src
 
-*** About PATH
+** About PATH
 
-#+begin_src
-
+#+begin_src shell
 $ pwd
 $ echo $PWD
 $ export PATH=$PATH:$PWD
-
 #+end_src
 
-*** SSH
+** SSH
 
-#+begin_src
-
+#+begin_src shell
 $ eval `ssh-agent`
 $ ssh-add
 $ ssh -T git@github.com 
-
 #+end_src
 
-*** Generated a new key
+** Generated a new key
 
-#+begin_src
-
+#+begin_src shell
 $ ssh-keygen -C your@email.com 
-
 #+end_src
 
-*** Move a file to current
+** Move a file to current
 
-#+begin_src
-
+#+begin_src shell
 $ git mv www/contracts .
-
 #+end_src

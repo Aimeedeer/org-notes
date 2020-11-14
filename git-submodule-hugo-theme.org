@@ -15,25 +15,22 @@ and how I solved it.
 I use hugo themes for this website, and I met problems.
 
 
-** Begin with Hugo and others' themes
+* Begin with Hugo and others' themes
 
 I go inside the `themes` folder, and clone all three repos
 followed the readme.
 
-#+begin_src 
-
+#+begin_src shell
 $ cd themes/
 $ git clone https://github.com/kaushalmodi/hugo-bare-min-theme.git
 $ git clone https://github.com/kaushalmodi/hugo-search-fuse-js
 $ git clone https://github.com/kaushalmodi/hugo-debugprint
-
 #+end_src
 
 Check status.
 My file `cheatsheet.org` changes can be ignored.
 
-#+begin_src
-
+#+begin_src shell
 $ cd ..
 $ git status
 
@@ -49,13 +46,11 @@ Untracked files:
 	themes/
 
 no changes added to commit (use "git add" and/or "git commit -a")
-
 #+end_src
 
 I add it to git.
 
-#+begin_src
-
+#+begin_src shell
 $ git add .
 
 warning: adding embedded git repository: themes/hugo-bare-min-theme
@@ -74,13 +69,11 @@ hint:
 hint: See "git help submodule" for more information.
 warning: adding embedded git repository: themes/hugo-debugprint
 warning: adding embedded git repository: themes/hugo-search-fuse-js
-
 #+end_src
 
 I follow the hint.
 
-#+begin_src
-
+#+begin_src shell
 $ git rm --cached themes/hugo-bare-min-theme
 
 error: the following file has staged content different from both the
@@ -91,13 +84,11 @@ file and the HEAD:
 $ git rm -f --cached themes/hugo-bare-min-theme
 
 rm 'themes/hugo-bare-min-theme'
-
 #+end_src
 
 And I check the status again.
 
-#+begin_src
-
+#+begin_src shell
 $ ls themes/
 
 hugo-bare-min-theme	hugo-debugprint		hugo-search-fuse-js
@@ -115,13 +106,11 @@ Changes to be committed:
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 	themes/hugo-bare-min-theme/
-
 #+end_src
 
 Then I add files.
 
-#+begin_src
-
+#+begin_src shell
 $ git add .
 
 warning: adding embedded git repository: themes/hugo-bare-min-theme
@@ -138,14 +127,12 @@ hint:
 hint: 	git rm --cached themes/hugo-bare-min-theme
 hint: 
 hint: See "git help submodule" for more information.
-
 #+end_src
 
 I am confused.
 But I keep trying.
 
-#+begin_src
-
+#+begin_src shell
 $ git add themes/hugo-bare-min-theme/
 $ git status
 
@@ -157,13 +144,11 @@ Changes to be committed:
 	new file:   themes/hugo-bare-min-theme
 	new file:   themes/hugo-debugprint
 	new file:   themes/hugo-search-fuse-js
-
 #+end_src
 
 Then I commit these changes one by one.
 
-#+begin_src
-
+#+begin_src shell
 $ git add content/posts/cheatsheet.md
 $ git add themes/hugo-bare-min-theme/
 $ git add themes/hugo-debugprint/
@@ -178,35 +163,30 @@ $ git commit -m"submodule"
  create mode 160000 themes/hugo-search-fuse-js
 
 $ git push origin master
-
 #+end_src
 
-** Deploy: Netlify build failed
+* Deploy: Netlify build failed
 
 I push the source code to GitHub and use Netlify for auto-building.
 Howevery, Netlify build failed with 
 the error message says something wrong with submodules.
 
-#+begin_src
-
+#+begin_src shell
 Error checking out submodules: fatal: No url found for submodule path 'themes/hugo-bare-min-theme' in .gitmodules
 Failing build: Failed to prepare repo
 Failed during stage 'preparing repo': Error checking out submodules: fatal: No url found for submodule path 'themes/hugo-bare-min-theme' in .gitmodules
 : exit status 128
-
 #+end_src
 
 I think I met this problem before when I built [[https://rustinblockchain][rib.rs]] website in Hugo.
 But I can remember how I solved it at last.
 (That's why I take notes now ;)
 
-
-** Remove submodules
+* Remove submodules
 
 I go inside of each theme repo, and try to remove the `.git` file.
 
-#+begin_src
-
+#+begin_src shell
 $ cd hugo-bare-min-theme/
 $ git rm .git
 
@@ -224,13 +204,11 @@ $ rm -rf .git/
 $ cd ..
 $ cd hugo-search-fuse-js/
 $ rm -rf .git/
-
 #+end_src
 
 Again, check status.
 
-#+begin_src
-
+#+begin_src shell
 $ cd ..
 $ git submodule status
 
@@ -239,7 +217,6 @@ fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-
 $ git status
 On branch master
 nothing to commit, working tree clean
-
 #+end_src
 
 It's interesting, and I am super confusing now.
@@ -249,8 +226,7 @@ Then I `git pull` changes to my local repo.
 
 Now check the status.
 
-#+begin_src
-
+#+begin_src shell
 $ git submodule status
 
 fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-theme'
@@ -262,13 +238,11 @@ cat: .git/modules/: Is a directory
 $ ls .git/modules/
 
 themes
-
 #+end_src
 
 I try more ways to clean these uncleared-relational submodules.
 
-#+begin_src
-
+#+begin_src shell
 $ git rm --cached
 usage: git rm [<options>] [--] <file>...
 
@@ -365,22 +339,17 @@ $ git commit -m"rm"
  delete mode 160000 themes/hugo-bare-min-theme
  delete mode 160000 themes/hugo-debugprint
  delete mode 160000 themes/hugo-search-fuse-js
-
-
 #+end_src
 
 Finally the submodule is clean!
 
-#+begin_src
-
+#+begin_src shell
 $ git submodule status
-
 #+end_src
 
 I go back to the `themes` folder to start over.
 
-#+begin_src
-
+#+begin_src shell
 $ cd themes/
 $ git clone https://github.com/kaushalmodi/hugo-bare-min-theme
 $ cd hugo-bare-min-theme/
@@ -447,17 +416,14 @@ Changes to be committed:
 	new file:   themes/hugo-bare-min-theme/static/css/github_chroma.css
 	new file:   themes/hugo-bare-min-theme/static/js/mathjax-config.js
 	new file:   themes/hugo-bare-min-theme/theme.toml
-
 #+end_src
 
 I commit the changes and check the status,
 and it looks clean. Great!
 
-#+begin_src
-
+#+begin_src shell
 $ git commit -am"theme"
 $ git submodule status
-
 #+end_src
 
 
@@ -466,7 +432,7 @@ and push the final changes.
 
 Netlify Build Complete!
 
-** Others
+* Others
 
 It is strange that I don't see other people met these problems
 when I searched on Google.

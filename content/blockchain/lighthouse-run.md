@@ -10,8 +10,7 @@ draft = false
 
 ## 2020-08-12 Testing {#2020-08-12-testing}
 
-```nil
-
+```shell
 validator_client_1  | Your wallet's 12-word BIP-39 mnemonic is:
 validator_client_1  |
 validator_client_1  | 	enlist whip budget awkward gold glad toast demise grass radar chicken link
@@ -53,5 +52,4 @@ validator_client_1  | Aug 12 17:15:05.311 INFO Genesis has already occurred     
 validator_client_1  | Aug 12 17:15:05.333 INFO Loaded validator keypair store          voting_validators: 1
 validator_client_1  | Aug 12 17:15:05.335 INFO Block production service started        service: block
 validator_client_1  | Aug 12 17:15:05.335 INFO Attestation production service started  next_update_millis: 2664, service: attestation
-
 ```

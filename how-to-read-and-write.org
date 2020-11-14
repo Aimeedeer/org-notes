@@ -2,8 +2,8 @@
 #+date: 2020-10-29
 #+hugo_tags: writing notes
 #+hugo_categories: writing
-#+hugo_base_dir: . 
 #+hugo_section: writing
+#+hugo_base_dir: . 
 
 #+begin_description
 
@@ -11,7 +11,7 @@ Notes about reading and writing.
 
 #+end_description
 
-** Read books
+* Read books
 [[https://zettelkasten.de/posts/barbell-method-reading/][
 The Barbell Method of Reading]]
 
@@ -64,7 +64,7 @@ The Zettelkasten Method is designed to serve several different purposes:
 - Produce an archive which consists of true knowledge, not just a collection of half-understood bits of random points.
 - Learn to think deeply and thoroughly by making it a habit to practice it.
 
-** Read papers
+* Read papers
 
 [[https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf][How to Read Paper]]
 
@@ -157,7 +157,7 @@ and [[http://www.che.iitm.ac.in/misc/dd/writepaper.pdf][George Whitesides’s ex
 Finally, Simon Peyton Jones has a website 
 that covers [[http://research.microsoft.com/simonpj/Papers/givinga-talk/giving-a-talk.htm][the entire spectrum of research skills]].
 
-** How to write
+* How to write
 
 Very well written, and I learned a lot from
 Timothy Roscoe’s paper on “[[http://people.inf.ethz.ch/troscoe/pubs/review-writing.pdf][Writing reviews for systems conferences]]”.
@@ -223,7 +223,7 @@ to learn more about the subject being reviewed, and it makes you look good in fr
 of your peers. Surprisingly, it can also be fun – even writing a review for a really bad
 paper can be rewarding if it forces you to explain concepts afresh in a new context.
 
-** Articles about writing
+* Articles about writing
 
 [[http://www.paulgraham.com/useful.html][How to write usefully]]
 

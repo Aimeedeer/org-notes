@@ -2,8 +2,8 @@
 #+date: 2020-10-29
 #+hugo_tags: notes writing content
 #+hugo_categories: writing
-#+hugo_base_dir: . 
 #+hugo_section: writing
+#+hugo_base_dir: . 
 
 #+begin_description
 

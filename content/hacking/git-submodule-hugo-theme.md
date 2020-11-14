@@ -19,20 +19,17 @@ I use hugo themes for this website, and I met problems.
 I go inside the \`themes\` folder, and clone all three repos
 followed the readme.
 
-```nil
-
+```shell
 $ cd themes/
 $ git clone https://github.com/kaushalmodi/hugo-bare-min-theme.git
 $ git clone https://github.com/kaushalmodi/hugo-search-fuse-js
 $ git clone https://github.com/kaushalmodi/hugo-debugprint
-
 ```
 
 Check status.
 My file \`cheatsheet.org\` changes can be ignored.
 
-```nil
-
+```shell
 $ cd ..
 $ git status
 
@@ -48,13 +45,11 @@ Untracked files:
 	themes/
 
 no changes added to commit (use "git add" and/or "git commit -a")
-
 ```
 
 I add it to git.
 
-```nil
-
+```shell
 $ git add .
 
 warning: adding embedded git repository: themes/hugo-bare-min-theme
@@ -73,13 +68,11 @@ hint:
 hint: See "git help submodule" for more information.
 warning: adding embedded git repository: themes/hugo-debugprint
 warning: adding embedded git repository: themes/hugo-search-fuse-js
-
 ```
 
 I follow the hint.
 
-```nil
-
+```shell
 $ git rm --cached themes/hugo-bare-min-theme
 
 error: the following file has staged content different from both the
@@ -90,13 +83,11 @@ file and the HEAD:
 $ git rm -f --cached themes/hugo-bare-min-theme
 
 rm 'themes/hugo-bare-min-theme'
-
 ```
 
 And I check the status again.
 
-```nil
-
+```shell
 $ ls themes/
 
 hugo-bare-min-theme	hugo-debugprint		hugo-search-fuse-js
@@ -114,13 +105,11 @@ Changes to be committed:
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 	themes/hugo-bare-min-theme/
-
 ```
 
 Then I add files.
 
-```nil
-
+```shell
 $ git add .
 
 warning: adding embedded git repository: themes/hugo-bare-min-theme
@@ -137,14 +126,12 @@ hint:
 hint: 	git rm --cached themes/hugo-bare-min-theme
 hint:
 hint: See "git help submodule" for more information.
-
 ```
 
 I am confused.
 But I keep trying.
 
-```nil
-
+```shell
 $ git add themes/hugo-bare-min-theme/
 $ git status
 
@@ -156,13 +143,11 @@ Changes to be committed:
 	new file:   themes/hugo-bare-min-theme
 	new file:   themes/hugo-debugprint
 	new file:   themes/hugo-search-fuse-js
-
 ```
 
 Then I commit these changes one by one.
 
-```nil
-
+```shell
 $ git add content/posts/cheatsheet.md
 $ git add themes/hugo-bare-min-theme/
 $ git add themes/hugo-debugprint/
@@ -177,7 +162,6 @@ $ git commit -m"submodule"
  create mode 160000 themes/hugo-search-fuse-js
 
 $ git push origin master
-
 ```
 
 
@@ -187,13 +171,11 @@ I push the source code to GitHub and use Netlify for auto-building.
 Howevery, Netlify build failed with
 the error message says something wrong with submodules.
 
-```nil
-
+```shell
 Error checking out submodules: fatal: No url found for submodule path 'themes/hugo-bare-min-theme' in .gitmodules
 Failing build: Failed to prepare repo
 Failed during stage 'preparing repo': Error checking out submodules: fatal: No url found for submodule path 'themes/hugo-bare-min-theme' in .gitmodules
 : exit status 128
-
 ```
 
 I think I met this problem before when I built [rib.rs](https://rustinblockchain) website in Hugo.
@@ -205,8 +187,7 @@ But I can remember how I solved it at last.
 
 I go inside of each theme repo, and try to remove the \`.git\` file.
 
-```nil
-
+```shell
 $ cd hugo-bare-min-theme/
 $ git rm .git
 
@@ -224,13 +205,11 @@ $ rm -rf .git/
 $ cd ..
 $ cd hugo-search-fuse-js/
 $ rm -rf .git/
-
 ```
 
 Again, check status.
 
-```nil
-
+```shell
 $ cd ..
 $ git submodule status
 
@@ -239,7 +218,6 @@ fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-
 $ git status
 On branch master
 nothing to commit, working tree clean
-
 ```
 
 It's interesting, and I am super confusing now.
@@ -249,8 +227,7 @@ Then I \`git pull\` changes to my local repo.
 
 Now check the status.
 
-```nil
-
+```shell
 $ git submodule status
 
 fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-theme'
@@ -262,13 +239,11 @@ cat: .git/modules/: Is a directory
 $ ls .git/modules/
 
 themes
-
 ```
 
 I try more ways to clean these uncleared-relational submodules.
 
-```nil
-
+```shell
 $ git rm --cached
 usage: git rm [<options>] [--] <file>...
 
@@ -365,22 +340,17 @@ $ git commit -m"rm"
  delete mode 160000 themes/hugo-bare-min-theme
  delete mode 160000 themes/hugo-debugprint
  delete mode 160000 themes/hugo-search-fuse-js
-
-
 ```
 
 Finally the submodule is clean!
 
-```nil
-
+```shell
 $ git submodule status
-
 ```
 
 I go back to the \`themes\` folder to start over.
 
-```nil
-
+```shell
 $ cd themes/
 $ git clone https://github.com/kaushalmodi/hugo-bare-min-theme
 $ cd hugo-bare-min-theme/
@@ -447,17 +417,14 @@ Changes to be committed:
 	new file:   themes/hugo-bare-min-theme/static/css/github_chroma.css
 	new file:   themes/hugo-bare-min-theme/static/js/mathjax-config.js
 	new file:   themes/hugo-bare-min-theme/theme.toml
-
 ```
 
 I commit the changes and check the status,
 and it looks clean. Great!
 
-```nil
-
+```shell
 $ git commit -am"theme"
 $ git submodule status
-
 ```
 
 Then I repeat the workable solution to the other two theme repos,
