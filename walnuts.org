@@ -1,9 +1,9 @@
 #+title: Walnuts Hacklog
-#+date: 2020-11-13
+#+date: 2020-11-02
 #+hugo_tags: hack blockchain walnuts log
 #+hugo_categories: hacking
-#+hugo_base_dir: . 
 #+hugo_section: hacking
+#+hugo_base_dir: . 
 
 #+begin_description
 

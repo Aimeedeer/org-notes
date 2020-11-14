@@ -2,7 +2,7 @@
 title = "Walnuts Hacklog"
 author = ["Aimee Z"]
 description = "My hacklog about Walnuts, a toy blockchain."
-date = 2020-11-13
+date = 2020-11-02
 tags = ["hack", "blockchain", "walnuts", "log"]
 categories = ["hacking"]
 draft = false
