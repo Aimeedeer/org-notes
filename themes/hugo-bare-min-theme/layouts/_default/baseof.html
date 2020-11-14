@@ -58,7 +58,7 @@
       }
       {{ if (not ($.Param "disable_debug")) }}
       {{ partial "debugprint.css" | safeCSS }}
-      {{ end }}
+      {{ end }} 
       /* Captions */
       figcaption,
       .src-block-caption,
@@ -79,12 +79,9 @@
     </style>
 
     <!-- Opengraph and Twitter -->
-    {{ partial "opengraph.html" . }}
-    {{ partial "twitter_cards.html" . }}
-
-    {{ range .Site.Params.custom_css }}
-    <link rel="stylesheet" href="{{ . | relURL }}">
-    {{ end }}
+    <!--    {{ partial "opengraph.html" . }}
+	    {{ partial "twitter_cards.html" . }}
+      -->
     {{ block "head" . }}{{ end }}
   </head>
 

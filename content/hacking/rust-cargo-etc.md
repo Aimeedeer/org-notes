@@ -10,7 +10,7 @@ draft = false
 
 ## Cargo bin {#cargo-bin}
 
-```nil
+```shell
 $ ~/.cargo/bin
 -bash: /Users/aimeez/.cargo/bin: is a directory
 
@@ -81,7 +81,7 @@ install Rust programs and Cargo plugins.
 
 Toolchains on my mac:
 
-```nil
+```shell
 $ ls ~/.rustup/
 downloads	settings.toml	toolchains	update-hashes
 
@@ -112,14 +112,14 @@ to start executing.
 From [Rust playground](https://play.rust-lang.org/), we can generate LLVM code from
 our empty main function:
 
-```nil
+```rust
 fn main() {
 }
 ```
 
 The LLVM code:
 
-```nil
+```llvm
 ; std::rt::lang_start
 ; Function Attrs: nonlazybind uwtable
 define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {

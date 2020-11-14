@@ -13,7 +13,7 @@ Understand Rust programming language.
 
 ** Cargo bin
 
-#+begin_src 
+#+begin_src shell
 $ ~/.cargo/bin
 -bash: /Users/aimeez/.cargo/bin: is a directory
 
@@ -84,7 +84,7 @@ install Rust programs and Cargo plugins.
 
 Toolchains on my mac:
 
-#+begin_src
+#+begin_src shell
 $ ls ~/.rustup/
 downloads	settings.toml	toolchains	update-hashes
 
@@ -113,14 +113,14 @@ to start executing.
 From [[https://play.rust-lang.org/][Rust playground]], we can generate LLVM code from 
 our empty main function:
 
-#+begin_src
+#+begin_src rust
 fn main() {
 }
 #+end_src
 
 The LLVM code:
 
-#+begin_src
+#+begin_src llvm
 ; std::rt::lang_start
 ; Function Attrs: nonlazybind uwtable
 define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {

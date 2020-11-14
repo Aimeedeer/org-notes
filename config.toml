@@ -5,6 +5,7 @@ theme = "hugo-bare-min-theme"
 
 enableEmoji = true
 enableGitInfo = true
+pygmentsUseClasses = true
 
 [Params]
 description = "Aimee's Study Notes"
@@ -20,5 +21,4 @@ disable_debug = true
 url = "https://github.com/Aimeedeer/org-notes"   # Needed if you want to see .GitInfo for a page
 md_dir = "content"                   # Needed if you want to get a link to Markdown source for each page
 org_dir = "/"      
-
 
