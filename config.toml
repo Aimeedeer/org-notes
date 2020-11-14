@@ -1,4 +1,4 @@
-baseURL = "http://study.impl.dev/"
+baseURL = "https://study.impl.dev/"
 languageCode = "en-us"
 title = "Aimee's Study Notes"
 theme = "hugo-bare-min-theme"
