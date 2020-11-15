@@ -11,7 +11,7 @@ My hacklog about Walnuts, a toy blockchain.
 
 #+end_description
 
-** TODO List
+* TODO List
 - [x] sha2 for hash function
 - [x] chrono for Utc time as timestamp
 - [x] serde for storage, write & read to a file on disc
@@ -21,9 +21,14 @@ My hacklog about Walnuts, a toy blockchain.
 - [ ] create transactions from commandline
 - [ ] 256k for tx signature: https://docs.rs/k256/0.5.10/k256/
     
-** Hacklog
+* Hacklog
 
-*** 2020-11-13
+** 2020-11-15 
+
+
+
+
+** 2020-11-13
 
 - Learned: 
   - cargo clean: clean the target folder
@@ -31,6 +36,7 @@ My hacklog about Walnuts, a toy blockchain.
   - https://rust-cli.github.io/book/tutorial/cli-args.html
 - Use structopt as cli in main.rs
   - When I moved the cli related code to cli.rs, there is an error
+
 #+begin_src
 error[E0599]: no function or associated item named `from_args` found for struct `Opt` in the current scope
   --> src/main.rs:16:25
@@ -60,7 +66,7 @@ Then I added this piece to previous main.rs, and it built.
 use structopt::StructOpt;
 #+end_src
 
-*** 2020-11-12
+** 2020-11-12
 
 - Cargo check / cargo build
 - std::io to deal with files
@@ -69,7 +75,7 @@ use structopt::StructOpt;
   - structopt: https://docs.rs/structopt/0.3.20/structopt/
     - https://rust-cli.github.io/book/tutorial/cli-args.html
 
-*** 2020-11-11
+** 2020-11-11
 
 - Use Tony's secp256k1 library
 - Serde
@@ -95,7 +101,7 @@ serde = { version = "1.0.117", features = ["derive"] }
 The doc explains:
 [[https://serde.rs/derive.html][Using derive]]
 
-*** 2020-11-10
+** 2020-11-10
 
 - [[https://docs.rs/chrono/0.4.19/chrono/struct.DateTime.html][Rust: chrono]] for Utc time
 - Read: [[https://betweentwocommits.com/blog/how-bitcoin-timestamping-works][How Bitcoin Timestamping Works]] 
@@ -128,12 +134,12 @@ the use of Bitcoin.
 >The easiest application of Bitcoin timestamps 
 is a program called opentimestamps, created by Peter Todd himself. 
 
-*** 2020-11-08
+** 2020-11-08
 
 - First build
 - main: Read block.hash()
 
-*** 2020-11-03 
+** 2020-11-03 
 
 Creat mod
 - block.rs
@@ -148,6 +154,6 @@ for generating block's hash string.
 Some other hash functions written in Rust:
 https://github.com/RustCrypto/hashes
 
-*** 2020-11-02 
+** 2020-11-02 
 
 - Created Walnuts: my toy blockchain in Rust

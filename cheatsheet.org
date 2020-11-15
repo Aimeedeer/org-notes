@@ -10,6 +10,33 @@
 Mostly Git commands.
 #+end_description
 
+* Emacs & org-mode
+
+** Code block
+
+*** References
+
+- https://stackoverflow.com/questions/16186843/inline-code-in-org-mode
+- https://orgmode.org/org.html#Emphasis-and-monospace
+*** src_sh[:exports code]{echo -e "test"}
+
+#+begin_src 
+src_sh[:exports code]{echo -e "test"}
+#+end_Src
+
+*** ~fn main()~ 
+
+#+begin_src
+~fn main()~ 
+#+end_src
+
+*** =verbatim text=
+
+#+begin_src
+=verbatim text=
+#+end_src
+
+
 * Git commands
 
 ** Remote .git
@@ -107,3 +134,4 @@ $ ssh-keygen -C your@email.com
 #+begin_src shell
 $ git mv www/contracts .
 #+end_src
+

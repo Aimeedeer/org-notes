@@ -8,6 +8,39 @@ categories = ["hacking"]
 draft = false
 +++
 
+## Emacs & org-mode {#emacs-and-org-mode}
+
+
+### Code block {#code-block}
+
+
+#### References {#references}
+
+-   <https://stackoverflow.com/questions/16186843/inline-code-in-org-mode>
+-   <https://orgmode.org/org.html#Emphasis-and-monospace>
+
+
+#### `echo -e "test"` {#echo-e-test}
+
+```nil
+src_sh[:exports code]{echo -e "test"}
+```
+
+
+#### `fn main()` {#fn-main}
+
+```nil
+~fn main()~
+```
+
+
+#### `verbatim text` {#verbatim-text}
+
+```nil
+=verbatim text=
+```
+
+
 ## Git commands {#git-commands}
 
 
