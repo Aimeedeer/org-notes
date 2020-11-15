@@ -101,7 +101,9 @@ $ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/bin/
 cargo		cargo-fmt	rls		rust-gdbgui	rustc		rustfmt
 cargo-clippy	clippy-driver	rust-gdb	rust-lldb	rustdoc
 #+end_src
-* Rustc: #[lang = "start"]
+* Rust lang entry
+
+** Rustc: #[lang = "start"]
 
 [[https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs#L60][fn lang_start<T: crate::process::Termination + 'static>(main: fn() -> T, argc: isize, argv: *const *const u8,)]]
 
@@ -126,3 +128,11 @@ The LLVM code:
 define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {
 start:
 #+end_src
+
+** EntryPointType
+
+https://github.com/rust-lang/rust/blob/efbaa413061c2a6e52f06f00a60ee7830fcf3ea5/compiler/rustc_passes/src/entry.rs#L50-L76
+
+** rust/compiler/rustc_codegen_cranelift/src/main_shim.rs
+
+https://github.com/rust-lang/rust/blob/56293097f7f877f1350a6cd00f79d03132f16515/compiler/rustc_codegen_cranelift/src/main_shim.rs
