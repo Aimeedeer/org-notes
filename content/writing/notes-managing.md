@@ -1,7 +1,7 @@
 +++
-title = "Notes Managing"
+title = "Note Management"
 author = ["Aimee Z"]
-description = "Notes about notes management."
+description = "Notes about note management."
 date = 2020-10-29
 tags = ["notes", "writing", "content"]
 categories = ["writing"]

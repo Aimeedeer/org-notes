@@ -1,4 +1,4 @@
-#+title: Notes Managing
+#+title: Note Management
 #+date: 2020-10-29
 #+hugo_tags: notes writing content
 #+hugo_categories: writing
@@ -7,7 +7,7 @@
 
 #+begin_description
 
-Notes about notes management.
+Notes about note management.
 
 #+end_description
 
