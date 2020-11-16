@@ -281,10 +281,13 @@ as backend service in traditional internet programming,
 and a dapp, which with the full name of "decentralized application", 
 can be regarded as the frontend.
 
-
 * [[https://github.com/paritytech/polkadot][Polkadot]]
 
 Polkadot is built on Substrate, a blockchain framework.
+The Substrate doc has explainations of its [[https://substrate.dev/docs/en/knowledgebase/learn-substrate/extrinsics#block-structure][Block Structure]]
+> A block in Substrate is composed of a header and 
+  an array of extrinsics. The header contains a
+  block height, parent hash, extrinsics root, state root, and digest. 
 
 src: core-primitives/src/lib.rs
 

@@ -281,6 +281,10 @@ can be regarded as the frontend.
 ## [Polkadot](https://github.com/paritytech/polkadot) {#polkadot}
 
 Polkadot is built on Substrate, a blockchain framework.
+The Substrate doc has explainations of its [Block Structure](https://substrate.dev/docs/en/knowledgebase/learn-substrate/extrinsics#block-structure)
+> A block in Substrate is composed of a header and
+  an array of extrinsics. The header contains a
+  block height, parent hash, extrinsics root, state root, and digest.
 
 src: core-primitives/src/lib.rs
 
