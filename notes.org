@@ -368,9 +368,14 @@ which can be traced back as the credential check.
 :EXPORT_DESCRIPTION: Learning from great minds.
 :END:
 
-*** Videos
 
 [[https://www.youtube.com/watch?v=SOr1YYRljV8][Yaron Brook: Ayn Rand and the Philosophy of Objectivism | Lex Fridman Podcast #138]]
+
+Yaron Brook introduced a lot of stories about Ayn Rand 
+in this podcast.
+I only read Ayn Rand's book [[https://en.wikipedia.org/wiki/Atlas_Shrugged][Atlas Shrugged]] several years ago,
+and I loved it.
+
 
 ** Books                                              :reading:book:@reading:
 :PROPERTIES:

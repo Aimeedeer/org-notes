@@ -1,15 +1,18 @@
 +++
 title = "Books"
 author = ["Aimee Z"]
-description = """
-  Books I've read. 
-  Aimee's [goodreads](<https://www.goodreads.com/user/show/90889710-aimee-zhu>)
-  """
+description = "Books I've read."
 date = 2020-11-13
-tags = ["reading", "books"]
+tags = ["reading", "book"]
 categories = ["reading"]
 draft = false
+[menu.main]
+  weight = 2005
+  identifier = "books"
 +++
+
+Aimee's [goodreads](<https://www.goodreads.com/user/show/90889710-aimee-zhu>)
+
 
 ## 2020 {#2020}
 
