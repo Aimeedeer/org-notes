@@ -23,6 +23,20 @@ My hacklog about Walnuts, a toy blockchain.
     
 * Hacklog
 
+** 2020-11-16
+
+- [ ] create a new block from commandline, 
+      and save it in a file in json
+
+
+
+
+
+
+
+
+
+
 ** 2020-11-13
 
 - Learned: 
@@ -32,7 +46,7 @@ My hacklog about Walnuts, a toy blockchain.
 - Use structopt as cli in main.rs
   - When I moved the cli related code to cli.rs, there is an error
 
-#+begin_src
+#+begin_src shell
 error[E0599]: no function or associated item named `from_args` found for struct `Opt` in the current scope
   --> src/main.rs:16:25
    |
@@ -57,14 +71,14 @@ For more information about this error, try `rustc --explain E0599`.
 
 Then I added this piece to previous main.rs, and it built.
 
-#+begin_src
+#+begin_src rust
 use structopt::StructOpt;
 #+end_src
 
 ** 2020-11-12
 
 - Cargo check / cargo build
-- std::io to deal with files
+- =std::io= to deal with files
 - cli
   - clap
   - structopt: https://docs.rs/structopt/0.3.20/structopt/
@@ -72,12 +86,12 @@ use structopt::StructOpt;
 
 ** 2020-11-11
 
-- Use Tony's secp256k1 library
+- Use Tony's =secp256k1= library
 - Serde
 
 About serde derive:
 
-#+begin_src
+#+begin_src shell
 error: cannot find derive macro `Serialize` in this scope
  --> src/block.rs:6:10
   |
@@ -89,7 +103,7 @@ error: cannot find derive macro `Deserialize` in this scope
 
 Then add feature in Cargo.toml
 
-#+begin_src
+#+begin_src rust
 serde = { version = "1.0.117", features = ["derive"] }
 #+end_src
 
@@ -98,7 +112,7 @@ The doc explains:
 
 ** 2020-11-10
 
-- [[https://docs.rs/chrono/0.4.19/chrono/struct.DateTime.html][Rust: chrono]] for Utc time
+- [[https://docs.rs/chrono/0.4.19/chrono/struct.DateTime.html][Rust: chrono]] for UTC time
 - Read: [[https://betweentwocommits.com/blog/how-bitcoin-timestamping-works][How Bitcoin Timestamping Works]] 
 >Bitcoin timestamping does not guarantee an exact time. 
 Bitcoin miners are calibrated to create blocks approximately 
@@ -132,7 +146,7 @@ is a program called opentimestamps, created by Peter Todd himself.
 ** 2020-11-08
 
 - First build
-- main: Read block.hash()
+- main: Read =block.hash()=
 
 ** 2020-11-03 
 
