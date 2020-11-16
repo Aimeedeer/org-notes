@@ -17,6 +17,9 @@
 :END:
 
 *** 2020-11-15 Start
+
+**** Follow the GitHub repo
+
 #+begin_src shell
 $ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
 error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
@@ -31,6 +34,8 @@ Caused by:
 warning: build failed, waiting for other jobs to finish...
 error: build failed
 #+end_src
+
+**** Install =nightly-2020-10-05= and build again
 
 #+begin_src shell
 $ rustup toolchain install nightly-2020-10-05
@@ -66,6 +71,8 @@ warning: build failed, waiting for other jobs to finish...
 error: build failed
 #+end_src
 
+**** Set target: 
+
 #+begin_src shell
 $ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-05
 
@@ -86,6 +93,8 @@ Caused by:
   error[E0282]: type annotations needed
 #+end_src
 
+**** Built failed because my default setting is nightly but not stable.
+
 #+begin_src shell
 $ rustc -V
 rustc 1.50.0-nightly (98d66340d 2020-11-14)
@@ -96,13 +105,17 @@ info: using existing install for 'stable-x86_64-apple-darwin'
 info: default toolchain set to 'stable-x86_64-apple-darwin'
 
   stable-x86_64-apple-darwin unchanged - rustc 1.47.0 (18bf6b4f0 2020-10-07)
+#+end_src
 
+**** It took 13 minutes to build: my laptop is slow...
 
+#+begin_src shell
 $ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
-
 
 Finished release [optimized] target(s) in 13m 17s
 #+end_src
+
+**** Cute run!
 
 #+begin_src shell
 $ ./target/release/node-template --dev --tmp
@@ -133,6 +146,8 @@ Nov 15 18:04:48.010  INFO 🎁 Prepared block for proposing at 2 [hash: 0x625c20
 Nov 15 18:04:48.014  INFO 🔖 Pre-sealed block for proposal at 2. Hash now 0xe680ef911bd8a4c24ea2d7485255ca2cbe275cd51d0fa71dcc29846f84524d38, previously 0x625c206bc45416b3745d544d93626a4cacaf74bf73c33cd11077edbeaaa95750.    
 Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)    
 #+end_src
+
+**** Doc
 
 https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
 
@@ -375,6 +390,10 @@ Yaron Brook introduced a lot of stories about Ayn Rand
 in this podcast.
 I only read Ayn Rand's book [[https://en.wikipedia.org/wiki/Atlas_Shrugged][Atlas Shrugged]] several years ago,
 and I loved it.
+
+
+I plan to reread [[https://www.goodreads.com/book/show/6454477-the-red-book][The Red Book]] from C.G. Jung
+and Friedrich Nietzsche's books.
 
 
 ** Books                                              :reading:book:@reading:

@@ -14,6 +14,9 @@ draft = false
 
 ## 2020-11-15 Start {#2020-11-15-start}
 
+
+### Follow the GitHub repo {#follow-the-github-repo}
+
 ```shell
 $ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
 error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
@@ -28,6 +31,9 @@ Caused by:
 warning: build failed, waiting for other jobs to finish...
 error: build failed
 ```
+
+
+### Install `nightly-2020-10-05` and build again {#install-nightly-2020-10-05-and-build-again}
 
 ```shell
 $ rustup toolchain install nightly-2020-10-05
@@ -63,6 +69,9 @@ warning: build failed, waiting for other jobs to finish...
 error: build failed
 ```
 
+
+### Set target: {#set-target}
+
 ```shell
 $ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-05
 
@@ -83,6 +92,9 @@ Caused by:
   error[E0282]: type annotations needed
 ```
 
+
+### Built failed because my default setting is nightly but not stable. {#built-failed-because-my-default-setting-is-nightly-but-not-stable-dot}
+
 ```shell
 $ rustc -V
 rustc 1.50.0-nightly (98d66340d 2020-11-14)
@@ -93,13 +105,19 @@ info: using existing install for 'stable-x86_64-apple-darwin'
 info: default toolchain set to 'stable-x86_64-apple-darwin'
 
   stable-x86_64-apple-darwin unchanged - rustc 1.47.0 (18bf6b4f0 2020-10-07)
+```
 
 
+### It took 13 minutes to build: my laptop is slow... {#it-took-13-minutes-to-build-my-laptop-is-slow-dot-dot-dot}
+
+```shell
 $ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
-
 
 Finished release [optimized] target(s) in 13m 17s
 ```
+
+
+### Cute run! {#cute-run}
 
 ```shell
 $ ./target/release/node-template --dev --tmp
@@ -130,5 +148,8 @@ Nov 15 18:04:48.010  INFO 🎁 Prepared block for proposing at 2 [hash: 0x625c20
 Nov 15 18:04:48.014  INFO 🔖 Pre-sealed block for proposal at 2. Hash now 0xe680ef911bd8a4c24ea2d7485255ca2cbe275cd51d0fa71dcc29846f84524d38, previously 0x625c206bc45416b3745d544d93626a4cacaf74bf73c33cd11077edbeaaa95750.
 Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)
 ```
+
+
+### Doc {#doc}
 
 <https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact>
