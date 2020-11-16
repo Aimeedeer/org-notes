@@ -23,12 +23,6 @@ draft = false
 ## Hacklog {#hacklog}
 
 
-### 2020-11-15 {#2020-11-15}
-
-`fn main()`
-`verbatim text`
-
-
 ### 2020-11-13 {#2020-11-13}
 
 -   Learned:
