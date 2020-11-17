@@ -4,8 +4,8 @@ author = ["Aimee Z"]
 description = "Substrate is interesting and it seems powerful."
 date = 2020-11-15
 linkTitle = "blockchain"
-tags = ["substrate", "blockchain", "programming"]
-categories = ["programming"]
+tags = ["substrate", "blockchain", "hacking"]
+categories = ["hacking"]
 draft = false
 [menu.main]
   weight = 2001

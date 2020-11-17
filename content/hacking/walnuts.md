@@ -3,9 +3,12 @@ title = "Walnuts Hacklog"
 author = ["Aimee Z"]
 description = "My hacklog about Walnuts, a toy blockchain."
 date = 2020-11-02
-tags = ["hack", "blockchain", "walnuts", "log"]
+tags = ["hacking", "blockchain", "walnuts", "log"]
 categories = ["hacking"]
 draft = false
+[menu.main]
+  weight = 2006
+  identifier = "walnuts-hacklog"
 +++
 
 ## <span class="org-todo todo TODO">TODO</span> List {#list}
@@ -14,13 +17,82 @@ draft = false
 -   chrono for Utc time as timestamp
 -   serde for storage, write & read to a file on disc
 -   cli
--   [ ] create a new block from commandline,
-    and save it in a file in json
+-   create a new block from commandline,
+    and save it in a json file
 -   [ ] create transactions from commandline
 -   [ ] 256k for tx signature: <https://docs.rs/k256/0.5.10/k256/>
+-   [ ] nouce verify
+-   [ ] keep mining
+-   [ ] clean code
 
 
 ## Hacklog {#hacklog}
+
+
+### 2020-11-16 {#2020-11-16}
+
+-   Created a new block (Mine) from commandline,
+    and saved it to walnutsdata.txt
+-   Learned: always thinking in type system
+
+Test the sample code from [serde.rs](https://serde.rs/)
+in my blockchain.rs code:
+
+```rust
+let serialized = serde_json::to_string(&block).unwrap();
+println!("serialized = {}", serialized);
+
+let deserialized: Block = serde_json::from_str(&serialized).unwrap();
+println!("deserialized = {:?}", deserialized);
+```
+
+The output:
+
+```shell
+$ cargo run -- mine
+
+    Finished dev [unoptimized + debuginfo] target(s) in 3.04s
+     Running `target/debug/walnuts mine`
+Opt {
+    cmd: Mine,
+}
+serialized = {"header":{"prev_block_hash":[166,5,88,255,235,6,147,45,180,203,105,29,131,4,186,246,69,115,54,230,65,190,65,172,108,106,33,220,51,45,68,150],"time":1605002954274,"nonce":1},"txs":[]}
+deserialized = Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
+Genesis block is: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150]
+write to walnutsdata.txt
+check mine funtion: Ok(())
+```
+
+Read blockchain data from `walnutsdata.txt`
+
+```rust
+let fout = File::open("walnutsdata.txt")?;
+let mut buf_reader = BufReader::new(fout);
+let mut reader = String::new();
+
+buf_reader.read_to_string(&mut reader)?;
+println!("read from walnutsdata.txt in string: {:?}", &reader);
+
+let deserialized: Block = serde_json::from_str(&reader).unwrap();
+println!("deserialized data from walnutsdata.txt: {:?}", deserialized);
+```
+
+The output of reading data:
+
+```shell
+$ cargo run -- mine
+
+
+    Finished dev [unoptimized + debuginfo] target(s) in 1.09s
+     Running `target/debug/walnuts mine`
+Opt {
+    cmd: Mine,
+}
+write to walnutsdata.txt
+read from walnutsdata.txt in string: "{\"header\":{\"prev_block_hash\":[166,5,88,255,235,6,147,45,180,203,105,29,131,4,186,246,69,115,54,230,65,190,65,172,108,106,33,220,51,45,68,150],\"time\":1605002954274,\"nonce\":1},\"txs\":[]}"
+deserialized data from walnutsdata.txt: Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
+check mine funtion: Ok(())
+```
 
 
 ### 2020-11-13 {#2020-11-13}
@@ -34,7 +106,7 @@ draft = false
 
 <!--listend-->
 
-```nil
+```shell
 error[E0599]: no function or associated item named `from_args` found for struct `Opt` in the current scope
   --> src/main.rs:16:25
    |
@@ -59,7 +131,7 @@ For more information about this error, try `rustc --explain E0599`.
 
 Then I added this piece to previous main.rs, and it built.
 
-```nil
+```rust
 use structopt::StructOpt;
 ```
 
@@ -67,7 +139,7 @@ use structopt::StructOpt;
 ### 2020-11-12 {#2020-11-12}
 
 -   Cargo check / cargo build
--   std::io to deal with files
+-   `std::io` to deal with files
 -   cli
     -   clap
     -   structopt: <https://docs.rs/structopt/0.3.20/structopt/>
@@ -76,12 +148,12 @@ use structopt::StructOpt;
 
 ### 2020-11-11 {#2020-11-11}
 
--   Use Tony's secp256k1 library
+-   Use Tony's `secp256k1` library
 -   Serde
 
 About serde derive:
 
-```nil
+```shell
 error: cannot find derive macro `Serialize` in this scope
  --> src/block.rs:6:10
   |
@@ -93,7 +165,7 @@ error: cannot find derive macro `Deserialize` in this scope
 
 Then add feature in Cargo.toml
 
-```nil
+```rust
 serde = { version = "1.0.117", features = ["derive"] }
 ```
 
@@ -103,7 +175,7 @@ The doc explains:
 
 ### 2020-11-10 {#2020-11-10}
 
--   [Rust: chrono](https://docs.rs/chrono/0.4.19/chrono/struct.DateTime.html) for Utc time
+-   [Rust: chrono](https://docs.rs/chrono/0.4.19/chrono/struct.DateTime.html) for UTC time
 -   Read: [How Bitcoin Timestamping Works](https://betweentwocommits.com/blog/how-bitcoin-timestamping-works)
 
 >Bitcoin timestamping does not guarantee an exact time.
@@ -139,7 +211,7 @@ is a program called opentimestamps, created by Peter Todd himself.
 ### 2020-11-08 {#2020-11-08}
 
 -   First build
--   main: Read block.hash()
+-   main: Read `block.hash()`
 
 
 ### 2020-11-03 {#2020-11-03}

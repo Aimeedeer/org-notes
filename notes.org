@@ -6,7 +6,7 @@
 :EXPORT_HUGO_SECTION: post
 :EXPORT_HUGO_MENU: :menu main
 :END:
-** Play with Substrate        :substrate:blockchain:programming:@programming:
+** Play with Substrate                :substrate:blockchain:hacking:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
 :EXPORT_DATE: 2020-11-15
@@ -395,7 +395,6 @@ and I loved it.
 I plan to reread [[https://www.goodreads.com/book/show/6454477-the-red-book][The Red Book]] from C.G. Jung
 and Friedrich Nietzsche's books.
 
-
 ** Books                                              :reading:book:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: books
@@ -438,4 +437,791 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 - [[https://www.amazon.cn/dp/B01HRYE86S/ref=sr_1_1][血疫:埃博拉的故事]]
   - ref: origin [[https://www.amazon.com/Hot-Zone-Terrifying-Story-Origins-ebook/dp/B007DCU4IQ/ref=sr_1_1][The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus]]
 
+** Walnuts Hacklog                  :hacking:blockchain:walnuts:log:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: walnuts
+:EXPORT_DATE: 2020-11-02
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: My hacklog about Walnuts, a toy blockchain.
+:END:
+
+*** TODO List
+- [x] sha2 for hash function
+- [x] chrono for Utc time as timestamp
+- [x] serde for storage, write & read to a file on disc
+- [x] cli
+- [x] create a new block from commandline, 
+      and save it in a json file
+- [ ] create transactions from commandline
+- [ ] 256k for tx signature: https://docs.rs/k256/0.5.10/k256/
+- [ ] nouce verify
+- [ ] keep mining
+- [ ] clean code
+    
+*** Hacklog
+
+**** 2020-11-16
+
+- Created a new block (Mine) from commandline, 
+  and saved it to walnutsdata.txt
+- Learned: always thinking in type system
+
+Test the sample code from [[https://serde.rs/][serde.rs]] 
+in my blockchain.rs code:
+
+#+begin_src rust
+let serialized = serde_json::to_string(&block).unwrap();
+println!("serialized = {}", serialized);
+
+let deserialized: Block = serde_json::from_str(&serialized).unwrap();
+println!("deserialized = {:?}", deserialized);
+#+end_src 
+
+The output:
+
+#+begin_src shell
+$ cargo run -- mine
+
+    Finished dev [unoptimized + debuginfo] target(s) in 3.04s
+     Running `target/debug/walnuts mine`
+Opt {
+    cmd: Mine,
+}
+serialized = {"header":{"prev_block_hash":[166,5,88,255,235,6,147,45,180,203,105,29,131,4,186,246,69,115,54,230,65,190,65,172,108,106,33,220,51,45,68,150],"time":1605002954274,"nonce":1},"txs":[]}
+deserialized = Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
+Genesis block is: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150]
+write to walnutsdata.txt
+check mine funtion: Ok(())
+#+end_src
+
+Read blockchain data from =walnutsdata.txt=
+
+#+begin_src rust
+let fout = File::open("walnutsdata.txt")?;
+let mut buf_reader = BufReader::new(fout);
+let mut reader = String::new();
+
+buf_reader.read_to_string(&mut reader)?;
+println!("read from walnutsdata.txt in string: {:?}", &reader);
+
+let deserialized: Block = serde_json::from_str(&reader).unwrap();
+println!("deserialized data from walnutsdata.txt: {:?}", deserialized);
+#+end_src 
+
+The output of reading data:
+
+#+begin_src shell
+$ cargo run -- mine
+
+
+    Finished dev [unoptimized + debuginfo] target(s) in 1.09s
+     Running `target/debug/walnuts mine`
+Opt {
+    cmd: Mine,
+}
+write to walnutsdata.txt
+read from walnutsdata.txt in string: "{\"header\":{\"prev_block_hash\":[166,5,88,255,235,6,147,45,180,203,105,29,131,4,186,246,69,115,54,230,65,190,65,172,108,106,33,220,51,45,68,150],\"time\":1605002954274,\"nonce\":1},\"txs\":[]}"
+deserialized data from walnutsdata.txt: Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
+check mine funtion: Ok(())
+#+end_src
+
+**** 2020-11-13
+
+- Learned: 
+  - cargo clean: clean the target folder
+  - cargo run -- mysubcommand == target/walnuts mysubcommand
+  - https://rust-cli.github.io/book/tutorial/cli-args.html
+- Use structopt as cli in main.rs
+  - When I moved the cli related code to cli.rs, there is an error
+
+#+begin_src shell
+error[E0599]: no function or associated item named `from_args` found for struct `Opt` in the current scope
+  --> src/main.rs:16:25
+   |
+16 |     let opt = cli::Opt::from_args();
+   |                         ^^^^^^^^^ function or associated item not found in `Opt`
+   | 
+  ::: src/cli.rs:5:1
+   |
+5  | pub struct Opt {
+   | -------------- function or associated item `from_args` not found for this
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: the following trait is implemented but not in scope; perhaps add a `use` for it:
+   |
+1  | use structopt::StructOpt;
+   |
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0599`.
+#+end_src
+
+Then I added this piece to previous main.rs, and it built.
+
+#+begin_src rust
+use structopt::StructOpt;
+#+end_src
+
+**** 2020-11-12
+
+- Cargo check / cargo build
+- =std::io= to deal with files
+- cli
+  - clap
+  - structopt: https://docs.rs/structopt/0.3.20/structopt/
+    - https://rust-cli.github.io/book/tutorial/cli-args.html
+
+**** 2020-11-11
+
+- Use Tony's =secp256k1= library
+- Serde
+
+About serde derive:
+
+#+begin_src shell
+error: cannot find derive macro `Serialize` in this scope
+ --> src/block.rs:6:10
+  |
+6 | #[derive(Serialize, Deserialize, Debug)]
+  |          ^^^^^^^^^
+
+error: cannot find derive macro `Deserialize` in this scope
+#+end_src
+
+Then add feature in Cargo.toml
+
+#+begin_src rust
+serde = { version = "1.0.117", features = ["derive"] }
+#+end_src
+
+The doc explains:
+[[https://serde.rs/derive.html][Using derive]]
+
+**** 2020-11-10
+
+- [[https://docs.rs/chrono/0.4.19/chrono/struct.DateTime.html][Rust: chrono]] for UTC time
+- Read: [[https://betweentwocommits.com/blog/how-bitcoin-timestamping-works][How Bitcoin Timestamping Works]] 
+>Bitcoin timestamping does not guarantee an exact time. 
+Bitcoin miners are calibrated to create blocks approximately 
+every ten minutes. 
+However, because of the way their protocol works, 
+this is only an average. It could be two minutes, or fifteen. 
+This means that the time given by a timestamp is 
+only precise to within a range of a few hours. 
+For most use cases, this is not an issue, 
+since getting the date right is more important than 
+the minute or second.
+
+>I should mention that the act of inserting non-transactional data 
+in the blockchain is a disputed practice. 
+As I mentioned earlier, 
+the blockchain is now approximately 300 GB, 
+and it can only get bigger. Some people believe that 
+adding data not directly related to Bitcoin's true purpose - 
+managing transactions - needlessly bloats the size of the blockchain, 
+and should not be allowed. 
+I am in favour of reducing bloat (including 
+a restriction now in the protocol to limit the size of the data 
+you can insert), but I think that timestamping is an acceptable 
+"secondary purpose" for Bitcoin, which opens the door to 
+a lot of potential applications, and which promotes 
+the use of Bitcoin.
+
+>The easiest application of Bitcoin timestamps 
+is a program called opentimestamps, created by Peter Todd himself. 
+
+**** 2020-11-08
+
+- First build
+- main: Read =block.hash()=
+
+**** 2020-11-03 
+
+Creat mod
+- block.rs
+- blockchain.rs
+- blockheader.rs
+- transaction.rs
+- lib.rs
+
+Use hash crate: https://docs.rs/sha2/0.5.2/sha2/
+for generating block's hash string.
+
+Some other hash functions written in Rust:
+https://github.com/RustCrypto/hashes
+
+**** 2020-11-02 
+
+- Created Walnuts: my toy blockchain in Rust
+
+** Data Structures in Popular Blockchains  :hacking:blockchain:rust:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: data-structures-in-popular-blockchains
+:EXPORT_DATE: 2020-11-02
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Data structures in popular rust blockchains.
+:END:
+
+
+Not as simple as I thought,
+data structure are designed quite differently in different projects.
+
+Let's take a look at some examples.
+
+*** [[https://github.com/rust-bitcoin/rust-bitcoin][Bitcoin]]
+
+[[https://en.bitcoin.it/wiki/Protocol_documentation#Block_Headers][Bitcoin Headers]]
+
+[[https://en.bitcoin.it/wiki/Block_hashing_algorithm][Block hashing algorithm]]
+
+>A block header contains these fields:
+4  Bytes Version	       		Block version number
+32 Bytes hashPrevBlock		256-bit hash of the previous block header
+32 Bytes hashMerkleRoot		256-bit hash based on all of the transactions in the block
+4 Bytes	 Time			Current block timestamp as seconds since 1970-01-01T00:00 UTC
+4 Bytes	 Bits			Current target in compact format
+4 Bytes	 Nonce			32-bit number (starts at 0)
+
+[[https://docs.rs/bitcoin/0.25.0/bitcoin/][Rust Bitcoin Library]]
+
+I started with the well-known example of Bitcoin.
+Its protocol is simple and clearly explained in the whitepaper.
+
+src: rust-bitcoin/src/blockdata/block.rs
+
+I like developers put an introduction in front of a page!
+
+#+begin_src rust
+//! Bitcoin Block
+//!
+//! A block is a bundle of transactions with a proof-of-work attached,
+//! which commits to an earlier block to form the blockchain. This
+//! module describes structures and functions needed to describe
+//! these blocks and the blockchain.
+//!
+#+end_src
+
+A Bitcoin block data structure is simple,
+and it looks like this:
+
+#+begin_src rust
+/// A Bitcoin block, which is a collection of transactions with an attached
+/// proof of work.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct Block {
+    /// The block header
+    pub header: BlockHeader,
+    /// List of transactions contained in the block
+    pub txdata: Vec<Transaction>
+}
+#+end_src
+
+
+And the blockheader:
+
+#+begin_src rust
+/// A block header, which contains all the block's information except
+/// the actual transactions
+#[derive(Copy, PartialEq, Eq, Clone, Debug)]
+pub struct BlockHeader {
+    /// The protocol version. Should always be 1.
+    pub version: i32,
+    /// Reference to the previous block in the chain
+    pub prev_blockhash: BlockHash,
+    /// The root hash of the merkle tree of transactions in the block
+    pub merkle_root: TxMerkleNode,
+    /// The timestamp of the block, as claimed by the miner
+    pub time: u32,
+    /// The target value below which the blockhash must lie, encoded as a
+    /// a float (with well-defined rounding, of course)
+    pub bits: u32,
+    /// The nonce, selected to obtain a low enough blockhash
+    pub nonce: u32,
+}
+#+end_src
+
+In order to save disk space, Bitcoin uses Merkle tree to compress
+transaction history.
+[[https://en.wikipedia.org/wiki/Merkle_tree][Merkle tree]] is a binary hash tree.
+The `merkle_root` in the `BlockHeader` struct refers to
+the root of a Merkle tree,
+which indicates the proof of transaction history.
+
+[[https://bitcoin.org/bitcoin.pdf][Bitcoin Whitepaper]] is simple paper that explains
+its architecture.
+
+Then let's take a look at its value field, `txdata: Vec<Transaction>`.
+
+#+begin_src rust
+//! Bitcoin Transaction
+//!
+//! A transaction describes a transfer of money. It consumes previously-unspent
+//! transaction outputs and produces new ones, satisfying the condition to spend
+//! the old outputs (typically a digital signature with a specific key must be
+//! provided) and defining the condition to spend the new ones. The use of digital
+//! signatures ensures that coins cannot be spent by unauthorized parties.
+//!
+//! This module provides the structures and functions needed to support transactions.
+//!
+#+end_src
+
+[[https://docs.rs/bitcoin/0.25.0/bitcoin/blockdata/transaction/struct.Transaction.html][Struct bitcoin::blockdata::transaction::Transaction]]
+
+In Bitcoin, transactions issues started with
+searching for recievers' addresses.
+Then find the input UTXOs with approved signature.
+So the input and output data structures are a bit different.
+
+#+begin_src rust
+/// A transaction output, which defines new coins to be created from old ones.
+#[derive(Clone, PartialEq, Eq, Debug, Hash)]
+pub struct TxOut {
+    /// The value of the output, in satoshis
+    pub value: u64,
+    /// The script which must satisfy for the output to be spent
+    pub script_pubkey: Script
+}
+#+end_src
+
+#+begin_src rust
+/// A transaction input, which defines old coins to be consumed
+#[derive(Clone, PartialEq, Eq, Debug, Hash)]
+pub struct TxIn {
+    /// The reference to the previous output that is being used an an input
+    pub previous_output: OutPoint,
+    /// The script which pushes values on the stack which will cause
+    /// the referenced output's script to accept
+    pub script_sig: Script,
+    /// The sequence number, which suggests to miners which of two
+    /// conflicting transactions should be preferred, or 0xFFFFFFFF
+    /// to ignore this feature. This is generally never used since
+    /// the miner behaviour cannot be enforced.
+    pub sequence: u32,
+    /// Witness data: an array of byte-arrays.
+    /// Note that this field is *not* (de)serialized with the rest of the TxIn in
+    /// Encodable/Decodable, as it is (de)serialized at the end of the full
+    /// Transaction. It *is* (de)serialized with the rest of the TxIn in other
+    /// (de)serialization routines.
+    pub witness: Vec<Vec<u8>>
+}
+#+end_src
+
+*** [[https://github.com/openethereum/openethereum][Ethereum]]
+
+OpenEthereum is Ethereum 1.0 Rust client.
+
+Different from Bitcoin's data structure,
+Ethereum introduces one more field.
+
+src: openethereum/ethcore/types/src/block.rs
+
+#+begin_src rust
+/// A block, encoded as it is on the block chain.
+#[derive(Default, Debug, Clone, PartialEq)]
+pub struct Block {
+	/// The header of this block.
+	pub header: Header,
+	/// The transactions in this block.
+	pub transactions: Vec<UnverifiedTransaction>,
+	/// The uncles of this block.
+	pub uncles: Vec<Header>,
+}
+#+end_src
+
+Its header data structure is much more complicated compared to Bitcoin.
+
+src: openethereum/ethcore/types/src/header.rs
+
+#+begin_src rust
+/// A block header.
+///
+/// Reflects the specific RLP fields of a block in the chain with additional room for the seal
+/// which is non-specific.
+///
+/// Doesn't do all that much on its own.
+#[derive(Debug, Clone, Eq, MallocSizeOf)]
+pub struct Header {
+	/// Parent hash.
+	parent_hash: H256,
+	/// Block timestamp.
+	timestamp: u64,
+	/// Block number.
+	number: BlockNumber,
+	/// Block author.
+	author: Address,
+
+	/// Transactions root.
+	transactions_root: H256,
+	/// Block uncles hash.
+	uncles_hash: H256,
+	/// Block extra data.
+	extra_data: Bytes,
+
+	/// State root.
+	state_root: H256,
+	/// Block receipts root.
+	receipts_root: H256,
+	/// Block bloom.
+	log_bloom: Bloom,
+	/// Gas used for contracts execution.
+	gas_used: U256,
+	/// Block gas limit.
+	gas_limit: U256,
+
+	/// Block difficulty.
+	difficulty: U256,
+	/// Vector of post-RLP-encoded fields.
+	seal: Vec<Bytes>,
+
+	/// Memoized hash of that header and the seal.
+	hash: Option<H256>,
+}
+#+end_src
+
+I can't fully understand the header data structure
+design just from the code.
+I guess I need to reread [[https://ethereum.github.io/yellowpaper/paper.pdf][Ethereum Yellow Paper]].
+
+src: openethereum/ethcore/types/src/transaction/transaction.rs
+
+#+begin_src rust
+/// A set of information describing an externally-originating message call
+/// or contract creation operation.
+#[derive(Default, Debug, Clone, PartialEq, Eq, MallocSizeOf)]
+pub struct Transaction {
+	/// Nonce.
+	pub nonce: U256,
+	/// Gas price.
+	pub gas_price: U256,
+	/// Gas paid up front for transaction execution.
+	pub gas: U256,
+	/// Action, can be either call or contract create.
+	pub action: Action,
+	/// Transfered value.
+	pub value: U256,
+	/// Transaction data.
+	pub data: Bytes,
+}
+#+end_src
+
+Yellow paper:
+>The Transaction. A transaction (formally, T) is a
+single cryptographically-signed instruction constructed by
+an actor externally to the scope of Ethereum.
+on1
+>
+>There are two types of transactions: those
+which result in message calls and those which result in
+the creation of new accounts with associated code (known
+informally as ‘contract creation').
+
+#+begin_src rust
+/// Transaction action type.
+#[derive(Debug, Clone, PartialEq, Eq, MallocSizeOf)]
+pub enum Action {
+	/// Create creates new contract.
+	Create,
+	/// Calls contract at given address.
+	/// In the case of a transfer, this is the receiver's address.'
+	Call(Address),
+}
+#+end_src
+
+The "contract" in the code comments are referring to a "smart contract" 
+on the Ethereum blockchain platform, which can be considered 
+as backend service in traditional internet programming, 
+and a dapp, which with the full name of "decentralized application", 
+can be regarded as the frontend.
+
+*** [[https://github.com/paritytech/polkadot][Polkadot]]
+
+Polkadot is built on Substrate, a blockchain framework.
+The Substrate doc has explainations of its [[https://substrate.dev/docs/en/knowledgebase/learn-substrate/extrinsics#block-structure][Block Structure]]
+> A block in Substrate is composed of a header and 
+  an array of extrinsics. The header contains a
+  block height, parent hash, extrinsics root, state root, and digest. 
+
+src: core-primitives/src/lib.rs
+
+src: parachain/test-parachains/adder/src/lib.rs
+
+#+begin_src rust
+#[derive(Default, Clone, Hash, Eq, PartialEq, Encode, Decode)]
+pub struct HeadData {
+	/// Block number
+	pub number: u64,
+	/// parent block keccak256
+	pub parent_hash: [u8; 32],
+	/// hash of post-execution state.
+	pub post_state: [u8; 32],
+}
+#+end_src 
+
+#+begin_src rust
+/// Block data for this parachain.
+#[derive(Default, Clone, Encode, Decode)]
+pub struct BlockData {
+	/// State to begin from.
+	pub state: u64,
+	/// Amount to add (overflowing)
+	pub add: u64,
+}
+#+end_src
+
+#+begin_src rust
+/// Execute a block body on top of given parent head, producing new parent head
+/// if valid.
+pub fn execute(
+	parent_hash: [u8; 32],
+	parent_head: HeadData,
+	block_data: &BlockData,
+) -> Result<HeadData, StateMismatch> {
+	debug_assert_eq!(parent_hash, parent_head.hash());
+
+	if hash_state(block_data.state) != parent_head.post_state {
+		return Err(StateMismatch);
+	}
+
+	let new_state = block_data.state.overflowing_add(block_data.add).0;
+
+	Ok(HeadData {
+		number: parent_head.number + 1,
+		parent_hash,
+		post_state: hash_state(new_state),
+	})
+}
+#+end_src
+
+src: substrate/primitives/blockchain/src/header_metadata.rs
+
+#+begin_src rust
+/// Handles header metadata: hash, number, parent hash, etc.
+pub trait HeaderMetadata<Block: BlockT> {
+	/// Error used in case the header metadata is not found.
+	type Error;
+
+	fn header_metadata(
+		&self,
+		hash: Block::Hash,
+	) -> Result<CachedHeaderMetadata<Block>, Self::Error>;
+	fn insert_header_metadata(
+		&self,
+		hash: Block::Hash,
+		header_metadata: CachedHeaderMetadata<Block>,
+	);
+	fn remove_header_metadata(&self, hash: Block::Hash);
+}
+#+end_src
+
+src: substrate/primitives/blockchain/src/backend.rs
+
+*** [[https://github.com/near/nearcore.git][NEAR]]
+
+NEAR has two types of block structure that looks more or less the same.
+I choose to use the "V2" version as the example code.
+
+src: nearcore/core/primitives/src/block.rs
+
+#+begin_src rust
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Debug, Clone, Eq, PartialEq)]
+pub struct BlockV2 {
+    pub header: BlockHeader,
+    pub chunks: Vec<ShardChunkHeader>,
+    pub challenges: Challenges,
+
+    // Data to confirm the correctness of randomness beacon output
+    pub vrf_value: near_crypto::vrf::Value,
+    pub vrf_proof: near_crypto::vrf::Proof,
+}
+#+end_src
+
+src: nearcore/core/primitives/src/block_header.rs
+
+#+begin_src rust
+/// Versioned BlockHeader data structure.
+/// For each next version, document what are the changes between versions.
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Debug, Clone, Eq, PartialEq)]
+pub enum BlockHeader {
+    BlockHeaderV1(Box<BlockHeaderV1>),
+    BlockHeaderV2(Box<BlockHeaderV2>),
+}
+#+end_src
+
+Still, we choose to use V2 code.
+
+#+begin_src rust
+/// V1 -> V2: Remove `chunks_included` from `inner_reset`
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Debug, Clone, Eq, PartialEq)]
+#[borsh_init(init)]
+pub struct BlockHeaderV2 {
+    pub prev_hash: CryptoHash,
+
+    /// Inner part of the block header that gets hashed, split into two parts, one that is sent
+    ///    to light clients, and the rest
+    pub inner_lite: BlockHeaderInnerLite,
+    pub inner_rest: BlockHeaderInnerRestV2,
+
+    /// Signature of the block producer.
+    pub signature: Signature,
+
+    /// Cached value of hash for this block.
+    #[borsh_skip]
+    pub hash: CryptoHash,
+}
+#+end_src
+
+src: nearcore/core/primitives/src/sharding.rs
+
+#+begin_src rust
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Clone, PartialEq, Eq, Debug)]
+#[borsh_init(init)]
+pub struct ShardChunkHeaderV2 {
+    pub inner: ShardChunkHeaderInner,
+
+    pub height_included: BlockHeight,
+
+    /// Signature of the chunk producer.
+    pub signature: Signature,
+
+    #[borsh_skip]
+    pub hash: ChunkHash,
+}
+#+end_src
+
+#+begin_src rust
+#[derive(BorshSerialize, BorshDeserialize, Serialize, Clone, PartialEq, Eq, Debug)]
+pub struct ShardChunkHeaderInner {
+    /// Previous block hash.
+    pub prev_block_hash: CryptoHash,
+    pub prev_state_root: StateRoot,
+    /// Root of the outcomes from execution transactions and results.
+    pub outcome_root: CryptoHash,
+    pub encoded_merkle_root: CryptoHash,
+    pub encoded_length: u64,
+    pub height_created: BlockHeight,
+    /// Shard index.
+    pub shard_id: ShardId,
+    /// Gas used in this chunk.
+    pub gas_used: Gas,
+    /// Gas limit voted by validators.
+    pub gas_limit: Gas,
+    /// Total balance burnt in previous chunk
+    pub balance_burnt: Balance,
+    /// Outgoing receipts merkle root.
+    pub outgoing_receipts_root: CryptoHash,
+    /// Tx merkle root.
+    pub tx_root: CryptoHash,
+    /// Validator proposals.
+    pub validator_proposals: Vec<ValidatorStake>,
+}
+#+end_src
+
+src: nearcore/core/primitives/src/challenge.rs
+
+#+begin_src rust
+#[derive(BorshSerialize, BorshDeserialize, Serialize, PartialEq, Eq, Clone, Debug)]
+#[borsh_init(init)]
+pub struct Challenge {
+    pub body: ChallengeBody,
+    pub account_id: AccountId,
+    pub signature: Signature,
+
+    #[borsh_skip]
+    pub hash: CryptoHash,
+}
+
+pub type Challenges = Vec<Challenge>;
+#+end_src
+
+Seems NEAR heavily typed their data.
+I couldn't find NEAR's architecture design 
+from its paper or documentation.
+
+*** [[https://github.com/nervosnetwork/ckb][Nervos CKB]]
+
+src: ckb/util/types/src/core/cell.rs
+
+#+begin_src rust
+#[derive(Clone, Eq, PartialEq, Default)]
+pub struct CellMeta {
+    pub cell_output: CellOutput,
+    pub out_point: OutPoint,
+    pub transaction_info: Option<TransactionInfo>,
+    pub data_bytes: u64,
+    /// In memory cell data and its hash
+    /// A live cell either exists in memory or DB
+    /// must check DB if this field is None
+    pub mem_cell_data: Option<(Bytes, Byte32)>,
+}
+#+end_src
+
+src: ckb/util/types/src/generated/blockchain.rs
+
+There is almost no comment on these codes,
+and I don't understand that `ProposalShortIdVec` means.
+How they define `UncleBlockVec`, which raises 
+new questions about "an uncle block". 
+I hope there is a meaningful explanation here 
+to eliminate the confusion of learning its code.
+
+I finally found an [[https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0019-data-structures/0019-data-structures.md][explaination of data structure]]
+from its GitHub doc.
+It would be much convenient if I could 
+read this information in code comments.
+
+In Bitcoin, the uncle block is stored in the header data;
+In CKB, it is stored in the block directly as a field.
+I don't have any further thoughts here at the moment.
+
+After reading this page, I still don't know
+what `ProposalShortIdVec` is.
+I guess that might because I lack some pre-knowledge to start with.
+
+#+begin_src rust
+#[derive(Debug, Default)]
+pub struct BlockBuilder {
+    pub(crate) header: Header,
+    pub(crate) uncles: UncleBlockVec,
+    pub(crate) transactions: TransactionVec,
+    pub(crate) proposals: ProposalShortIdVec,
+}
+#+end_src
+
+#+begin_src rust
+#[derive(Debug, Default)]
+pub struct UncleBlockBuilder {
+    pub(crate) header: Header,
+    pub(crate) proposals: ProposalShortIdVec,
+}
+#+end_src 
+
+src: ckb/util/types/src/core/cell.rs
+
+#+begin_src rust
+#[derive(Default)]
+pub struct CellMetaBuilder {
+    cell_output: CellOutput,
+    out_point: OutPoint,
+    transaction_info: Option<TransactionInfo>,
+    data_bytes: u64,
+    mem_cell_data: Option<(Bytes, Byte32)>,
+}
+#+end_src
+
+src: ckb/util/types/src/core/transaction_meta.rs
+
+#+begin_src rust
+#[derive(Default, Debug, PartialEq, Eq, Clone)]
+pub struct TransactionMeta {
+    pub(crate) block_number: u64,
+    pub(crate) epoch_number: u64,
+    pub(crate) block_hash: Byte32,
+    pub(crate) cellbase: bool,
+    /// each bits indicate if transaction has dead cells
+    pub(crate) dead_cell: BitVec,
+}
+#+end_src
+
+src: ckb/util/types/src/core/blockchain.rs
 
