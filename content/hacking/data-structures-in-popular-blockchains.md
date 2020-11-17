@@ -2,8 +2,13 @@
 title = "Data Structures in Popular Blockchains"
 author = ["Aimee Z"]
 description = "Data structures in popular rust blockchains."
-date = 2020-11-14
+date = 2020-11-02
+tags = ["hacking", "blockchain", "rust"]
+categories = ["hacking"]
 draft = false
+[menu.main]
+  weight = 2007
+  identifier = "data-structures-in-popular-blockchains"
 +++
 
 Not as simple as I thought,
@@ -163,12 +168,12 @@ src: openethereum/ethcore/types/src/block.rs
 /// A block, encoded as it is on the block chain.
 #[derive(Default, Debug, Clone, PartialEq)]
 pub struct Block {
-	/// The header of this block.
-	pub header: Header,
-	/// The transactions in this block.
-	pub transactions: Vec<UnverifiedTransaction>,
-	/// The uncles of this block.
-	pub uncles: Vec<Header>,
+      /// The header of this block.
+      pub header: Header,
+      /// The transactions in this block.
+      pub transactions: Vec<UnverifiedTransaction>,
+      /// The uncles of this block.
+      pub uncles: Vec<Header>,
 }
 ```
 
@@ -185,40 +190,40 @@ src: openethereum/ethcore/types/src/header.rs
 /// Doesn't do all that much on its own.
 #[derive(Debug, Clone, Eq, MallocSizeOf)]
 pub struct Header {
-	/// Parent hash.
-	parent_hash: H256,
-	/// Block timestamp.
-	timestamp: u64,
-	/// Block number.
-	number: BlockNumber,
-	/// Block author.
-	author: Address,
+      /// Parent hash.
+      parent_hash: H256,
+      /// Block timestamp.
+      timestamp: u64,
+      /// Block number.
+      number: BlockNumber,
+      /// Block author.
+      author: Address,
 
-	/// Transactions root.
-	transactions_root: H256,
-	/// Block uncles hash.
-	uncles_hash: H256,
-	/// Block extra data.
-	extra_data: Bytes,
+      /// Transactions root.
+      transactions_root: H256,
+      /// Block uncles hash.
+      uncles_hash: H256,
+      /// Block extra data.
+      extra_data: Bytes,
 
-	/// State root.
-	state_root: H256,
-	/// Block receipts root.
-	receipts_root: H256,
-	/// Block bloom.
-	log_bloom: Bloom,
-	/// Gas used for contracts execution.
-	gas_used: U256,
-	/// Block gas limit.
-	gas_limit: U256,
+      /// State root.
+      state_root: H256,
+      /// Block receipts root.
+      receipts_root: H256,
+      /// Block bloom.
+      log_bloom: Bloom,
+      /// Gas used for contracts execution.
+      gas_used: U256,
+      /// Block gas limit.
+      gas_limit: U256,
 
-	/// Block difficulty.
-	difficulty: U256,
-	/// Vector of post-RLP-encoded fields.
-	seal: Vec<Bytes>,
+      /// Block difficulty.
+      difficulty: U256,
+      /// Vector of post-RLP-encoded fields.
+      seal: Vec<Bytes>,
 
-	/// Memoized hash of that header and the seal.
-	hash: Option<H256>,
+      /// Memoized hash of that header and the seal.
+      hash: Option<H256>,
 }
 ```
 
@@ -233,18 +238,18 @@ src: openethereum/ethcore/types/src/transaction/transaction.rs
 /// or contract creation operation.
 #[derive(Default, Debug, Clone, PartialEq, Eq, MallocSizeOf)]
 pub struct Transaction {
-	/// Nonce.
-	pub nonce: U256,
-	/// Gas price.
-	pub gas_price: U256,
-	/// Gas paid up front for transaction execution.
-	pub gas: U256,
-	/// Action, can be either call or contract create.
-	pub action: Action,
-	/// Transfered value.
-	pub value: U256,
-	/// Transaction data.
-	pub data: Bytes,
+      /// Nonce.
+      pub nonce: U256,
+      /// Gas price.
+      pub gas_price: U256,
+      /// Gas paid up front for transaction execution.
+      pub gas: U256,
+      /// Action, can be either call or contract create.
+      pub action: Action,
+      /// Transfered value.
+      pub value: U256,
+      /// Transaction data.
+      pub data: Bytes,
 }
 ```
 
@@ -263,11 +268,11 @@ informally as ‘contract creation').
 /// Transaction action type.
 #[derive(Debug, Clone, PartialEq, Eq, MallocSizeOf)]
 pub enum Action {
-	/// Create creates new contract.
-	Create,
-	/// Calls contract at given address.
-	/// In the case of a transfer, this is the receiver's address.'
-	Call(Address),
+      /// Create creates new contract.
+      Create,
+      /// Calls contract at given address.
+      /// In the case of a transfer, this is the receiver's address.'
+      Call(Address),
 }
 ```
 
@@ -293,12 +298,12 @@ src: parachain/test-parachains/adder/src/lib.rs
 ```rust
 #[derive(Default, Clone, Hash, Eq, PartialEq, Encode, Decode)]
 pub struct HeadData {
-	/// Block number
-	pub number: u64,
-	/// parent block keccak256
-	pub parent_hash: [u8; 32],
-	/// hash of post-execution state.
-	pub post_state: [u8; 32],
+      /// Block number
+      pub number: u64,
+      /// parent block keccak256
+      pub parent_hash: [u8; 32],
+      /// hash of post-execution state.
+      pub post_state: [u8; 32],
 }
 ```
 
@@ -306,10 +311,10 @@ pub struct HeadData {
 /// Block data for this parachain.
 #[derive(Default, Clone, Encode, Decode)]
 pub struct BlockData {
-	/// State to begin from.
-	pub state: u64,
-	/// Amount to add (overflowing)
-	pub add: u64,
+      /// State to begin from.
+      pub state: u64,
+      /// Amount to add (overflowing)
+      pub add: u64,
 }
 ```
 
@@ -317,23 +322,23 @@ pub struct BlockData {
 /// Execute a block body on top of given parent head, producing new parent head
 /// if valid.
 pub fn execute(
-	parent_hash: [u8; 32],
-	parent_head: HeadData,
-	block_data: &BlockData,
+      parent_hash: [u8; 32],
+      parent_head: HeadData,
+      block_data: &BlockData,
 ) -> Result<HeadData, StateMismatch> {
-	debug_assert_eq!(parent_hash, parent_head.hash());
+      debug_assert_eq!(parent_hash, parent_head.hash());
 
-	if hash_state(block_data.state) != parent_head.post_state {
-		return Err(StateMismatch);
-	}
+      if hash_state(block_data.state) != parent_head.post_state {
+	      return Err(StateMismatch);
+      }
 
-	let new_state = block_data.state.overflowing_add(block_data.add).0;
+      let new_state = block_data.state.overflowing_add(block_data.add).0;
 
-	Ok(HeadData {
-		number: parent_head.number + 1,
-		parent_hash,
-		post_state: hash_state(new_state),
-	})
+      Ok(HeadData {
+	      number: parent_head.number + 1,
+	      parent_hash,
+	      post_state: hash_state(new_state),
+      })
 }
 ```
 
@@ -342,19 +347,19 @@ src: substrate/primitives/blockchain/src/header\_metadata.rs
 ```rust
 /// Handles header metadata: hash, number, parent hash, etc.
 pub trait HeaderMetadata<Block: BlockT> {
-	/// Error used in case the header metadata is not found.
-	type Error;
+      /// Error used in case the header metadata is not found.
+      type Error;
 
-	fn header_metadata(
-		&self,
-		hash: Block::Hash,
-	) -> Result<CachedHeaderMetadata<Block>, Self::Error>;
-	fn insert_header_metadata(
-		&self,
-		hash: Block::Hash,
-		header_metadata: CachedHeaderMetadata<Block>,
-	);
-	fn remove_header_metadata(&self, hash: Block::Hash);
+      fn header_metadata(
+	      &self,
+	      hash: Block::Hash,
+      ) -> Result<CachedHeaderMetadata<Block>, Self::Error>;
+      fn insert_header_metadata(
+	      &self,
+	      hash: Block::Hash,
+	      header_metadata: CachedHeaderMetadata<Block>,
+      );
+      fn remove_header_metadata(&self, hash: Block::Hash);
 }
 ```
 
@@ -504,6 +509,24 @@ pub struct CellMeta {
 
 src: ckb/util/types/src/generated/blockchain.rs
 
+```rust
+#[derive(Debug, Default)]
+pub struct BlockBuilder {
+    pub(crate) header: Header,
+    pub(crate) uncles: UncleBlockVec,
+    pub(crate) transactions: TransactionVec,
+    pub(crate) proposals: ProposalShortIdVec,
+}
+```
+
+```rust
+#[derive(Debug, Default)]
+pub struct UncleBlockBuilder {
+    pub(crate) header: Header,
+    pub(crate) proposals: ProposalShortIdVec,
+}
+```
+
 There is almost no comment on these codes,
 and I don't understand that \`ProposalShortIdVec\` means.
 How they define \`UncleBlockVec\`, which raises
@@ -523,24 +546,6 @@ I don't have any further thoughts here at the moment.
 After reading this page, I still don't know
 what \`ProposalShortIdVec\` is.
 I guess that might because I lack some pre-knowledge to start with.
-
-```rust
-#[derive(Debug, Default)]
-pub struct BlockBuilder {
-    pub(crate) header: Header,
-    pub(crate) uncles: UncleBlockVec,
-    pub(crate) transactions: TransactionVec,
-    pub(crate) proposals: ProposalShortIdVec,
-}
-```
-
-```rust
-#[derive(Debug, Default)]
-pub struct UncleBlockBuilder {
-    pub(crate) header: Header,
-    pub(crate) proposals: ProposalShortIdVec,
-}
-```
 
 src: ckb/util/types/src/core/cell.rs
 
@@ -570,3 +575,8 @@ pub struct TransactionMeta {
 ```
 
 src: ckb/util/types/src/core/blockchain.rs
+
+
+## More to do {#more-to-do}
+
+-   Solana

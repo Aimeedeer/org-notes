@@ -1158,6 +1158,24 @@ pub struct CellMeta {
 
 src: ckb/util/types/src/generated/blockchain.rs
 
+#+begin_src rust
+#[derive(Debug, Default)]
+pub struct BlockBuilder {
+    pub(crate) header: Header,
+    pub(crate) uncles: UncleBlockVec,
+    pub(crate) transactions: TransactionVec,
+    pub(crate) proposals: ProposalShortIdVec,
+}
+#+end_src
+
+#+begin_src rust
+#[derive(Debug, Default)]
+pub struct UncleBlockBuilder {
+    pub(crate) header: Header,
+    pub(crate) proposals: ProposalShortIdVec,
+}
+#+end_src 
+
 There is almost no comment on these codes,
 and I don't understand that `ProposalShortIdVec` means.
 How they define `UncleBlockVec`, which raises 
@@ -1178,23 +1196,6 @@ After reading this page, I still don't know
 what `ProposalShortIdVec` is.
 I guess that might because I lack some pre-knowledge to start with.
 
-#+begin_src rust
-#[derive(Debug, Default)]
-pub struct BlockBuilder {
-    pub(crate) header: Header,
-    pub(crate) uncles: UncleBlockVec,
-    pub(crate) transactions: TransactionVec,
-    pub(crate) proposals: ProposalShortIdVec,
-}
-#+end_src
-
-#+begin_src rust
-#[derive(Debug, Default)]
-pub struct UncleBlockBuilder {
-    pub(crate) header: Header,
-    pub(crate) proposals: ProposalShortIdVec,
-}
-#+end_src 
 
 src: ckb/util/types/src/core/cell.rs
 
@@ -1225,3 +1226,7 @@ pub struct TransactionMeta {
 
 src: ckb/util/types/src/core/blockchain.rs
 
+
+*** More to do
+
+- Solana
