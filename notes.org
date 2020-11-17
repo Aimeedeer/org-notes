@@ -6,471 +6,276 @@
 :EXPORT_HUGO_SECTION: post
 :EXPORT_HUGO_MENU: :menu main
 :END:
-** Play with Substrate                :substrate:blockchain:hacking:@hacking:
+** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
 :PROPERTIES:
-:EXPORT_FILE_NAME: play-with-substrate
-:EXPORT_DATE: 2020-11-15
-:EXPORT_HUGO_SECTION: blockchain
-:EXPORT_HUGO_LINKTITLE: blockchain
-:EXPORT_DESCRIPTION: Substrate is interesting and it seems powerful.
-:EXPORT_OPTIONS: toc:2
-:END:
-
-*** 2020-11-15 Start
-
-**** Follow the GitHub repo
-
-#+begin_src shell
-$ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
-error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
-
-Caused by:
-  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
-  --- stderr
-     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
-      Finished release [optimized] target(s) in 0.54s
-       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
-  Rust nightly not installed, please install it!
-warning: build failed, waiting for other jobs to finish...
-error: build failed
-#+end_src
-
-**** Install =nightly-2020-10-05= and build again
-
-#+begin_src shell
-$ rustup toolchain install nightly-2020-10-05
-
-$ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
-
-error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
-
-Caused by:
-  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
-  --- stderr
-     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
-      Finished release [optimized] target(s) in 0.39s
-       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
-  Rust WASM toolchain not installed, please install it!
-
-  Further error information:
-  ------------------------------------------------------------
-     Compiling wasm-test v1.0.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/.tmpWk51lL)
-  error[E0463]: can't find crate for `std`
-    |
-    = note: the `wasm32-unknown-unknown` target may not be installed
-
-  error: aborting due to previous error
-
-  For more information about this error, try `rustc --explain E0463`.
-  error: could not compile `wasm-test`
-
-  To learn more, run the command again with --verbose.
-  ------------------------------------------------------------
-
-warning: build failed, waiting for other jobs to finish...
-error: build failed
-#+end_src
-
-**** Set target: 
-
-#+begin_src shell
-$ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-05
-
-error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
-
-Caused by:
-  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
-  --- stdout
-  Executing build command: "/Users/aimeez/.rustup/toolchains/nightly-x86_64-apple-darwin/bin/cargo" "rustc" "--target=wasm32-unknown-unknown" "--manifest-path=/Users/aimeez/github/substrate-node-template/target/release/wbuild/node-template-runtime/Cargo.toml" "--color=always" "--release"
-
-  --- stderr
-     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
-      Finished release [optimized] target(s) in 0.45s
-       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
-     Compiling sp-arithmetic v2.0.0
-     Compiling sp-runtime-interface v2.0.0
-     Compiling parity-util-mem v0.7.0
-  error[E0282]: type annotations needed
-#+end_src
-
-**** Built failed because my default setting is nightly but not stable.
-
-#+begin_src shell
-$ rustc -V
-rustc 1.50.0-nightly (98d66340d 2020-11-14)
-
-$ rustup default stable
-
-info: using existing install for 'stable-x86_64-apple-darwin'
-info: default toolchain set to 'stable-x86_64-apple-darwin'
-
-  stable-x86_64-apple-darwin unchanged - rustc 1.47.0 (18bf6b4f0 2020-10-07)
-#+end_src
-
-**** It took 13 minutes to build: my laptop is slow...
-
-#+begin_src shell
-$ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
-
-Finished release [optimized] target(s) in 13m 17s
-#+end_src
-
-**** Cute run!
-
-#+begin_src shell
-$ ./target/release/node-template --dev --tmp
-Nov 15 18:04:40.702  WARN Running in --dev mode, RPC CORS has been disabled.    
-Nov 15 18:04:40.703  INFO Substrate Node    
-Nov 15 18:04:40.703  INFO ✌️  version 2.0.0-24da767-x86_64-macos    
-Nov 15 18:04:40.703  INFO ❤️  by Substrate DevHub <https://github.com/substrate-developer-hub>, 2017-2020    
-Nov 15 18:04:40.703  INFO 📋 Chain specification: Development    
-Nov 15 18:04:40.703  INFO 🏷  Node name: super-top-6271    
-Nov 15 18:04:40.703  INFO 👤 Role: AUTHORITY    
-Nov 15 18:04:40.703  INFO 💾 Database: RocksDb at /var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/substrate2jvpo0/chains/dev/db    
-Nov 15 18:04:40.703  INFO ⛓  Native runtime: node-template-1 (node-template-1.tx1.au1)    
-Nov 15 18:04:40.755  INFO 🔨 Initializing Genesis block/state (state: 0xc29a…9e07, header-hash: 0x40ca…fc14)    
-Nov 15 18:04:40.756  INFO 👴 Loading GRANDPA authority set from genesis on what appears to be first startup.    
-Nov 15 18:04:40.774  INFO ⏱  Loaded block-time = 6000 milliseconds from genesis on first-launch    
-Nov 15 18:04:40.774  WARN Using default protocol ID "sup" because none is configured in the chain specs    
-Nov 15 18:04:40.774  INFO 🏷  Local node identity is: 12D3KooWSMTDCBT4GHADWJxdRJTBnSKgEAXrekDVcwG6SuQy1az9 (legacy representation: 12D3KooWSMTDCBT4GHADWJxdRJTBnSKgEAXrekDVcwG6SuQy1az9)    
-Nov 15 18:04:41.071  INFO 📦 Highest known block at #0    
-Nov 15 18:04:41.072  INFO 〽️ Prometheus server started at 127.0.0.1:9615    
-Nov 15 18:04:41.073  INFO Listening for new connections on 127.0.0.1:9944.    
-Nov 15 18:04:42.012  INFO 🙌 Starting consensus session on top of parent 0x40ca582052a890e826eb0c3d3e5d9a1383f7cb95dd87d5b542b574040ea6fc14    
-Nov 15 18:04:42.017  INFO 🎁 Prepared block for proposing at 1 [hash: 0x384b4a0ce970b7b28dbc0764ef74ee3b3a55517c31476496db175845d03fe61e; parent_hash: 0x40ca…fc14; extrinsics (1): [0xab8e…deca]]    
-Nov 15 18:04:42.021  INFO 🔖 Pre-sealed block for proposal at 1. Hash now 0x753af28ba42e197ddf1df41477d452ac35cd3138afe70083f81e64637f51c1fd, previously 0x384b4a0ce970b7b28dbc0764ef74ee3b3a55517c31476496db175845d03fe61e.    
-Nov 15 18:04:42.021  INFO ✨ Imported #1 (0x753a…c1fd)    
-Nov 15 18:04:46.074  INFO 💤 Idle (0 peers), best: #1 (0x753a…c1fd), finalized #0 (0x40ca…fc14), ⬇ 0 ⬆ 0    
-Nov 15 18:04:48.010  INFO 🙌 Starting consensus session on top of parent 0x753af28ba42e197ddf1df41477d452ac35cd3138afe70083f81e64637f51c1fd    
-Nov 15 18:04:48.010  INFO 🎁 Prepared block for proposing at 2 [hash: 0x625c206bc45416b3745d544d93626a4cacaf74bf73c33cd11077edbeaaa95750; parent_hash: 0x753a…c1fd; extrinsics (1): [0xb6e9…2b6d]]    
-Nov 15 18:04:48.014  INFO 🔖 Pre-sealed block for proposal at 2. Hash now 0xe680ef911bd8a4c24ea2d7485255ca2cbe275cd51d0fa71dcc29846f84524d38, previously 0x625c206bc45416b3745d544d93626a4cacaf74bf73c33cd11077edbeaaa95750.    
-Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)    
-#+end_src
-
-**** Doc
-
-https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
-
-** Blockchain Voting                          :blockchain:voting:@blockchain:
-:PROPERTIES:
-:EXPORT_FILE_NAME: blockchain-voting
-:EXPORT_DATE: 2020-11-16
-:EXPORT_HUGO_SECTION: blockchain
-:EXPORT_DESCRIPTION: Reading notes about blockchain voting.
-:EXPORT_OPTIONS: toc:2
-:END:
-
-*** Posts
-
-[[https://www.schneier.com/blog/archives/2019/02/blockchain_and_.html][Blockchain and Trust]], 2019
-> When you analyze both blockchain and trust, you quickly realize that 
-there is much more hype than value. Blockchain solutions are 
-often much worse than what they replace.
->
-> First, a caveat. By blockchain, I mean something very specific: 
-the data structures and protocols that make up a public blockchain. 
-These have three essential elements. The first is a distributed 
-(as in multiple copies) but centralized (as in there’s only one) ledger, 
-which is a way of recording what happened and in what order. 
-This ledger is public, meaning that anyone can read it, and immutable, 
-meaning that no one can change what happened in the past.
->
-> The second element is the consensus algorithm, which is a way 
-to ensure all the copies of the ledger are the same. This is 
-generally called mining; a critical part of the system is that 
-anyone can participate. It is also distributed, meaning that 
-you don’t have to trust any particular node in the consensus network. 
-It can also be extremely expensive, both in data storage and 
-in the energy required to maintain it. Bitcoin has the most expensive 
-consensus algorithm the world has ever seen, by far.
->
-> Finally, the third element is the currency. This is some sort of 
-digital token that has value and is publicly traded. Currency is 
-a necessary element of a blockchain to align the incentives of 
-everyone involved. Transactions involving these tokens are stored on the ledger.
->
-> Most blockchain enthusiasts have a unnaturally narrow definition of trust. 
-They’re fond of catchphrases like “[[https://www.nytimes.com/2017/12/18/opinion/bitcoin-boom-technology-trust.html][in code we trust]],” “[[https://www.amazon.com/Math-We-Trust-Bitcoin-Cryptocurrency-ebook/dp/B07C7TPXMD?tag=w050b-20][in math we trust]],” 
-and “[[https://cryptoclothing.org/product/crypto-shirt/][in crypto we trust]].” This is trust as verification. 
-But verification isn’t the same as trust.
-
-> Morals and reputation scale only to a certain population size. 
-Primitive systems were good enough for small communities, 
-but larger communities required delegation, and more formalism.
->
-> The third is institutions. Institutions have rules and laws that 
-induce people to behave according to the group norm, 
-imposing sanctions on those who do not. In a sense, 
-laws formalize reputation. Finally, the fourth is security systems. 
-These are the wide varieties of security technologies we employ: 
-door locks and tall fences, alarm systems and guards, 
-forensics and audit systems, and so on.
->
-> These four elements work together to enable trust. 
-
-> In many ways, trusting technology is harder than trusting people. 
-Would you rather trust a human legal system or the details of 
-some computer code you don’t have the expertise to audit?
-
-
-*** Papers
-
-[[https://people.csail.mit.edu/rivest/pubs/PSNR20.pdf][Going from Bad to Worse: From Internet Voting to Blockchain Voting]], November 6, 2020 (DRAFT)
-
-** DAO                                           :blockchain:dao:@blockchain:
-:PROPERTIES:
-:EXPORT_FILE_NAME: dao
-:EXPORT_DATE: 2020-11-16
-:EXPORT_HUGO_SECTION: blockchain
-:EXPORT_DESCRIPTION: Reading notes about the community DAO.
-:EXPORT_OPTIONS: toc:2
-:END:
-
-[[https://blog.ethereum.org/2014/12/26/secret-sharing-daos-crypto-2-0/][Secret Sharing DAOs: The Other Crypto 2.0]], 2014
-
-[[https://github.com/DavidJohnstonCEO/DecentralizedApplications][The General Theory of Decentralized Applications, Dapps]]
-> The concept of a Dapp is so powerful and elegant, because it does not 
-include these traditional corporate techniques. The ownership of 
-the Dapp’s tokens is all that is required for the holder to use the system. 
-It’s that simple. The value of the tokens is determined by 
-how much people value the application. All the incentives, 
-all the monetization, all the ways to raise support are 
-built into this beautifully simple structure. 
-Dapps are not required to recreate the functions that used to be necessary 
-in centralized corporations in order to balance the power of shareholders 
-and offer returns for investors and employees.
-
-> Initial tokens are distributed
->
-> If the Dapp is using the fund-raising mechanism, a wallet software becomes 
-available to the stakeholders of the Dapp, so that they can exchange 
-the tokens of the DA. In the case of Mastercoin, an Exodus fund-raising address 
-and a wallet script were publicly released.
->
-> If the Dapp is using the development mechanism, a bounty system is 
-put in place that allows the suggestion of tasks to be performed, 
-the tracking of the people who are working on those tasks and 
-the criteria by which bounties can be awarded.
-
-
-[[https://bitcoinmagazine.com/articles/bootstrapping-a-decentralized-autonomous-corporation-part-i-1379644274][Bootstrapping A Decentralized Autonomous Corporation: Part I]] | 2013
-> As Let’s Talk Bitcoin’s Daniel Larmier pointed out in his own exploration on this concept, 
-in a sense Bitcoin itself can be thought of as a very early prototype of exactly such a thing. 
-Bitcoin has 21 million shares, and these shares are owned by what can be considered 
-Bitcoin’s shareholders. It has employees, and it has a protocol for paying them: 25 BTC 
-to one random member of the workforce roughly every ten minutes. It even has 
-its own marketing department, to a large extent made up of the shareholders themselves. 
-However, it is also very limited. It knows almost nothing about the world except for 
-the current time, it has no way of changing any aspect of its function aside from 
-the difficulty, and it does not actually do anything per se; it simply exists, 
-and leaves it up to the world to recognize it. The question is: can we do better?
-
-> The first challenge is obvious: how would such a corporation actually make 
-any decisions? It’s easy to write code that, at least given predictable environments, 
-takes a given input and calculates a desired action to take. But who is going to 
-run the code? If the code simply exists as a computer program on some particular machine, 
-what is stopping the owner of that machine from shutting the whole thing down, 
-or even modifying its code to make it send all of its money to himself? To this problem, 
-there is only one effective answer: distributed computing.
-
-> Here, rather, we need the kind of distributed computing that we see in Bitcoin: 
-a set of rules that decentrally self-validates its own computation. 
-In Bitcoin, this is accomplished by a simple majority vote: if you are not helping to 
-compute the blockchain with the majority network power, your blocks will get discarded 
-and you will get no block reward. The theory is that no single attacker will 
-have enough computer power to subvert this mechanism, so the only viable strategy 
-is essentially to “go with the flow” and act honestly to help support the network 
-and receive one’s block reward. So can we simply apply this mechanism to 
-decentralized computation? That is, can we simply ask every computer in the network to 
-evaluate a program, and then reward only those whose answer matches the majority vote? 
-
-> Bitcoin is a special case because Bitcoin is simple: it is just a currency, 
-carrying no property or private data of its own. A virtual corporation, 
-on the other hand, would likely need to store the private key to its Bitcoin wallet – 
-a piece of data which should be available in its entirety to no one, not to everyone 
-in the way that Bitcoin transactions are. But, of course, the private key must 
-still be usable. Thus, what we need is some system of signing transactions, 
-and even generating Bitcoin addresses, that can be computed in a decentralized way. 
-Fortunately, Bitcoin allows us to do exactly that.
-
-[[https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/][
-DAOs, DACs, DAs and More: An Incomplete Terminology Guide]] | 2014
-> as Bitshares’ Daniel Larimer points out, “everyone thinks a DAC is just a way of 
-IPOing your centralized company.” The intent of this article will be to delve into 
-some of these concepts, and see if we can come up with at least the beginnings of 
-a coherent understanding of what all of these things actually are.
-
-> Note that there is one gray area here: contracts which are finite on one side, 
-but infinite on the other side. For example, if I want to hedge the value of 
-my digital assets, I might want to create a contract where anyone can 
-freely enter and leave. Hence, the other side of the contract, the parties 
-that are speculating on the asset at 2x leverage, has an unbounded number of parties, 
-but my side of the contract does not. Here, I propose the following divide: 
-if the side with a bounded number of parties is the side that intends to receive 
-a specific service (ie. is a consumer), then it is a smart contract; however, 
-if the side with a bounded number of parties is just in it for profit 
-(ie. is a producer), then it is not.
-
-> That is, there is a concept of shares in a DAC which are purchaseable 
-and tradeable in some fashion, and those shares potentially entitle 
-their holders to continual receipts based on the DAC’s success. 
-A DAO is non-profit; though you can make money in a DAO, the way to do 
-that is by participating in its ecosystem and not by providing investment 
-into the DAO itself. Obviously, this distinction is a murky one; 
-all DAOs contain internal capital that can be owned, and the value of 
-that internal capital can easily go up as the DAO becomes more powerful/popular, 
-so a large portion of DAOs are inevitably going to be DAC-like to some extent.
->
-> Thus, the distinction is more of a fluid one and hinges on emphasis: 
-to what extent are dividends the main point, and to what extent is it about 
-earning tokens by participation? Also, to what extent does the concept of 
-a “share” exist as opposed to simple virtual property? For example, 
-a membership on a nonprofit board is not really a share, because membership 
-frequently gets granted and confiscated at will, something which would be 
-unacceptable for something classified as investable property, and a bitcoin is not 
-a share because a bitcoin does not entitle you to any claim on profits or 
-decision-making ability inside the system, whereas a share in a corporation 
-definitely is a share. In the end, perhaps the distinction might ultimately be 
-the surprisingly obscure point of whether or not the profit mechanism 
-and the consensus mechanism are the same thing.
-
-> Additionally, there is also the question of how all of these things should be built. 
-An AI, for example, should likely exist as a network of private servers, 
-each one running often proprietary local code, whereas a DO should be fully 
-open source and blockchain-based. Between those two extremes, there is 
-a large number of different paradigms to pursue. How much of the intelligence 
-should be in the core code? Should genetic algorithms be used for updating code, 
-or should it be futarchy or some voting or vetting mechanism based on individuals? 
-Should membership be corporate-style, with sellable and transferable shares, 
-or nonprofit-style, where members can vote other members in and out? 
-Should blockchains be proof of work, proof of stake, or reputation-based? 
-Should DAOs try to maintain balances in other currencies, 
-or should they only reward behavior by issuing their own internal token? 
-These are all hard problems and we have only just begun scratching the surface of them.
-
-[[https://hackernoon.com/turn-an-internet-community-into-a-dao-in-3-steps-8k1b3w5y][Turn an Internet Community into a DAO in 3 Steps]]
-> Simply put, DAO is a perfect structure to organize collective activities in the community, 
-especially when most collaborations in the community are conducted distributedly, 
-multi-disciplinarily, in random occurrence, and without a trust basis. 
-DAO leverages Smart Contract on the blockchain to automatically implement contract terms 
-to solve the trust issues. Also, contribution-based incentives can be allocated to activate the community.
->
-> However, DAO's structure is not perfect and has some limitations for large scale applications.
->
-> First, DAO relies too much on the smart contract, while the machine language is not suitable 
-for conveying complex business logic. It's almost impossible for a general internet community 
-to become an expert to compile all its collaboration needs into the contract. 
-The stake is too high! It is also costly and low in efficiency if every operation step 
-needs to run smart contracts on the blockchain to reach the global consensus. 
->
-> Second, most of DAO's governance protocols mainly focus on the voting algorithm, 
-while for the internet communities, voting would only be a small part of 
-all the collective actions. Actually, the community is more caring about how to 
-make the collaborations happen among all the community members.
->
-> Third, as there is a lack of an effective management system to regulate 
-the collaborations, the DAO has become only a shell structure without any real value 
-creation activities in it. So, it's not hard to understand that the DAO's 
-governance token holders have low intent to vote as they do not care about 
-what is going on in the community, and they are only pursuing arbitrage opportunities.  
-
-> The Wiki-based ComCo Management Framework contains one's collaboration history, 
-which can be traced back as the credential check.
-
-**
-
-** Governance                               :community:governance:@community:
-:PROPERTIES:
-:EXPORT_FILE_NAME: governance
-:EXPORT_DATE: 2020-11-12
-:EXPORT_HUGO_SECTION: community
-:EXPORT_OPTIONS: toc:2
-:END:
-
-#+begin_description
-Notes about governance in open source communities,
-including developer communities and blockchain projects' communities.
-#+end_description
-
-[[https://www.djangoproject.com/weblog/2020/mar/12/governance/][New governance model for the Django project]]
-- James Bennett on March 12, 2020
-
-[[https://github.com/django/deps/blob/master/accepted/0010-new-governance.rst][DEP 0010: New governance for the Django project]]
-- Created:	2018-09-22
-- Last-Modified:	2020-03-12
-
-[[https://github.com/rust-lang/wg-governance/blob/master/CHARTER.md][Rust-lang: Governance WG Charter]]
-- last updated: [May 25th 2019] 
-
-[[https://ziglang.org/news/announcing-zig-software-foundation.html][Announcing the Zig Software Foundation]]
-- Zig language
-
-[[https://modelviewculture.com/pieces/codes-of-conduct-when-being-excellent-is-not-enough][Codes of Conduct: When Being Excellent is Not Enough]]
-- December 10th, 2014
-
-** Philosophy and Minds                    :philosophy:mind:thought:@reading:
-:PROPERTIES:
-:EXPORT_FILE_NAME: philosophy-and-minds
-:EXPORT_DATE: 2020-11-16
-:EXPORT_HUGO_SECTION: reading
-:EXPORT_DESCRIPTION: Learning from great minds.
+:EXPORT_FILE_NAME: cheatsheet
+:EXPORT_DATE: 2020-10-29
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: My cheatsheet about Git and Emacs.
 :EXPORT_OPTIONS: toc:2
 :END:
 
 
-[[https://www.youtube.com/watch?v=SOr1YYRljV8][Yaron Brook: Ayn Rand and the Philosophy of Objectivism | Lex Fridman Podcast #138]]
+*** Emacs & org-mode
+**** References
 
-Yaron Brook introduced a lot of stories about Ayn Rand 
-in this podcast.
-I only read Ayn Rand's book [[https://en.wikipedia.org/wiki/Atlas_Shrugged][Atlas Shrugged]] several years ago,
-and I loved it.
+- https://stackoverflow.com/questions/16186843/inline-code-in-org-mode
+- https://orgmode.org/org.html#Emphasis-and-monospace
+
+**** Examples
+
+src_sh[:exports code]{echo -e "test"}
+
+#+begin_src 
+src_sh[:exports code]{echo -e "test"}
+#+end_Src
+
+~fn main()~ 
+
+#+begin_src
+~fn main()~ 
+#+end_src
+
+=verbatim text=
+
+#+begin_src
+=verbatim text=
+#+end_src
 
 
-I plan to reread [[https://www.goodreads.com/book/show/6454477-the-red-book][The Red Book]] from C.G. Jung
-and Friedrich Nietzsche's books.
 
-** Books                                              :reading:book:@reading:
+#+begin_src
+=verbatim text=
+#+end_src
+
+
+*** Git commands
+
+**** Remote .git
+
+#+begin_src shell
+$ ls .git
+$ rm .git
+rm: .git: is a directory
+$ rm -rf .git
+#+end_src
+
+**** Download a file from command line
+
+#+begin_src shell
+$ curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
+$ curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
+#+end_src
+
+**** Cherry pick
+
+#+begin_src shell
+$ git remote add some_github_id https://github.com/some_github_id/rust-in-blockchain.git
+$ git fetch some_github_id
+$ git log some_github_id/master
+$ git cherry-pick some_commit_hash
+$ git diff HEAD^..HEAD
+$ git push origin master
+#+end_src
+
+**** Reset a commit
+
+#+begin_src shell
+$ git reset HEAD^
+$ git rm */~
+$ git rm */*~
+$ git commit --amend
+$ git log
+commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
+#+end_src
+
+**** Hide changes and do not commit
+
+#+begin_src shell
+$ git stash
+#+end_src
+
+**** Cancel hiding
+
+#+begin_src shell
+$ git stash pop 
+#+end_src
+
+**** Add submodule to rib
+
+#+begin_src shell
+$ ln -> means link
+#+end_src
+
+**** Creat an aliase for syncing file 
+
+#+begin_src shell
+$ ln -s ../awesome-blockchain-rust/README.md awesome-blockchain-rust.md 
+#+end_src
+
+**** Recover to previous clean code
+
+#+begin_src shell
+$ git checkout -f
+#+end_src
+
+**** About PATH
+
+#+begin_src shell
+$ pwd
+$ echo $PWD
+$ export PATH=$PATH:$PWD
+#+end_src
+
+**** SSH
+
+#+begin_src shell
+$ eval `ssh-agent`
+$ ssh-add
+$ ssh -T git@github.com 
+#+end_src
+
+**** Generated a new key
+
+#+begin_src shell
+$ ssh-keygen -C your@email.com 
+#+end_src
+
+**** Move a file to current
+
+#+begin_src shell
+$ git mv www/contracts .
+#+end_src
+** Rust Cargo and More               :hacking:rust:cargo:rustup:log:@hacking:
 :PROPERTIES:
-:EXPORT_FILE_NAME: books
-:EXPORT_DATE: 2020-11-13
-:EXPORT_HUGO_SECTION: reading
-:EXPORT_DESCRIPTION: Books I've read. 
+:EXPORT_FILE_NAME: rust-cargo-etc
+:EXPORT_DATE: 2020-11-14
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Understand Rust programming language.
 :EXPORT_OPTIONS: toc:2
 :END:
 
-Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
+*** Cargo bin
+
+#+begin_src shell
+$ ~/.cargo/bin
+-bash: /Users/aimeez/.cargo/bin: is a directory
+
+$ cd ~/.cargo/bin
+$ ls
+basic-http-server	cargo-generate		diesel			rust-trending		ssmanager
+cargo			cargo-make		lighthouse		rustc			ssserver
+cargo-add		cargo-miri		makers			rustdoc			ssurl
+cargo-casperlabs	cargo-rm		mdbook			rustfmt			wasm-pack
+cargo-clippy		cargo-upgrade		mdbook-linkcheck	rustlings		wasm-pack.stamp
+cargo-contract		cargo-watch		rls			rustup
+cargo-fmt		cargo-web		rust-gdb		simple-http-server
+cargo-fuzz		clippy-driver		rust-lldb		sslocal
+
+$ which cargo
+/Users/aimeez/.cargo/bin/cargo
+
+$ ls -lh
+total 496760
+-rwxr-xr-x   1 aimeez  staff   5.1M Apr 26  2020 basic-http-server
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo
+-rwxr-xr-x   1 aimeez  staff   7.1M Sep 14 10:48 cargo-add
+-rwxr-xr-x   1 aimeez  staff   1.0M Aug 25 13:56 cargo-casperlabs
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-clippy
+-rwxr-xr-x   1 aimeez  staff   4.6M Nov  6 20:59 cargo-contract
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-fmt
+-rwxr-xr-x   1 aimeez  staff   1.3M May 18 18:52 cargo-fuzz
+-rwxr-xr-x   1 aimeez  staff   6.5M Oct 14 14:37 cargo-generate
+-rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 cargo-make
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-miri
+-rwxr-xr-x   1 aimeez  staff   2.0M Sep 14 10:48 cargo-rm
+-rwxr-xr-x   1 aimeez  staff   3.5M Sep 14 10:48 cargo-upgrade
+-rwxr-xr-x   1 aimeez  staff   2.1M Aug 11 15:20 cargo-watch
+-rwxr-xr-x   1 aimeez  staff   9.5M Oct 29 14:52 cargo-web
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 clippy-driver
+-rwxr-xr-x   1 aimeez  staff   3.1M Jun 17 12:56 diesel
+-rwxr-xr-x   1 aimeez  staff    42M Aug 11 12:46 lighthouse
+-rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 makers
+-rwxr-xr-x   1 aimeez  staff    10M Sep 20 11:06 mdbook
+-rwxr-xr-x   1 aimeez  staff   9.3M Sep 20 11:09 mdbook-linkcheck
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rls
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-gdb
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-lldb
+-rwxr-xr-x   1 aimeez  staff   6.5M Jun 13 15:51 rust-trending
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustc
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustdoc
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustfmt
+-rwxr-xr-x   1 aimeez  staff   2.7M Jul 27 16:43 rustlings
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustup
+-rwxr-xr-x   1 aimeez  staff   2.6M Aug 11 15:12 simple-http-server
+-rwxr-xr-x   1 aimeez  staff   6.1M Jun  8 11:05 sslocal
+-rwxr-xr-x   1 aimeez  staff   4.1M Jun  8 11:04 ssmanager
+-rwxr-xr-x   1 aimeez  staff   3.9M Jun  8 11:04 ssserver
+-rwxr-xr-x   1 aimeez  staff   1.3M Jun  8 11:03 ssurl
+-rwxr-xr-x   1 aimeez  staff   7.2M May 23 01:28 wasm-pack
+-rw-r--r--   1 aimeez  staff    54B Oct 29 14:21 wasm-pack.stamp
+#+end_src
+
+*** Rustup toolchains
+
+[[https://rust-lang.github.io/rustup/installation/index.html][The rustup book]]
+>rustup installs rustc, cargo, rustup and other standard tools 
+to Cargo's bin directory. On Unix it is located at $HOME/.cargo/bin 
+and on Windows at %USERPROFILE%\.cargo\bin. 
+This is the same directory that cargo install will 
+install Rust programs and Cargo plugins.
 
 
-*** 2020
+Toolchains on my mac:
 
-- Guns, Germs, and Steel: The Fates of Human Societies
-- [[https://www.amazon.com/Art-War-AmazonClassics-Sun-Tzu-ebook/dp/B073QR86XF/ref=sr_1_4][The Art of War]]
-- [[https://www.amazon.com/15-Minute-Read-Power-Subconscious-ebook/dp/B08541YNTW/ref=rtpb_2/138-2049715-3003242][The Power of Your Subconscious Mind]]
-- [[https://landing.coingecko.com/how-to-defi/][How to DeFi]]
-- [[https://www.goodreads.com/book/show/38819529-the-hobbit][The Hobbit]]
-- [[https://www.goodreads.com/book/show/50491494-options-trading-crash-course][Options Trading Crash Course]]
-- [[https://www.amazon.com/Franklins-Autobiography-Eclectic-English-Classics-ebook/dp/B0052GE5GC/][Franklin's Autobiography]]
-- [[https://www.goodreads.com/notes/38145718-thomas-edison/90889710-aimee-zhu][Thomas Edison: A Captivating Guide to the Life of a Genius Inventor]]
-- [[https://www.amazon.com/Elements-Style-Fourth-William-Strunk-ebook/dp/B07NPN5HTP/ref=sr_1_4][The elements of style]]
-- [[https://www.amazon.com/Out-My-Mind-Sharon-Draper-ebook/dp/B003ATPRNI/ref=sr_1_3][Out of my mind]]
-- [[https://www.amazon.com/Manage-Your-Day-Day-Creative-ebook/dp/B00B77UE4W/ref=sr_1_2][Manage Your Day-to-Day: Build Your Routine, Find Your Focus, and Sharpen Your Creative Mind]]
-- [[https://www.amazon.com/Animal-Farm-Fairy-Modern-Classic-ebook/dp/B003K16PUU/ref=sr_1_1][Animal Farm]]
-- [[https://www.amazon.com/Decisions-Death-Street-Kindle-Single-ebook/dp/B00TO1J78M/ref=sr_1_1][Decisions: Life and Death on Wall Street]]
-- [[https://www.amazon.com/Little-Still-Market-Books-Profits-ebook/dp/B003VWCQB0/ref=sr_1_1][The Little Book that Still Beats the Market]]
-- [[https://www.amazon.com/If-You-Tell-Unbreakable-Sisterhood-ebook/dp/B07Q5TL9SQ/ref=sr_1_3][If You Tell: A True Story of Murder, Family Secrets, and the Unbreakable Bond of Sisterhood]]
-- [[https://www.amazon.com/Think-Grow-Rich-Napoleon-Hill-ebook/dp/B08776ZZY4/ref=sr_1_3][Think and Grow Rich]]
-- [[https://www.goodreads.com/notes/36992849-work-less-make-more/90889710-aimee-zhu?ref=bsop][Work Less, Make More]]
-- 卡耐基自传
-  - ref: origin [[https://www.amazon.com/Autobiography-Andrew-Carnegie-Gospel-Classics-ebook/dp/B002G54Y3Q/ref=sr_1_4][The Autobiography of Andrew Carnegie and The Gospel of Wealth]]
-- [[https://www.amazon.cn/dp/B087JNZ6ZL/ref=sr_1_1][一生的旅程：迪士尼 CEO 自述]]
-  - ref: origin [[https://www.amazon.com/gp/product/0399592091/ref=ox_sc_act_title_1][The Ride of a Lifetime: Lessons Learned from 15 Years as CEO of the Walt Disney Company]]
-- [[https://www.goodreads.com/book/show/51957605][股票作手回忆录]]
-  - ref: origin [[https://www.amazon.com/REMINISCENCES-STOCK-OPERATOR-Edwin-Lefevre-ebook/dp/B07ND35YTJ/ref=tmm_kin_swatch_0][Reminiscences of a Stock Operator]]
-- [[https://www.amazon.cn/dp/B00U3NDI1C/ref=sr_1_1][黄金屋：宏观对冲基金顶尖交易者的掘金之道]]
-  - ref: origin [[https://www.amazon.com/Inside-House-Money-Traders-Profiting-ebook/dp/B00GYXP8CW/ref=sr_1_1][Inside the House of Money: Top Hedge Fund Traders on Profiting in the Global Markets]]
-- [[https://www.goodreads.com/book/show/35561327][一本小小的红色写作书]]
-- [[https://www.amazon.cn/dp/B01HRYE86S/ref=sr_1_1][血疫:埃博拉的故事]]
-  - ref: origin [[https://www.amazon.com/Hot-Zone-Terrifying-Story-Origins-ebook/dp/B007DCU4IQ/ref=sr_1_1][The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus]]
+#+begin_src shell
+$ ls ~/.rustup/
+downloads	settings.toml	toolchains	update-hashes
+
+$ ls ~/.rustup/toolchains/
+1.34.2-x86_64-apple-darwin		nightly-2019-10-14-x86_64-apple-darwin	nightly-x86_64-apple-darwin
+1.41.0-x86_64-apple-darwin		nightly-2020-03-19-x86_64-apple-darwin	stable-x86_64-apple-darwin
+1.43.1-x86_64-apple-darwin		nightly-2020-05-15-x86_64-apple-darwin
+1.45.2-x86_64-apple-darwin		nightly-2020-08-23-x86_64-apple-darwin
+
+$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/
+bin	etc	lib	share
+
+$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/bin/
+cargo		cargo-fmt	rls		rust-gdbgui	rustc		rustfmt
+cargo-clippy	clippy-driver	rust-gdb	rust-lldb	rustdoc
+#+end_src
+*** Rust lang entry
+
+[[https://github.com/rust-lang/rust/blob/efbaa413061c2a6e52f06f00a60ee7830fcf3ea5/compiler/rustc_passes/src/entry.rs#L50-L76][EntryPointType]]
+
+[[https://github.com/rust-lang/rust/blob/56293097f7f877f1350a6cd00f79d03132f16515/compiler/rustc_codegen_cranelift/src/main_shim.rs][rust/compiler/rustc_codegen_cranelift/src/main_shim.rs]]
+
+Rustc: #[lang = "start"]
+
+[[https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs#L60][fn lang_start<T: crate::process::Termination + 'static>(main: fn() -> T, argc: isize, argv: *const *const u8,)]]
+
+Rustc uses std to create the main() function,
+with mymain() as one argument,
+as lang-start for the operating system 
+to start executing.
+
+From [[https://play.rust-lang.org/][Rust playground]], we can generate LLVM code from 
+our empty main function:
+
+#+begin_src rust
+fn main() {
+}
+#+end_src
+
+The LLVM code:
+
+#+begin_src llvm
+; std::rt::lang_start
+; Function Attrs: nonlazybind uwtable
+define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {
+start:
+#+end_src
 
 ** Walnuts Hacklog                  :hacking:blockchain:walnuts:log:@hacking:
 :PROPERTIES:
@@ -751,136 +556,406 @@ https://github.com/RustCrypto/hashes
 
 - Created Walnuts: my toy blockchain in Rust
 
-** Rust Cargo and More               :hacking:rust:cargo:rustup:log:@hacking:
+** Play with Substrate                :substrate:blockchain:hacking:@hacking:
 :PROPERTIES:
-:EXPORT_FILE_NAME: ust-cargo-etc
-:EXPORT_DATE: 2020-11-14
-:EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: Understand Rust programming language.
+:EXPORT_FILE_NAME: play-with-substrate
+:EXPORT_DATE: 2020-11-15
+:EXPORT_HUGO_SECTION: blockchain
+:EXPORT_HUGO_LINKTITLE: blockchain
+:EXPORT_DESCRIPTION: Substrate is interesting and it seems powerful.
 :EXPORT_OPTIONS: toc:2
 :END:
 
-*** Cargo bin
+*** 2020-11-15 Start
+
+**** Follow the GitHub repo
 
 #+begin_src shell
-$ ~/.cargo/bin
--bash: /Users/aimeez/.cargo/bin: is a directory
+$ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
+error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
 
-$ cd ~/.cargo/bin
-$ ls
-basic-http-server	cargo-generate		diesel			rust-trending		ssmanager
-cargo			cargo-make		lighthouse		rustc			ssserver
-cargo-add		cargo-miri		makers			rustdoc			ssurl
-cargo-casperlabs	cargo-rm		mdbook			rustfmt			wasm-pack
-cargo-clippy		cargo-upgrade		mdbook-linkcheck	rustlings		wasm-pack.stamp
-cargo-contract		cargo-watch		rls			rustup
-cargo-fmt		cargo-web		rust-gdb		simple-http-server
-cargo-fuzz		clippy-driver		rust-lldb		sslocal
-
-$ which cargo
-/Users/aimeez/.cargo/bin/cargo
-
-$ ls -lh
-total 496760
--rwxr-xr-x   1 aimeez  staff   5.1M Apr 26  2020 basic-http-server
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo
--rwxr-xr-x   1 aimeez  staff   7.1M Sep 14 10:48 cargo-add
--rwxr-xr-x   1 aimeez  staff   1.0M Aug 25 13:56 cargo-casperlabs
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-clippy
--rwxr-xr-x   1 aimeez  staff   4.6M Nov  6 20:59 cargo-contract
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-fmt
--rwxr-xr-x   1 aimeez  staff   1.3M May 18 18:52 cargo-fuzz
--rwxr-xr-x   1 aimeez  staff   6.5M Oct 14 14:37 cargo-generate
--rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 cargo-make
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-miri
--rwxr-xr-x   1 aimeez  staff   2.0M Sep 14 10:48 cargo-rm
--rwxr-xr-x   1 aimeez  staff   3.5M Sep 14 10:48 cargo-upgrade
--rwxr-xr-x   1 aimeez  staff   2.1M Aug 11 15:20 cargo-watch
--rwxr-xr-x   1 aimeez  staff   9.5M Oct 29 14:52 cargo-web
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 clippy-driver
--rwxr-xr-x   1 aimeez  staff   3.1M Jun 17 12:56 diesel
--rwxr-xr-x   1 aimeez  staff    42M Aug 11 12:46 lighthouse
--rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 makers
--rwxr-xr-x   1 aimeez  staff    10M Sep 20 11:06 mdbook
--rwxr-xr-x   1 aimeez  staff   9.3M Sep 20 11:09 mdbook-linkcheck
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rls
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-gdb
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-lldb
--rwxr-xr-x   1 aimeez  staff   6.5M Jun 13 15:51 rust-trending
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustc
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustdoc
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustfmt
--rwxr-xr-x   1 aimeez  staff   2.7M Jul 27 16:43 rustlings
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustup
--rwxr-xr-x   1 aimeez  staff   2.6M Aug 11 15:12 simple-http-server
--rwxr-xr-x   1 aimeez  staff   6.1M Jun  8 11:05 sslocal
--rwxr-xr-x   1 aimeez  staff   4.1M Jun  8 11:04 ssmanager
--rwxr-xr-x   1 aimeez  staff   3.9M Jun  8 11:04 ssserver
--rwxr-xr-x   1 aimeez  staff   1.3M Jun  8 11:03 ssurl
--rwxr-xr-x   1 aimeez  staff   7.2M May 23 01:28 wasm-pack
--rw-r--r--   1 aimeez  staff    54B Oct 29 14:21 wasm-pack.stamp
+Caused by:
+  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
+  --- stderr
+     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
+      Finished release [optimized] target(s) in 0.54s
+       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
+  Rust nightly not installed, please install it!
+warning: build failed, waiting for other jobs to finish...
+error: build failed
 #+end_src
 
-*** Rustup toolchains
-
-[[https://rust-lang.github.io/rustup/installation/index.html][The rustup book]]
->rustup installs rustc, cargo, rustup and other standard tools 
-to Cargo's bin directory. On Unix it is located at $HOME/.cargo/bin 
-and on Windows at %USERPROFILE%\.cargo\bin. 
-This is the same directory that cargo install will 
-install Rust programs and Cargo plugins.
-
-
-Toolchains on my mac:
+**** Install =nightly-2020-10-05= and build again
 
 #+begin_src shell
-$ ls ~/.rustup/
-downloads	settings.toml	toolchains	update-hashes
+$ rustup toolchain install nightly-2020-10-05
 
-$ ls ~/.rustup/toolchains/
-1.34.2-x86_64-apple-darwin		nightly-2019-10-14-x86_64-apple-darwin	nightly-x86_64-apple-darwin
-1.41.0-x86_64-apple-darwin		nightly-2020-03-19-x86_64-apple-darwin	stable-x86_64-apple-darwin
-1.43.1-x86_64-apple-darwin		nightly-2020-05-15-x86_64-apple-darwin
-1.45.2-x86_64-apple-darwin		nightly-2020-08-23-x86_64-apple-darwin
+$ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
 
-$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/
-bin	etc	lib	share
+error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
 
-$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/bin/
-cargo		cargo-fmt	rls		rust-gdbgui	rustc		rustfmt
-cargo-clippy	clippy-driver	rust-gdb	rust-lldb	rustdoc
-#+end_src
-*** Rust lang entry
+Caused by:
+  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
+  --- stderr
+     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
+      Finished release [optimized] target(s) in 0.39s
+       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
+  Rust WASM toolchain not installed, please install it!
 
-[[https://github.com/rust-lang/rust/blob/efbaa413061c2a6e52f06f00a60ee7830fcf3ea5/compiler/rustc_passes/src/entry.rs#L50-L76][EntryPointType]]
+  Further error information:
+  ------------------------------------------------------------
+     Compiling wasm-test v1.0.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/.tmpWk51lL)
+  error[E0463]: can't find crate for `std`
+    |
+    = note: the `wasm32-unknown-unknown` target may not be installed
 
-[[https://github.com/rust-lang/rust/blob/56293097f7f877f1350a6cd00f79d03132f16515/compiler/rustc_codegen_cranelift/src/main_shim.rs][rust/compiler/rustc_codegen_cranelift/src/main_shim.rs]]
+  error: aborting due to previous error
 
-Rustc: #[lang = "start"]
+  For more information about this error, try `rustc --explain E0463`.
+  error: could not compile `wasm-test`
 
-[[https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs#L60][fn lang_start<T: crate::process::Termination + 'static>(main: fn() -> T, argc: isize, argv: *const *const u8,)]]
+  To learn more, run the command again with --verbose.
+  ------------------------------------------------------------
 
-Rustc uses std to create the main() function,
-with mymain() as one argument,
-as lang-start for the operating system 
-to start executing.
-
-From [[https://play.rust-lang.org/][Rust playground]], we can generate LLVM code from 
-our empty main function:
-
-#+begin_src rust
-fn main() {
-}
+warning: build failed, waiting for other jobs to finish...
+error: build failed
 #+end_src
 
-The LLVM code:
+**** Set target: 
 
-#+begin_src llvm
-; std::rt::lang_start
-; Function Attrs: nonlazybind uwtable
-define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {
-start:
+#+begin_src shell
+$ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-05
+
+error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
+
+Caused by:
+  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
+  --- stdout
+  Executing build command: "/Users/aimeez/.rustup/toolchains/nightly-x86_64-apple-darwin/bin/cargo" "rustc" "--target=wasm32-unknown-unknown" "--manifest-path=/Users/aimeez/github/substrate-node-template/target/release/wbuild/node-template-runtime/Cargo.toml" "--color=always" "--release"
+
+  --- stderr
+     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
+      Finished release [optimized] target(s) in 0.45s
+       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
+     Compiling sp-arithmetic v2.0.0
+     Compiling sp-runtime-interface v2.0.0
+     Compiling parity-util-mem v0.7.0
+  error[E0282]: type annotations needed
 #+end_src
+
+**** Built failed because my default setting is nightly but not stable.
+
+#+begin_src shell
+$ rustc -V
+rustc 1.50.0-nightly (98d66340d 2020-11-14)
+
+$ rustup default stable
+
+info: using existing install for 'stable-x86_64-apple-darwin'
+info: default toolchain set to 'stable-x86_64-apple-darwin'
+
+  stable-x86_64-apple-darwin unchanged - rustc 1.47.0 (18bf6b4f0 2020-10-07)
+#+end_src
+
+**** It took 13 minutes to build: my laptop is slow...
+
+#+begin_src shell
+$ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
+
+Finished release [optimized] target(s) in 13m 17s
+#+end_src
+
+**** Cute run!
+
+#+begin_src shell
+$ ./target/release/node-template --dev --tmp
+Nov 15 18:04:40.702  WARN Running in --dev mode, RPC CORS has been disabled.    
+Nov 15 18:04:40.703  INFO Substrate Node    
+Nov 15 18:04:40.703  INFO ✌️  version 2.0.0-24da767-x86_64-macos    
+Nov 15 18:04:40.703  INFO ❤️  by Substrate DevHub <https://github.com/substrate-developer-hub>, 2017-2020    
+Nov 15 18:04:40.703  INFO 📋 Chain specification: Development    
+Nov 15 18:04:40.703  INFO 🏷  Node name: super-top-6271    
+Nov 15 18:04:40.703  INFO 👤 Role: AUTHORITY    
+Nov 15 18:04:40.703  INFO 💾 Database: RocksDb at /var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/substrate2jvpo0/chains/dev/db    
+Nov 15 18:04:40.703  INFO ⛓  Native runtime: node-template-1 (node-template-1.tx1.au1)    
+Nov 15 18:04:40.755  INFO 🔨 Initializing Genesis block/state (state: 0xc29a…9e07, header-hash: 0x40ca…fc14)    
+Nov 15 18:04:40.756  INFO 👴 Loading GRANDPA authority set from genesis on what appears to be first startup.    
+Nov 15 18:04:40.774  INFO ⏱  Loaded block-time = 6000 milliseconds from genesis on first-launch    
+Nov 15 18:04:40.774  WARN Using default protocol ID "sup" because none is configured in the chain specs    
+Nov 15 18:04:40.774  INFO 🏷  Local node identity is: 12D3KooWSMTDCBT4GHADWJxdRJTBnSKgEAXrekDVcwG6SuQy1az9 (legacy representation: 12D3KooWSMTDCBT4GHADWJxdRJTBnSKgEAXrekDVcwG6SuQy1az9)    
+Nov 15 18:04:41.071  INFO 📦 Highest known block at #0    
+Nov 15 18:04:41.072  INFO 〽️ Prometheus server started at 127.0.0.1:9615    
+Nov 15 18:04:41.073  INFO Listening for new connections on 127.0.0.1:9944.    
+Nov 15 18:04:42.012  INFO 🙌 Starting consensus session on top of parent 0x40ca582052a890e826eb0c3d3e5d9a1383f7cb95dd87d5b542b574040ea6fc14    
+Nov 15 18:04:42.017  INFO 🎁 Prepared block for proposing at 1 [hash: 0x384b4a0ce970b7b28dbc0764ef74ee3b3a55517c31476496db175845d03fe61e; parent_hash: 0x40ca…fc14; extrinsics (1): [0xab8e…deca]]    
+Nov 15 18:04:42.021  INFO 🔖 Pre-sealed block for proposal at 1. Hash now 0x753af28ba42e197ddf1df41477d452ac35cd3138afe70083f81e64637f51c1fd, previously 0x384b4a0ce970b7b28dbc0764ef74ee3b3a55517c31476496db175845d03fe61e.    
+Nov 15 18:04:42.021  INFO ✨ Imported #1 (0x753a…c1fd)    
+Nov 15 18:04:46.074  INFO 💤 Idle (0 peers), best: #1 (0x753a…c1fd), finalized #0 (0x40ca…fc14), ⬇ 0 ⬆ 0    
+Nov 15 18:04:48.010  INFO 🙌 Starting consensus session on top of parent 0x753af28ba42e197ddf1df41477d452ac35cd3138afe70083f81e64637f51c1fd    
+Nov 15 18:04:48.010  INFO 🎁 Prepared block for proposing at 2 [hash: 0x625c206bc45416b3745d544d93626a4cacaf74bf73c33cd11077edbeaaa95750; parent_hash: 0x753a…c1fd; extrinsics (1): [0xb6e9…2b6d]]    
+Nov 15 18:04:48.014  INFO 🔖 Pre-sealed block for proposal at 2. Hash now 0xe680ef911bd8a4c24ea2d7485255ca2cbe275cd51d0fa71dcc29846f84524d38, previously 0x625c206bc45416b3745d544d93626a4cacaf74bf73c33cd11077edbeaaa95750.    
+Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)    
+#+end_src
+
+**** Doc
+
+https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
+** Blockchain Voting                          :blockchain:voting:@blockchain:
+:PROPERTIES:
+:EXPORT_FILE_NAME: blockchain-voting
+:EXPORT_DATE: 2020-11-16
+:EXPORT_HUGO_SECTION: blockchain
+:EXPORT_DESCRIPTION: Reading notes about blockchain voting.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** Posts
+
+[[https://www.schneier.com/blog/archives/2019/02/blockchain_and_.html][Blockchain and Trust]], 2019
+> When you analyze both blockchain and trust, you quickly realize that 
+there is much more hype than value. Blockchain solutions are 
+often much worse than what they replace.
+>
+> First, a caveat. By blockchain, I mean something very specific: 
+the data structures and protocols that make up a public blockchain. 
+These have three essential elements. The first is a distributed 
+(as in multiple copies) but centralized (as in there’s only one) ledger, 
+which is a way of recording what happened and in what order. 
+This ledger is public, meaning that anyone can read it, and immutable, 
+meaning that no one can change what happened in the past.
+>
+> The second element is the consensus algorithm, which is a way 
+to ensure all the copies of the ledger are the same. This is 
+generally called mining; a critical part of the system is that 
+anyone can participate. It is also distributed, meaning that 
+you don’t have to trust any particular node in the consensus network. 
+It can also be extremely expensive, both in data storage and 
+in the energy required to maintain it. Bitcoin has the most expensive 
+consensus algorithm the world has ever seen, by far.
+>
+> Finally, the third element is the currency. This is some sort of 
+digital token that has value and is publicly traded. Currency is 
+a necessary element of a blockchain to align the incentives of 
+everyone involved. Transactions involving these tokens are stored on the ledger.
+>
+> Most blockchain enthusiasts have a unnaturally narrow definition of trust. 
+They’re fond of catchphrases like “[[https://www.nytimes.com/2017/12/18/opinion/bitcoin-boom-technology-trust.html][in code we trust]],” “[[https://www.amazon.com/Math-We-Trust-Bitcoin-Cryptocurrency-ebook/dp/B07C7TPXMD?tag=w050b-20][in math we trust]],” 
+and “[[https://cryptoclothing.org/product/crypto-shirt/][in crypto we trust]].” This is trust as verification. 
+But verification isn’t the same as trust.
+
+> Morals and reputation scale only to a certain population size. 
+Primitive systems were good enough for small communities, 
+but larger communities required delegation, and more formalism.
+>
+> The third is institutions. Institutions have rules and laws that 
+induce people to behave according to the group norm, 
+imposing sanctions on those who do not. In a sense, 
+laws formalize reputation. Finally, the fourth is security systems. 
+These are the wide varieties of security technologies we employ: 
+door locks and tall fences, alarm systems and guards, 
+forensics and audit systems, and so on.
+>
+> These four elements work together to enable trust. 
+
+> In many ways, trusting technology is harder than trusting people. 
+Would you rather trust a human legal system or the details of 
+some computer code you don’t have the expertise to audit?
+
+
+*** Papers
+
+[[https://people.csail.mit.edu/rivest/pubs/PSNR20.pdf][Going from Bad to Worse: From Internet Voting to Blockchain Voting]], November 6, 2020 (DRAFT)
+
+** DAO                                           :blockchain:dao:@blockchain:
+:PROPERTIES:
+:EXPORT_FILE_NAME: dao
+:EXPORT_DATE: 2020-11-16
+:EXPORT_HUGO_SECTION: blockchain
+:EXPORT_DESCRIPTION: Reading notes about the community DAO.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+[[https://blog.ethereum.org/2014/12/26/secret-sharing-daos-crypto-2-0/][Secret Sharing DAOs: The Other Crypto 2.0]], 2014
+
+[[https://github.com/DavidJohnstonCEO/DecentralizedApplications][The General Theory of Decentralized Applications, Dapps]]
+> The concept of a Dapp is so powerful and elegant, because it does not 
+include these traditional corporate techniques. The ownership of 
+the Dapp’s tokens is all that is required for the holder to use the system. 
+It’s that simple. The value of the tokens is determined by 
+how much people value the application. All the incentives, 
+all the monetization, all the ways to raise support are 
+built into this beautifully simple structure. 
+Dapps are not required to recreate the functions that used to be necessary 
+in centralized corporations in order to balance the power of shareholders 
+and offer returns for investors and employees.
+
+> Initial tokens are distributed
+>
+> If the Dapp is using the fund-raising mechanism, a wallet software becomes 
+available to the stakeholders of the Dapp, so that they can exchange 
+the tokens of the DA. In the case of Mastercoin, an Exodus fund-raising address 
+and a wallet script were publicly released.
+>
+> If the Dapp is using the development mechanism, a bounty system is 
+put in place that allows the suggestion of tasks to be performed, 
+the tracking of the people who are working on those tasks and 
+the criteria by which bounties can be awarded.
+
+
+[[https://bitcoinmagazine.com/articles/bootstrapping-a-decentralized-autonomous-corporation-part-i-1379644274][Bootstrapping A Decentralized Autonomous Corporation: Part I]] | 2013
+> As Let’s Talk Bitcoin’s Daniel Larmier pointed out in his own exploration on this concept, 
+in a sense Bitcoin itself can be thought of as a very early prototype of exactly such a thing. 
+Bitcoin has 21 million shares, and these shares are owned by what can be considered 
+Bitcoin’s shareholders. It has employees, and it has a protocol for paying them: 25 BTC 
+to one random member of the workforce roughly every ten minutes. It even has 
+its own marketing department, to a large extent made up of the shareholders themselves. 
+However, it is also very limited. It knows almost nothing about the world except for 
+the current time, it has no way of changing any aspect of its function aside from 
+the difficulty, and it does not actually do anything per se; it simply exists, 
+and leaves it up to the world to recognize it. The question is: can we do better?
+
+> The first challenge is obvious: how would such a corporation actually make 
+any decisions? It’s easy to write code that, at least given predictable environments, 
+takes a given input and calculates a desired action to take. But who is going to 
+run the code? If the code simply exists as a computer program on some particular machine, 
+what is stopping the owner of that machine from shutting the whole thing down, 
+or even modifying its code to make it send all of its money to himself? To this problem, 
+there is only one effective answer: distributed computing.
+
+> Here, rather, we need the kind of distributed computing that we see in Bitcoin: 
+a set of rules that decentrally self-validates its own computation. 
+In Bitcoin, this is accomplished by a simple majority vote: if you are not helping to 
+compute the blockchain with the majority network power, your blocks will get discarded 
+and you will get no block reward. The theory is that no single attacker will 
+have enough computer power to subvert this mechanism, so the only viable strategy 
+is essentially to “go with the flow” and act honestly to help support the network 
+and receive one’s block reward. So can we simply apply this mechanism to 
+decentralized computation? That is, can we simply ask every computer in the network to 
+evaluate a program, and then reward only those whose answer matches the majority vote? 
+
+> Bitcoin is a special case because Bitcoin is simple: it is just a currency, 
+carrying no property or private data of its own. A virtual corporation, 
+on the other hand, would likely need to store the private key to its Bitcoin wallet – 
+a piece of data which should be available in its entirety to no one, not to everyone 
+in the way that Bitcoin transactions are. But, of course, the private key must 
+still be usable. Thus, what we need is some system of signing transactions, 
+and even generating Bitcoin addresses, that can be computed in a decentralized way. 
+Fortunately, Bitcoin allows us to do exactly that.
+
+[[https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/][
+DAOs, DACs, DAs and More: An Incomplete Terminology Guide]] | 2014
+> as Bitshares’ Daniel Larimer points out, “everyone thinks a DAC is just a way of 
+IPOing your centralized company.” The intent of this article will be to delve into 
+some of these concepts, and see if we can come up with at least the beginnings of 
+a coherent understanding of what all of these things actually are.
+
+> Note that there is one gray area here: contracts which are finite on one side, 
+but infinite on the other side. For example, if I want to hedge the value of 
+my digital assets, I might want to create a contract where anyone can 
+freely enter and leave. Hence, the other side of the contract, the parties 
+that are speculating on the asset at 2x leverage, has an unbounded number of parties, 
+but my side of the contract does not. Here, I propose the following divide: 
+if the side with a bounded number of parties is the side that intends to receive 
+a specific service (ie. is a consumer), then it is a smart contract; however, 
+if the side with a bounded number of parties is just in it for profit 
+(ie. is a producer), then it is not.
+
+> That is, there is a concept of shares in a DAC which are purchaseable 
+and tradeable in some fashion, and those shares potentially entitle 
+their holders to continual receipts based on the DAC’s success. 
+A DAO is non-profit; though you can make money in a DAO, the way to do 
+that is by participating in its ecosystem and not by providing investment 
+into the DAO itself. Obviously, this distinction is a murky one; 
+all DAOs contain internal capital that can be owned, and the value of 
+that internal capital can easily go up as the DAO becomes more powerful/popular, 
+so a large portion of DAOs are inevitably going to be DAC-like to some extent.
+>
+> Thus, the distinction is more of a fluid one and hinges on emphasis: 
+to what extent are dividends the main point, and to what extent is it about 
+earning tokens by participation? Also, to what extent does the concept of 
+a “share” exist as opposed to simple virtual property? For example, 
+a membership on a nonprofit board is not really a share, because membership 
+frequently gets granted and confiscated at will, something which would be 
+unacceptable for something classified as investable property, and a bitcoin is not 
+a share because a bitcoin does not entitle you to any claim on profits or 
+decision-making ability inside the system, whereas a share in a corporation 
+definitely is a share. In the end, perhaps the distinction might ultimately be 
+the surprisingly obscure point of whether or not the profit mechanism 
+and the consensus mechanism are the same thing.
+
+> Additionally, there is also the question of how all of these things should be built. 
+An AI, for example, should likely exist as a network of private servers, 
+each one running often proprietary local code, whereas a DO should be fully 
+open source and blockchain-based. Between those two extremes, there is 
+a large number of different paradigms to pursue. How much of the intelligence 
+should be in the core code? Should genetic algorithms be used for updating code, 
+or should it be futarchy or some voting or vetting mechanism based on individuals? 
+Should membership be corporate-style, with sellable and transferable shares, 
+or nonprofit-style, where members can vote other members in and out? 
+Should blockchains be proof of work, proof of stake, or reputation-based? 
+Should DAOs try to maintain balances in other currencies, 
+or should they only reward behavior by issuing their own internal token? 
+These are all hard problems and we have only just begun scratching the surface of them.
+
+[[https://hackernoon.com/turn-an-internet-community-into-a-dao-in-3-steps-8k1b3w5y][Turn an Internet Community into a DAO in 3 Steps]]
+> Simply put, DAO is a perfect structure to organize collective activities in the community, 
+especially when most collaborations in the community are conducted distributedly, 
+multi-disciplinarily, in random occurrence, and without a trust basis. 
+DAO leverages Smart Contract on the blockchain to automatically implement contract terms 
+to solve the trust issues. Also, contribution-based incentives can be allocated to activate the community.
+>
+> However, DAO's structure is not perfect and has some limitations for large scale applications.
+>
+> First, DAO relies too much on the smart contract, while the machine language is not suitable 
+for conveying complex business logic. It's almost impossible for a general internet community 
+to become an expert to compile all its collaboration needs into the contract. 
+The stake is too high! It is also costly and low in efficiency if every operation step 
+needs to run smart contracts on the blockchain to reach the global consensus. 
+>
+> Second, most of DAO's governance protocols mainly focus on the voting algorithm, 
+while for the internet communities, voting would only be a small part of 
+all the collective actions. Actually, the community is more caring about how to 
+make the collaborations happen among all the community members.
+>
+> Third, as there is a lack of an effective management system to regulate 
+the collaborations, the DAO has become only a shell structure without any real value 
+creation activities in it. So, it's not hard to understand that the DAO's 
+governance token holders have low intent to vote as they do not care about 
+what is going on in the community, and they are only pursuing arbitrage opportunities.  
+
+> The Wiki-based ComCo Management Framework contains one's collaboration history, 
+which can be traced back as the credential check.
+
+**
+
+** Governance                               :community:governance:@community:
+:PROPERTIES:
+:EXPORT_FILE_NAME: governance
+:EXPORT_DATE: 2020-11-12
+:EXPORT_HUGO_SECTION: community
+:EXPORT_OPTIONS: toc:2
+:END:
+
+#+begin_description
+Notes about governance in open source communities,
+including developer communities and blockchain projects' communities.
+#+end_description
+
+[[https://www.djangoproject.com/weblog/2020/mar/12/governance/][New governance model for the Django project]]
+- James Bennett on March 12, 2020
+
+[[https://github.com/django/deps/blob/master/accepted/0010-new-governance.rst][DEP 0010: New governance for the Django project]]
+- Created:	2018-09-22
+- Last-Modified:	2020-03-12
+
+[[https://github.com/rust-lang/wg-governance/blob/master/CHARTER.md][Rust-lang: Governance WG Charter]]
+- last updated: [May 25th 2019] 
+
+[[https://ziglang.org/news/announcing-zig-software-foundation.html][Announcing the Zig Software Foundation]]
+- Zig language
+
+[[https://modelviewculture.com/pieces/codes-of-conduct-when-being-excellent-is-not-enough][Codes of Conduct: When Being Excellent is Not Enough]]
+- December 10th, 2014
 
 ** Data Structures in Popular Blockchains  :hacking:blockchain:rust:@hacking:
 :PROPERTIES:
@@ -1458,147 +1533,6 @@ src: ckb/util/types/src/core/blockchain.rs
 *** More to do
 
 - Solana
-** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
-:PROPERTIES:
-:EXPORT_FILE_NAME: cheatsheet
-:EXPORT_DATE: 2020-10-29
-:EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: My cheatsheet about Git and Emacs.
-:EXPORT_OPTIONS: toc:2
-:END:
-
-
-*** Emacs & org-mode
-**** References
-
-- https://stackoverflow.com/questions/16186843/inline-code-in-org-mode
-- https://orgmode.org/org.html#Emphasis-and-monospace
-
-**** Examples
-
-src_sh[:exports code]{echo -e "test"}
-
-#+begin_src 
-src_sh[:exports code]{echo -e "test"}
-#+end_Src
-
-~fn main()~ 
-
-#+begin_src
-~fn main()~ 
-#+end_src
-
-=verbatim text=
-
-#+begin_src
-=verbatim text=
-#+end_src
-
-
-
-#+begin_src
-=verbatim text=
-#+end_src
-
-
-*** Git commands
-
-**** Remote .git
-
-#+begin_src shell
-$ ls .git
-$ rm .git
-rm: .git: is a directory
-$ rm -rf .git
-#+end_src
-
-**** Download a file from command line
-
-#+begin_src shell
-$ curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
-$ curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
-#+end_src
-
-**** Cherry pick
-
-#+begin_src shell
-$ git remote add some_github_id https://github.com/some_github_id/rust-in-blockchain.git
-$ git fetch some_github_id
-$ git log some_github_id/master
-$ git cherry-pick some_commit_hash
-$ git diff HEAD^..HEAD
-$ git push origin master
-#+end_src
-
-**** Reset a commit
-
-#+begin_src shell
-$ git reset HEAD^
-$ git rm */~
-$ git rm */*~
-$ git commit --amend
-$ git log
-commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
-#+end_src
-
-**** Hide changes and do not commit
-
-#+begin_src shell
-$ git stash
-#+end_src
-
-**** Cancel hiding
-
-#+begin_src shell
-$ git stash pop 
-#+end_src
-
-**** Add submodule to rib
-
-#+begin_src shell
-$ ln -> means link
-#+end_src
-
-**** Creat an aliase for syncing file 
-
-#+begin_src shell
-$ ln -s ../awesome-blockchain-rust/README.md awesome-blockchain-rust.md 
-#+end_src
-
-**** Recover to previous clean code
-
-#+begin_src shell
-$ git checkout -f
-#+end_src
-
-**** About PATH
-
-#+begin_src shell
-$ pwd
-$ echo $PWD
-$ export PATH=$PATH:$PWD
-#+end_src
-
-**** SSH
-
-#+begin_src shell
-$ eval `ssh-agent`
-$ ssh-add
-$ ssh -T git@github.com 
-#+end_src
-
-**** Generated a new key
-
-#+begin_src shell
-$ ssh-keygen -C your@email.com 
-#+end_src
-
-**** Move a file to current
-
-#+begin_src shell
-$ git mv www/contracts .
-#+end_src
-
 ** Deal With Git Submodule in Hugo Themes :hacking:git:submodule:hugo:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: git-submodule-hugo-theme
@@ -2036,4 +1970,67 @@ I also hope I can avoid this type of problems next time,
 or find better solutions.
 
 
+
+** Philosophy and Minds                    :philosophy:mind:thought:@reading:
+:PROPERTIES:
+:EXPORT_FILE_NAME: philosophy-and-minds
+:EXPORT_DATE: 2020-11-16
+:EXPORT_HUGO_SECTION: reading
+:EXPORT_DESCRIPTION: Learning from great minds.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+
+[[https://www.youtube.com/watch?v=SOr1YYRljV8][Yaron Brook: Ayn Rand and the Philosophy of Objectivism | Lex Fridman Podcast #138]]
+
+Yaron Brook introduced a lot of stories about Ayn Rand 
+in this podcast.
+I only read Ayn Rand's book [[https://en.wikipedia.org/wiki/Atlas_Shrugged][Atlas Shrugged]] several years ago,
+and I loved it.
+
+
+I plan to reread [[https://www.goodreads.com/book/show/6454477-the-red-book][The Red Book]] from C.G. Jung
+and Friedrich Nietzsche's books.
+** Books                                              :reading:book:@reading:
+:PROPERTIES:
+:EXPORT_FILE_NAME: books
+:EXPORT_DATE: 2020-11-13
+:EXPORT_HUGO_SECTION: reading
+:EXPORT_DESCRIPTION: Books I've read. 
+:EXPORT_OPTIONS: toc:2
+:END:
+
+Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
+
+
+*** 2020
+
+- Guns, Germs, and Steel: The Fates of Human Societies
+- [[https://www.amazon.com/Art-War-AmazonClassics-Sun-Tzu-ebook/dp/B073QR86XF/ref=sr_1_4][The Art of War]]
+- [[https://www.amazon.com/15-Minute-Read-Power-Subconscious-ebook/dp/B08541YNTW/ref=rtpb_2/138-2049715-3003242][The Power of Your Subconscious Mind]]
+- [[https://landing.coingecko.com/how-to-defi/][How to DeFi]]
+- [[https://www.goodreads.com/book/show/38819529-the-hobbit][The Hobbit]]
+- [[https://www.goodreads.com/book/show/50491494-options-trading-crash-course][Options Trading Crash Course]]
+- [[https://www.amazon.com/Franklins-Autobiography-Eclectic-English-Classics-ebook/dp/B0052GE5GC/][Franklin's Autobiography]]
+- [[https://www.goodreads.com/notes/38145718-thomas-edison/90889710-aimee-zhu][Thomas Edison: A Captivating Guide to the Life of a Genius Inventor]]
+- [[https://www.amazon.com/Elements-Style-Fourth-William-Strunk-ebook/dp/B07NPN5HTP/ref=sr_1_4][The elements of style]]
+- [[https://www.amazon.com/Out-My-Mind-Sharon-Draper-ebook/dp/B003ATPRNI/ref=sr_1_3][Out of my mind]]
+- [[https://www.amazon.com/Manage-Your-Day-Day-Creative-ebook/dp/B00B77UE4W/ref=sr_1_2][Manage Your Day-to-Day: Build Your Routine, Find Your Focus, and Sharpen Your Creative Mind]]
+- [[https://www.amazon.com/Animal-Farm-Fairy-Modern-Classic-ebook/dp/B003K16PUU/ref=sr_1_1][Animal Farm]]
+- [[https://www.amazon.com/Decisions-Death-Street-Kindle-Single-ebook/dp/B00TO1J78M/ref=sr_1_1][Decisions: Life and Death on Wall Street]]
+- [[https://www.amazon.com/Little-Still-Market-Books-Profits-ebook/dp/B003VWCQB0/ref=sr_1_1][The Little Book that Still Beats the Market]]
+- [[https://www.amazon.com/If-You-Tell-Unbreakable-Sisterhood-ebook/dp/B07Q5TL9SQ/ref=sr_1_3][If You Tell: A True Story of Murder, Family Secrets, and the Unbreakable Bond of Sisterhood]]
+- [[https://www.amazon.com/Think-Grow-Rich-Napoleon-Hill-ebook/dp/B08776ZZY4/ref=sr_1_3][Think and Grow Rich]]
+- [[https://www.goodreads.com/notes/36992849-work-less-make-more/90889710-aimee-zhu?ref=bsop][Work Less, Make More]]
+- 卡耐基自传
+  - ref: origin [[https://www.amazon.com/Autobiography-Andrew-Carnegie-Gospel-Classics-ebook/dp/B002G54Y3Q/ref=sr_1_4][The Autobiography of Andrew Carnegie and The Gospel of Wealth]]
+- [[https://www.amazon.cn/dp/B087JNZ6ZL/ref=sr_1_1][一生的旅程：迪士尼 CEO 自述]]
+  - ref: origin [[https://www.amazon.com/gp/product/0399592091/ref=ox_sc_act_title_1][The Ride of a Lifetime: Lessons Learned from 15 Years as CEO of the Walt Disney Company]]
+- [[https://www.goodreads.com/book/show/51957605][股票作手回忆录]]
+  - ref: origin [[https://www.amazon.com/REMINISCENCES-STOCK-OPERATOR-Edwin-Lefevre-ebook/dp/B07ND35YTJ/ref=tmm_kin_swatch_0][Reminiscences of a Stock Operator]]
+- [[https://www.amazon.cn/dp/B00U3NDI1C/ref=sr_1_1][黄金屋：宏观对冲基金顶尖交易者的掘金之道]]
+  - ref: origin [[https://www.amazon.com/Inside-House-Money-Traders-Profiting-ebook/dp/B00GYXP8CW/ref=sr_1_1][Inside the House of Money: Top Hedge Fund Traders on Profiting in the Global Markets]]
+- [[https://www.goodreads.com/book/show/35561327][一本小小的红色写作书]]
+- [[https://www.amazon.cn/dp/B01HRYE86S/ref=sr_1_1][血疫:埃博拉的故事]]
+  - ref: origin [[https://www.amazon.com/Hot-Zone-Terrifying-Story-Origins-ebook/dp/B007DCU4IQ/ref=sr_1_1][The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus]]
 

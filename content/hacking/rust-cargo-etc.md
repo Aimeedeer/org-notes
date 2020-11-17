@@ -3,10 +3,26 @@ title = "Rust Cargo and More"
 author = ["Aimee Z"]
 description = "Understand Rust programming language."
 date = 2020-11-14
-tags = ["hack", "log", "rust", "cargo", "rustup", "commandline"]
+tags = ["hacking", "rust", "cargo", "rustup", "log"]
 categories = ["hacking"]
 draft = false
+[menu.main]
+  weight = 2008
+  identifier = "rust-cargo-and-more"
 +++
+
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [Cargo bin](#cargo-bin)
+- [Rustup toolchains](#rustup-toolchains)
+- [Rust lang entry](#rust-lang-entry)
+
+</div>
+<!--endtoc-->
+
 
 ## Cargo bin {#cargo-bin}
 
@@ -100,7 +116,13 @@ cargo-clippy	clippy-driver	rust-gdb	rust-lldb	rustdoc
 ```
 
 
-## Rustc: #[lang = "start"] {#rustc-lang-start}
+## Rust lang entry {#rust-lang-entry}
+
+[EntryPointType](https://github.com/rust-lang/rust/blob/efbaa413061c2a6e52f06f00a60ee7830fcf3ea5/compiler/rustc%5Fpasses/src/entry.rs#L50-L76)
+
+[rust/compiler/rustc\_codegen\_cranelift/src/main\_shim.rs](https://github.com/rust-lang/rust/blob/56293097f7f877f1350a6cd00f79d03132f16515/compiler/rustc%5Fcodegen%5Fcranelift/src/main%5Fshim.rs)
+
+Rustc: #[lang = "start"]
 
 [fn lang\_start<T: crate::process::Termination + 'static>(main: fn() -> T, argc: isize, argv: \*const \*const u8,)](https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs#L60)
 
