@@ -8,7 +8,7 @@ tags = ["substrate", "blockchain", "hacking"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2001
+  weight = 2004
   identifier = "play-with-substrate"
 +++
 
@@ -17,6 +17,7 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
+- [2020-11-17 ink!](#2020-11-17-ink)
 - [2020-11-15 Start](#2020-11-15-start)
     - [Follow the GitHub repo](#follow-the-github-repo)
     - [Install `nightly-2020-10-05` and build again](#install-nightly-2020-10-05-and-build-again)
@@ -28,6 +29,53 @@ draft = false
 
 </div>
 <!--endtoc-->
+
+
+## 2020-11-17 ink! {#2020-11-17-ink}
+
+Start with
+[substrate.dev/substrate-contracts-workshop](https://substrate.dev/substrate-contracts-workshop/#/0/introduction)
+
+Install from the webpage's command, but build failed.
+
+Existing issue in Cargo's repo:
+<https://github.com/rust-lang/cargo/issues/7169>
+
+Need to read Cargo book:
+<https://doc.rust-lang.org/nightly/cargo/commands/cargo-install.html>
+
+Keep following the doc: [Running a Canvas Node](https://substrate.dev/substrate-contracts-workshop/#/0/running-a-substrate-node).
+Btw, I like the tutorials explain each file.
+It's helpful to me.
+
+```shell
+$ canvas --dev --tmp
+2020-11-17 17:20:43  Running in --dev mode, RPC CORS has been disabled.
+2020-11-17 17:20:43  Canvas Node
+2020-11-17 17:20:43  ✌️  version 0.1.0-e189090-x86_64-macos
+2020-11-17 17:20:43  ❤️  by Canvas, 2020-2020
+2020-11-17 17:20:43  📋 Chain specification: Development
+2020-11-17 17:20:43  🏷 Node name: cute-example-7440
+2020-11-17 17:20:43  👤 Role: AUTHORITY
+2020-11-17 17:20:43  💾 Database: RocksDb at /var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/substratePetkPI/chains/dev/db
+2020-11-17 17:20:43  ⛓  Native runtime: canvas-8 (canvas-0.tx1.au1)
+2020-11-17 17:20:43  🔨 Initializing Genesis block/state (state: 0x1611…971f, header-hash: 0x575c…6d5f)
+2020-11-17 17:20:43  👴 Loading GRANDPA authority set from genesis on what appears to be first startup.
+2020-11-17 17:20:43  ⏱  Loaded block-time = 6000 milliseconds from genesis on first-launch
+2020-11-17 17:20:43  Using default protocol ID "sup" because none is configured in the chain specs
+2020-11-17 17:20:43  🏷 Local node identity is: 12D3KooWSLjj5cAsQ8EeBvSRrxbg8b9mTzvoZVf7SA5NzkDzSCFx
+2020-11-17 17:20:43  📦 Highest known block at #0
+2020-11-17 17:20:43  〽️ Prometheus server started at 127.0.0.1:9615
+2020-11-17 17:20:43  Listening for new connections on 127.0.0.1:9944.
+2020-11-17 17:20:48  🙌 Starting consensus session on top of parent 0x575c06528df3f98a10aa6ac8d6d7c8f1d0ca9738206c05dc96516b1bcb836d5f
+2020-11-17 17:20:48  🎁 Prepared block for proposing at 1 [hash: 0x8d82ffaef8eea6679896f4b8335a68771ab7add86a51959368030e6aad395e8a; parent_hash: 0x575c…6d5f; extrinsics (1): [0xdc0e…86a9]]
+2020-11-17 17:20:48  🔖 Pre-sealed block for proposal at 1. Hash now 0x4b4fa8e91ef020d0544796b1dc9c26c046662b6bae182be5fa5548f9818863b4, previously 0x8d82ffaef8eea6679896f4b8335a68771ab7add86a51959368030e6aad395e8a.
+2020-11-17 17:20:48  ✨ Imported #1 (0x4b4f…63b4)
+2020-11-17 17:20:48  💤 Idle (0 peers), best: #1 (0x4b4f…63b4), finalized #0 (0x575c…6d5f), ⬇ 0 ⬆ 0
+2020-11-17 17:20:53  💤 Idle (0 peers), best: #1 (0x4b4f…63b4), finalized #0 (0x575c…6d5f), ⬇ 0 ⬆ 0
+2020-11-17 17:20:54  🙌 Starting consensus session on top of parent 0x4b4fa8e91ef020d0544796b1dc9c26c046662b6bae182be5fa5548f9818863b4
+2020-11-17 17:20:54  🎁 Prepared block for proposing at 2 [hash: 0x42d318b1165e2217212499aad57c1d6c89637668fb5d02d482415ef8eaa9f4da; parent_hash: 0x4b4f…63b4; extrinsics (1): [0x029c…6c04]]
+```
 
 
 ## 2020-11-15 Start {#2020-11-15-start}
