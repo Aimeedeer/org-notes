@@ -7,7 +7,7 @@ tags = ["hacking", "git", "emacs", "orgmode"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2009
+  weight = 2001
   identifier = "cheatsheet"
 +++
 
@@ -62,10 +62,6 @@ src_sh[:exports code]{echo -e "test"}
 ```
 
 `verbatim text`
-
-```nil
-=verbatim text=
-```
 
 ```nil
 =verbatim text=

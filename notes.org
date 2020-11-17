@@ -15,7 +15,6 @@
 :EXPORT_OPTIONS: toc:2
 :END:
 
-
 *** Emacs & org-mode
 **** References
 
@@ -41,13 +40,6 @@ src_sh[:exports code]{echo -e "test"}
 #+begin_src
 =verbatim text=
 #+end_src
-
-
-
-#+begin_src
-=verbatim text=
-#+end_src
-
 
 *** Git commands
 
