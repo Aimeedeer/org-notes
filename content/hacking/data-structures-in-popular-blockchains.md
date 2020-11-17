@@ -11,6 +11,21 @@ draft = false
   identifier = "data-structures-in-popular-blockchains"
 +++
 
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [Bitcoin](#bitcoin)
+- [Ethereum](#ethereum)
+- [Polkadot](#polkadot)
+- [NEAR](#near)
+- [Nervos CKB](#nervos-ckb)
+- [More to do](#more-to-do)
+
+</div>
+<!--endtoc-->
+
 Not as simple as I thought,
 data structure are designed quite differently in different projects.
 

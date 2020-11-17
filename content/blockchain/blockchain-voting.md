@@ -11,6 +11,18 @@ draft = false
   identifier = "blockchain-voting"
 +++
 
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [Posts](#posts)
+- [Papers](#papers)
+
+</div>
+<!--endtoc-->
+
+
 ## Posts {#posts}
 
 [Blockchain and Trust](https://www.schneier.com/blog/archives/2019/02/blockchain%5Fand%5F.html), 2019

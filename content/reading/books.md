@@ -11,6 +11,16 @@ draft = false
   identifier = "books"
 +++
 
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [2020](#2020)
+
+</div>
+<!--endtoc-->
+
 Aimee's [goodreads](<https://www.goodreads.com/user/show/90889710-aimee-zhu>)
 
 

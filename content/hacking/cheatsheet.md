@@ -1,40 +1,69 @@
 +++
 title = "Cheatsheet"
 author = ["Aimee Z"]
-description = "Mostly Git commands."
+description = "My cheatsheet about Git and Emacs."
 date = 2020-10-29
-tags = ["hack", "git", "notes"]
-categories = ["hacking"]
 draft = false
+[menu.main]
+  weight = 2008
+  identifier = "cheatsheet"
 +++
+
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [Emacs & org-mode](#emacs-and-org-mode)
+    - [References](#references)
+    - [Examples](#examples)
+- [Git commands](#git-commands)
+    - [Remote .git](#remote-dot-git)
+    - [Download a file from command line](#download-a-file-from-command-line)
+    - [Cherry pick](#cherry-pick)
+    - [Reset a commit](#reset-a-commit)
+    - [Hide changes and do not commit](#hide-changes-and-do-not-commit)
+    - [Cancel hiding](#cancel-hiding)
+    - [Add submodule to rib](#add-submodule-to-rib)
+    - [Creat an aliase for syncing file](#creat-an-aliase-for-syncing-file)
+    - [Recover to previous clean code](#recover-to-previous-clean-code)
+    - [About PATH](#about-path)
+    - [SSH](#ssh)
+    - [Generated a new key](#generated-a-new-key)
+    - [Move a file to current](#move-a-file-to-current)
+
+</div>
+<!--endtoc-->
+
 
 ## Emacs & org-mode {#emacs-and-org-mode}
 
 
-### Code block {#code-block}
-
-
-#### References {#references}
+### References {#references}
 
 -   <https://stackoverflow.com/questions/16186843/inline-code-in-org-mode>
 -   <https://orgmode.org/org.html#Emphasis-and-monospace>
 
 
-#### `echo -e "test"` {#echo-e-test}
+### Examples {#examples}
+
+`echo -e "test"`
 
 ```nil
 src_sh[:exports code]{echo -e "test"}
 ```
 
-
-#### `fn main()` {#fn-main}
+`fn main()`
 
 ```nil
 ~fn main()~
 ```
 
+`verbatim text`
 
-#### `verbatim text` {#verbatim-text}
+```nil
+=verbatim text=
+```
 
 ```nil
 =verbatim text=

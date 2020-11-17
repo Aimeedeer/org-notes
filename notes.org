@@ -10,10 +10,10 @@
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
 :EXPORT_DATE: 2020-11-15
-:EXPORT_HUGO_MENU: :menu main
 :EXPORT_HUGO_SECTION: blockchain
 :EXPORT_HUGO_LINKTITLE: blockchain
 :EXPORT_DESCRIPTION: Substrate is interesting and it seems powerful.
+:EXPORT_OPTIONS: toc:2
 :END:
 
 *** 2020-11-15 Start
@@ -157,6 +157,7 @@ https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/intera
 :EXPORT_DATE: 2020-11-16
 :EXPORT_HUGO_SECTION: blockchain
 :EXPORT_DESCRIPTION: Reading notes about blockchain voting.
+:EXPORT_OPTIONS: toc:2
 :END:
 
 *** Posts
@@ -222,6 +223,7 @@ some computer code you don’t have the expertise to audit?
 :EXPORT_DATE: 2020-11-16
 :EXPORT_HUGO_SECTION: blockchain
 :EXPORT_DESCRIPTION: Reading notes about the community DAO.
+:EXPORT_OPTIONS: toc:2
 :END:
 
 
@@ -381,6 +383,7 @@ which can be traced back as the credential check.
 :EXPORT_DATE: 2020-11-16
 :EXPORT_HUGO_SECTION: reading
 :EXPORT_DESCRIPTION: Learning from great minds.
+:EXPORT_OPTIONS: toc:2
 :END:
 
 
@@ -401,6 +404,7 @@ and Friedrich Nietzsche's books.
 :EXPORT_DATE: 2020-11-13
 :EXPORT_HUGO_SECTION: reading
 :EXPORT_DESCRIPTION: Books I've read. 
+:EXPORT_OPTIONS: toc:2
 :END:
 
 Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
@@ -443,6 +447,7 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 :EXPORT_DATE: 2020-11-02
 :EXPORT_HUGO_SECTION: hacking
 :EXPORT_DESCRIPTION: My hacklog about Walnuts, a toy blockchain.
+:EXPORT_OPTIONS: toc:2
 :END:
 
 *** TODO List
@@ -452,6 +457,8 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 - [x] cli
 - [x] create a new block from commandline, 
       and save it in a json file
+- [ ] deal with unwrap() -> Result
+- [ ] change read & write to serde <> io: https://docs.rs/serde_json/1.0.59/serde_json/fn.from_reader.html
 - [ ] create transactions from commandline
 - [ ] 256k for tx signature: https://docs.rs/k256/0.5.10/k256/
 - [ ] nouce verify
@@ -522,6 +529,64 @@ Opt {
 write to walnutsdata.txt
 read from walnutsdata.txt in string: "{\"header\":{\"prev_block_hash\":[166,5,88,255,235,6,147,45,180,203,105,29,131,4,186,246,69,115,54,230,65,190,65,172,108,106,33,220,51,45,68,150],\"time\":1605002954274,\"nonce\":1},\"txs\":[]}"
 deserialized data from walnutsdata.txt: Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
+check mine funtion: Ok(())
+#+end_src
+
+Change to "pretty" and print pretty output:
+
+#+begin_src rust
+let blockdata = serde_json::to_string_pretty(&block).unwrap();
+#+end_src
+
+#+begin_src shell
+    Finished dev [unoptimized + debuginfo] target(s) in 1.08s
+     Running `target/debug/walnuts mine`
+Opt {
+    cmd: Mine,
+}
+write to walnutsdata.json
+read from walnutsdata.json in string: {
+  "header": {
+    "prev_block_hash": [
+      166,
+      5,
+      88,
+      255,
+      235,
+      6,
+      147,
+      45,
+      180,
+      203,
+      105,
+      29,
+      131,
+      4,
+      186,
+      246,
+      69,
+      115,
+      54,
+      230,
+      65,
+      190,
+      65,
+      172,
+      108,
+      106,
+      33,
+      220,
+      51,
+      45,
+      68,
+      150
+    ],
+    "time": 1605002954274,
+    "nonce": 1
+  },
+  "txs": []
+}
+deserialized data from walnutsdata.json: Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
 check mine funtion: Ok(())
 #+end_src
 
@@ -661,6 +726,7 @@ https://github.com/RustCrypto/hashes
 :EXPORT_DATE: 2020-11-02
 :EXPORT_HUGO_SECTION: hacking
 :EXPORT_DESCRIPTION: Data structures in popular rust blockchains.
+:EXPORT_OPTIONS: toc:2
 :END:
 
 
@@ -1230,3 +1296,144 @@ src: ckb/util/types/src/core/blockchain.rs
 *** More to do
 
 - Solana
+** Cheatsheet
+:PROPERTIES:
+:EXPORT_FILE_NAME: cheatsheet
+:EXPORT_DATE: 2020-10-29
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: My cheatsheet about Git and Emacs.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+
+*** Emacs & org-mode
+**** References
+
+- https://stackoverflow.com/questions/16186843/inline-code-in-org-mode
+- https://orgmode.org/org.html#Emphasis-and-monospace
+
+**** Examples
+
+src_sh[:exports code]{echo -e "test"}
+
+#+begin_src 
+src_sh[:exports code]{echo -e "test"}
+#+end_Src
+
+~fn main()~ 
+
+#+begin_src
+~fn main()~ 
+#+end_src
+
+=verbatim text=
+
+#+begin_src
+=verbatim text=
+#+end_src
+
+
+
+#+begin_src
+=verbatim text=
+#+end_src
+
+
+*** Git commands
+
+**** Remote .git
+
+#+begin_src shell
+$ ls .git
+$ rm .git
+rm: .git: is a directory
+$ rm -rf .git
+#+end_src
+
+**** Download a file from command line
+
+#+begin_src shell
+$ curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
+$ curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
+#+end_src
+
+**** Cherry pick
+
+#+begin_src shell
+$ git remote add some_github_id https://github.com/some_github_id/rust-in-blockchain.git
+$ git fetch some_github_id
+$ git log some_github_id/master
+$ git cherry-pick some_commit_hash
+$ git diff HEAD^..HEAD
+$ git push origin master
+#+end_src
+
+**** Reset a commit
+
+#+begin_src shell
+$ git reset HEAD^
+$ git rm */~
+$ git rm */*~
+$ git commit --amend
+$ git log
+commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
+#+end_src
+
+**** Hide changes and do not commit
+
+#+begin_src shell
+$ git stash
+#+end_src
+
+**** Cancel hiding
+
+#+begin_src shell
+$ git stash pop 
+#+end_src
+
+**** Add submodule to rib
+
+#+begin_src shell
+$ ln -> means link
+#+end_src
+
+**** Creat an aliase for syncing file 
+
+#+begin_src shell
+$ ln -s ../awesome-blockchain-rust/README.md awesome-blockchain-rust.md 
+#+end_src
+
+**** Recover to previous clean code
+
+#+begin_src shell
+$ git checkout -f
+#+end_src
+
+**** About PATH
+
+#+begin_src shell
+$ pwd
+$ echo $PWD
+$ export PATH=$PATH:$PWD
+#+end_src
+
+**** SSH
+
+#+begin_src shell
+$ eval `ssh-agent`
+$ ssh-add
+$ ssh -T git@github.com 
+#+end_src
+
+**** Generated a new key
+
+#+begin_src shell
+$ ssh-keygen -C your@email.com 
+#+end_src
+
+**** Move a file to current
+
+#+begin_src shell
+$ git mv www/contracts .
+#+end_src
+

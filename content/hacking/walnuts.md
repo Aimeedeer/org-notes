@@ -11,6 +11,26 @@ draft = false
   identifier = "walnuts-hacklog"
 +++
 
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [<span class="org-todo todo TODO">TODO</span> List](#list)
+- [Hacklog](#hacklog)
+    - [2020-11-16](#2020-11-16)
+    - [2020-11-13](#2020-11-13)
+    - [2020-11-12](#2020-11-12)
+    - [2020-11-11](#2020-11-11)
+    - [2020-11-10](#2020-11-10)
+    - [2020-11-08](#2020-11-08)
+    - [2020-11-03](#2020-11-03)
+    - [2020-11-02](#2020-11-02)
+
+</div>
+<!--endtoc-->
+
+
 ## <span class="org-todo todo TODO">TODO</span> List {#list}
 
 -   sha2 for hash function
@@ -19,6 +39,8 @@ draft = false
 -   cli
 -   create a new block from commandline,
     and save it in a json file
+-   [ ] deal with unwrap() -> Result
+-   [ ] change read & write to serde <> io: <https://docs.rs/serde%5Fjson/1.0.59/serde%5Fjson/fn.from%5Freader.html>
 -   [ ] create transactions from commandline
 -   [ ] 256k for tx signature: <https://docs.rs/k256/0.5.10/k256/>
 -   [ ] nouce verify
@@ -91,6 +113,64 @@ Opt {
 write to walnutsdata.txt
 read from walnutsdata.txt in string: "{\"header\":{\"prev_block_hash\":[166,5,88,255,235,6,147,45,180,203,105,29,131,4,186,246,69,115,54,230,65,190,65,172,108,106,33,220,51,45,68,150],\"time\":1605002954274,\"nonce\":1},\"txs\":[]}"
 deserialized data from walnutsdata.txt: Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
+check mine funtion: Ok(())
+```
+
+Change to "pretty" and print pretty output:
+
+```rust
+let blockdata = serde_json::to_string_pretty(&block).unwrap();
+```
+
+```shell
+    Finished dev [unoptimized + debuginfo] target(s) in 1.08s
+     Running `target/debug/walnuts mine`
+Opt {
+    cmd: Mine,
+}
+write to walnutsdata.json
+read from walnutsdata.json in string: {
+  "header": {
+    "prev_block_hash": [
+      166,
+      5,
+      88,
+      255,
+      235,
+      6,
+      147,
+      45,
+      180,
+      203,
+      105,
+      29,
+      131,
+      4,
+      186,
+      246,
+      69,
+      115,
+      54,
+      230,
+      65,
+      190,
+      65,
+      172,
+      108,
+      106,
+      33,
+      220,
+      51,
+      45,
+      68,
+      150
+    ],
+    "time": 1605002954274,
+    "nonce": 1
+  },
+  "txs": []
+}
+deserialized data from walnutsdata.json: Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
 check mine funtion: Ok(())
 ```
 

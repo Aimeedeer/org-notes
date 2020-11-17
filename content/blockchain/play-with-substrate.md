@@ -12,6 +12,24 @@ draft = false
   identifier = "play-with-substrate"
 +++
 
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [2020-11-15 Start](#2020-11-15-start)
+    - [Follow the GitHub repo](#follow-the-github-repo)
+    - [Install `nightly-2020-10-05` and build again](#install-nightly-2020-10-05-and-build-again)
+    - [Set target:](#set-target)
+    - [Built failed because my default setting is nightly but not stable.](#built-failed-because-my-default-setting-is-nightly-but-not-stable-dot)
+    - [It took 13 minutes to build: my laptop is slow...](#it-took-13-minutes-to-build-my-laptop-is-slow-dot-dot-dot)
+    - [Cute run!](#cute-run)
+    - [Doc](#doc)
+
+</div>
+<!--endtoc-->
+
+
 ## 2020-11-15 Start {#2020-11-15-start}
 
 
