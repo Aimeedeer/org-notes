@@ -226,9 +226,7 @@ some computer code you don’t have the expertise to audit?
 :EXPORT_OPTIONS: toc:2
 :END:
 
-
 [[https://blog.ethereum.org/2014/12/26/secret-sharing-daos-crypto-2-0/][Secret Sharing DAOs: The Other Crypto 2.0]], 2014
-
 
 [[https://github.com/DavidJohnstonCEO/DecentralizedApplications][The General Theory of Decentralized Applications, Dapps]]
 > The concept of a Dapp is so powerful and elegant, because it does not 
@@ -253,6 +251,7 @@ and a wallet script were publicly released.
 put in place that allows the suggestion of tasks to be performed, 
 the tracking of the people who are working on those tasks and 
 the criteria by which bounties can be awarded.
+
 
 [[https://bitcoinmagazine.com/articles/bootstrapping-a-decentralized-autonomous-corporation-part-i-1379644274][Bootstrapping A Decentralized Autonomous Corporation: Part I]] | 2013
 > As Let’s Talk Bitcoin’s Daniel Larmier pointed out in his own exploration on this concept, 
@@ -294,7 +293,8 @@ still be usable. Thus, what we need is some system of signing transactions,
 and even generating Bitcoin addresses, that can be computed in a decentralized way. 
 Fortunately, Bitcoin allows us to do exactly that.
 
-[[https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/][DAOs, DACs, DAs and More: An Incomplete Terminology Guide]] | 2014
+[[https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/][
+DAOs, DACs, DAs and More: An Incomplete Terminology Guide]] | 2014
 > as Bitshares’ Daniel Larimer points out, “everyone thinks a DAC is just a way of 
 IPOing your centralized company.” The intent of this article will be to delve into 
 some of these concepts, and see if we can come up with at least the beginnings of 
@@ -376,6 +376,37 @@ what is going on in the community, and they are only pursuing arbitrage opportun
 
 > The Wiki-based ComCo Management Framework contains one's collaboration history, 
 which can be traced back as the credential check.
+
+**
+
+** Governance                               :community:governance:@community:
+:PROPERTIES:
+:EXPORT_FILE_NAME: governance
+:EXPORT_DATE: 2020-11-12
+:EXPORT_HUGO_SECTION: community
+:EXPORT_OPTIONS: toc:2
+:END:
+
+#+begin_description
+Notes about governance in open source communities,
+including developer communities and blockchain projects' communities.
+#+end_description
+
+[[https://www.djangoproject.com/weblog/2020/mar/12/governance/][New governance model for the Django project]]
+- James Bennett on March 12, 2020
+
+[[https://github.com/django/deps/blob/master/accepted/0010-new-governance.rst][DEP 0010: New governance for the Django project]]
+- Created:	2018-09-22
+- Last-Modified:	2020-03-12
+
+[[https://github.com/rust-lang/wg-governance/blob/master/CHARTER.md][Rust-lang: Governance WG Charter]]
+- last updated: [May 25th 2019] 
+
+[[https://ziglang.org/news/announcing-zig-software-foundation.html][Announcing the Zig Software Foundation]]
+- Zig language
+
+[[https://modelviewculture.com/pieces/codes-of-conduct-when-being-excellent-is-not-enough][Codes of Conduct: When Being Excellent is Not Enough]]
+- December 10th, 2014
 
 ** Philosophy and Minds                    :philosophy:mind:thought:@reading:
 :PROPERTIES:
@@ -1296,7 +1327,7 @@ src: ckb/util/types/src/core/blockchain.rs
 *** More to do
 
 - Solana
-** Cheatsheet
+** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: cheatsheet
 :EXPORT_DATE: 2020-10-29
@@ -1436,4 +1467,442 @@ $ ssh-keygen -C your@email.com
 #+begin_src shell
 $ git mv www/contracts .
 #+end_src
+
+** Deal With Git Submodule in Hugo Themes :hacking:git:submodule:hugo:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: git-submodule-hugo-theme
+:EXPORT_DATE: 2020-10-31
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: The problems I've met when I use Hugo themes, and how I solved it.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+I use hugo themes for this website, and I met problems.
+
+*** Begin with Hugo and others' themes
+
+I go inside the `themes` folder, and clone all three repos
+followed the readme.
+
+#+begin_src shell
+$ cd themes/
+$ git clone https://github.com/kaushalmodi/hugo-bare-min-theme.git
+$ git clone https://github.com/kaushalmodi/hugo-search-fuse-js
+$ git clone https://github.com/kaushalmodi/hugo-debugprint
+#+end_src
+
+Check status.
+My file `cheatsheet.org` changes can be ignored.
+
+#+begin_src shell
+$ cd ..
+$ git status
+
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   cheatsheet.org
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	content/posts/cheatsheet.md
+	themes/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+#+end_src
+
+I add it to git.
+
+#+begin_src shell
+$ git add .
+
+warning: adding embedded git repository: themes/hugo-bare-min-theme
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> themes/hugo-bare-min-theme
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached themes/hugo-bare-min-theme
+hint: 
+hint: See "git help submodule" for more information.
+warning: adding embedded git repository: themes/hugo-debugprint
+warning: adding embedded git repository: themes/hugo-search-fuse-js
+#+end_src
+
+I follow the hint.
+
+#+begin_src shell
+$ git rm --cached themes/hugo-bare-min-theme
+
+error: the following file has staged content different from both the
+file and the HEAD:
+    themes/hugo-bare-min-theme
+(use -f to force removal)
+
+$ git rm -f --cached themes/hugo-bare-min-theme
+
+rm 'themes/hugo-bare-min-theme'
+#+end_src
+
+And I check the status again.
+
+#+begin_src shell
+$ ls themes/
+
+hugo-bare-min-theme	hugo-debugprint		hugo-search-fuse-js
+
+$ git status
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   cheatsheet.org
+	new file:   content/posts/cheatsheet.md
+	new file:   themes/hugo-debugprint
+	new file:   themes/hugo-search-fuse-js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	themes/hugo-bare-min-theme/
+#+end_src
+
+Then I add files.
+
+#+begin_src shell
+$ git add .
+
+warning: adding embedded git repository: themes/hugo-bare-min-theme
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> themes/hugo-bare-min-theme
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached themes/hugo-bare-min-theme
+hint: 
+hint: See "git help submodule" for more information.
+#+end_src
+
+I am confused.
+But I keep trying.
+
+#+begin_src shell
+$ git add themes/hugo-bare-min-theme/
+$ git status
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   cheatsheet.org
+	new file:   content/posts/cheatsheet.md
+	new file:   themes/hugo-bare-min-theme
+	new file:   themes/hugo-debugprint
+	new file:   themes/hugo-search-fuse-js
+#+end_src
+
+Then I commit these changes one by one.
+
+#+begin_src shell
+$ git add content/posts/cheatsheet.md
+$ git add themes/hugo-bare-min-theme/
+$ git add themes/hugo-debugprint/
+$ git add themes/hugo-search-fuse-js/
+$ git commit -m"submodule"
+
+[master ece9977] submodule
+ 5 files changed, 135 insertions(+), 1 deletion(-)
+ create mode 100644 content/posts/cheatsheet.md
+ create mode 160000 themes/hugo-bare-min-theme
+ create mode 160000 themes/hugo-debugprint
+ create mode 160000 themes/hugo-search-fuse-js
+
+$ git push origin master
+#+end_src
+
+*** Deploy: Netlify build failed
+
+I push the source code to GitHub and use Netlify for auto-building.
+Howevery, Netlify build failed with 
+the error message says something wrong with submodules.
+
+#+begin_src shell
+Error checking out submodules: fatal: No url found for submodule path 'themes/hugo-bare-min-theme' in .gitmodules
+Failing build: Failed to prepare repo
+Failed during stage 'preparing repo': Error checking out submodules: fatal: No url found for submodule path 'themes/hugo-bare-min-theme' in .gitmodules
+: exit status 128
+#+end_src
+
+I think I met this problem before when I built [[https://rustinblockchain][rib.rs]] website in Hugo.
+But I can remember how I solved it at last.
+(That's why I take notes now ;)
+
+*** Remove submodules
+
+I go inside of each theme repo, and try to remove the `.git` file.
+
+#+begin_src shell
+$ cd hugo-bare-min-theme/
+$ git rm .git
+
+fatal: pathspec '.git' did not match any files
+
+$ git rm -rf .git
+
+fatal: pathspec '.git' did not match any files
+
+$ rm -rf .git
+
+$ cd ..
+$ cd hugo-debugprint/
+$ rm -rf .git/
+$ cd ..
+$ cd hugo-search-fuse-js/
+$ rm -rf .git/
+#+end_src
+
+Again, check status.
+
+#+begin_src shell
+$ cd ..
+$ git submodule status
+
+fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-theme'
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+#+end_src
+
+It's interesting, and I am super confusing now.
+I don't know what to do, and try something unreasonable.
+I go to github.com/my/repo, and delete the `.gitmodules`.
+Then I `git pull` changes to my local repo.
+
+Now check the status.
+
+#+begin_src shell
+$ git submodule status
+
+fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-theme'
+
+$ cat .git/modules/
+
+cat: .git/modules/: Is a directory
+
+$ ls .git/modules/
+
+themes
+#+end_src
+
+I try more ways to clean these uncleared-relational submodules.
+
+#+begin_src shell
+$ git rm --cached
+usage: git rm [<options>] [--] <file>...
+
+    -n, --dry-run         dry run
+    -q, --quiet           do not list removed files
+    --cached              only remove from the index
+    -f, --force           override the up-to-date check
+    -r                    allow recursive removal
+    --ignore-unmatch      exit with a zero status even if nothing matched
+
+$ ls .git/config 
+
+.git/config
+
+$ cat .git/config 
+
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:Aimeedeer/org-notes.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[submodule "themes/hugo-bare-min-theme"]
+	url = https://github.com/kaushalmodi/hugo-bare-min-theme
+	active = true
+
+$ rm -rf .git/modules/themes/
+$ git status
+
+On branch master
+nothing to commit, working tree clean
+
+$ git submodule status
+
+fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-theme'
+
+$ git reset
+$ git status
+
+On branch master
+nothing to commit, working tree clean
+
+$ git submodule status
+
+fatal: no submodule mapping found in .gitmodules for path 'themes/hugo-bare-min-theme'
+
+$ git rm themes/*
+
+error: the following files have local modifications:
+    themes/hugo-bare-min-theme
+    themes/hugo-debugprint
+    themes/hugo-search-fuse-js
+(use --cached to keep the file, or -f to force removal)
+
+$ git status
+
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   config.toml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+$ git commit -am"config"
+
+[master 2c206b9] config
+ 1 file changed, 4 insertions(+)
+
+$ git rm -f themes/*
+
+rm 'themes/hugo-bare-min-theme'
+rm 'themes/hugo-debugprint'
+rm 'themes/hugo-search-fuse-js'
+
+$ git status
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    themes/hugo-bare-min-theme
+	deleted:    themes/hugo-debugprint
+	deleted:    themes/hugo-search-fuse-js
+
+
+$ git commit -m"rm"
+
+[master 4404bde] rm
+ 3 files changed, 3 deletions(-)
+ delete mode 160000 themes/hugo-bare-min-theme
+ delete mode 160000 themes/hugo-debugprint
+ delete mode 160000 themes/hugo-search-fuse-js
+#+end_src
+
+Finally the submodule is clean!
+
+#+begin_src shell
+$ git submodule status
+#+end_src
+
+I go back to the `themes` folder to start over.
+
+#+begin_src shell
+$ cd themes/
+$ git clone https://github.com/kaushalmodi/hugo-bare-min-theme
+$ cd hugo-bare-min-theme/
+$ rm -rf .git
+$ cd ..
+$ cd ..
+$ git status
+
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	themes/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add .
+
+-bare-min-theme/exampleSite/content/post/migrate-from-jekyll.md
+
+$ git status
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   themes/hugo-bare-min-theme/.gitignore
+	new file:   themes/hugo-bare-min-theme/.gitmodules
+	new file:   themes/hugo-bare-min-theme/LICENSE.md
+	new file:   themes/hugo-bare-min-theme/README.md
+	new file:   themes/hugo-bare-min-theme/archetypes/.gitkeep
+	new file:   themes/hugo-bare-min-theme/config.toml
+	new file:   themes/hugo-bare-min-theme/exampleSite/.dir-locals.el
+	new file:   themes/hugo-bare-min-theme/exampleSite/LICENSE
+	new file:   themes/hugo-bare-min-theme/exampleSite/README.md
+	new file:   themes/hugo-bare-min-theme/exampleSite/config.toml
+	new file:   themes/hugo-bare-min-theme/exampleSite/content/about.md
+	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/creating-a-new-theme.md
+	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/goisforlovers.md
+	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/hugoisforlovers.md
+	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/migrate-from-jekyll.md
+	new file:   themes/hugo-bare-min-theme/exampleSite/content/search.md
+	new file:   themes/hugo-bare-min-theme/exampleSite/exampleSite.org
+	new file:   themes/hugo-bare-min-theme/exampleSite/layouts/.gitkeep
+	new file:   themes/hugo-bare-min-theme/exampleSite/static/.gitignore
+	new file:   themes/hugo-bare-min-theme/exampleSite/themes/.ignore
+	new file:   themes/hugo-bare-min-theme/exampleSite/themes/hugo-bare-min-theme
+	new file:   themes/hugo-bare-min-theme/images/screenshot.png
+	new file:   themes/hugo-bare-min-theme/images/tn.png
+	new file:   themes/hugo-bare-min-theme/layouts/404.html
+	new file:   themes/hugo-bare-min-theme/layouts/_default/baseof.html
+	new file:   themes/hugo-bare-min-theme/layouts/_default/li.html
+	new file:   themes/hugo-bare-min-theme/layouts/_default/list.html
+	new file:   themes/hugo-bare-min-theme/layouts/_default/single.html
+	new file:   themes/hugo-bare-min-theme/layouts/_default/summary.html
+	new file:   themes/hugo-bare-min-theme/layouts/_default/terms.html
+	new file:   themes/hugo-bare-min-theme/layouts/index.html
+	new file:   themes/hugo-bare-min-theme/layouts/partials/archive/version_ge.html
+	new file:   themes/hugo-bare-min-theme/layouts/partials/header_image.html
+	new file:   themes/hugo-bare-min-theme/layouts/partials/mathjax.html
+	new file:   themes/hugo-bare-min-theme/layouts/partials/opengraph.html
+	new file:   themes/hugo-bare-min-theme/layouts/partials/summary_minus_toc.html
+	new file:   themes/hugo-bare-min-theme/layouts/partials/twitter_cards.html
+	new file:   themes/hugo-bare-min-theme/layouts/shortcodes/figure2.html
+	new file:   themes/hugo-bare-min-theme/netlify.toml
+	new file:   themes/hugo-bare-min-theme/static/css/github_chroma.css
+	new file:   themes/hugo-bare-min-theme/static/js/mathjax-config.js
+	new file:   themes/hugo-bare-min-theme/theme.toml
+#+end_src
+
+I commit the changes and check the status,
+and it looks clean. Great!
+
+#+begin_src shell
+$ git commit -am"theme"
+$ git submodule status
+#+end_src
+
+
+Then I repeat the workable solution to the other two theme repos,
+and push the final changes.
+
+Netlify Build Complete!
+
+*** Others
+
+It is strange that I don't see other people met these problems
+when I searched on Google.
+
+I also hope I can avoid this type of problems next time,
+or find better solutions.
+
+
 

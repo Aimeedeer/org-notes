@@ -1,15 +1,28 @@
 +++
 title = "Deal With Git Submodule in Hugo Themes"
 author = ["Aimee Z"]
-description = """
-  The problems I've met when I use Hugo themes,
-  and how I solved it.
-  """
+description = "The problems I've met when I use Hugo themes, and how I solved it."
 date = 2020-10-31
 tags = ["hacking", "git", "submodule", "hugo"]
 categories = ["hacking"]
 draft = false
+[menu.main]
+  weight = 2010
+  identifier = "deal-with-git-submodule-in-hugo-themes"
 +++
+
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [Begin with Hugo and others' themes](#begin-with-hugo-and-others-themes)
+- [Deploy: Netlify build failed](#deploy-netlify-build-failed)
+- [Remove submodules](#remove-submodules)
+- [Others](#others)
+
+</div>
+<!--endtoc-->
 
 I use hugo themes for this website, and I met problems.
 
@@ -37,12 +50,12 @@ On branch master
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   cheatsheet.org
+      modified:   cheatsheet.org
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	content/posts/cheatsheet.md
-	themes/
+      content/posts/cheatsheet.md
+      themes/
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
@@ -97,14 +110,14 @@ $ git status
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	modified:   cheatsheet.org
-	new file:   content/posts/cheatsheet.md
-	new file:   themes/hugo-debugprint
-	new file:   themes/hugo-search-fuse-js
+      modified:   cheatsheet.org
+      new file:   content/posts/cheatsheet.md
+      new file:   themes/hugo-debugprint
+      new file:   themes/hugo-search-fuse-js
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	themes/hugo-bare-min-theme/
+      themes/hugo-bare-min-theme/
 ```
 
 Then I add files.
@@ -138,11 +151,11 @@ $ git status
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	modified:   cheatsheet.org
-	new file:   content/posts/cheatsheet.md
-	new file:   themes/hugo-bare-min-theme
-	new file:   themes/hugo-debugprint
-	new file:   themes/hugo-search-fuse-js
+      modified:   cheatsheet.org
+      new file:   content/posts/cheatsheet.md
+      new file:   themes/hugo-bare-min-theme
+      new file:   themes/hugo-debugprint
+      new file:   themes/hugo-search-fuse-js
 ```
 
 Then I commit these changes one by one.
@@ -261,18 +274,18 @@ $ ls .git/config
 $ cat .git/config
 
 [core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-	ignorecase = true
-	precomposeunicode = true
+      repositoryformatversion = 0
+      filemode = true
+      bare = false
+      logallrefupdates = true
+      ignorecase = true
+      precomposeunicode = true
 [remote "origin"]
-	url = git@github.com:Aimeedeer/org-notes.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+      url = git@github.com:Aimeedeer/org-notes.git
+      fetch = +refs/heads/*:refs/remotes/origin/*
 [submodule "themes/hugo-bare-min-theme"]
-	url = https://github.com/kaushalmodi/hugo-bare-min-theme
-	active = true
+      url = https://github.com/kaushalmodi/hugo-bare-min-theme
+      active = true
 
 $ rm -rf .git/modules/themes/
 $ git status
@@ -308,7 +321,7 @@ On branch master
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   config.toml
+      modified:   config.toml
 
 no changes added to commit (use "git add" and/or "git commit -a")
 
@@ -328,9 +341,9 @@ $ git status
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	deleted:    themes/hugo-bare-min-theme
-	deleted:    themes/hugo-debugprint
-	deleted:    themes/hugo-search-fuse-js
+      deleted:    themes/hugo-bare-min-theme
+      deleted:    themes/hugo-debugprint
+      deleted:    themes/hugo-search-fuse-js
 
 
 $ git commit -m"rm"
@@ -362,7 +375,7 @@ $ git status
 On branch master
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	themes/
+      themes/
 
 nothing added to commit but untracked files present (use "git add" to track)
 
@@ -375,48 +388,48 @@ $ git status
 On branch master
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	new file:   themes/hugo-bare-min-theme/.gitignore
-	new file:   themes/hugo-bare-min-theme/.gitmodules
-	new file:   themes/hugo-bare-min-theme/LICENSE.md
-	new file:   themes/hugo-bare-min-theme/README.md
-	new file:   themes/hugo-bare-min-theme/archetypes/.gitkeep
-	new file:   themes/hugo-bare-min-theme/config.toml
-	new file:   themes/hugo-bare-min-theme/exampleSite/.dir-locals.el
-	new file:   themes/hugo-bare-min-theme/exampleSite/LICENSE
-	new file:   themes/hugo-bare-min-theme/exampleSite/README.md
-	new file:   themes/hugo-bare-min-theme/exampleSite/config.toml
-	new file:   themes/hugo-bare-min-theme/exampleSite/content/about.md
-	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/creating-a-new-theme.md
-	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/goisforlovers.md
-	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/hugoisforlovers.md
-	new file:   themes/hugo-bare-min-theme/exampleSite/content/post/migrate-from-jekyll.md
-	new file:   themes/hugo-bare-min-theme/exampleSite/content/search.md
-	new file:   themes/hugo-bare-min-theme/exampleSite/exampleSite.org
-	new file:   themes/hugo-bare-min-theme/exampleSite/layouts/.gitkeep
-	new file:   themes/hugo-bare-min-theme/exampleSite/static/.gitignore
-	new file:   themes/hugo-bare-min-theme/exampleSite/themes/.ignore
-	new file:   themes/hugo-bare-min-theme/exampleSite/themes/hugo-bare-min-theme
-	new file:   themes/hugo-bare-min-theme/images/screenshot.png
-	new file:   themes/hugo-bare-min-theme/images/tn.png
-	new file:   themes/hugo-bare-min-theme/layouts/404.html
-	new file:   themes/hugo-bare-min-theme/layouts/_default/baseof.html
-	new file:   themes/hugo-bare-min-theme/layouts/_default/li.html
-	new file:   themes/hugo-bare-min-theme/layouts/_default/list.html
-	new file:   themes/hugo-bare-min-theme/layouts/_default/single.html
-	new file:   themes/hugo-bare-min-theme/layouts/_default/summary.html
-	new file:   themes/hugo-bare-min-theme/layouts/_default/terms.html
-	new file:   themes/hugo-bare-min-theme/layouts/index.html
-	new file:   themes/hugo-bare-min-theme/layouts/partials/archive/version_ge.html
-	new file:   themes/hugo-bare-min-theme/layouts/partials/header_image.html
-	new file:   themes/hugo-bare-min-theme/layouts/partials/mathjax.html
-	new file:   themes/hugo-bare-min-theme/layouts/partials/opengraph.html
-	new file:   themes/hugo-bare-min-theme/layouts/partials/summary_minus_toc.html
-	new file:   themes/hugo-bare-min-theme/layouts/partials/twitter_cards.html
-	new file:   themes/hugo-bare-min-theme/layouts/shortcodes/figure2.html
-	new file:   themes/hugo-bare-min-theme/netlify.toml
-	new file:   themes/hugo-bare-min-theme/static/css/github_chroma.css
-	new file:   themes/hugo-bare-min-theme/static/js/mathjax-config.js
-	new file:   themes/hugo-bare-min-theme/theme.toml
+      new file:   themes/hugo-bare-min-theme/.gitignore
+      new file:   themes/hugo-bare-min-theme/.gitmodules
+      new file:   themes/hugo-bare-min-theme/LICENSE.md
+      new file:   themes/hugo-bare-min-theme/README.md
+      new file:   themes/hugo-bare-min-theme/archetypes/.gitkeep
+      new file:   themes/hugo-bare-min-theme/config.toml
+      new file:   themes/hugo-bare-min-theme/exampleSite/.dir-locals.el
+      new file:   themes/hugo-bare-min-theme/exampleSite/LICENSE
+      new file:   themes/hugo-bare-min-theme/exampleSite/README.md
+      new file:   themes/hugo-bare-min-theme/exampleSite/config.toml
+      new file:   themes/hugo-bare-min-theme/exampleSite/content/about.md
+      new file:   themes/hugo-bare-min-theme/exampleSite/content/post/creating-a-new-theme.md
+      new file:   themes/hugo-bare-min-theme/exampleSite/content/post/goisforlovers.md
+      new file:   themes/hugo-bare-min-theme/exampleSite/content/post/hugoisforlovers.md
+      new file:   themes/hugo-bare-min-theme/exampleSite/content/post/migrate-from-jekyll.md
+      new file:   themes/hugo-bare-min-theme/exampleSite/content/search.md
+      new file:   themes/hugo-bare-min-theme/exampleSite/exampleSite.org
+      new file:   themes/hugo-bare-min-theme/exampleSite/layouts/.gitkeep
+      new file:   themes/hugo-bare-min-theme/exampleSite/static/.gitignore
+      new file:   themes/hugo-bare-min-theme/exampleSite/themes/.ignore
+      new file:   themes/hugo-bare-min-theme/exampleSite/themes/hugo-bare-min-theme
+      new file:   themes/hugo-bare-min-theme/images/screenshot.png
+      new file:   themes/hugo-bare-min-theme/images/tn.png
+      new file:   themes/hugo-bare-min-theme/layouts/404.html
+      new file:   themes/hugo-bare-min-theme/layouts/_default/baseof.html
+      new file:   themes/hugo-bare-min-theme/layouts/_default/li.html
+      new file:   themes/hugo-bare-min-theme/layouts/_default/list.html
+      new file:   themes/hugo-bare-min-theme/layouts/_default/single.html
+      new file:   themes/hugo-bare-min-theme/layouts/_default/summary.html
+      new file:   themes/hugo-bare-min-theme/layouts/_default/terms.html
+      new file:   themes/hugo-bare-min-theme/layouts/index.html
+      new file:   themes/hugo-bare-min-theme/layouts/partials/archive/version_ge.html
+      new file:   themes/hugo-bare-min-theme/layouts/partials/header_image.html
+      new file:   themes/hugo-bare-min-theme/layouts/partials/mathjax.html
+      new file:   themes/hugo-bare-min-theme/layouts/partials/opengraph.html
+      new file:   themes/hugo-bare-min-theme/layouts/partials/summary_minus_toc.html
+      new file:   themes/hugo-bare-min-theme/layouts/partials/twitter_cards.html
+      new file:   themes/hugo-bare-min-theme/layouts/shortcodes/figure2.html
+      new file:   themes/hugo-bare-min-theme/netlify.toml
+      new file:   themes/hugo-bare-min-theme/static/css/github_chroma.css
+      new file:   themes/hugo-bare-min-theme/static/js/mathjax-config.js
+      new file:   themes/hugo-bare-min-theme/theme.toml
 ```
 
 I commit the changes and check the status,

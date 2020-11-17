@@ -9,6 +9,9 @@ date = 2020-11-12
 tags = ["community", "governance"]
 categories = ["community"]
 draft = false
+[menu.main]
+  weight = 2004
+  identifier = "governance"
 +++
 
 [New governance model for the Django project](https://www.djangoproject.com/weblog/2020/mar/12/governance/)

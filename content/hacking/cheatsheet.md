@@ -3,9 +3,11 @@ title = "Cheatsheet"
 author = ["Aimee Z"]
 description = "My cheatsheet about Git and Emacs."
 date = 2020-10-29
+tags = ["hacking", "git", "emacs", "orgmode"]
+categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2008
+  weight = 2009
   identifier = "cheatsheet"
 +++
 

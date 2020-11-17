@@ -77,7 +77,8 @@ still be usable. Thus, what we need is some system of signing transactions,
 and even generating Bitcoin addresses, that can be computed in a decentralized way.
 Fortunately, Bitcoin allows us to do exactly that.
 
-[DAOs, DACs, DAs and More: An Incomplete Terminology Guide](https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/) | 2014
+[
+DAOs, DACs, DAs and More: An Incomplete Terminology Guide](https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/) | 2014
 > as Bitshares’ Daniel Larimer points out, “everyone thinks a DAC is just a way of
 IPOing your centralized company.” The intent of this article will be to delve into
 some of these concepts, and see if we can come up with at least the beginnings of
@@ -159,3 +160,5 @@ what is going on in the community, and they are only pursuing arbitrage opportun
 
 > The Wiki-based ComCo Management Framework contains one's collaboration history,
 which can be traced back as the credential check.
+
+\*\*
