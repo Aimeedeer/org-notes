@@ -274,7 +274,7 @@ start:
 :EXPORT_FILE_NAME: walnuts
 :EXPORT_DATE: 2020-11-02
 :EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: My hacklog about Walnuts, a toy blockchain.
+:EXPORT_DESCRIPTION: My hacklog for Walnuts, a toy blockchain.
 :EXPORT_OPTIONS: toc:2
 :END:
 

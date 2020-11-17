@@ -1,13 +1,13 @@
 +++
 title = "Walnuts Hacklog"
 author = ["Aimee Z"]
-description = "My hacklog about Walnuts, a toy blockchain."
+description = "My hacklog for Walnuts, a toy blockchain."
 date = 2020-11-02
 tags = ["hacking", "blockchain", "walnuts", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2006
+  weight = 2003
   identifier = "walnuts-hacklog"
 +++
 
