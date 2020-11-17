@@ -56,6 +56,19 @@
       .masthead-body {
           font-size: 0.8em;
       }
+      /* Code block style */
+      .highlight
+      .chroma {
+          font-size: 0.8em;
+	  display: block;
+	  overflow: auto;
+	  background-color: #f5f8fa;
+	  padding: 16px;
+      }      
+      a:link,
+      a:visited {
+	  color: #3d7e9a;
+      }      
       {{ if (not ($.Param "disable_debug")) }}
       {{ partial "debugprint.css" | safeCSS }}
       {{ end }} 
@@ -76,6 +89,9 @@
       ul.task-list {
           list-style-type: none;
       }
+      li {
+	  
+      } 
     </style>
 
     <!-- Opengraph and Twitter -->
