@@ -54,7 +54,7 @@ draft = false
 ### 2020-11-16 {#2020-11-16}
 
 -   Created a new block (Mine) from commandline,
-    and saved it to walnutsdata.txt
+    and saved it to walnutsdata.json
 -   Learned: always thinking in type system
 
 Test the sample code from [serde.rs](https://serde.rs/)
@@ -116,11 +116,38 @@ deserialized data from walnutsdata.txt: Block { header: BlockHeader { prev_block
 check mine funtion: Ok(())
 ```
 
-Change to "pretty" and print pretty output:
+Change to `serde_json::to_string_pretty`:
 
 ```rust
 let blockdata = serde_json::to_string_pretty(&block).unwrap();
+
+println!("write to walnutsdata.json");
+
+let f = File::create("walnutsdata.json")?;
+{
+    let mut buffer = BufWriter::new(f);
+
+    buffer.write_all(&blockdata.as_bytes())?;
+    buffer.flush()?;
+}
+
+let mut fout = File::open("walnutsdata.json")?;
+
+// future consideration: io & os performance
+// let mut buf_reader = BufReader::new(fout);
+
+let mut data = String::new();
+fout.read_to_string(&mut data)?;
+
+println!("read from walnutsdata.json in string: {}", &data);
+
+let deserialized: Block = serde_json::from_str(&data).unwrap();
+println!("deserialized data from walnutsdata.json: {:?}", deserialized);
+
+Ok(())
 ```
+
+The pretty output:
 
 ```shell
     Finished dev [unoptimized + debuginfo] target(s) in 1.08s
