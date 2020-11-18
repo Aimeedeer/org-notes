@@ -18,6 +18,8 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [2020-11-17 ink!](#2020-11-17-ink)
+    - [Follow the docs](#follow-the-docs)
+    - [Thoughts](#thoughts)
 - [2020-11-15 Start](#2020-11-15-start)
     - [Follow the GitHub repo](#follow-the-github-repo)
     - [Install `nightly-2020-10-05` and build again](#install-nightly-2020-10-05-and-build-again)
@@ -33,12 +35,15 @@ draft = false
 
 ## 2020-11-17 ink! {#2020-11-17-ink}
 
+
+### Follow the docs {#follow-the-docs}
+
 Start with
 [substrate.dev/substrate-contracts-workshop](https://substrate.dev/substrate-contracts-workshop/#/0/introduction)
 
 Install from the webpage's command, but build failed.
 
-Existing issue in Cargo's repo:
+The existing issue in Cargo's repo:
 <https://github.com/rust-lang/cargo/issues/7169>
 
 Need to read Cargo book:
@@ -76,6 +81,18 @@ $ canvas --dev --tmp
 2020-11-17 17:20:54  🙌 Starting consensus session on top of parent 0x4b4fa8e91ef020d0544796b1dc9c26c046662b6bae182be5fa5548f9818863b4
 2020-11-17 17:20:54  🎁 Prepared block for proposing at 2 [hash: 0x42d318b1165e2217212499aad57c1d6c89637668fb5d02d482415ef8eaa9f4da; parent_hash: 0x4b4f…63b4; extrinsics (1): [0x029c…6c04]]
 ```
+
+
+### Thoughts {#thoughts}
+
+My experience with Polkadot, Substrate, and ink so far is pleasant.
+The documentation is up to date enough with detailed step by step
+descriptions. I can follow along smoothly.
+
+There are some things I couldn't figure out at the first moment.
+I realized that mostly because I am not familiar with Rust language and
+its ecosystem. For example, if I know Cargo better, I would learn
+to use `cargo install` and `cargo build` correctly with necessary arguments.
 
 
 ## 2020-11-15 Start {#2020-11-15-start}
