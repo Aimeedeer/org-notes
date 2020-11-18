@@ -278,7 +278,7 @@ start:
 :EXPORT_OPTIONS: toc:2
 :END:
 
-*** TODO List
+*** TODO
 - [x] sha2 for hash function
 - [x] chrono for Utc time as timestamp
 - [x] serde for storage, write & read to a file on disc
@@ -294,6 +294,8 @@ start:
 - [ ] clean code
     
 *** Hacklog
+
+
 
 **** 2020-11-16
 

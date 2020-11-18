@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "Aimee's Study Notes"
 theme = "hugo-bare-min-theme"
 
+googleAnalytics = "G-K752PTP4WJ"
+
 enableEmoji = true
 enableGitInfo = true
 pygmentsUseClasses = true
