@@ -269,6 +269,72 @@ define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %
 start:
 #+end_src
 
+** Rust China                               :rust:china:community:@community:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rust-china
+:EXPORT_DATE: 2020-11-20
+:EXPORT_HUGO_SECTION: community
+:EXPORT_DESCRIPTION: All about Rust China.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+
+*** Forums and Channels
+
+**** GitHub
+
+- https://github.com/rust-lang-cn
+- https://github.com/RustChina
+- https://github.com/rust-zh
+
+**** Forum and media channels
+
+- [[https://rustcc.cn/][RustCC]] 
+- WeChat Official 微信公众账号：Rust语言学习交流
+
+**** Telegram
+
+- https://t.me/rust_zh
+- t.me/rust_deep_water
+**** WeChat groups
+
+Invite only because of WeChat's limitation.
+
+**** QQ groups
+
+- Rust编程语言社区1群，群号：303838735 （已满，只能内部邀请）
+- Rust编程语言社区2群，群号：813448660
+- Rust中文，群号：570065685
+- Topics: 专题群：
+  - Rust Redox发行版开发群，群号：437268658
+  - Rust Data Science 研究小组，群号：681142501
+  - Rust webassembly/wasm社区，群号：347929175
+  - Rust 论坛开发组，群号：687763184 
+   （关于https://rust.cc论坛开发相关讨论）
+  - Rust社群-区块链研究，群号：617238820
+  - Rust 嵌入式开发，群号：825820683
+  - φ Rust图形学，群号：812748521
+  - 哲学与计算，群号：446590168
+  - Offline meetups: 地方线下聚会群：
+    - 北京：305842562
+    - 上海：966129249
+    - 深圳：673715651
+    - 广州：738772514
+    - 成都：131080784
+    - 重庆：962149536
+
+*** Conferences
+
+[[https://rustcon.asia][RustCon Asia 2019]] | Beijing
+- Source code is on [[https://github.com/rustcon-asia/beijing-2019][GitHub]]
+- Co-organized by [[https://www.cryptape.com/][Cryptape]] and [[https://pingcap.com/][PingCAP]]
+- Announcement: [[https://rustcon.asia/blog/hello-asia/][Hello / 你好 Asia]]
+- Recap: [[https://medium.com/@Aimeedeer/a-close-touch-with-rust-community-4a8507b756d9][A Close Encounter with Rust Community]]
+
+[[https://2020conf.rustcc.cn/][Rust China Conf 2020]] | Shanghai or Shenzhen
+- Source code?
+- Organizing by [[https://rustcc.cn/][RustCC]] 
+
 ** Walnuts Hacklog                  :hacking:blockchain:walnuts:log:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: walnuts
@@ -286,7 +352,8 @@ start:
 - [x] create a new block from commandline, 
       and save it in a json file
 - [ ] deal with unwrap() -> Result
-- [ ] change read & write to serde <> io: https://docs.rs/serde_json/1.0.59/serde_json/fn.from_reader.html
+- [ ] change read & write to serde <> io: 
+      https://docs.rs/serde_json/1.0.59/serde_json/fn.from_reader.html
 - [ ] create transactions from commandline
 - [ ] 256k for tx signature: https://docs.rs/k256/0.5.10/k256/
 - [ ] nouce verify
@@ -295,6 +362,7 @@ start:
     
 *** Hacklog
 
+**** 2020-11-20
 
 
 **** 2020-11-16
