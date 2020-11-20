@@ -16,29 +16,66 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
+- [Companies using Rust](#companies-using-rust)
+- [Conferences](#conferences)
+- [GitHub Orgs](#github-orgs)
 - [Forums and Channels](#forums-and-channels)
-    - [GitHub](#github)
-    - [Forum and media channels](#forum-and-media-channels)
+    - [Forum and media](#forum-and-media)
     - [Telegram](#telegram)
     - [WeChat groups](#wechat-groups)
     - [QQ groups](#qq-groups)
-- [Conferences](#conferences)
 
 </div>
 <!--endtoc-->
 
 
-## Forums and Channels {#forums-and-channels}
+## Companies using Rust {#companies-using-rust}
+
+-   Alibaba & Ant Finance
+    -   Multiple teams & products
+    -   [Occlum](https://occlum.io/) and the [source](https://github.com/occlum/occlum) # `tee`
+-   [Huawei](https://www.huawei.com/en/)
+    -   Multiple teams & products
+-   [Cryptape](https://www.cryptape.com/) # `blockchain`
+    -   [CKB](https://github.com/nervosnetwork/ckb)
+-   [RivTower 溪塔科技](https://www.rivtower.com/) # `blockchain`
+    -   [CITA](https://github.com/citahub/cita)
+-   [PingCAP](https://pingcap.com/) # `database`
+    -   [TiKV](https://github.com/tikv/tikv)
+-   [Bilibili](https://www.bilibili.com/) # `video` `social`
+-   [Bytedance](https://www.bytedance.com/en/) # `video` `social`
+-   [Zhihu](https://www.zhihu.com/) # `forum`
+    -   [Rucene](https://github.com/zhihu/rucene)
 
 
-### GitHub {#github}
+## Conferences {#conferences}
+
+[Rust China Conf 2020](https://2020conf.rustcc.cn/) | Shanghai or Shenzhen
+
+-   Source code?
+-   Organizing by [RustCC](https://rustcc.cn/)
+
+[RustCon Asia 2019](https://rustcon.asia) | Beijing
+
+-   Source code is on [GitHub](https://github.com/rustcon-asia/beijing-2019)
+-   Co-organized by [Cryptape](https://www.cryptape.com/) and [PingCAP](https://pingcap.com/)
+-   Announcement: [Hello / 你好 Asia](https://rustcon.asia/blog/hello-asia/)
+-   Recap: [A Close Encounter with Rust Community](https://medium.com/@Aimeedeer/a-close-touch-with-rust-community-4a8507b756d9)
+-   [Photos](https://www.dropbox.com/sh/t6s39rupk492ntq/AACSMbbeE-uYLqqlyJmXXGUPa?dl=0)
+-   [Videos](https://www.youtube.com/watch?v=YSEx8wtlPWc&list=PL85XCvVPmGQjPvweRqkBgnh%5FHKE5MBB8x)
+
+
+## GitHub Orgs {#github-orgs}
 
 -   <https://github.com/rust-lang-cn>
 -   <https://github.com/RustChina>
 -   <https://github.com/rust-zh>
 
 
-### Forum and media channels {#forum-and-media-channels}
+## Forums and Channels {#forums-and-channels}
+
+
+### Forum and media {#forum-and-media}
 
 -   [RustCC](https://rustcc.cn/)
 -   WeChat Official 微信公众账号：Rust语言学习交流
@@ -47,7 +84,7 @@ draft = false
 ### Telegram {#telegram}
 
 -   <https://t.me/rust%5Fzh>
--   t.me/rust\_deep\_water
+-   <https://t.me/rust%5Fdeep%5Fwater>
 
 
 ### WeChat groups {#wechat-groups}
@@ -77,18 +114,3 @@ Invite only because of WeChat's limitation.
         -   广州：738772514
         -   成都：131080784
         -   重庆：962149536
-
-
-## Conferences {#conferences}
-
-[RustCon Asia 2019](https://rustcon.asia) | Beijing
-
--   Source code is on [GitHub](https://github.com/rustcon-asia/beijing-2019)
--   Co-organized by [Cryptape](https://www.cryptape.com/) and [PingCAP](https://pingcap.com/)
--   Announcement: [Hello / 你好 Asia](https://rustcon.asia/blog/hello-asia/)
--   Recap: [A Close Encounter with Rust Community](https://medium.com/@Aimeedeer/a-close-touch-with-rust-community-4a8507b756d9)
-
-[Rust China Conf 2020](https://2020conf.rustcc.cn/) | Shanghai or Shenzhen
-
--   Source code?
--   Organizing by [RustCC](https://rustcc.cn/)

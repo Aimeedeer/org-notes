@@ -278,16 +278,48 @@ start:
 :EXPORT_OPTIONS: toc:2
 :END:
 
+*** Companies using Rust
 
-*** Forums and Channels
+- Alibaba & Ant Finance
+  - Multiple teams & products
+  - [[https://occlum.io/][Occlum]] and the [[https://github.com/occlum/occlum][source]] # ~tee~
+- [[https://www.huawei.com/en/][Huawei]]
+  - Multiple teams & products
+- [[https://www.cryptape.com/][Cryptape]] # ~blockchain~
+  - [[https://github.com/nervosnetwork/ckb][CKB]]
+- [[https://www.rivtower.com/][RivTower 溪塔科技]] # ~blockchain~
+  - [[https://github.com/citahub/cita][CITA]]
+- [[https://pingcap.com/][PingCAP]] # ~database~
+  - [[https://github.com/tikv/tikv][TiKV]]
+- [[https://www.bilibili.com/][Bilibili]] # ~video~ ~social~
+- [[https://www.bytedance.com/en/][Bytedance]] # ~video~ ~social~
+- [[https://www.zhihu.com/][Zhihu]] # ~forum~
+  - [[https://github.com/zhihu/rucene][Rucene]]
 
-**** GitHub
+*** Conferences
+
+[[https://2020conf.rustcc.cn/][Rust China Conf 2020]] | Shanghai or Shenzhen
+- Source code?
+- Organizing by [[https://rustcc.cn/][RustCC]] 
+
+[[https://rustcon.asia][RustCon Asia 2019]] | Beijing
+- Source code is on [[https://github.com/rustcon-asia/beijing-2019][GitHub]]
+- Co-organized by [[https://www.cryptape.com/][Cryptape]] and [[https://pingcap.com/][PingCAP]]
+- Announcement: [[https://rustcon.asia/blog/hello-asia/][Hello / 你好 Asia]]
+- Recap: [[https://medium.com/@Aimeedeer/a-close-touch-with-rust-community-4a8507b756d9][A Close Encounter with Rust Community]]
+- [[https://www.dropbox.com/sh/t6s39rupk492ntq/AACSMbbeE-uYLqqlyJmXXGUPa?dl=0][Photos]]
+- [[https://www.youtube.com/watch?v=YSEx8wtlPWc&list=PL85XCvVPmGQjPvweRqkBgnh_HKE5MBB8x][Videos]]
+
+*** GitHub Orgs
 
 - https://github.com/rust-lang-cn
 - https://github.com/RustChina
 - https://github.com/rust-zh
 
-**** Forum and media channels
+
+*** Forums and Channels
+
+**** Forum and media
 
 - [[https://rustcc.cn/][RustCC]] 
 - WeChat Official 微信公众账号：Rust语言学习交流
@@ -295,7 +327,8 @@ start:
 **** Telegram
 
 - https://t.me/rust_zh
-- t.me/rust_deep_water
+- https://t.me/rust_deep_water
+
 **** WeChat groups
 
 Invite only because of WeChat's limitation.
@@ -323,17 +356,6 @@ Invite only because of WeChat's limitation.
     - 成都：131080784
     - 重庆：962149536
 
-*** Conferences
-
-[[https://rustcon.asia][RustCon Asia 2019]] | Beijing
-- Source code is on [[https://github.com/rustcon-asia/beijing-2019][GitHub]]
-- Co-organized by [[https://www.cryptape.com/][Cryptape]] and [[https://pingcap.com/][PingCAP]]
-- Announcement: [[https://rustcon.asia/blog/hello-asia/][Hello / 你好 Asia]]
-- Recap: [[https://medium.com/@Aimeedeer/a-close-touch-with-rust-community-4a8507b756d9][A Close Encounter with Rust Community]]
-
-[[https://2020conf.rustcc.cn/][Rust China Conf 2020]] | Shanghai or Shenzhen
-- Source code?
-- Organizing by [[https://rustcc.cn/][RustCC]] 
 
 ** Walnuts Hacklog                  :hacking:blockchain:walnuts:log:@hacking:
 :PROPERTIES:
@@ -363,6 +385,11 @@ Invite only because of WeChat's limitation.
 *** Hacklog
 
 **** 2020-11-20
+
+
+
+
+
 
 
 **** 2020-11-16
