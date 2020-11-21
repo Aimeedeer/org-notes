@@ -407,7 +407,7 @@ Changes in blockchain.rs: ~unwrap()~ -> ~?~
 
 The output:
 #+begin_src shell
-
+$ cargo run -- mine
     Finished dev [unoptimized + debuginfo] target(s) in 1.55s
      Running `target/debug/walnuts mine`
 Opt {

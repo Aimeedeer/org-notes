@@ -78,7 +78,7 @@ pub fn updateblockchain(block: Block) -> Result<()> {
 The output:
 
 ```shell
-
+$ cargo run -- mine
     Finished dev [unoptimized + debuginfo] target(s) in 1.55s
      Running `target/debug/walnuts mine`
 Opt {
