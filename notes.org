@@ -1002,6 +1002,70 @@ we are trying to uphold this future goal
 by considering interoperability of new features in accordance to it.
 
 ** Rust and Computer Science                               :rust:cs:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rust-cs
+:EXPORT_DATE: 2020-11-21
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Rust and CS resources.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** CS
+
+[[https://reberhardt.com/cs110l/spring-2020/][CS 110L: Safety in Systems Programming]]
+- [[https://reberhardt.com/cs110l/spring-2020/slides/lecture-18.pdf][Comparison between C and Rust]]
+
+[[https://github.com/cis198-2016s][CIS 198 - Rust - Spring 2016]]
+- [[https://cis198-2016s.github.io/projects/][Project page]]
+
+[[https://github.com/SmallPond/MIT6.828_OS][MIT6.828 Operating System Engineering]]
+
+Type system
+- [[https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/][Things I Was Wrong About: Types]]
+
+[[https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html][1.1  The Elements of Programming]]
+> **Primitive expressions**, which represent the simplest entities the language is concerned with,
+>
+> **Means of combination**, by which compound elements are built from simpler ones, and
+>
+> **means of abstraction**, by which compound elements can be named and manipulated as units
+
+*** Rust language
+
+[[https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf][Understanding and Evolving the Rust Programming Language]] August 2020
+
+[[https://wiki.alopex.li/RustStarterKit2020][Rust Starter Kit 2020]]
+
+Video: [[https://www.youtube.com/watch?v=0zOg8_B71gE][Pascal Hertleif - Writing Idiomatic Libraries in Rust]]
+
+*** Rust discussion
+
+[[https://readrust.net/computer-science][ReadRust: Computer Science]]
+
+[[https://www.reddit.com/r/rust/comments/6nw22d/opinions_about_using_rust_instead_of_c_in/][Reddit discussion: Opinions about using Rust instead of C in Computer Science courses]]
+
+Rust weaknesses:
+[[https://www.reddit.com/r/rust/comments/jia2xn/what_are_some_of_rusts_weaknesses_as_a_language/][This question got a bunch of discussions]]
+
+
+** Error Handling                               :rust:errorhandling:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: error-handling
+:EXPORT_DATE: 2020-11-21
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Error handling learning and practice.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** std::io::Error
+
+- [[https://github.com/rust-bitcoin/rust-bitcoin/pull/494#issuecomment-716196725][rust-bitcoin discussion]]
+- He also linked to his commemt on reddit:
+  [[https://www.reddit.com/r/rust/comments/jbdk5x/blog_post_study_of_stdioerror/g8vzhjy/?utm_source=reddit&utm_medium=web2x&context=3][std::io::Error]]
+  for which he commented to matklad's blog post 
+  [[https://matklad.github.io/2020/10/15/study-of-std-io-error.html][study of std::io::Error]]
+
+
 ** Blockchain Voting                          :blockchain:voting:@blockchain:
 :PROPERTIES:
 :EXPORT_FILE_NAME: blockchain-voting
