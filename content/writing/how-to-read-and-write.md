@@ -3,10 +3,27 @@ title = "How to Read and Write"
 author = ["Aimee Z"]
 description = "Notes about reading and writing."
 date = 2020-10-29
-tags = ["writing", "notes"]
+tags = ["writing", "notes", "read"]
 categories = ["writing"]
 draft = false
+[menu.main]
+  weight = 2016
+  identifier = "how-to-read-and-write"
 +++
+
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [Read books](#read-books)
+- [Read papers](#read-papers)
+- [How to write](#how-to-write)
+- [Articles about writing](#articles-about-writing)
+
+</div>
+<!--endtoc-->
+
 
 ## Read books {#read-books}
 

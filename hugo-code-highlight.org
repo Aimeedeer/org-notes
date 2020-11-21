@@ -12,30 +12,3 @@ Change it from config.toml and
 (maybe) add your own syntax.css.
 
 #+end_description
-
-* Disable the default
-
-Add this code to the top level in your config.toml.
-Do not put it below [Params].
-
-#+begin_src 
-pygmentsUseClasses = true
-#+end_src
-
-* Generate your syntax.css
-
-Hugo's doc:
-[[https://gohugo.io/content-management/syntax-highlighting/][Generate Syntax Highlighter CSS]]
-
-#+begin_src shell
-hugo gen chromastyles --style=monokai > syntax.css
-#+end_src
-
-Replace "monokai" with other names [[https://xyproto.github.io/splash/docs/][here]].
-
-Add the CSS file to the right place, for example,
-> static/css/syntax.css
-
-and add the path to your header.html or head.html,
-where stylesheets are imported.
-

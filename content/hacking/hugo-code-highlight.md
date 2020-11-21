@@ -1,16 +1,27 @@
 +++
 title = "Hugo Code Highlight"
 author = ["Aimee Z"]
-description = """
-  Hugo uses default built-in code highlight.
-  Change it from config.toml and 
-  (maybe) add your own syntax.css.
-  """
+description = "Hugo uses default built-in code highlight. Change it from config.toml and (maybe) add your own syntax.css."
 date = 2020-11-14
-tags = ["hacking", "hugo", "highlight", "css"]
+tags = ["hugo", "hacking", "css"]
 categories = ["hacking"]
 draft = false
+[menu.main]
+  weight = 2013
+  identifier = "hugo-code-highlight"
 +++
+
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [Disable the default](#disable-the-default)
+- [Generate your syntax.css](#generate-your-syntax-dot-css)
+
+</div>
+<!--endtoc-->
+
 
 ## Disable the default {#disable-the-default}
 
