@@ -77,14 +77,16 @@ draft = false
 
 ### Forum and media {#forum-and-media}
 
--   [RustCC](https://rustcc.cn/)
--   WeChat Official 微信公众账号：Rust语言学习交流
+-   Forum RustCC: <https://rustcc.cn/>
+-   WeChat news channel: Rust语言学习交流
+-   Telegram news channel: <https://t.me/rust%5Fdaily%5Fnews>
 
 
 ### Telegram {#telegram}
 
 -   <https://t.me/rust%5Fzh>
 -   <https://t.me/rust%5Fdeep%5Fwater>
+-   <https://t.me/rust%5Ftw>
 
 
 ### WeChat groups {#wechat-groups}

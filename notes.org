@@ -321,13 +321,15 @@ start:
 
 **** Forum and media
 
-- [[https://rustcc.cn/][RustCC]] 
-- WeChat Official 微信公众账号：Rust语言学习交流
+- Forum RustCC: https://rustcc.cn/
+- WeChat news channel: Rust语言学习交流
+- Telegram news channel: https://t.me/rust_daily_news
 
 **** Telegram
 
 - https://t.me/rust_zh
 - https://t.me/rust_deep_water
+- https://t.me/rust_tw  
 
 **** WeChat groups
 
@@ -383,6 +385,9 @@ Invite only because of WeChat's limitation.
 - [ ] clean code
     
 *** Hacklog
+
+**** 2020-11-21
+
 
 **** 2020-11-20
 
