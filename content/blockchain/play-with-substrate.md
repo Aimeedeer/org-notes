@@ -8,7 +8,7 @@ tags = ["substrate", "blockchain", "hacking"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2004
+  weight = 2005
   identifier = "play-with-substrate"
 +++
 
@@ -17,6 +17,8 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
+- [2020-11-20](#2020-11-20)
+    - [New tool learned](#new-tool-learned)
 - [2020-11-17 ink!](#2020-11-17-ink)
     - [Follow the docs](#follow-the-docs)
     - [Thoughts](#thoughts)
@@ -31,6 +33,155 @@ draft = false
 
 </div>
 <!--endtoc-->
+
+
+## 2020-11-20 {#2020-11-20}
+
+[Creating an ink! Project](https://substrate.dev/substrate-contracts-workshop/#/0/creating-an-ink-project)
+
+Run `cargo contract new flipper` again
+(I already ran it last time):
+
+```shell
+$ cargo +nightly contract build
+ [1/3] Building cargo project
+   Compiling termcolor v1.1.2
+   Compiling trybuild v1.0.35
+   Compiling ink_lang_macro v3.0.0-rc2
+   Compiling ink_lang v3.0.0-rc2
+   Compiling flipper v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_4mvqYY)
+    Finished release [optimized] target(s) in 5.55s
+ [2/3] Post processing wasm file
+ [3/3] Optimizing wasm file
+wasm-opt is not installed. Install this tool on your system in order to
+reduce the size of your contract's Wasm binary.
+See https://github.com/WebAssembly/binaryen#tools
+```
+
+
+### New tool learned {#new-tool-learned}
+
+[cargo-expand](https://github.com/dtolnay/cargo-expand) by [dtolnay](https://github.com/dtolnay).
+
+```shell
+$ cargo expand --no-default-features
+# Compiling...
+error: ink! only support compilation as `std` or `no_std` + `wasm32-unknown`
+  --> /Users/aimeez/.cargo/registry/src/github.com-1ecc6299db9ec823/ink_env-3.0.0-rc2/src/engine/mod.rs:39:9
+   |
+39 | /         compile_error! {
+40 | |             "ink! only support compilation as `std` or `no_std` + `wasm32-unknown`"
+41 | |         }
+   | |_________^
+error[E0432]: unresolved import `crate::engine::EnvInstance`
+  --> /Users/aimeez/.cargo/registry/src/github.com-1ecc6299db9ec823/ink_env-3.0.0-rc2/src/api.rs:29:9
+   |
+29 |         EnvInstance,
+   |         ^^^^^^^^^^^
+   |         |
+   |         no `EnvInstance` in `engine`
+   |         help: a similar name exists in the module: `OnInstance`
+error: aborting due to 2 previous errors
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `ink_env`
+To learn more, run the command again with --verbose.
+warning: build failed, waiting for other jobs to finish...
+error: build failed
+```
+
+Update the command and it works:
+
+```shell
+$ cargo expand --no-default-features --target=wasm32-unknown-unknown
+
+#![feature(prelude_import)]
+#![no_std]
+#[prelude_import]
+use core::prelude::v1::*;
+#[macro_use]
+extern crate core;
+#[macro_use]
+extern crate compiler_builtins;
+use ink_lang as ink;
+mod flipper {
+    impl ::ink_lang::ContractEnv for Flipper {
+	type Env = ::ink_env::DefaultEnvironment;
+    }
+    type Environment = <Flipper as ::ink_lang::ContractEnv>::Env;
+    type AccountId =
+	<<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::AccountId;
+    type Balance = <<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::Balance;
+    type Hash = <<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::Hash;
+    type Timestamp =
+	<<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::Timestamp;
+    type BlockNumber =
+	<<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::BlockNumber;
+    #[cfg(not(feature = "ink-as-dependency"))]
+    const _: () = {
+	impl<'a> ::ink_lang::Env for &'a Flipper {
+	    type EnvAccess = ::ink_lang::EnvAccess<'a, <Flipper as ::ink_lang::ContractEnv>::Env>;
+	    fn env(self) -> Self::EnvAccess {
+		Default::default()
+	    }
+	}
+	impl<'a> ::ink_lang::StaticEnv for Flipper {
+	    type EnvAccess =
+		::ink_lang::EnvAccess<'static, <Flipper as ::ink_lang::ContractEnv>::Env>;
+	    fn env() -> Self::EnvAccess {
+		Default::default()
+	    }
+	}
+    };
+    #[cfg(not(feature = "ink-as-dependency"))]
+    /// Defines the storage of your contract.
+    /// Add new fields to the below struct in order
+    /// to add new static storage fields to your contract.
+    pub struct Flipper {
+	/// Stores a single `bool` value on the storage.
+	value: bool,
+    }
+    const _: () = {
+	impl ::ink_storage::traits::SpreadLayout for Flipper {
+	    #[allow(unused_comparisons)]
+	    const FOOTPRINT: u64 = [
+		(0u64 + <bool as ::ink_storage::traits::SpreadLayout>::FOOTPRINT),
+		0u64,
+	    ][((0u64 + <bool as ::ink_storage::traits::SpreadLayout>::FOOTPRINT) < 0u64) as usize];
+	    const REQUIRES_DEEP_CLEAN_UP: bool = (false
+		|| (false
+		    || <bool as ::ink_storage::traits::SpreadLayout>::REQUIRES_DEEP_CLEAN_UP));
+	    fn pull_spread(__key_ptr: &mut ::ink_storage::traits::KeyPtr) -> Self {
+		Flipper {
+		    value: <bool as ::ink_storage::traits::SpreadLayout>::pull_spread(__key_ptr),
+		}
+	    }
+	    fn push_spread(&self, __key_ptr: &mut ::ink_storage::traits::KeyPtr) {
+		match self {
+		    Flipper { value: __binding_0 } => {
+			::ink_storage::traits::SpreadLayout::push_spread(__binding_0, __key_ptr);
+		    }
+		}
+	    }
+	    fn clear_spread(&self, __key_ptr: &mut ::ink_storage::traits::KeyPtr) {
+		match self {
+		    Flipper { value: __binding_0 } => {
+			::ink_storage::traits::SpreadLayout::clear_spread(__binding_0, __key_ptr);
+		    }
+		}
+	    }
+	}
+    };
+    #[cfg(not(feature = "ink-as-dependency"))]
+    const _: () = {
+	#[allow(unused_imports)]
+	use ::ink_lang::{Env as _, StaticEnv as _};
+    };
+    #[cfg(not(test))]
+    #[cfg(not(feature = "ink-as-dependency"))]
+
+    #...
+    #more
+```
 
 
 ## 2020-11-17 ink! {#2020-11-17-ink}

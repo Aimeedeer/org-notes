@@ -7,7 +7,7 @@ tags = ["hacking", "blockchain", "walnuts", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2003
+  weight = 2004
   identifier = "walnuts-hacklog"
 +++
 
@@ -16,8 +16,9 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [<span class="org-todo todo TODO">TODO</span> List](#list)
+- [TODO](#todo)
 - [Hacklog](#hacklog)
+    - [2020-11-20](#2020-11-20)
     - [2020-11-16](#2020-11-16)
     - [2020-11-13](#2020-11-13)
     - [2020-11-12](#2020-11-12)
@@ -31,7 +32,7 @@ draft = false
 <!--endtoc-->
 
 
-## <span class="org-todo todo TODO">TODO</span> List {#list}
+## TODO {#todo}
 
 -   sha2 for hash function
 -   chrono for Utc time as timestamp
@@ -39,8 +40,9 @@ draft = false
 -   cli
 -   create a new block from commandline,
     and save it in a json file
+-   [ ] change read & write to serde <> io:
+    <https://docs.rs/serde%5Fjson/1.0.59/serde%5Fjson/fn.from%5Freader.html>
 -   [ ] deal with unwrap() -> Result
--   [ ] change read & write to serde <> io: <https://docs.rs/serde%5Fjson/1.0.59/serde%5Fjson/fn.from%5Freader.html>
 -   [ ] create transactions from commandline
 -   [ ] 256k for tx signature: <https://docs.rs/k256/0.5.10/k256/>
 -   [ ] nouce verify
@@ -49,6 +51,45 @@ draft = false
 
 
 ## Hacklog {#hacklog}
+
+
+### 2020-11-20 {#2020-11-20}
+
+[Crate serde\_json](https://docs.rs/serde%5Fjson/1.0.59/serde%5Fjson/index.html)
+
+A worth reading issue:
+[Parsing 20MB file using from\_reader is slow #160](https://github.com/serde-rs/json/issues/160)
+
+Changes in blockchain.rs: `unwrap()` -> `?`
+
+```rust
+pub fn updateblockchain(block: Block) -> Result<()> {
+    let f = File::create("walnutsdata.json")?;
+    let blockdata = serde_json::ser::to_writer_pretty(f, &block)?;
+    println!("write to walnutsdata.json");
+
+    let data = std::fs::read_to_string("walnutsdata.json")?;
+    let deserialized: Block = serde_json::from_str(&data)?;
+    println!("deserialized data from walnutsdata.json: {:?}", deserialized);
+    Ok(())
+}
+```
+
+The output:
+
+```shell
+
+    Finished dev [unoptimized + debuginfo] target(s) in 1.55s
+     Running `target/debug/walnuts mine`
+Opt {
+    cmd: Mine,
+}
+write to walnutsdata.json
+deserialized data from walnutsdata.json: Block { header: BlockHeader { prev_block_hash: [166, 5, 88, 255, 235, 6, 147, 45, 180, 203, 105, 29, 131, 4, 186, 246, 69, 115, 54, 230, 65, 190, 65, 172, 108, 106, 33, 220, 51, 45, 68, 150], time: 1605002954274, nonce: 1 }, txs: [] }
+check mine funtion: Ok(())
+```
+
+I didn't finish implementing `anyhow::Result` error handling today.
 
 
 ### 2020-11-16 {#2020-11-16}
