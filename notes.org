@@ -6,360 +6,7 @@
 :EXPORT_HUGO_SECTION: post
 :EXPORT_HUGO_MENU: :menu main
 :END:
-** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
-:PROPERTIES:
-:EXPORT_FILE_NAME: cheatsheet
-:EXPORT_DATE: 2020-10-29
-:EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: My cheatsheet about Git and Emacs.
-:EXPORT_OPTIONS: toc:2
-:END:
-
-*** Emacs & org-mode
-**** References
-
-- https://stackoverflow.com/questions/16186843/inline-code-in-org-mode
-- https://orgmode.org/org.html#Emphasis-and-monospace
-
-**** Examples
-
-src_sh[:exports code]{echo -e "test"}
-
-#+begin_src 
-src_sh[:exports code]{echo -e "test"}
-#+end_Src
-
-~fn main()~ 
-
-#+begin_src
-~fn main()~ 
-#+end_src
-
-=verbatim text=
-
-#+begin_src
-=verbatim text=
-#+end_src
-
-*** Git commands
-
-**** Remote .git
-
-#+begin_src shell
-$ ls .git
-$ rm .git
-rm: .git: is a directory
-$ rm -rf .git
-#+end_src
-
-**** Download a file from command line
-
-#+begin_src shell
-$ curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
-$ curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
-#+end_src
-
-**** Cherry pick
-
-#+begin_src shell
-$ git remote add some_github_id https://github.com/some_github_id/rust-in-blockchain.git
-$ git fetch some_github_id
-$ git log some_github_id/master
-$ git cherry-pick some_commit_hash
-$ git diff HEAD^..HEAD
-$ git push origin master
-#+end_src
-
-**** Reset a commit
-
-#+begin_src shell
-$ git reset HEAD^
-$ git rm */~
-$ git rm */*~
-$ git commit --amend
-$ git log
-commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
-#+end_src
-
-**** Hide changes and do not commit
-
-#+begin_src shell
-$ git stash
-#+end_src
-
-**** Cancel hiding
-
-#+begin_src shell
-$ git stash pop 
-#+end_src
-
-**** Add submodule to rib
-
-#+begin_src shell
-$ ln -> means link
-#+end_src
-
-**** Creat an aliase for syncing file 
-
-#+begin_src shell
-$ ln -s ../awesome-blockchain-rust/README.md awesome-blockchain-rust.md 
-#+end_src
-
-**** Recover to previous clean code
-
-#+begin_src shell
-$ git checkout -f
-#+end_src
-
-**** About PATH
-
-#+begin_src shell
-$ pwd
-$ echo $PWD
-$ export PATH=$PATH:$PWD
-#+end_src
-
-**** SSH
-
-#+begin_src shell
-$ eval `ssh-agent`
-$ ssh-add
-$ ssh -T git@github.com 
-#+end_src
-
-**** Generated a new key
-
-#+begin_src shell
-$ ssh-keygen -C your@email.com 
-#+end_src
-
-**** Move a file to current
-
-#+begin_src shell
-$ git mv www/contracts .
-#+end_src
-** Rust Cargo and More               :hacking:rust:cargo:rustup:log:@hacking:
-:PROPERTIES:
-:EXPORT_FILE_NAME: rust-cargo-etc
-:EXPORT_DATE: 2020-11-14
-:EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: Understand Rust programming language.
-:EXPORT_OPTIONS: toc:2
-:END:
-
-*** Cargo bin
-
-#+begin_src shell
-$ ~/.cargo/bin
--bash: /Users/aimeez/.cargo/bin: is a directory
-
-$ cd ~/.cargo/bin
-$ ls
-basic-http-server	cargo-generate		diesel			rust-trending		ssmanager
-cargo			cargo-make		lighthouse		rustc			ssserver
-cargo-add		cargo-miri		makers			rustdoc			ssurl
-cargo-casperlabs	cargo-rm		mdbook			rustfmt			wasm-pack
-cargo-clippy		cargo-upgrade		mdbook-linkcheck	rustlings		wasm-pack.stamp
-cargo-contract		cargo-watch		rls			rustup
-cargo-fmt		cargo-web		rust-gdb		simple-http-server
-cargo-fuzz		clippy-driver		rust-lldb		sslocal
-
-$ which cargo
-/Users/aimeez/.cargo/bin/cargo
-
-$ ls -lh
-total 496760
--rwxr-xr-x   1 aimeez  staff   5.1M Apr 26  2020 basic-http-server
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo
--rwxr-xr-x   1 aimeez  staff   7.1M Sep 14 10:48 cargo-add
--rwxr-xr-x   1 aimeez  staff   1.0M Aug 25 13:56 cargo-casperlabs
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-clippy
--rwxr-xr-x   1 aimeez  staff   4.6M Nov  6 20:59 cargo-contract
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-fmt
--rwxr-xr-x   1 aimeez  staff   1.3M May 18 18:52 cargo-fuzz
--rwxr-xr-x   1 aimeez  staff   6.5M Oct 14 14:37 cargo-generate
--rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 cargo-make
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-miri
--rwxr-xr-x   1 aimeez  staff   2.0M Sep 14 10:48 cargo-rm
--rwxr-xr-x   1 aimeez  staff   3.5M Sep 14 10:48 cargo-upgrade
--rwxr-xr-x   1 aimeez  staff   2.1M Aug 11 15:20 cargo-watch
--rwxr-xr-x   1 aimeez  staff   9.5M Oct 29 14:52 cargo-web
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 clippy-driver
--rwxr-xr-x   1 aimeez  staff   3.1M Jun 17 12:56 diesel
--rwxr-xr-x   1 aimeez  staff    42M Aug 11 12:46 lighthouse
--rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 makers
--rwxr-xr-x   1 aimeez  staff    10M Sep 20 11:06 mdbook
--rwxr-xr-x   1 aimeez  staff   9.3M Sep 20 11:09 mdbook-linkcheck
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rls
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-gdb
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-lldb
--rwxr-xr-x   1 aimeez  staff   6.5M Jun 13 15:51 rust-trending
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustc
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustdoc
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustfmt
--rwxr-xr-x   1 aimeez  staff   2.7M Jul 27 16:43 rustlings
--rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustup
--rwxr-xr-x   1 aimeez  staff   2.6M Aug 11 15:12 simple-http-server
--rwxr-xr-x   1 aimeez  staff   6.1M Jun  8 11:05 sslocal
--rwxr-xr-x   1 aimeez  staff   4.1M Jun  8 11:04 ssmanager
--rwxr-xr-x   1 aimeez  staff   3.9M Jun  8 11:04 ssserver
--rwxr-xr-x   1 aimeez  staff   1.3M Jun  8 11:03 ssurl
--rwxr-xr-x   1 aimeez  staff   7.2M May 23 01:28 wasm-pack
--rw-r--r--   1 aimeez  staff    54B Oct 29 14:21 wasm-pack.stamp
-#+end_src
-
-*** Rustup toolchains
-
-[[https://rust-lang.github.io/rustup/installation/index.html][The rustup book]]
->rustup installs rustc, cargo, rustup and other standard tools 
-to Cargo's bin directory. On Unix it is located at $HOME/.cargo/bin 
-and on Windows at %USERPROFILE%\.cargo\bin. 
-This is the same directory that cargo install will 
-install Rust programs and Cargo plugins.
-
-
-Toolchains on my mac:
-
-#+begin_src shell
-$ ls ~/.rustup/
-downloads	settings.toml	toolchains	update-hashes
-
-$ ls ~/.rustup/toolchains/
-1.34.2-x86_64-apple-darwin		nightly-2019-10-14-x86_64-apple-darwin	nightly-x86_64-apple-darwin
-1.41.0-x86_64-apple-darwin		nightly-2020-03-19-x86_64-apple-darwin	stable-x86_64-apple-darwin
-1.43.1-x86_64-apple-darwin		nightly-2020-05-15-x86_64-apple-darwin
-1.45.2-x86_64-apple-darwin		nightly-2020-08-23-x86_64-apple-darwin
-
-$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/
-bin	etc	lib	share
-
-$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/bin/
-cargo		cargo-fmt	rls		rust-gdbgui	rustc		rustfmt
-cargo-clippy	clippy-driver	rust-gdb	rust-lldb	rustdoc
-#+end_src
-*** Rust lang entry
-
-[[https://github.com/rust-lang/rust/blob/efbaa413061c2a6e52f06f00a60ee7830fcf3ea5/compiler/rustc_passes/src/entry.rs#L50-L76][EntryPointType]]
-
-[[https://github.com/rust-lang/rust/blob/56293097f7f877f1350a6cd00f79d03132f16515/compiler/rustc_codegen_cranelift/src/main_shim.rs][rust/compiler/rustc_codegen_cranelift/src/main_shim.rs]]
-
-Rustc: #[lang = "start"]
-
-[[https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs#L60][fn lang_start<T: crate::process::Termination + 'static>(main: fn() -> T, argc: isize, argv: *const *const u8,)]]
-
-Rustc uses std to create the main() function,
-with mymain() as one argument,
-as lang-start for the operating system 
-to start executing.
-
-From [[https://play.rust-lang.org/][Rust playground]], we can generate LLVM code from 
-our empty main function:
-
-#+begin_src rust
-fn main() {
-}
-#+end_src
-
-The LLVM code:
-
-#+begin_src llvm
-; std::rt::lang_start
-; Function Attrs: nonlazybind uwtable
-define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {
-start:
-#+end_src
-
-** Rust China                               :rust:china:community:@community:
-:PROPERTIES:
-:EXPORT_FILE_NAME: rust-china
-:EXPORT_DATE: 2020-11-20
-:EXPORT_HUGO_SECTION: community
-:EXPORT_DESCRIPTION: All about Rust China.
-:EXPORT_OPTIONS: toc:2
-:END:
-
-*** Companies using Rust
-
-- Alibaba & Ant Finance
-  - Multiple teams & products
-  - [[https://occlum.io/][Occlum]] and the [[https://github.com/occlum/occlum][source]] # ~tee~
-- [[https://www.huawei.com/en/][Huawei]]
-  - Multiple teams & products
-- [[https://www.cryptape.com/][Cryptape]] # ~blockchain~
-  - [[https://github.com/nervosnetwork/ckb][CKB]]
-- [[https://www.rivtower.com/][RivTower 溪塔科技]] # ~blockchain~
-  - [[https://github.com/citahub/cita][CITA]]
-- [[https://pingcap.com/][PingCAP]] # ~database~
-  - [[https://github.com/tikv/tikv][TiKV]]
-- [[https://www.bilibili.com/][Bilibili]] # ~video~ ~social~
-- [[https://www.bytedance.com/en/][Bytedance]] # ~video~ ~social~
-- [[https://www.zhihu.com/][Zhihu]] # ~forum~
-  - [[https://github.com/zhihu/rucene][Rucene]]
-
-*** Conferences
-
-[[https://2020conf.rustcc.cn/][Rust China Conf 2020]] | Shanghai or Shenzhen
-- Source code?
-- Organizing by [[https://rustcc.cn/][RustCC]] 
-
-[[https://rustcon.asia][RustCon Asia 2019]] | Beijing
-- Source code is on [[https://github.com/rustcon-asia/beijing-2019][GitHub]]
-- Co-organized by [[https://www.cryptape.com/][Cryptape]] and [[https://pingcap.com/][PingCAP]]
-- Announcement: [[https://rustcon.asia/blog/hello-asia/][Hello / 你好 Asia]]
-- Recap: [[https://medium.com/@Aimeedeer/a-close-touch-with-rust-community-4a8507b756d9][A Close Encounter with Rust Community]]
-- [[https://www.dropbox.com/sh/t6s39rupk492ntq/AACSMbbeE-uYLqqlyJmXXGUPa?dl=0][Photos]]
-- [[https://www.youtube.com/watch?v=YSEx8wtlPWc&list=PL85XCvVPmGQjPvweRqkBgnh_HKE5MBB8x][Videos]]
-
-*** GitHub Orgs
-
-- https://github.com/rust-lang-cn
-- https://github.com/RustChina
-- https://github.com/rust-zh
-
-
-*** Forums and Channels
-
-**** Forum and media
-
-- Forum RustCC: https://rustcc.cn/
-- WeChat news channel: Rust语言学习交流
-- Telegram news channel: https://t.me/rust_daily_news
-
-**** Telegram
-
-- https://t.me/rust_zh
-- https://t.me/rust_deep_water
-- https://t.me/rust_tw  
-
-**** WeChat groups
-
-Invite only because of WeChat's limitation.
-
-**** QQ groups
-
-- Rust编程语言社区1群，群号：303838735 （已满，只能内部邀请）
-- Rust编程语言社区2群，群号：813448660
-- Rust中文，群号：570065685
-- Topics: 专题群：
-  - Rust Redox发行版开发群，群号：437268658
-  - Rust Data Science 研究小组，群号：681142501
-  - Rust webassembly/wasm社区，群号：347929175
-  - Rust 论坛开发组，群号：687763184 
-   （关于https://rust.cc论坛开发相关讨论）
-  - Rust社群-区块链研究，群号：617238820
-  - Rust 嵌入式开发，群号：825820683
-  - φ Rust图形学，群号：812748521
-  - 哲学与计算，群号：446590168
-  - Offline meetups: 地方线下聚会群：
-    - 北京：305842562
-    - 上海：966129249
-    - 深圳：673715651
-    - 广州：738772514
-    - 成都：131080784
-    - 重庆：962149536
-
-
-** Walnuts Hacklog                  :hacking:blockchain:walnuts:log:@hacking:
+** Walnuts Hacklog             :rust:hacking:blockchain:walnuts:log:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: walnuts
 :EXPORT_DATE: 2020-11-02
@@ -705,8 +352,7 @@ https://github.com/RustCrypto/hashes
 **** 2020-11-02 
 
 - Created Walnuts: my toy blockchain in Rust
-
-** Play with Substrate                :substrate:blockchain:hacking:@hacking:
+** Play with Substrate           :rust:substrate:blockchain:hacking:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
 :EXPORT_DATE: 2020-11-15
@@ -1056,6 +702,306 @@ Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)
 **** Doc
 
 https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
+** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: cheatsheet
+:EXPORT_DATE: 2020-10-29
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: My cheatsheet about Git and Emacs.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** Emacs & org-mode
+**** References
+
+- https://stackoverflow.com/questions/16186843/inline-code-in-org-mode
+- https://orgmode.org/org.html#Emphasis-and-monospace
+
+**** Examples
+
+src_sh[:exports code]{echo -e "test"}
+
+#+begin_src 
+src_sh[:exports code]{echo -e "test"}
+#+end_Src
+
+~fn main()~ 
+
+#+begin_src
+~fn main()~ 
+#+end_src
+
+=verbatim text=
+
+#+begin_src
+=verbatim text=
+#+end_src
+
+*** Git commands
+
+**** Remote .git
+
+#+begin_src shell
+$ ls .git
+$ rm .git
+rm: .git: is a directory
+$ rm -rf .git
+#+end_src
+
+**** Download a file from command line
+
+#+begin_src shell
+$ curl -LO https://upload.wikimedia.org/wikipedia/commons/c/c4/Creative-Tail-Halloween-ghost.svg
+$ curl -L https://upload.wikimedia.org/wikipedia/commons/7/74/Twemoji2_1f47b.svg > ghost.svg
+#+end_src
+
+**** Cherry pick
+
+#+begin_src shell
+$ git remote add some_github_id https://github.com/some_github_id/rust-in-blockchain.git
+$ git fetch some_github_id
+$ git log some_github_id/master
+$ git cherry-pick some_commit_hash
+$ git diff HEAD^..HEAD
+$ git push origin master
+#+end_src
+
+**** Reset a commit
+
+#+begin_src shell
+$ git reset HEAD^
+$ git rm */~
+$ git rm */*~
+$ git commit --amend
+$ git log
+commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
+#+end_src
+
+**** Hide changes and do not commit
+
+#+begin_src shell
+$ git stash
+#+end_src
+
+**** Cancel hiding
+
+#+begin_src shell
+$ git stash pop 
+#+end_src
+
+**** Add submodule to rib
+
+#+begin_src shell
+$ ln -> means link
+#+end_src
+
+**** Creat an aliase for syncing file 
+
+#+begin_src shell
+$ ln -s ../awesome-blockchain-rust/README.md awesome-blockchain-rust.md 
+#+end_src
+
+**** Recover to previous clean code
+
+#+begin_src shell
+$ git checkout -f
+#+end_src
+
+**** About PATH
+
+#+begin_src shell
+$ pwd
+$ echo $PWD
+$ export PATH=$PATH:$PWD
+#+end_src
+
+**** SSH
+
+#+begin_src shell
+$ eval `ssh-agent`
+$ ssh-add
+$ ssh -T git@github.com 
+#+end_src
+
+**** Generated a new key
+
+#+begin_src shell
+$ ssh-keygen -C your@email.com 
+#+end_src
+
+**** Move a file to current
+
+#+begin_src shell
+$ git mv www/contracts .
+#+end_src
+** Rust Cargo and More               :hacking:rust:cargo:rustup:log:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rust-cargo-etc
+:EXPORT_DATE: 2020-11-14
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Understand Rust programming language.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** Cargo bin
+
+#+begin_src shell
+$ ~/.cargo/bin
+-bash: /Users/aimeez/.cargo/bin: is a directory
+
+$ cd ~/.cargo/bin
+$ ls
+basic-http-server	cargo-generate		diesel			rust-trending		ssmanager
+cargo			cargo-make		lighthouse		rustc			ssserver
+cargo-add		cargo-miri		makers			rustdoc			ssurl
+cargo-casperlabs	cargo-rm		mdbook			rustfmt			wasm-pack
+cargo-clippy		cargo-upgrade		mdbook-linkcheck	rustlings		wasm-pack.stamp
+cargo-contract		cargo-watch		rls			rustup
+cargo-fmt		cargo-web		rust-gdb		simple-http-server
+cargo-fuzz		clippy-driver		rust-lldb		sslocal
+
+$ which cargo
+/Users/aimeez/.cargo/bin/cargo
+
+$ ls -lh
+total 496760
+-rwxr-xr-x   1 aimeez  staff   5.1M Apr 26  2020 basic-http-server
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo
+-rwxr-xr-x   1 aimeez  staff   7.1M Sep 14 10:48 cargo-add
+-rwxr-xr-x   1 aimeez  staff   1.0M Aug 25 13:56 cargo-casperlabs
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-clippy
+-rwxr-xr-x   1 aimeez  staff   4.6M Nov  6 20:59 cargo-contract
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-fmt
+-rwxr-xr-x   1 aimeez  staff   1.3M May 18 18:52 cargo-fuzz
+-rwxr-xr-x   1 aimeez  staff   6.5M Oct 14 14:37 cargo-generate
+-rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 cargo-make
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 cargo-miri
+-rwxr-xr-x   1 aimeez  staff   2.0M Sep 14 10:48 cargo-rm
+-rwxr-xr-x   1 aimeez  staff   3.5M Sep 14 10:48 cargo-upgrade
+-rwxr-xr-x   1 aimeez  staff   2.1M Aug 11 15:20 cargo-watch
+-rwxr-xr-x   1 aimeez  staff   9.5M Oct 29 14:52 cargo-web
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 clippy-driver
+-rwxr-xr-x   1 aimeez  staff   3.1M Jun 17 12:56 diesel
+-rwxr-xr-x   1 aimeez  staff    42M Aug 11 12:46 lighthouse
+-rwxr-xr-x   1 aimeez  staff   7.9M Oct 29 13:17 makers
+-rwxr-xr-x   1 aimeez  staff    10M Sep 20 11:06 mdbook
+-rwxr-xr-x   1 aimeez  staff   9.3M Sep 20 11:09 mdbook-linkcheck
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rls
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-gdb
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rust-lldb
+-rwxr-xr-x   1 aimeez  staff   6.5M Jun 13 15:51 rust-trending
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustc
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustdoc
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustfmt
+-rwxr-xr-x   1 aimeez  staff   2.7M Jul 27 16:43 rustlings
+-rwxr-xr-x  12 aimeez  staff   7.1M Jul 27 16:47 rustup
+-rwxr-xr-x   1 aimeez  staff   2.6M Aug 11 15:12 simple-http-server
+-rwxr-xr-x   1 aimeez  staff   6.1M Jun  8 11:05 sslocal
+-rwxr-xr-x   1 aimeez  staff   4.1M Jun  8 11:04 ssmanager
+-rwxr-xr-x   1 aimeez  staff   3.9M Jun  8 11:04 ssserver
+-rwxr-xr-x   1 aimeez  staff   1.3M Jun  8 11:03 ssurl
+-rwxr-xr-x   1 aimeez  staff   7.2M May 23 01:28 wasm-pack
+-rw-r--r--   1 aimeez  staff    54B Oct 29 14:21 wasm-pack.stamp
+#+end_src
+
+*** Rustup toolchains
+
+[[https://rust-lang.github.io/rustup/installation/index.html][The rustup book]]
+>rustup installs rustc, cargo, rustup and other standard tools 
+to Cargo's bin directory. On Unix it is located at $HOME/.cargo/bin 
+and on Windows at %USERPROFILE%\.cargo\bin. 
+This is the same directory that cargo install will 
+install Rust programs and Cargo plugins.
+
+
+Toolchains on my mac:
+
+#+begin_src shell
+$ ls ~/.rustup/
+downloads	settings.toml	toolchains	update-hashes
+
+$ ls ~/.rustup/toolchains/
+1.34.2-x86_64-apple-darwin		nightly-2019-10-14-x86_64-apple-darwin	nightly-x86_64-apple-darwin
+1.41.0-x86_64-apple-darwin		nightly-2020-03-19-x86_64-apple-darwin	stable-x86_64-apple-darwin
+1.43.1-x86_64-apple-darwin		nightly-2020-05-15-x86_64-apple-darwin
+1.45.2-x86_64-apple-darwin		nightly-2020-08-23-x86_64-apple-darwin
+
+$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/
+bin	etc	lib	share
+
+$ ls ~/.rustup/toolchains/stable-x86_64-apple-darwin/bin/
+cargo		cargo-fmt	rls		rust-gdbgui	rustc		rustfmt
+cargo-clippy	clippy-driver	rust-gdb	rust-lldb	rustdoc
+#+end_src
+*** Rust lang entry
+
+[[https://github.com/rust-lang/rust/blob/efbaa413061c2a6e52f06f00a60ee7830fcf3ea5/compiler/rustc_passes/src/entry.rs#L50-L76][EntryPointType]]
+
+[[https://github.com/rust-lang/rust/blob/56293097f7f877f1350a6cd00f79d03132f16515/compiler/rustc_codegen_cranelift/src/main_shim.rs][rust/compiler/rustc_codegen_cranelift/src/main_shim.rs]]
+
+Rustc: #[lang = "start"]
+
+[[https://github.com/rust-lang/rust/blob/master/library/std/src/rt.rs#L60][fn lang_start<T: crate::process::Termination + 'static>(main: fn() -> T, argc: isize, argv: *const *const u8,)]]
+
+Rustc uses std to create the main() function,
+with mymain() as one argument,
+as lang-start for the operating system 
+to start executing.
+
+From [[https://play.rust-lang.org/][Rust playground]], we can generate LLVM code from 
+our empty main function:
+
+#+begin_src rust
+fn main() {
+}
+#+end_src
+
+The LLVM code:
+
+#+begin_src llvm
+; std::rt::lang_start
+; Function Attrs: nonlazybind uwtable
+define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {
+start:
+#+end_src
+
+** Rust Smart Contract               :blockchain:rust:smartcontract:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rust-smart-contract
+:EXPORT_DATE: 2020-11-21
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Learning resources and references.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+[[https://github.com/brson/rust-contract-comparison][rust-contract-comparison]]
+
+[[http://troubles.md/why-write-smart-contracts-in-rust/][Why Write Smart Contracts in Rust?]]
+> The future of smart contracts, in my eyes 
+and the eyes of many others, lies with WebAssembly. 
+This is a virtual machine specification 
+which essentially acts as a portable and simple RISC ISA - since 
+it matches the runtime model of 
+a CPU many existing languages can be compiled to it unchanged. 
+Apart from special-case DSLs like Solidity most languages 
+expose the runtime model of the CPU somehow. 
+Not only that, but its similarity to the CPU allows 
+it to be compiled to incredibly efficient machine code 
+without complex optimisations that can affect correctness 
+and increase code complexity.
+
+[[https://github.com/paritytech/fleetwood][Fleetwood]]
+> *Future Work*
+> 
+> It would be nice to be able to write smart contracts 
+that are easily compiled for different chains 
+with no runtime overhead while allowing to use 
+specific details of the underlying chain. 
+While developing the Fleetwood technology stack 
+we are trying to uphold this future goal 
+by considering interoperability of new features in accordance to it.
+
+** Rust and Computer Science                               :rust:cs:@hacking:
 ** Blockchain Voting                          :blockchain:voting:@blockchain:
 :PROPERTIES:
 :EXPORT_FILE_NAME: blockchain-voting
@@ -2390,4 +2336,93 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 - [[https://www.goodreads.com/book/show/35561327][一本小小的红色写作书]]
 - [[https://www.amazon.cn/dp/B01HRYE86S/ref=sr_1_1][血疫:埃博拉的故事]]
   - ref: origin [[https://www.amazon.com/Hot-Zone-Terrifying-Story-Origins-ebook/dp/B007DCU4IQ/ref=sr_1_1][The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus]]
+
+** Rust China                               :rust:china:community:@community:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rust-china
+:EXPORT_DATE: 2020-11-20
+:EXPORT_HUGO_SECTION: community
+:EXPORT_DESCRIPTION: All about Rust China.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** Companies using Rust
+
+- Alibaba & Ant Finance
+  - Multiple teams & products
+  - [[https://occlum.io/][Occlum]] and the [[https://github.com/occlum/occlum][source]] # ~tee~
+- [[https://www.huawei.com/en/][Huawei]]
+  - Multiple teams & products
+- [[https://www.cryptape.com/][Cryptape]] # ~blockchain~
+  - [[https://github.com/nervosnetwork/ckb][CKB]]
+- [[https://www.rivtower.com/][RivTower 溪塔科技]] # ~blockchain~
+  - [[https://github.com/citahub/cita][CITA]]
+- [[https://pingcap.com/][PingCAP]] # ~database~
+  - [[https://github.com/tikv/tikv][TiKV]]
+- [[https://www.bilibili.com/][Bilibili]] # ~video~ ~social~
+- [[https://www.bytedance.com/en/][Bytedance]] # ~video~ ~social~
+- [[https://www.zhihu.com/][Zhihu]] # ~forum~
+  - [[https://github.com/zhihu/rucene][Rucene]]
+
+*** Conferences
+
+[[https://2020conf.rustcc.cn/][Rust China Conf 2020]] | Shanghai or Shenzhen
+- Source code?
+- Organizing by [[https://rustcc.cn/][RustCC]] 
+
+[[https://rustcon.asia][RustCon Asia 2019]] | Beijing
+- Source code is on [[https://github.com/rustcon-asia/beijing-2019][GitHub]]
+- Co-organized by [[https://www.cryptape.com/][Cryptape]] and [[https://pingcap.com/][PingCAP]]
+- Announcement: [[https://rustcon.asia/blog/hello-asia/][Hello / 你好 Asia]]
+- Recap: [[https://medium.com/@Aimeedeer/a-close-touch-with-rust-community-4a8507b756d9][A Close Encounter with Rust Community]]
+- [[https://www.dropbox.com/sh/t6s39rupk492ntq/AACSMbbeE-uYLqqlyJmXXGUPa?dl=0][Photos]]
+- [[https://www.youtube.com/watch?v=YSEx8wtlPWc&list=PL85XCvVPmGQjPvweRqkBgnh_HKE5MBB8x][Videos]]
+
+*** GitHub Orgs
+
+- https://github.com/rust-lang-cn
+- https://github.com/RustChina
+- https://github.com/rust-zh
+
+
+*** Forums and Channels
+
+**** Forum and media
+
+- Forum RustCC: https://rustcc.cn/
+- WeChat news channel: Rust语言学习交流
+- Telegram news channel: https://t.me/rust_daily_news
+
+**** Telegram
+
+- https://t.me/rust_zh
+- https://t.me/rust_deep_water
+- https://t.me/rust_tw  
+
+**** WeChat groups
+
+Invite only because of WeChat's limitation.
+
+**** QQ groups
+
+- Rust编程语言社区1群，群号：303838735 （已满，只能内部邀请）
+- Rust编程语言社区2群，群号：813448660
+- Rust中文，群号：570065685
+- Topics: 专题群：
+  - Rust Redox发行版开发群，群号：437268658
+  - Rust Data Science 研究小组，群号：681142501
+  - Rust webassembly/wasm社区，群号：347929175
+  - Rust 论坛开发组，群号：687763184 
+   （关于https://rust.cc论坛开发相关讨论）
+  - Rust社群-区块链研究，群号：617238820
+  - Rust 嵌入式开发，群号：825820683
+  - φ Rust图形学，群号：812748521
+  - 哲学与计算，群号：446590168
+  - Offline meetups: 地方线下聚会群：
+    - 北京：305842562
+    - 上海：966129249
+    - 深圳：673715651
+    - 广州：738772514
+    - 成都：131080784
+    - 重庆：962149536
 
