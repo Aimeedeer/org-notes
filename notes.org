@@ -15,6 +15,8 @@
 :EXPORT_OPTIONS: toc:2
 :END:
 
+[[https://github.com/Aimeedeer/walnuts][Walnuts Source code]]
+
 *** TODO
 - [x] sha2 for hash function
 - [x] chrono for UTC time as timestamp
@@ -801,6 +803,8 @@ $ git commit --amend
 $ git log
 commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
 #+end_src
+
+More: [[https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History][Git Tools - Rewriting History]]
 
 **** Hide changes and do not commit
 

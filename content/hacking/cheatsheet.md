@@ -7,7 +7,7 @@ tags = ["hacking", "git", "emacs", "orgmode"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2001
+  weight = 2003
   identifier = "cheatsheet"
 +++
 
@@ -111,6 +111,8 @@ $ git commit --amend
 $ git log
 commit ad8b178eb99e414f7eb298798acbe1317099cc1b (HEAD -> master)
 ```
+
+More: [Git Tools - Rewriting History](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
 
 
 ### Hide changes and do not commit {#hide-changes-and-do-not-commit}
