@@ -3,11 +3,11 @@ title = "Walnuts Hacklog"
 author = ["Aimee Z"]
 description = "My hacklog for Walnuts, a toy blockchain."
 date = 2020-11-02
-tags = ["hacking", "blockchain", "walnuts", "log"]
+tags = ["rust", "hacking", "blockchain", "walnuts", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2004
+  weight = 2001
   identifier = "walnuts-hacklog"
 +++
 
@@ -18,6 +18,7 @@ draft = false
 
 - [TODO](#todo)
 - [Hacklog](#hacklog)
+    - [2020-11-21](#2020-11-21)
     - [2020-11-20](#2020-11-20)
     - [2020-11-16](#2020-11-16)
     - [2020-11-13](#2020-11-13)
@@ -35,14 +36,14 @@ draft = false
 ## TODO {#todo}
 
 -   sha2 for hash function
--   chrono for Utc time as timestamp
+-   chrono for UTC time as timestamp
 -   serde for storage, write & read to a file on disc
 -   cli
 -   create a new block from commandline,
     and save it in a json file
--   [ ] change read & write to serde <> io:
+-   change read & write to serde <> io:
     <https://docs.rs/serde%5Fjson/1.0.59/serde%5Fjson/fn.from%5Freader.html>
--   [ ] deal with unwrap() -> Result
+-   deal with unwrap() -> Result
 -   [ ] create transactions from commandline
 -   [ ] 256k for tx signature: <https://docs.rs/k256/0.5.10/k256/>
 -   [ ] nouce verify
@@ -51,6 +52,34 @@ draft = false
 
 
 ## Hacklog {#hacklog}
+
+
+### 2020-11-21 {#2020-11-21}
+
+Error handling progress:
+
+```rust
+pub fn load() -> Result<Self> {
+    let file = File::open("walnutsdata.json");
+    match file {
+      Ok(file) => {
+	  Ok(serde_json::from_reader(&file)?)
+      },
+      Err(e) => {
+	  if e.kind() == ErrorKind::NotFound {
+	      Ok(Blockchain::new())
+	  } else {
+	      Err(Error::from(e))
+	  }
+      }
+    }
+
+}
+
+fn new() -> Self {
+    Blockchain { blocks: Vec::new() }
+}
+```
 
 
 ### 2020-11-20 {#2020-11-20}

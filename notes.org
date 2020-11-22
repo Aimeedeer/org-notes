@@ -17,14 +17,14 @@
 
 *** TODO
 - [x] sha2 for hash function
-- [x] chrono for Utc time as timestamp
+- [x] chrono for UTC time as timestamp
 - [x] serde for storage, write & read to a file on disc
 - [x] cli
 - [x] create a new block from commandline, 
       and save it in a json file
-- [ ] change read & write to serde <> io: 
+- [x] change read & write to serde <> io: 
       https://docs.rs/serde_json/1.0.59/serde_json/fn.from_reader.html
-- [ ] deal with unwrap() -> Result
+- [x] deal with unwrap() -> Result
 - [ ] create transactions from commandline
 - [ ] 256k for tx signature: https://docs.rs/k256/0.5.10/k256/
 - [ ] nouce verify
@@ -35,6 +35,31 @@
 
 **** 2020-11-21
 
+Error handling progress:
+
+#+begin_src rust
+    pub fn load() -> Result<Self> {
+	let file = File::open("walnutsdata.json");
+	match file {
+	    Ok(file) => { 
+		Ok(serde_json::from_reader(&file)?)
+	    },
+	    Err(e) => {
+		if e.kind() == ErrorKind::NotFound {
+		    Ok(Blockchain::new())
+		} else {		 
+		    Err(Error::from(e))
+		}
+	    }	    
+	}
+
+    }
+
+    fn new() -> Self {
+	Blockchain { blocks: Vec::new() }
+    }
+
+#+end_src
 
 **** 2020-11-20
 
