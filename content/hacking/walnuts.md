@@ -32,7 +32,7 @@ draft = false
 </div>
 <!--endtoc-->
 
-[Walnuts Source code](https://github.com/Aimeedeer/walnuts)
+[Walnuts source code](https://github.com/Aimeedeer/walnuts)
 
 
 ## TODO {#todo}
@@ -82,6 +82,9 @@ fn new() -> Self {
     Blockchain { blocks: Vec::new() }
 }
 ```
+
+Rust doc:
+[Enum std::io::ErrorKind](https://doc.rust-lang.org/std/io/enum.ErrorKind.html)
 
 
 ### 2020-11-20 {#2020-11-20}

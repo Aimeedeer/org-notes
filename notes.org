@@ -15,7 +15,7 @@
 :EXPORT_OPTIONS: toc:2
 :END:
 
-[[https://github.com/Aimeedeer/walnuts][Walnuts Source code]]
+[[https://github.com/Aimeedeer/walnuts][Walnuts source code]]
 
 *** TODO
 - [x] sha2 for hash function
@@ -62,6 +62,10 @@ Error handling progress:
     }
 
 #+end_src
+
+Rust doc:
+[[https://doc.rust-lang.org/std/io/enum.ErrorKind.html][Enum std::io::ErrorKind]]
+
 
 **** 2020-11-20
 
