@@ -1083,7 +1083,6 @@ Video: [[https://www.youtube.com/watch?v=0zOg8_B71gE][Pascal Hertleif - Writing 
 Rust weaknesses:
 [[https://www.reddit.com/r/rust/comments/jia2xn/what_are_some_of_rusts_weaknesses_as_a_language/][This question got a bunch of discussions]]
 
-
 ** Error Handling                               :rust:errorhandling:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: error-handling
@@ -1104,6 +1103,29 @@ Rust weaknesses:
 *** anyhow::Result
 
 
+** PGP                              :pgp:keybase:protonmail:hacking:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: pgp
+:EXPORT_DATE: 2020-11-24
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: PGP, Keybase, Protonmail
+:EXPORT_OPTIONS: toc:2
+:END:
+
+Keybase and Protonmail use their own ways to generate new keys.
+Users can import a private key from Protonmail to Keybase, and 
+Keybase will generate a new public key for it,
+which means the user will have two public keys with the same
+private key.
+
+My requirement is to copy/paste the public key to Keybase, but not another 
+new public key.
+So this isn't what I need.
+
+My Keybase ID: https://keybase.io/aimeedeer
+
+References: 
+- [[https://book.keybase.io/docs/cli#basics][Keybase Book: Command Line]]
 
 ** Game Theory       :blockchain:community:incentives:gametheory:@blockchain:
 :PROPERTIES:
