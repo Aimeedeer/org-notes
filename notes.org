@@ -1102,6 +1102,35 @@ Rust weaknesses:
 
 
 
+** Game Theory       :blockchain:community:incentives:gametheory:@blockchain:
+:PROPERTIES:
+:EXPORT_FILE_NAME: game-theory
+:EXPORT_DATE: 2020-11-24
+:EXPORT_HUGO_SECTION: blockchain
+:EXPORT_DESCRIPTION: Game theory, blockchain protocols, etc.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+
+*** Learning
+
+[[https://www.youtube.com/watch?v=WyRyWQwm0x0][An Axiomatic Approach to Block Rewards (Tim Roughgarden @ Stanford Blockchain Conference 2020)]]
+> *Strategy:*
+> - articulate desiderata of allocation rules
+> - prove that the proportional rule the unique
+    one satisfying all of them
+>
+> *Role models:* von Neumann-Morgenstern Utility Theory,
+  Arrow/s Impossibility Theorem, the Shapley value.
+>
+> *Note:* impossibility/uniqueness results clarify
+  the compromises required.
+
+[[https://arxiv.org/pdf/1909.10645.pdf][An Axiomatic Approach to Block Rewards]]
+
+
+
+
 ** Blockchain Voting                          :blockchain:voting:@blockchain:
 :PROPERTIES:
 :EXPORT_FILE_NAME: blockchain-voting
