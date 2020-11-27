@@ -66,7 +66,6 @@ Error handling progress:
 Rust doc:
 [[https://doc.rust-lang.org/std/io/enum.ErrorKind.html][Enum std::io::ErrorKind]]
 
-
 **** 2020-11-20
 
 [[https://docs.rs/serde_json/1.0.59/serde_json/index.html][Crate serde_json]]
@@ -393,7 +392,58 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
-*** 2020-11-20 
+*** 2020-11-27
+
+Follow [[https://github.com/paritytech/ink#play-with-it][ink]] GitHub
+
+#+begin_src shell
+$ cargo contract new mytest
+
+Created contract mytest
+
+$ cd mytest
+$ cargo contract build && cargo contract generate-metadata
+ [1/3] Building cargo project
+ERROR: cargo-contract cannot build using the "stable" channel. Switch to nightly. See https://github.com/paritytech/cargo-contract#build-requires-the-nightly-toolchain
+ERROR: cargo-contract cannot build using the "stable" channel. Switch to nightly. See https://github.com/paritytech/cargo-contract#build-requires-the-nightly-toolchain
+#+end_src
+
+Switch from stable to nightly:
+
+#+begin_src shell
+$ rustup default nightly
+
+info: using existing install for 'nightly-x86_64-apple-darwin'
+info: default toolchain set to 'nightly-x86_64-apple-darwin'
+
+  nightly-x86_64-apple-darwin unchanged - rustc 1.50.0-nightly (98d66340d 2020-11-14)
+
+$ cargo contract build && cargo contract generate-metadata
+#+end_src
+
+The result:
+
+#+begin_src shell
+Your contract is ready. You can find it here:
+/<mypath>/mytest/target/mytest.wasm
+  Generating metadata
+ [1/3] Building cargo project
+    Finished release [optimized] target(s) in 0.07s
+ [2/3] Post processing wasm file
+ [3/3] Optimizing wasm file
+  Compiling ... #packages
+    Finished release [optimized] target(s) in 1m 20s
+     Running `target/release/metadata-gen`
+	Your metadata file is ready.
+You can find it here:
+/<mypath>/mytest/target//metadata.json
+#+end_src
+
+
+
+
+
+*** 2020-11-20 The example: flipper
 
 [[https://substrate.dev/substrate-contracts-workshop/#/0/creating-an-ink-project][Creating an ink! Project]]
 
