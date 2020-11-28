@@ -402,12 +402,14 @@ https://github.com/RustCrypto/hashes
 - Doc: [[https://substrate.dev/docs/en/knowledgebase/advanced/cryptography#public-key-cryptography][Cryptography]]
 - Doc: [[https://paritytech.github.io/wasmi/wasmi/index.html][wasmi]]
 - Doc: [[https://substrate.dev/docs/en/knowledgebase/advanced/consensus][Consensus]]
-> Substrate provides several block construction algorithms and also allows you to create your own:
->
-> Aura (round robin)
-BABE (slot-based)
-Proof of Work
+> In order to agree on the resulting state after a transition, 
+all operations within a blockchain's state transition function must be deterministic.
 
+> Substrate provides several block construction 
+algorithms and also allows you to create your own:
+> - Aura (round robin)
+> - BABE (slot-based)
+> - Proof of Work
 
 Repeated build process in day 11-15:
 ~rustup default stable~
@@ -871,6 +873,7 @@ compilers, network protocols, and the study of computation and languages.
 > - A transition function (Input × State → State)
 > - An output function (Input × State → Output)
 > - A distinguished State called Start.
+
 > A State Machine begins at the State labeled Start. 
 Each Input received is passed through the transition 
 and output function to produce a new State and an Output. 
@@ -909,7 +912,6 @@ the hard problem at the heart of the security reduction,
 they must make use of some interesting property of 
 the hash function to break the protocol; they cannot 
 treat the hash function as a black box (i.e., as a random oracle).
-
 
 
 

@@ -51,6 +51,7 @@ compilers, network protocols, and the study of computation and languages.
 > - A transition function (Input × State → State)
 > - An output function (Input × State → Output)
 > - A distinguished State called Start.
+
 > A State Machine begins at the State labeled Start.
 Each Input received is passed through the transition
 and output function to produce a new State and an Output.
