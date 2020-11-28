@@ -396,8 +396,18 @@ https://github.com/RustCrypto/hashes
 
 *** 2020-11-28
 
+- Doc: [[https://substrate.dev/docs/en/knowledgebase/runtime/frame][FRAME]]  Framework for Runtime Aggregation of Modularized Entities (FRAME)
 - Doc: [[https://substrate.dev/docs/en/tutorials/add-a-pallet/import-a-pallet][Add a Pallet to Your Runtime]]
 - Repo: [[https://github.com/substrate-developer-hub/substrate-node-template#local-development][Substrate Node Template]]
+- Doc: [[https://substrate.dev/docs/en/knowledgebase/advanced/cryptography#public-key-cryptography][Cryptography]]
+- Doc: [[https://paritytech.github.io/wasmi/wasmi/index.html][wasmi]]
+- Doc: [[https://substrate.dev/docs/en/knowledgebase/advanced/consensus][Consensus]]
+> Substrate provides several block construction algorithms and also allows you to create your own:
+>
+> Aura (round robin)
+BABE (slot-based)
+Proof of Work
+
 
 Repeated build process in day 11-15:
 ~rustup default stable~
@@ -825,6 +835,84 @@ Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)
 **** Doc
 
 https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
+
+** State Machines                                 :hacking:cs:state:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: state-machines
+:EXPORT_DATE: 2020-11-28
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Theories about state machines
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** State machines
+
+[[https://en.wikipedia.org/wiki/Finite-state_machine][Finite-state machine]]
+> The finite-state machine has less computational power 
+than some other models of computation such as the 
+Turing machine.[3] The computational power distinction 
+means there are computational tasks that a Turing machine 
+can do but an FSM cannot. This is because an FSM's 
+memory is limited by the number of states it has. 
+>
+> Finite-state machines are a class of automata studied 
+in automata theory and the theory of computation. 
+In computer science, finite-state machines are widely used in 
+modeling of application behavior, design of 
+hardware digital systems, software engineering, 
+compilers, network protocols, and the study of computation and languages.
+
+[[https://en.wikipedia.org/wiki/State_machine_replication][State machine replication]]
+
+> For the subsequent discussion a State Machine will be defined as the following tuple of values
+> - A set of States
+> - A set of Inputs
+> - A set of Outputs
+> - A transition function (Input × State → State)
+> - An output function (Input × State → Output)
+> - A distinguished State called Start.
+> A State Machine begins at the State labeled Start. 
+Each Input received is passed through the transition 
+and output function to produce a new State and an Output. 
+The State is held stable until a new Input is received, 
+while the Output is communicated to the appropriate receiver.
+
+*** Consensus
+
+[[https://en.wikipedia.org/wiki/Consensus_(computer_science)][Consensus (computer science)]]
+
+*** Turing completeness
+
+[[https://en.wikipedia.org/wiki/Turing_completeness][Turing completeness]]
+
+*** Oracle
+
+[[https://en.wikipedia.org/wiki/Oracle_machine][Oracle machine]]
+> An oracle machine can be conceived as a Turing machine 
+connected to an oracle. The oracle, in this context, 
+is an entity capable of solving some problem, which 
+for example may be a decision problem or a function problem. 
+The problem does not have to be computable; the oracle is not 
+assumed to be a Turing machine or computer program. 
+The oracle is simply a "black box" that is able to 
+produce a solution for any instance of a given computational problem.
+
+> In cryptography, oracles are used to make arguments for 
+the security of cryptographic protocols where a hash function 
+is used. A security reduction for the protocol is 
+given in the case where, instead of a hash function, 
+a random oracle answers each query randomly but 
+consistently; the oracle is assumed to be available to 
+all parties including the attacker, as the hash function is. 
+Such a proof shows that unless the attacker solves 
+the hard problem at the heart of the security reduction, 
+they must make use of some interesting property of 
+the hash function to break the protocol; they cannot 
+treat the hash function as a black box (i.e., as a random oracle).
+
+
+
+
 ** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: cheatsheet
