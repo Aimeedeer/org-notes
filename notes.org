@@ -392,6 +392,16 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
+- [ ] clear up notes in 27, 28, and better to recheck previous days
+
+*** 2020-11-28
+
+- Doc: [[https://substrate.dev/docs/en/tutorials/add-a-pallet/import-a-pallet][Add a Pallet to Your Runtime]]
+- Repo: [[https://github.com/substrate-developer-hub/substrate-node-template#local-development][Substrate Node Template]]
+
+Repeated build process in day 11-15:
+~rustup default stable~
+
 *** 2020-11-27
 
 Follow [[https://github.com/paritytech/ink#play-with-it][ink]] GitHub
@@ -473,8 +483,6 @@ error[E0433]: failed to resolve: use of undeclared type `String`
 28 |             Self::new(String::from("init!"))
    |                       ^^^^^^ use of undeclared type `String`
 #+end_src
-
-
 
 
 *** 2020-11-20 The example: flipper
