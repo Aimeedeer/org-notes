@@ -4,11 +4,11 @@ author = ["Aimee Z"]
 description = "Substrate is interesting and it seems powerful."
 date = 2020-11-15
 linkTitle = "blockchain"
-tags = ["substrate", "blockchain", "hacking"]
+tags = ["rust", "substrate", "blockchain", "hacking"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2005
+  weight = 2002
   identifier = "play-with-substrate"
 +++
 
@@ -17,7 +17,10 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [2020-11-20](#2020-11-20)
+- [TODO](#todo)
+- [2020-11-28](#2020-11-28)
+- [2020-11-27 Write a simple smart contract (part0)](#2020-11-27-write-a-simple-smart-contract--part0)
+- [2020-11-20 The example: flipper](#2020-11-20-the-example-flipper)
     - [New tool learned](#new-tool-learned)
 - [2020-11-17 ink!](#2020-11-17-ink)
     - [Follow the docs](#follow-the-docs)
@@ -35,7 +38,116 @@ draft = false
 <!--endtoc-->
 
 
-## 2020-11-20 {#2020-11-20}
+## TODO {#todo}
+
+-   [ ] clear up notes in 27, 28, and better to recheck previous days
+
+
+## 2020-11-28 {#2020-11-28}
+
+-   Doc: [FRAME](https://substrate.dev/docs/en/knowledgebase/runtime/frame)  Framework for Runtime Aggregation of Modularized Entities (FRAME)
+-   Doc: [Add a Pallet to Your Runtime](https://substrate.dev/docs/en/tutorials/add-a-pallet/import-a-pallet)
+-   Repo: [Substrate Node Template](https://github.com/substrate-developer-hub/substrate-node-template#local-development)
+-   Doc: [Cryptography](https://substrate.dev/docs/en/knowledgebase/advanced/cryptography#public-key-cryptography)
+-   Doc: [wasmi](https://paritytech.github.io/wasmi/wasmi/index.html)
+-   Doc: [Consensus](https://substrate.dev/docs/en/knowledgebase/advanced/consensus)
+
+> In order to agree on the resulting state after a transition,
+all operations within a blockchain's state transition function must be deterministic.
+
+> Substrate provides several block construction
+algorithms and also allows you to create your own:
+> - Aura (round robin)
+> - BABE (slot-based)
+> - Proof of Work
+
+Repeated build process in day 11-15:
+`rustup default stable`
+
+
+## 2020-11-27 Write a simple smart contract (part0) {#2020-11-27-write-a-simple-smart-contract--part0}
+
+Follow [ink](https://github.com/paritytech/ink#play-with-it) GitHub
+
+```shell
+$ cargo contract new mytest
+
+Created contract mytest
+
+$ cd mytest
+$ cargo contract build && cargo contract generate-metadata
+ [1/3] Building cargo project
+ERROR: cargo-contract cannot build using the "stable" channel. Switch to nightly. See https://github.com/paritytech/cargo-contract#build-requires-the-nightly-toolchain
+ERROR: cargo-contract cannot build using the "stable" channel. Switch to nightly. See https://github.com/paritytech/cargo-contract#build-requires-the-nightly-toolchain
+```
+
+Switch from stable to nightly:
+
+```shell
+$ rustup default nightly
+
+info: using existing install for 'nightly-x86_64-apple-darwin'
+info: default toolchain set to 'nightly-x86_64-apple-darwin'
+
+  nightly-x86_64-apple-darwin unchanged - rustc 1.50.0-nightly (98d66340d 2020-11-14)
+
+$ cargo contract build && cargo contract generate-metadata
+```
+
+The result:
+
+```shell
+Your contract is ready. You can find it here:
+/<mypath>/mytest/target/mytest.wasm
+  Generating metadata
+ [1/3] Building cargo project
+    Finished release [optimized] target(s) in 0.07s
+ [2/3] Post processing wasm file
+ [3/3] Optimizing wasm file
+  Compiling ... #packages
+    Finished release [optimized] target(s) in 1m 20s
+     Running `target/release/metadata-gen`
+      Your metadata file is ready.
+You can find it here:
+/<mypath>/mytest/target//metadata.json
+```
+
+Change the `bool` Type to `String` in the code:
+
+```rust
+#[ink(storage)]
+pub struct Aimeetest {
+    value: String,
+}
+```
+
+And run the contract:
+
+```shell
+$ cargo contract build && cargo contract generate-metadata
+ [1/3] Building cargo project
+   Compiling mytest v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_p9Kcuf)
+error[E0433]: failed to resolve: use of undeclared type `String`
+  --> /<mypath>/mytest/lib.rs:28:23
+   |
+28 |             Self::new(String::from("init!"))
+   |                       ^^^^^^ use of undeclared type `String`
+
+# the same errors in code
+# ...
+
+ Generating metadata
+ [1/3] Building cargo project
+   Compiling mytest v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_8b3R9m)
+error[E0433]: failed to resolve: use of undeclared type `String`
+  --> /<mypath>/mytest/lib.rs:28:23
+   |
+28 |             Self::new(String::from("init!"))
+   |                       ^^^^^^ use of undeclared type `String`
+```
+
+
+## 2020-11-20 The example: flipper {#2020-11-20-the-example-flipper}
 
 [Creating an ink! Project](https://substrate.dev/substrate-contracts-workshop/#/0/creating-an-ink-project)
 

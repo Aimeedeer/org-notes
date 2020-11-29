@@ -392,6 +392,7 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
+*** TODO
 - [ ] clear up notes in 27, 28, and better to recheck previous days
 
 *** 2020-11-28
@@ -414,7 +415,8 @@ algorithms and also allows you to create your own:
 Repeated build process in day 11-15:
 ~rustup default stable~
 
-*** 2020-11-27
+
+*** 2020-11-27 Write a simple smart contract (part0)
 
 Follow [[https://github.com/paritytech/ink#play-with-it][ink]] GitHub
 
@@ -495,7 +497,6 @@ error[E0433]: failed to resolve: use of undeclared type `String`
 28 |             Self::new(String::from("init!"))
    |                       ^^^^^^ use of undeclared type `String`
 #+end_src
-
 
 *** 2020-11-20 The example: flipper
 
@@ -912,7 +913,6 @@ the hard problem at the heart of the security reduction,
 they must make use of some interesting property of 
 the hash function to break the protocol; they cannot 
 treat the hash function as a black box (i.e., as a random oracle).
-
 
 
 ** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
