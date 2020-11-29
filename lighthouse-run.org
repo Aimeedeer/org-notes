@@ -11,7 +11,7 @@ Lighthouse first try.
 
 #+end_description
 
-* 2020-08-12 Testing
+*** 2020-08-12 Testing
 
 #+begin_src shell
 validator_client_1  | Your wallet's 12-word BIP-39 mnemonic is:
