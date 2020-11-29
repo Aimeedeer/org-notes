@@ -1,38 +1,49 @@
-#+title: Lighthouse Run
-#+date: 2020-08-12
-#+hugo_tags: blockchain lighthouse
-#+hugo_categories: blockchain
-#+hugo_section: blockchain
-#+hugo_base_dir: . 
++++
+title = "Lighthouse Run"
+author = ["Aimee Z"]
+description = "Lighthouse first try."
+date = 2020-08-12
+tags = ["blockchain", "ethereum"]
+categories = ["hacking"]
+draft = false
+[menu.main]
+  weight = 2016
+  identifier = "lighthouse-run"
++++
 
-#+begin_description
+<div class="ox-hugo-toc toc">
+<div></div>
 
-Lighthouse first try. 
+<div class="heading">Table of Contents</div>
 
-#+end_description
+- [2020-08-12 Testing](#2020-08-12-testing)
 
-*** 2020-08-12 Testing
+</div>
+<!--endtoc-->
 
-#+begin_src shell
+
+## 2020-08-12 Testing {#2020-08-12-testing}
+
+```shell
 validator_client_1  | Your wallet's 12-word BIP-39 mnemonic is:
-validator_client_1  | 
+validator_client_1  |
 validator_client_1  | 	enlist whip budget awkward gold glad toast demise grass radar chicken link
-validator_client_1  | 
-validator_client_1  | This mnemonic can be used to fully restore your wallet, should 
-validator_client_1  | you lose the JSON file or your password. 
-validator_client_1  | 
-validator_client_1  | It is very important that you DO NOT SHARE this mnemonic as it will 
-validator_client_1  | reveal the private keys of all validators and keys generated with  
+validator_client_1  |
+validator_client_1  | This mnemonic can be used to fully restore your wallet, should
+validator_client_1  | you lose the JSON file or your password.
+validator_client_1  |
+validator_client_1  | It is very important that you DO NOT SHARE this mnemonic as it will
+validator_client_1  | reveal the private keys of all validators and keys generated with
 validator_client_1  | this wallet. That would be catastrophic.
-validator_client_1  | 
-validator_client_1  | It is also important to store a backup of this mnemonic so you can 
-validator_client_1  | recover your private keys in the case of data loss. Writing it on 
+validator_client_1  |
+validator_client_1  | It is also important to store a backup of this mnemonic so you can
+validator_client_1  | recover your private keys in the case of data loss. Writing it on
 validator_client_1  | a piece of paper and storing it in a safe place would be prudent.
-validator_client_1  | 
+validator_client_1  |
 validator_client_1  | Your wallet's UUID is:
-validator_client_1  | 
+validator_client_1  |
 validator_client_1  | 	44b3b046-628a-4e4b-9e3c-db614554c973
-validator_client_1  | 
+validator_client_1  |
 validator_client_1  | You do not need to backup your UUID or keep it secret.
 validator_client_1  | Running account manager for medalla testnet
 
@@ -55,4 +66,4 @@ validator_client_1  | Aug 12 17:15:05.311 INFO Genesis has already occurred     
 validator_client_1  | Aug 12 17:15:05.333 INFO Loaded validator keypair store          voting_validators: 1
 validator_client_1  | Aug 12 17:15:05.335 INFO Block production service started        service: block
 validator_client_1  | Aug 12 17:15:05.335 INFO Attestation production service started  next_update_millis: 2664, service: attestation
-#+end_src
+```
