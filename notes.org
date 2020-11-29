@@ -386,8 +386,7 @@ https://github.com/RustCrypto/hashes
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
 :EXPORT_DATE: 2020-11-15
-:EXPORT_HUGO_SECTION: blockchain
-:EXPORT_HUGO_LINKTITLE: blockchain
+:EXPORT_HUGO_SECTION: hacking
 :EXPORT_DESCRIPTION: Substrate is interesting and it seems powerful.
 :EXPORT_OPTIONS: toc:2
 :END:
@@ -1316,11 +1315,11 @@ References:
   Downloading, Installing, Setting Up, and Using this Encryption Software
   A Tutorial for Beginners to PGP
 
-** Game Theory       :blockchain:community:incentives:gametheory:@blockchain:
+** Game Theory        :blockchain:community:incentives:gametheory:@community:
 :PROPERTIES:
 :EXPORT_FILE_NAME: game-theory
 :EXPORT_DATE: 2020-11-24
-:EXPORT_HUGO_SECTION: blockchain
+:EXPORT_HUGO_SECTION: community
 :EXPORT_DESCRIPTION: Game theory, blockchain protocols, etc.
 :EXPORT_OPTIONS: toc:2
 :END:
@@ -1342,13 +1341,11 @@ References:
 
 [[https://arxiv.org/pdf/1909.10645.pdf][An Axiomatic Approach to Block Rewards]]
 
-
-
-** Blockchain Voting                          :blockchain:voting:@blockchain:
+** Blockchain Voting                           :blockchain:voting:@community:
 :PROPERTIES:
 :EXPORT_FILE_NAME: blockchain-voting
 :EXPORT_DATE: 2020-11-16
-:EXPORT_HUGO_SECTION: blockchain
+:EXPORT_HUGO_SECTION: community
 :EXPORT_DESCRIPTION: Reading notes about blockchain voting.
 :EXPORT_OPTIONS: toc:2
 :END:
@@ -1410,11 +1407,11 @@ some computer code you don’t have the expertise to audit?
 
 [[https://people.csail.mit.edu/rivest/pubs/PSNR20.pdf][Going from Bad to Worse: From Internet Voting to Blockchain Voting]], November 6, 2020 (DRAFT)
 
-** DAO                                           :blockchain:dao:@blockchain:
+** DAO                                            :blockchain:dao:@community:
 :PROPERTIES:
 :EXPORT_FILE_NAME: dao
 :EXPORT_DATE: 2020-11-16
-:EXPORT_HUGO_SECTION: blockchain
+:EXPORT_HUGO_SECTION: community
 :EXPORT_DESCRIPTION: Reading notes about the community DAO.
 :EXPORT_OPTIONS: toc:2
 :END:

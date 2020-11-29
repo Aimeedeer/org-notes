@@ -4,10 +4,10 @@ author = ["Aimee Z"]
 description = "Game theory, blockchain protocols, etc."
 date = 2020-11-24
 tags = ["blockchain", "community", "incentives", "gametheory"]
-categories = ["blockchain"]
+categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2008
+  weight = 2010
   identifier = "game-theory"
 +++
 

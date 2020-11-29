@@ -4,10 +4,10 @@ author = ["Aimee Z"]
 description = "Reading notes about blockchain voting."
 date = 2020-11-16
 tags = ["blockchain", "voting"]
-categories = ["blockchain"]
+categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2002
+  weight = 2011
   identifier = "blockchain-voting"
 +++
 

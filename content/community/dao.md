@@ -4,10 +4,10 @@ author = ["Aimee Z"]
 description = "Reading notes about the community DAO."
 date = 2020-11-16
 tags = ["blockchain", "dao"]
-categories = ["blockchain"]
+categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2003
+  weight = 2012
   identifier = "dao"
 +++
 
