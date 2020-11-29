@@ -1284,7 +1284,6 @@ Rust weaknesses:
 
 *** anyhow::Result
 
-
 ** PGP                              :pgp:keybase:protonmail:hacking:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: pgp
@@ -1342,7 +1341,6 @@ References:
   the compromises required.
 
 [[https://arxiv.org/pdf/1909.10645.pdf][An Axiomatic Approach to Block Rewards]]
-
 
 
 
@@ -2670,7 +2668,6 @@ validator_client_1  | Aug 12 17:15:05.335 INFO Block production service started 
 validator_client_1  | Aug 12 17:15:05.335 INFO Attestation production service started  next_update_millis: 2664, service: attestation
 #+end_src
 
-
 ** Hugo Code Highlight                            :hugo:hacking:css:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: hugo-code-highlight
@@ -2771,11 +2768,30 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 - [[https://www.amazon.cn/dp/B01HRYE86S/ref=sr_1_1][血疫:埃博拉的故事]]
   - ref: origin [[https://www.amazon.com/Hot-Zone-Terrifying-Story-Origins-ebook/dp/B007DCU4IQ/ref=sr_1_1][The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus]]
 
-** How to Read and Write                        :writing:notes:read:@writing:
+** Note Management
+:PROPERTIES:
+:EXPORT_FILE_NAME: note-management
+:EXPORT_DATE: 2020-10-29
+:EXPORT_HUGO_SECTION: reading
+:EXPORT_DESCRIPTION: Notes about note management.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+Notes from 
+[[https://zettelkasten.de/posts/three-layers-structure-zettelkasten/][Tale of Complexity – Structural Layers in Note Taking]]
+
+- Bottom Layer: Content  
+  Tiny, tiny bits of content.
+- Middle Layer: Structure Notes.
+  Tables of contents.
+- Top Layer: 
+  Main Structure Notes and Double Hashes
+
+** How to Read and Write                        :writing:notes:read:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: how-to-read-and-write
 :EXPORT_DATE: 2020-10-29
-:EXPORT_HUGO_SECTION: writing
+:EXPORT_HUGO_SECTION: reading
 :EXPORT_DESCRIPTION: Notes about reading and writing.
 :EXPORT_OPTIONS: toc:2
 :END:

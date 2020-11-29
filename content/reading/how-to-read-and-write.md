@@ -4,10 +4,10 @@ author = ["Aimee Z"]
 description = "Notes about reading and writing."
 date = 2020-10-29
 tags = ["writing", "notes", "read"]
-categories = ["writing"]
+categories = ["reading"]
 draft = false
 [menu.main]
-  weight = 2016
+  weight = 2020
   identifier = "how-to-read-and-write"
 +++
 

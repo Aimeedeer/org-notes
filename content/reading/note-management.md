@@ -3,9 +3,10 @@ title = "Note Management"
 author = ["Aimee Z"]
 description = "Notes about note management."
 date = 2020-10-29
-tags = ["notes", "writing", "content"]
-categories = ["writing"]
 draft = false
+[menu.main]
+  weight = 2020
+  identifier = "note-management"
 +++
 
 Notes from
