@@ -391,11 +391,8 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
-*** TODO
-- [ ] clear up notes in 27, 28, and better to recheck previous days
 
-*** 2020-11-28
-
+References:
 - Doc: [[https://substrate.dev/docs/en/knowledgebase/runtime/frame][FRAME]]  Framework for Runtime Aggregation of Modularized Entities (FRAME)
 - Doc: [[https://substrate.dev/docs/en/tutorials/add-a-pallet/import-a-pallet][Add a Pallet to Your Runtime]]
 - Repo: [[https://github.com/substrate-developer-hub/substrate-node-template#local-development][Substrate Node Template]]
@@ -411,13 +408,14 @@ algorithms and also allows you to create your own:
 > - BABE (slot-based)
 > - Proof of Work
 
-Repeated build process in day 11-15:
-~rustup default stable~
-
-
-*** 2020-11-27 Write a simple smart contract (part0)
+*** 2020-11-27~30 Write a simple smart contract
 
 Follow [[https://github.com/paritytech/ink#play-with-it][ink]] GitHub
+
+Creating a default smart contract with ~cargo contract new mytest~,
+and it generates ~lib.rs~ and ~Cargo.toml~ files.
+
+I changed code in ~lib.rs~, turn ~bool~ to ~String~ type.
 
 #+begin_src shell
 $ cargo contract new mytest
@@ -462,12 +460,11 @@ You can find it here:
 /<mypath>/mytest/target//metadata.json
 #+end_src
 
-
-Change the ~bool~ Type to ~String~ in the code:
+Change the ~bool~ type to ~String~ in the code:
 
 #+begin_src rust
     #[ink(storage)]
-    pub struct Aimeetest {
+    pub struct Mytest {
         value: String,
     }
 #+end_src
@@ -483,19 +480,21 @@ error[E0433]: failed to resolve: use of undeclared type `String`
    |
 28 |             Self::new(String::from("init!"))
    |                       ^^^^^^ use of undeclared type `String`
-
-# the same errors in code
-# ...
-
- Generating metadata
- [1/3] Building cargo project
-   Compiling mytest v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_8b3R9m)
-error[E0433]: failed to resolve: use of undeclared type `String`
-  --> /<mypath>/mytest/lib.rs:28:23
-   |
-28 |             Self::new(String::from("init!"))
-   |                       ^^^^^^ use of undeclared type `String`
 #+end_src
+
+Now add crate ~alloc~:
+
+#+begin_src rust
+extern crate alloc;
+use alloc::string::String;
+#+end_src
+
+Then run ~cargo contract test~
+
+
+
+
+
 
 *** 2020-11-20 The example: flipper
 
@@ -912,7 +911,6 @@ the hard problem at the heart of the security reduction,
 they must make use of some interesting property of 
 the hash function to break the protocol; they cannot 
 treat the hash function as a black box (i.e., as a random oracle).
-
 
 ** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
 :PROPERTIES:
