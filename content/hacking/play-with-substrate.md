@@ -16,9 +16,7 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [TODO](#todo)
-- [2020-11-28](#2020-11-28)
-- [2020-11-27 Write a simple smart contract (part0)](#2020-11-27-write-a-simple-smart-contract--part0)
+- [2020-11-27~30 Write a simple smart contract](#2020-11-27-30-write-a-simple-smart-contract)
 - [2020-11-20 The example: flipper](#2020-11-20-the-example-flipper)
     - [New tool learned](#new-tool-learned)
 - [2020-11-17 ink!](#2020-11-17-ink)
@@ -36,17 +34,12 @@ draft = false
 </div>
 <!--endtoc-->
 
-
-## TODO {#todo}
-
--   [ ] clear up notes in 27, 28, and better to recheck previous days
-
-
-## 2020-11-28 {#2020-11-28}
+References:
 
 -   Doc: [FRAME](https://substrate.dev/docs/en/knowledgebase/runtime/frame)  Framework for Runtime Aggregation of Modularized Entities (FRAME)
 -   Doc: [Add a Pallet to Your Runtime](https://substrate.dev/docs/en/tutorials/add-a-pallet/import-a-pallet)
 -   Repo: [Substrate Node Template](https://github.com/substrate-developer-hub/substrate-node-template#local-development)
+-   Doc: [Attribute Macro ink\_lang::contract](https://paritytech.github.io/ink/ink%5Flang/attr.contract.html)
 -   Doc: [Cryptography](https://substrate.dev/docs/en/knowledgebase/advanced/cryptography#public-key-cryptography)
 -   Doc: [wasmi](https://paritytech.github.io/wasmi/wasmi/index.html)
 -   Doc: [Consensus](https://substrate.dev/docs/en/knowledgebase/advanced/consensus)
@@ -60,13 +53,15 @@ algorithms and also allows you to create your own:
 > - BABE (slot-based)
 > - Proof of Work
 
-Repeated build process in day 11-15:
-`rustup default stable`
 
-
-## 2020-11-27 Write a simple smart contract (part0) {#2020-11-27-write-a-simple-smart-contract--part0}
+## 2020-11-27~30 Write a simple smart contract {#2020-11-27-30-write-a-simple-smart-contract}
 
 Follow [ink](https://github.com/paritytech/ink#play-with-it) GitHub
+
+Creating a default smart contract with `cargo contract new mytest`,
+and it generates `lib.rs` and `Cargo.toml` files.
+
+I changed code in `lib.rs`, turn `bool` to `String` type.
 
 ```shell
 $ cargo contract new mytest
@@ -111,11 +106,11 @@ You can find it here:
 /<mypath>/mytest/target//metadata.json
 ```
 
-Change the `bool` Type to `String` in the code:
+Change the `bool` type to `String` in the code:
 
 ```rust
 #[ink(storage)]
-pub struct Aimeetest {
+pub struct Mytest {
     value: String,
 }
 ```
@@ -131,18 +126,56 @@ error[E0433]: failed to resolve: use of undeclared type `String`
    |
 28 |             Self::new(String::from("init!"))
    |                       ^^^^^^ use of undeclared type `String`
+```
 
-# the same errors in code
-# ...
+Now add crate `alloc`:
 
- Generating metadata
+```rust
+extern crate alloc;
+use alloc::string::String;
+```
+
+and build it:
+
+```shell
+$ cargo contract build && cargo contract generate-metadata
  [1/3] Building cargo project
-   Compiling mytest v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_8b3R9m)
-error[E0433]: failed to resolve: use of undeclared type `String`
-  --> /<mypath>/mytest/lib.rs:28:23
+   Compiling mytest v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_p7eKiU)
+error[E0412]: cannot find type `String` in this scope
+  --> /Users/aimeez/github/mytest/lib.rs:11:16
    |
-28 |             Self::new(String::from("init!"))
-   |                       ^^^^^^ use of undeclared type `String`
+11 |         value: String,
+   |                ^^^^^^ not found in this scope
+   |
+help: consider importing one of these items
+   |
+7  | use alloc::string::String;
+   |
+7  | use crate::String;
+   |
+```
+
+What's wrong?
+The test seems to works fine:
+
+```shell
+$ cargo +nightly test
+warning: unused import: `alloc::string::String`
+ --> lib.rs:4:5
+  |
+4 | use alloc::string::String;
+  |     ^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: 1 warning emitted
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.08s
+     Running target/debug/deps/mytest-c60315897dda6247
+
+running 2 tests
+test mytest::tests::default_works ... ok
+test mytest::tests::it_works ... ok
 ```
 
 

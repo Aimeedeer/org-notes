@@ -391,7 +391,6 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
-
 References:
 - Doc: [[https://substrate.dev/docs/en/knowledgebase/runtime/frame][FRAME]]  Framework for Runtime Aggregation of Modularized Entities (FRAME)
 - Doc: [[https://substrate.dev/docs/en/tutorials/add-a-pallet/import-a-pallet][Add a Pallet to Your Runtime]]
@@ -1272,6 +1271,9 @@ by considering interoperability of new features in accordance to it.
 
 Type system
 - [[https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/][Things I Was Wrong About: Types]]
+
+[[https://arxiv.org/pdf/2010.07763.pdf][Refinement Types]]
+
 
 [[https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html][The Humble Programmer by Edsger W. Dijkstra]]
 
