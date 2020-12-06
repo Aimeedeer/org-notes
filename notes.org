@@ -2767,6 +2767,10 @@ and Friedrich Nietzsche's books.
 :END:
 
 [[https://eprint.iacr.org/2018/414.pdf][Aggregation of Gamma-Signatures and Applications to Bitcoin]]
+
+Not a great paper. I don't think it has strong proof of its point,
+and I am not sure if it's workable as their reasoning.
+
 > Aggregate signature (AS) allows non-interactively condensing multiple individual signatures into a compact one.
 Besides the faster verification, it is useful to reduce storage and bandwidth, and is especially attractive for blockchain and cryptocurrency. 
 
@@ -2785,7 +2789,28 @@ cumbersome in extensions to multi-signatures [8, 47], scriptless scripts [66], e
 As a consequence, recently there is also renewed interests in deploying Schnorr’s
 signature with Bitcoin in the future.
 
-
+> Practical aggregate signature schemes were proposed [17, 7] in the plain
+public-key model. They are derived based on the BLS short signature [18] in
+groups with bilinear maps. There have been some discussions on deploying the
+pairing-based AS schemes [17, 7] in the Bitcoin system [46], which are briefly
+summarized below.
+> – System complexity. Deploying pairing-based aggregate signature schemes requires the replacement of not only the EC-DSA algorithm but also the underlying elliptic curve. It makes a deployment in practice (such as Bitcoin)
+much more invasive than simply shifting algorithms.
+> – Bilinear group vs. general group. Intractability problems in groups with bilinear maps are weaker than the discrete logarithm problem in general EC
+groups.
+> – Verification speed. As an individual signature scheme, the verification of the
+pairing-based BLS signature is significantly slower than that of EC-DSA.
+Note that the miners still need to verify the correctness of individual BLS
+signatures before aggregating them into a block. Some survey indicates that
+on a concrete hardware it can verify 70,000 secp256k1 signatures per second,
+while it could only verify about 8,000 BLS signatures per second [46].
+>
+> It is thus highly desirable to develop aggregate signatures, with the following
+features simultaneously:
+> – It can be built from general elliptic curves (without bilinear maps), in the
+plain public-key model with fully asynchronous communications.
+> – The underlying signature scheme has provable security, and moreover, is
+more efficient and flexible than EC-DSA.
 
 
 ** Books                                              :reading:book:@reading:
