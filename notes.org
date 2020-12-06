@@ -6,7 +6,7 @@
 :EXPORT_HUGO_SECTION: post
 :EXPORT_HUGO_MENU: :menu main
 :END:
-** Walnuts Hacklog             :rust:hacking:blockchain:walnuts:log:@hacking:
+** Walnuts Hacklog                     :rust:blockchain:walnuts:log:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: walnuts
 :EXPORT_DATE: 2020-11-02
@@ -382,7 +382,7 @@ https://github.com/RustCrypto/hashes
 **** 2020-11-02 
 
 - Created Walnuts: my toy blockchain in Rust
-** Play with Substrate           :rust:substrate:blockchain:hacking:@hacking:
+** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
 :EXPORT_DATE: 2020-11-15
@@ -874,7 +874,7 @@ Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)
 
 https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
 
-** State Machines                                 :hacking:cs:state:@hacking:
+** State Machines                                         :cs:state:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: state-machines
 :EXPORT_DATE: 2020-11-28
@@ -949,7 +949,7 @@ they must make use of some interesting property of
 the hash function to break the protocol; they cannot 
 treat the hash function as a black box (i.e., as a random oracle).
 
-** Cheatsheet                            :hacking:git:emacs:orgmode:@hacking:
+** Cheatsheet                                    :git:emacs:orgmode:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: cheatsheet
 :EXPORT_DATE: 2020-10-29
@@ -1083,7 +1083,7 @@ $ ssh-keygen -C your@email.com
 #+begin_src shell
 $ git mv www/contracts .
 #+end_src
-** Rust Cargo and More               :hacking:rust:cargo:rustup:log:@hacking:
+** Rust Cargo and More                       :rust:cargo:rustup:log:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-cargo-etc
 :EXPORT_DATE: 2020-11-14
@@ -1321,7 +1321,7 @@ Rust weaknesses:
 
 *** anyhow::Result
 
-** PGP                              :pgp:keybase:protonmail:hacking:@hacking:
+** PGP                                      :pgp:keybase:protonmail:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: pgp
 :EXPORT_DATE: 2020-11-24
@@ -1353,7 +1353,7 @@ References:
   Downloading, Installing, Setting Up, and Using this Encryption Software
   A Tutorial for Beginners to PGP
 
-** Data Structures in Popular Blockchains  :hacking:blockchain:rust:@hacking:
+** Data Structures in Popular Blockchains :blockchain:rust:bitcoin:ethereum:polkadot:substrate:near:nervos@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: data-structures-in-popular-blockchains
 :EXPORT_DATE: 2020-11-02
@@ -1929,7 +1929,7 @@ src: ckb/util/types/src/core/blockchain.rs
 *** More to do
 
 - Solana
-** Deal With Git Submodule in Hugo Themes :hacking:git:submodule:hugo:@hacking:
+** Deal With Git Submodule in Hugo Themes       :git:submodule:hugo:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: git-submodule-hugo-theme
 :EXPORT_DATE: 2020-10-31
@@ -2418,7 +2418,7 @@ validator_client_1  | Aug 12 17:15:05.333 INFO Loaded validator keypair store   
 validator_client_1  | Aug 12 17:15:05.335 INFO Block production service started        service: block
 validator_client_1  | Aug 12 17:15:05.335 INFO Attestation production service started  next_update_millis: 2664, service: attestation
 #+end_src
-** Hugo Code Highlight                            :hugo:hacking:css:@hacking:
+** Hugo Code Highlight                                    :hugo:css:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: hugo-code-highlight
 :EXPORT_DATE: 2020-11-14
@@ -2453,7 +2453,7 @@ Add the CSS file to the right place, for example,
 
 and add the path to your header.html or head.html,
 where stylesheets are imported.
-** Game Theory        :blockchain:community:incentives:gametheory:@community:
+** Game Theory                  :blockchain:incentives:gametheory:@community:
 :PROPERTIES:
 :EXPORT_FILE_NAME: game-theory
 :EXPORT_DATE: 2020-11-24
@@ -2707,7 +2707,7 @@ which can be traced back as the credential check.
 
 **
 
-** Governance                               :community:governance:@community:
+** Governance                                         :governance:@community:
 :PROPERTIES:
 :EXPORT_FILE_NAME: governance
 :EXPORT_DATE: 2020-11-12
@@ -2757,7 +2757,7 @@ A shot one [[https://www.youtube.com/watch?v=oC2nWeEhvcw][Ayn Rand doesn't have 
 
 I plan to reread [[https://www.goodreads.com/book/show/6454477-the-red-book][The Red Book]] from C.G. Jung
 and Friedrich Nietzsche's books.
-** Papers                                            :reading:paper:@reading:
+** Papers                                                    :paper:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: papers
 :EXPORT_DATE: 2020-12-05
@@ -2813,7 +2813,7 @@ plain public-key model with fully asynchronous communications.
 more efficient and flexible than EC-DSA.
 
 
-** Books                                              :reading:book:@reading:
+** Books                                                      :book:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: books
 :EXPORT_DATE: 2020-11-13
@@ -2856,7 +2856,7 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 - [[https://www.amazon.cn/dp/B01HRYE86S/ref=sr_1_1][血疫:埃博拉的故事]]
   - ref: origin [[https://www.amazon.com/Hot-Zone-Terrifying-Story-Origins-ebook/dp/B007DCU4IQ/ref=sr_1_1][The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus]]
 
-** Note Management                                      :notes:read:@reading:
+** Note Management                                           :notes:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: note-management
 :EXPORT_DATE: 2020-10-29
@@ -2875,7 +2875,7 @@ Notes from
 - Top Layer: 
   Main Structure Notes and Double Hashes
 
-** How to Read and Write                        :writing:notes:read:@reading:
+** How to Read and Write                             :writing:notes:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: how-to-read-and-write
 :EXPORT_DATE: 2020-10-29
@@ -3101,7 +3101,7 @@ paper can be rewarding if it forces you to explain concepts afresh in a new cont
 [[https://www.nngroup.com/articles/how-people-read-online/][
 How people read online]]
 
-** Rust China                               :rust:china:community:@community:
+** Rust China                                         :rust:china:@community:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-china
 :EXPORT_DATE: 2020-11-20

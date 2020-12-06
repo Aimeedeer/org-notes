@@ -3,7 +3,7 @@ title = "Papers"
 author = ["Aimee Z"]
 description = "Papers I've read."
 date = 2020-12-05
-tags = ["reading", "paper"]
+tags = ["paper"]
 categories = ["reading"]
 draft = false
 [menu.main]

@@ -3,11 +3,11 @@ title = "Note Management"
 author = ["Aimee Z"]
 description = "Notes about note management."
 date = 2020-10-29
-tags = ["notes", "read"]
+tags = ["notes"]
 categories = ["reading"]
 draft = false
 [menu.main]
-  weight = 2020
+  weight = 2021
   identifier = "note-management"
 +++
 

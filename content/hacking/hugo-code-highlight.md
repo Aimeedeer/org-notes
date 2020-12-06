@@ -3,7 +3,7 @@ title = "Hugo Code Highlight"
 author = ["Aimee Z"]
 description = "Hugo uses default built-in code highlight. Change it from config.toml and (maybe) add your own syntax.css."
 date = 2020-11-14
-tags = ["hugo", "hacking", "css"]
+tags = ["hugo", "css"]
 categories = ["hacking"]
 draft = false
 [menu.main]

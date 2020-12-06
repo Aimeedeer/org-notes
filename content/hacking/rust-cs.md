@@ -7,7 +7,7 @@ tags = ["rust", "cs"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2006
+  weight = 2007
   identifier = "rust-and-computer-science"
 +++
 
@@ -39,6 +39,8 @@ draft = false
 Type system
 
 -   [Things I Was Wrong About: Types](https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/)
+
+[Refinement Types](https://arxiv.org/pdf/2010.07763.pdf)
 
 [The Humble Programmer by Edsger W. Dijkstra](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html)
 

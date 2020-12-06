@@ -7,7 +7,7 @@ tags = ["blockchain", "voting"]
 categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2011
+  weight = 2015
   identifier = "blockchain-voting"
 +++
 

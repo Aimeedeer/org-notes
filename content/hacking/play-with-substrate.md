@@ -3,7 +3,7 @@ title = "Play with Substrate"
 author = ["Aimee Z"]
 description = "Substrate is interesting and it seems powerful."
 date = 2020-11-15
-tags = ["rust", "substrate", "blockchain", "hacking"]
+tags = ["rust", "substrate", "blockchain"]
 categories = ["hacking"]
 draft = false
 [menu.main]

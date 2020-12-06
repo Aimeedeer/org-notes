@@ -3,11 +3,10 @@ title = "Data Structures in Popular Blockchains"
 author = ["Aimee Z"]
 description = "Data structures in popular rust blockchains."
 date = 2020-11-02
-tags = ["hacking", "blockchain", "rust"]
-categories = ["hacking"]
+tags = ["blockchain", "rust", "bitcoin", "ethereum", "polkadot", "substrate", "near", "nervos@hacking"]
 draft = false
 [menu.main]
-  weight = 2007
+  weight = 2010
   identifier = "data-structures-in-popular-blockchains"
 +++
 

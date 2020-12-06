@@ -3,11 +3,11 @@ title = "Books"
 author = ["Aimee Z"]
 description = "Books I've read."
 date = 2020-11-13
-tags = ["reading", "book"]
+tags = ["book"]
 categories = ["reading"]
 draft = false
 [menu.main]
-  weight = 2005
+  weight = 2020
   identifier = "books"
 +++
 

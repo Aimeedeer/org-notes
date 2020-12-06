@@ -7,7 +7,7 @@ tags = ["blockchain", "ethereum"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2016
+  weight = 2012
   identifier = "lighthouse-run"
 +++
 

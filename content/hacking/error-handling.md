@@ -7,7 +7,7 @@ tags = ["rust", "errorhandling"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2007
+  weight = 2008
   identifier = "error-handling"
 +++
 
@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [std::io::Error](#std-io-error)
+- [anyhow::Result](#anyhow-result)
 
 </div>
 <!--endtoc-->
@@ -29,3 +30,6 @@ draft = false
     [std::io::Error](https://www.reddit.com/r/rust/comments/jbdk5x/blog%5Fpost%5Fstudy%5Fof%5Fstdioerror/g8vzhjy/?utm%5Fsource=reddit&utm%5Fmedium=web2x&context=3)
     for which he commented to matklad's blog post
     [study of std::io::Error](https://matklad.github.io/2020/10/15/study-of-std-io-error.html)
+
+
+## anyhow::Result {#anyhow-result}

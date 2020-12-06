@@ -138,19 +138,20 @@
 
         {{ with .Site.Taxonomies }}
             <div style="float: right;">
-                [
-                {{ $is_first_key := true }}
+
+	        {{ $is_first_key := true }}
                 {{ range $key,$val := . }}
                     {{ with $.Site.GetPage "taxonomyTerm" $key }}
                         {{ printf `%s <a href="%s">%s</a>` (cond $is_first_key "" "|") .Permalink .Type | safeHTML }}
                         {{ $is_first_key = false }}
                     {{ end }}
                 {{ end }}
-                {{ with $.Site.GetPage "page" "search" }}
-                    {{ printf `%s <a href="%s"><strong>%s</strong></a>` "|" .Permalink (.Title | lower) | safeHTML }}
-                {{ end }}
 		| <a href="https://impl.dev">Aimee's Blog</a>
-                ]
+           
+                {{ with $.Site.GetPage "page" "search" }}
+                    {{ printf `%s <a href="%s"><strong>%s</strong></a>` "|" .Permalink (.Title | lower) | safeHTML }} 
+                {{ end }}
+              
             </div>
             <div style="clear: both;"></div> <!-- Clear floats -->
         {{ end }}

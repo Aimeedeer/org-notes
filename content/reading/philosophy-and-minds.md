@@ -7,7 +7,7 @@ tags = ["philosophy", "mind", "thought"]
 categories = ["reading"]
 draft = false
 [menu.main]
-  weight = 2010
+  weight = 2018
   identifier = "philosophy-and-minds"
 +++
 

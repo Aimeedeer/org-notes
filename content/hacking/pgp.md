@@ -3,11 +3,11 @@ title = "PGP"
 author = ["Aimee Z"]
 description = "PGP, Keybase, Protonmail"
 date = 2020-11-24
-tags = ["pgp", "keybase", "protonmail", "hacking"]
+tags = ["pgp", "keybase", "protonmail"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2008
+  weight = 2009
   identifier = "pgp"
 +++
 

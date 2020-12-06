@@ -6,11 +6,11 @@ description = """
   including developer communities and blockchain projects' communities.
   """
 date = 2020-11-12
-tags = ["community", "governance"]
+tags = ["governance"]
 categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2004
+  weight = 2017
   identifier = "governance"
 +++
 

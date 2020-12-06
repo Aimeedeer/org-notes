@@ -3,11 +3,11 @@ title = "Rust Cargo and More"
 author = ["Aimee Z"]
 description = "Understand Rust programming language."
 date = 2020-11-14
-tags = ["hacking", "rust", "cargo", "rustup", "log"]
+tags = ["rust", "cargo", "rustup", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2008
+  weight = 2005
   identifier = "rust-cargo-and-more"
 +++
 

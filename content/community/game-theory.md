@@ -3,11 +3,11 @@ title = "Game Theory"
 author = ["Aimee Z"]
 description = "Game theory, blockchain protocols, etc."
 date = 2020-11-24
-tags = ["blockchain", "community", "incentives", "gametheory"]
+tags = ["blockchain", "incentives", "gametheory"]
 categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2010
+  weight = 2014
   identifier = "game-theory"
 +++
 

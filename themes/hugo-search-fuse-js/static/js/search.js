@@ -92,7 +92,7 @@ function populateResults(result){
     snippetHighlights.forEach( function (snipvalue, snipkey) {
       let markjs = new Mark(frag);
       markjs.mark(snipvalue);
-    });
+    }); 
     document.getElementById("search-results").appendChild(frag);
   });
 }

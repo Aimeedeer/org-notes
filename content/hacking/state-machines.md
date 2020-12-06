@@ -3,7 +3,7 @@ title = "State Machines"
 author = ["Aimee Z"]
 description = "Theories about state machines"
 date = 2020-11-28
-tags = ["hacking", "cs", "state"]
+tags = ["cs", "state"]
 categories = ["hacking"]
 draft = false
 [menu.main]

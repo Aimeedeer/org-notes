@@ -7,7 +7,7 @@ tags = ["blockchain", "dao"]
 categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2012
+  weight = 2016
   identifier = "dao"
 +++
 

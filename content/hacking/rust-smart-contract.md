@@ -7,7 +7,7 @@ tags = ["blockchain", "rust", "smartcontract"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2005
+  weight = 2006
   identifier = "rust-smart-contract"
 +++
 

@@ -3,11 +3,11 @@ title = "Deal With Git Submodule in Hugo Themes"
 author = ["Aimee Z"]
 description = "The problems I've met when I use Hugo themes, and how I solved it."
 date = 2020-10-31
-tags = ["hacking", "git", "submodule", "hugo"]
+tags = ["git", "submodule", "hugo"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2010
+  weight = 2011
   identifier = "deal-with-git-submodule-in-hugo-themes"
 +++
 

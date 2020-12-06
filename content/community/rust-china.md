@@ -3,11 +3,11 @@ title = "Rust China"
 author = ["Aimee Z"]
 description = "All about Rust China."
 date = 2020-11-20
-tags = ["rust", "china", "community"]
+tags = ["rust", "china"]
 categories = ["community"]
 draft = false
 [menu.main]
-  weight = 2003
+  weight = 2023
   identifier = "rust-china"
 +++
 
