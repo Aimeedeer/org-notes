@@ -2757,6 +2757,37 @@ A shot one [[https://www.youtube.com/watch?v=oC2nWeEhvcw][Ayn Rand doesn't have 
 
 I plan to reread [[https://www.goodreads.com/book/show/6454477-the-red-book][The Red Book]] from C.G. Jung
 and Friedrich Nietzsche's books.
+** Papers                                            :reading:paper:@reading:
+:PROPERTIES:
+:EXPORT_FILE_NAME: papers
+:EXPORT_DATE: 2020-12-05
+:EXPORT_HUGO_SECTION: reading
+:EXPORT_DESCRIPTION: Papers I've read. 
+:EXPORT_OPTIONS: toc:2
+:END:
+
+[[https://eprint.iacr.org/2018/414.pdf][Aggregation of Gamma-Signatures and Applications to Bitcoin]]
+> Aggregate signature (AS) allows non-interactively condensing multiple individual signatures into a compact one.
+Besides the faster verification, it is useful to reduce storage and bandwidth, and is especially attractive for blockchain and cryptocurrency. 
+
+> Currently, due to the 1M-byte limitation of block size, about 7 transactions
+are conducted per second in the Bitcoin system. This leads to, in particular,
+longer confirmation latency, relatively higher transaction fees, and easier target
+of spam attacks.
+
+> Bitcoin uses the EC-DSA signature scheme [37] over
+the secp256k1 curve [22]. According to Bitcoin Stack Exchange, in a standard
+“pay to public key hash” (P2PKH) transaction or a “pay to script hash” (P2SH)
+transaction, the signatures occupy about 40% of transcript size.
+In addition, an EC-DSA signature involves non-linear combination of ephemeral secret-key
+and static secret-key, which is the source for relative inefficiency and for the
+cumbersome in extensions to multi-signatures [8, 47], scriptless scripts [66], etc.
+As a consequence, recently there is also renewed interests in deploying Schnorr’s
+signature with Bitcoin in the future.
+
+
+
+
 ** Books                                              :reading:book:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: books
@@ -2906,11 +2937,8 @@ and consists of the following steps:
 4. Glance over the references, mentally ticking off the ones you’ve already read
 
 At the end of the first pass, you should be able to answer the five Cs:
-1. Category: What type of paper is this? 
-A measurement paper? An analysis of an existing system? 
-A description of a research prototype?
-2. Context: Which other papers is it related to? Which
-theoretical bases were used to analyze the problem?
+1. Category: What type of paper is this? A measurement paper? An analysis of an existing system? A description of a research prototype?
+2. Context: Which other papers is it related to? Which theoretical bases were used to analyze the problem?
 3. Correctness: Do the assumptions appear to be valid?
 4. Contributions: What are the paper’s main contributions?
 5. Clarity: Is the paper well written?
