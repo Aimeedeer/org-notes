@@ -382,6 +382,25 @@ https://github.com/RustCrypto/hashes
 **** 2020-11-02 
 
 - Created Walnuts: my toy blockchain in Rust
+** Project: The Big Announcement  :substrate:ethereum:smartcontract:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: bigannouncement
+:EXPORT_DATE: 2020-12-07
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: A tiny smart contract.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+
+*** TBA on Substrate
+
+TODO
+
+*** TBA on Ethereum
+
+Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
+
+
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
