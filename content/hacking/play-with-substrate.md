@@ -16,7 +16,7 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [2020-11-27~30 Write a simple smart contract](#2020-11-27-30-write-a-simple-smart-contract)
+- [2020-11-27~ Write a simple smart contract](#2020-11-27-write-a-simple-smart-contract)
 - [2020-11-20 The example: flipper](#2020-11-20-the-example-flipper)
     - [New tool learned](#new-tool-learned)
 - [2020-11-17 ink!](#2020-11-17-ink)
@@ -54,7 +54,7 @@ algorithms and also allows you to create your own:
 > - Proof of Work
 
 
-## 2020-11-27~30 Write a simple smart contract {#2020-11-27-30-write-a-simple-smart-contract}
+## 2020-11-27~ Write a simple smart contract {#2020-11-27-write-a-simple-smart-contract}
 
 Follow [ink](https://github.com/paritytech/ink#play-with-it) GitHub
 
@@ -156,7 +156,7 @@ help: consider importing one of these items
 ```
 
 What's wrong?
-The test seems to works fine:
+There is a warning here that says unused import \`alloc::string::String\`.
 
 ```shell
 $ cargo +nightly test
@@ -176,6 +176,60 @@ warning: 1 warning emitted
 running 2 tests
 test mytest::tests::default_works ... ok
 test mytest::tests::it_works ... ok
+```
+
+Because \`String\` inside the \`mod\` used type from \`std\` when I ran
+\`cargo test\` while \`build\` uses \`no\_std\` so it couldn't build.
+Let's move \`alloc::string::String\` inside the \`mod\` to import
+the \`String\` type we need in this contract code.
+
+```rust
+#![cfg_attr(not(feature = "std"), no_std)]
+
+extern crate alloc;
+use ink_lang as ink;
+
+#[ink::contract]
+mod mytest {
+    use alloc::string::String;
+
+    #[ink(storage)]
+    pub struct Mytest {
+	value: String,
+    }
+
+    impl Mytest {
+```
+
+Now it built:
+
+```shell
+$ cargo contract build && cargo contract generate-metadata
+ [1/3] Building cargo project
+    Finished release [optimized] target(s) in 0.11s
+ [2/3] Post processing wasm file
+ [3/3] Optimizing wasm file
+wasm-opt is not installed. Install this tool on your system in order to
+reduce the size of your contract's Wasm binary.
+See https://github.com/WebAssembly/binaryen#tools
+
+Your contract is ready. You can find it here:
+/Users/aimeez/github/mytest/target/mytest.wasm
+  Generating metadata
+ [1/3] Building cargo project
+    Finished release [optimized] target(s) in 0.06s
+ [2/3] Post processing wasm file
+ [3/3] Optimizing wasm file
+wasm-opt is not installed. Install this tool on your system in order to
+reduce the size of your contract's Wasm binary.
+See https://github.com/WebAssembly/binaryen#tools
+    Updating crates.io index
+   Compiling metadata-gen v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_fNuJ5a/.ink/metadata_gen)
+    Finished release [optimized] target(s) in 2.09s
+     Running `target/release/metadata-gen`
+      Your metadata file is ready.
+You can find it here:
+/Users/aimeez/github/mytest/target/metadata.json
 ```
 
 
