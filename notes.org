@@ -398,7 +398,8 @@ TODO
 
 *** TBA on Ethereum
 
-Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
+- Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
+- [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
 
 
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
