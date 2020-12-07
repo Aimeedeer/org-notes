@@ -56,7 +56,9 @@ algorithms and also allows you to create your own:
 
 ## 2020-11-27~ Write a simple smart contract {#2020-11-27-write-a-simple-smart-contract}
 
-Follow [ink](https://github.com/paritytech/ink#play-with-it) GitHub
+The source code is on GitHub: [mytest-with-ink](https://github.com/Aimeedeer/mytest-with-ink).
+
+I am following [ink](https://github.com/paritytech/ink#play-with-it) tutorials:
 
 Creating a default smart contract with `cargo contract new mytest`,
 and it generates `lib.rs` and `Cargo.toml` files.
@@ -231,6 +233,43 @@ See https://github.com/WebAssembly/binaryen#tools
 You can find it here:
 /Users/aimeez/github/mytest/target/metadata.json
 ```
+
+I want to deploy this contract that we need to run a Canvas node.
+I start the node with \`canvas --dev --tmp\` and it runs.
+
+```shell
+$ canvas --dev --tmp
+2020-12-07 11:33:44  Running in --dev mode, RPC CORS has been disabled.
+2020-12-07 11:33:44  Canvas Node
+2020-12-07 11:33:44  ✌️  version 0.1.0-258b0fa-x86_64-macos
+2020-12-07 11:33:44  ❤️  by Canvas, 2020-2020
+2020-12-07 11:33:44  📋 Chain specification: Development
+2020-12-07 11:33:44  🏷 Node name: ashamed-expansion-2693
+2020-12-07 11:33:44  👤 Role: AUTHORITY
+2020-12-07 11:33:44  💾 Database: RocksDb at /var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/substratemw8oWO/chains/dev/db
+2020-12-07 11:33:44  ⛓  Native runtime: canvas-8 (canvas-0.tx1.au1)
+2020-12-07 11:33:44  🔨 Initializing Genesis block/state (state: 0xa59b…f816, header-hash: 0xb343…d7c7)
+2020-12-07 11:33:44  👴 Loading GRANDPA authority set from genesis on what appears to be first startup.
+2020-12-07 11:33:44  ⏱  Loaded block-time = 6000 milliseconds from genesis on first-launch
+2020-12-07 11:33:44  Using default protocol ID "sup" because none is configured in the chain specs
+2020-12-07 11:33:44  🏷 Local node identity is: 12D3KooWPVg8eFAUQwkxNRneEnf9aTtnW4N5mfcnYuM2uzntSLxY
+2020-12-07 11:33:45  📦 Highest known block at #0
+2020-12-07 11:33:45  〽️ Prometheus server started at 127.0.0.1:9615
+2020-12-07 11:33:45  Listening for new connections on 127.0.0.1:9944.
+2020-12-07 11:33:48  🙌 Starting consensus session on top of parent 0xb3438d10dfad2cb1016336ce4cb6bbad06d15bb33889a320c5872576f8ded7c7
+2020-12-07 11:33:48  🎁 Prepared block for proposing at 1 [hash: 0xa5aebe057cf481c8e86f0871de9f85a122c44dfaf18ec7e6c86bbe7b5d8baf66; parent_hash: 0xb343…d7c7; extrinsics (1): [0x7ddc…7b9c]]
+2020-12-07 11:33:48  🔖 Pre-sealed block for proposal at 1. Hash now 0xdfbe71815a49bb34e6d1d656b7967fa5769d50b4bae1fac9ef5523731a6329f7, previously 0xa5aebe057cf481c8e86f0871de9f85a122c44dfaf18ec7e6c86bbe7b5d8baf66.
+2020-12-07 11:33:48  ✨ Imported #1 (0xdfbe…29f7)
+2020-12-07 11:33:50  💤 Idle (0 peers), best: #1 (0xdfbe…29f7), finalized #0 (0xb343…d7c7), ⬇ 0 ⬆ 0
+```
+
+Then I open the page <https://paritytech.github.io/canvas-ui>,
+but it shows:
+
+> You are not connected to a node.
+> Ensure that your node is running and that your Websocket endpoint is reachable.
+
+Anyway, I don't want to deal with it today...
 
 
 ## 2020-11-20 The example: flipper {#2020-11-20-the-example-flipper}
