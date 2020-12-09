@@ -648,13 +648,13 @@ but it shows:
 > You are not connected to a node.
 > Ensure that your node is running and that your Websocket endpoint is reachable.
 
-I use Brave browser and it inspecter shows:
+I use Brave browser, and its inspect shows:
 
 > polkadotjs.6a4157a5.js:1 WebSocket connection to 'ws://127.0.0.1:9944/' failed: Unknown reason
 
 I tried many times but couldn't work out the problem.
-Anyway, I switched to Firefox and it works.
-I can send a message to the ~mytest~ contract, and get the result from the RPC call.
+Anyway, I switched to Firefox, and it works.
+I can send a message to ~mytest~ contract and get the result from the RPC call.
 Try out the [[https://github.com/Aimeedeer/mytest-with-ink][source code]].
 
 *** 2020-11-20 The example: flipper
