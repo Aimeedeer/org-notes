@@ -397,6 +397,9 @@ https://github.com/RustCrypto/hashes
 
 
 
+- TODO
+
+
 *** TBA on Ethereum
 
 - Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
@@ -429,7 +432,7 @@ algorithms and also allows you to create your own:
 > - BABE (slot-based)
 > - Proof of Work
 
-*** 2020-11-27~ Write a simple smart contract
+*** 2020-12-08 A super simple smart contract
 
 The source code is on GitHub: [[https://github.com/Aimeedeer/mytest-with-ink][mytest-with-ink]].
 
@@ -645,7 +648,14 @@ but it shows:
 > You are not connected to a node.
 > Ensure that your node is running and that your Websocket endpoint is reachable.
 
-Anyway, I don't want to deal with it today...
+I use Brave browser and it inspecter shows:
+
+> polkadotjs.6a4157a5.js:1 WebSocket connection to 'ws://127.0.0.1:9944/' failed: Unknown reason
+
+I tried many times but couldn't work out the problem.
+Anyway, I switched to Firefox and it works.
+I can send a message to the ~mytest~ contract, and get the result from the RPC call.
+Try out the [[https://github.com/Aimeedeer/mytest-with-ink][source code]].
 
 *** 2020-11-20 The example: flipper
 

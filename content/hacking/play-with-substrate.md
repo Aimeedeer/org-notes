@@ -7,7 +7,7 @@ tags = ["rust", "substrate", "blockchain"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2002
+  weight = 2003
   identifier = "play-with-substrate"
 +++
 
@@ -16,7 +16,7 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [2020-11-27~ Write a simple smart contract](#2020-11-27-write-a-simple-smart-contract)
+- [2020-12-08 A super simple smart contract](#2020-12-08-a-super-simple-smart-contract)
 - [2020-11-20 The example: flipper](#2020-11-20-the-example-flipper)
     - [New tool learned](#new-tool-learned)
 - [2020-11-17 ink!](#2020-11-17-ink)
@@ -54,7 +54,7 @@ algorithms and also allows you to create your own:
 > - Proof of Work
 
 
-## 2020-11-27~ Write a simple smart contract {#2020-11-27-write-a-simple-smart-contract}
+## 2020-12-08 A super simple smart contract {#2020-12-08-a-super-simple-smart-contract}
 
 The source code is on GitHub: [mytest-with-ink](https://github.com/Aimeedeer/mytest-with-ink).
 
@@ -269,7 +269,14 @@ but it shows:
 > You are not connected to a node.
 > Ensure that your node is running and that your Websocket endpoint is reachable.
 
-Anyway, I don't want to deal with it today...
+I use Brave browser and it inspecter shows:
+
+> polkadotjs.6a4157a5.js:1 WebSocket connection to 'ws://127.0.0.1:9944/' failed: Unknown reason
+
+I tried many times but couldn't work out the problem.
+Anyway, I switched to Firefox and it works.
+I can send a message to the `mytest` contract, and get the result from the RPC call.
+Try out the [source code](https://github.com/Aimeedeer/mytest-with-ink).
 
 
 ## 2020-11-20 The example: flipper {#2020-11-20-the-example-flipper}
