@@ -402,6 +402,12 @@ ERROR: Contract names cannot contain hyphens
 #+end_src
 
 New name: tbaSubstrate ;)
+
+#+begin_src shell
+$ cargo contract new tbaSubstrate
+	Created contract tbaSubstrate
+#+end_src
+
 But Rust seems doesn't like it:
 
 #+begin_src shell
@@ -412,12 +418,6 @@ warning: crate `tbaSubstrate` should have a snake case name
 #+end_src 
 
 My mood is just like this post: [[https://fasterthanli.me/articles/frustrated-its-not-you-its-rust][Frustrated? It's not you, it's Rust]]
-
-
-#+begin_src shell
-$ cargo contract new tbaSubstrate
-	Created contract tbaSubstrate
-#+end_src
 
 *** TBA on Ethereum
 

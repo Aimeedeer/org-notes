@@ -33,6 +33,12 @@ ERROR: Contract names cannot contain hyphens
 ```
 
 New name: tbaSubstrate ;)
+
+```shell
+$ cargo contract new tbaSubstrate
+      Created contract tbaSubstrate
+```
+
 But Rust seems doesn't like it:
 
 ```shell
@@ -43,11 +49,6 @@ warning: crate `tbaSubstrate` should have a snake case name
 ```
 
 My mood is just like this post: [Frustrated? It's not you, it's Rust](https://fasterthanli.me/articles/frustrated-its-not-you-its-rust)
-
-```shell
-$ cargo contract new tbaSubstrate
-      Created contract tbaSubstrate
-```
 
 
 ## TBA on Ethereum {#tba-on-ethereum}
