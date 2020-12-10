@@ -392,7 +392,7 @@ https://github.com/RustCrypto/hashes
 :END:
 
 
-*** TBA on Substrate
+*** TBA's smart contract on Substrate
 
 Ah oh...
 
@@ -402,9 +402,16 @@ ERROR: Contract names cannot contain hyphens
 #+end_src
 
 New name: tbaSubstrate ;)
+But Rust seems doesn't like it:
 
+#+begin_src shell
+warning: crate `tbaSubstrate` should have a snake case name
+  |
+  = note: `#[warn(non_snake_case)]` on by default
+  = help: convert the identifier to snake case: `tba_substrate`
+#+end_src 
 
-
+My mood is just like this post: [[https://fasterthanli.me/articles/frustrated-its-not-you-its-rust][Frustrated? It's not you, it's Rust]]
 
 
 #+begin_src shell
@@ -415,6 +422,7 @@ $ cargo contract new tbaSubstrate
 *** TBA on Ethereum
 
 - Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
+  - [[https://github.com/Aimeedeer/bigannouncement/blob/master/contracts/BigAnnouncement.sol][Solidity contract]]
 - [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
 
 
