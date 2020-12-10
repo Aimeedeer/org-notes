@@ -3,7 +3,7 @@ title = "How to Read and Write"
 author = ["Aimee Z"]
 description = "Notes about reading and writing."
 date = 2020-10-29
-tags = ["writing", "notes"]
+tags = ["writing"]
 categories = ["reading"]
 draft = false
 [menu.main]
