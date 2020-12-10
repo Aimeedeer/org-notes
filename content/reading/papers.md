@@ -11,6 +11,15 @@ draft = false
   identifier = "papers"
 +++
 
+[VM Matters: A Comparison of WASM VMs and EVMs in the Performance of Blockchain Smart Contracts](https://arxiv.org/abs/2012.01032)
+
+[Determinants of Early-Stage Startup Performance: Survey Results](https://papers.ssrn.com/sol3/papers.cfm?abstract%5Fid=3725023)
+> To explore determinants of new venture performance, the CEOs of 470 early-stage startups were surveyed regarding a broad range of factors related to their venture’s customer value proposition, product management, marketing, technology and operations, financial management, funding choices, team management, and founder attributes. Multivariate regression analysis shows that startups that employed lean startup management practices—in particular, an optimal rate of pivoting—had stronger seed equity valuation growth, as did new ventures that struck the right balance in recruiting for skill versus attitude and that professionalized human resource policies earlier. High levels of confidence in financial metrics—including estimates of unit economics, the ratio of customer lifetime value to customer acquisition cost, and total addressable market size—were also associated with strong growth in seed equity value.
+>
+> Valuation outcomes were not related to several founder/CEO attributes, including age, educational background, personality traits, and motivations for becoming an entrepreneur. Likewise, choosing angels versus venture capital firms as lead seed round investors did not predict subsequent growth in equity valuation, nor did decisions about partnerships to provide technology, operational capacity, or marketing support.
+
+[Sexing Day-Old Chicks: A Case Study and Expert Systems Analysis of a Difficult Perceptual-Learning Task](https://geon.usc.edu/~biederman/publications/Biederman%5FShiffrar%5F1987.pdf)
+
 [Aggregation of Gamma-Signatures and Applications to Bitcoin](https://eprint.iacr.org/2018/414.pdf)
 
 Not a great paper. I don't think it has strong proof of its point,

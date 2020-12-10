@@ -25,7 +25,12 @@ draft = false
 
 ## TBA on Substrate {#tba-on-substrate}
 
--   TODO
+Ah oh...
+
+```shell
+$ cargo contract new bigannouncement-substrate
+ERROR: Contract names cannot contain hyphens
+```
 
 
 ## TBA on Ethereum {#tba-on-ethereum}

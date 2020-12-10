@@ -60,6 +60,27 @@ Type system
 
 Video: [Pascal Hertleif - Writing Idiomatic Libraries in Rust](https://www.youtube.com/watch?v=0zOg8%5FB71gE)
 
+Collections:
+
+-   Rust book: [Common Collections](https://doc.rust-lang.org/stable/book/ch08-00-common-collections.html)
+-   [Module std::collections](https://doc.rust-lang.org/stable/std/collections/index.html)
+
+> To get this out of the way: you should probably just use `Vec` or `HashMap`.
+These two collections cover most use cases for generic data storage and processing.
+They are exceptionally good at doing what they do.
+All the other collections in the standard library have
+specific use cases where they are the optimal choice,
+but these cases are borderline niche in comparison.
+Even when Vec and HashMap are technically suboptimal,
+they're probably a good enough choice to get started.
+>
+> Rust's collections can be grouped into four major categories:
+>
+> - Sequences: Vec, VecDeque, LinkedList
+> - Maps: HashMap, BTreeMap
+> - Sets: HashSet, BTreeSet
+> - Misc: BinaryHeap
+
 
 ## Rust discussion {#rust-discussion}
 

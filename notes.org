@@ -394,11 +394,23 @@ https://github.com/RustCrypto/hashes
 
 *** TBA on Substrate
 
+Ah oh...
+
+#+begin_src shell
+$ cargo contract new bigannouncement-substrate
+ERROR: Contract names cannot contain hyphens
+#+end_src
+
+New name: tbaSubstrate ;)
 
 
 
-- TODO
 
+
+#+begin_src shell
+$ cargo contract new tbaSubstrate
+	Created contract tbaSubstrate
+#+end_src
 
 *** TBA on Ethereum
 
@@ -1416,6 +1428,26 @@ Type system
 [[https://wiki.alopex.li/RustStarterKit2020][Rust Starter Kit 2020]]
 
 Video: [[https://www.youtube.com/watch?v=0zOg8_B71gE][Pascal Hertleif - Writing Idiomatic Libraries in Rust]]
+
+Collections:
+- Rust book: [[https://doc.rust-lang.org/stable/book/ch08-00-common-collections.html][Common Collections]]
+- [[https://doc.rust-lang.org/stable/std/collections/index.html][Module std::collections]]
+> To get this out of the way: you should probably just use ~Vec~ or ~HashMap~. 
+These two collections cover most use cases for generic data storage and processing. 
+They are exceptionally good at doing what they do. 
+All the other collections in the standard library have 
+specific use cases where they are the optimal choice, 
+but these cases are borderline niche in comparison. 
+Even when Vec and HashMap are technically suboptimal, 
+they're probably a good enough choice to get started.
+>
+> Rust's collections can be grouped into four major categories:
+>
+> - Sequences: Vec, VecDeque, LinkedList
+> - Maps: HashMap, BTreeMap
+> - Sets: HashSet, BTreeSet
+> - Misc: BinaryHeap
+
 
 *** Rust discussion
 
@@ -2891,10 +2923,15 @@ and Friedrich Nietzsche's books.
 :END:
 
 
+[[https://arxiv.org/abs/2012.01032][VM Matters: A Comparison of WASM VMs and EVMs in the Performance of Blockchain Smart Contracts]]
+
+
+[[https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3725023][Determinants of Early-Stage Startup Performance: Survey Results]]
+> To explore determinants of new venture performance, the CEOs of 470 early-stage startups were surveyed regarding a broad range of factors related to their venture’s customer value proposition, product management, marketing, technology and operations, financial management, funding choices, team management, and founder attributes. Multivariate regression analysis shows that startups that employed lean startup management practices—in particular, an optimal rate of pivoting—had stronger seed equity valuation growth, as did new ventures that struck the right balance in recruiting for skill versus attitude and that professionalized human resource policies earlier. High levels of confidence in financial metrics—including estimates of unit economics, the ratio of customer lifetime value to customer acquisition cost, and total addressable market size—were also associated with strong growth in seed equity value.
+>
+> Valuation outcomes were not related to several founder/CEO attributes, including age, educational background, personality traits, and motivations for becoming an entrepreneur. Likewise, choosing angels versus venture capital firms as lead seed round investors did not predict subsequent growth in equity valuation, nor did decisions about partnerships to provide technology, operational capacity, or marketing support.
 
 [[https://geon.usc.edu/~biederman/publications/Biederman_Shiffrar_1987.pdf][Sexing Day-Old Chicks: A Case Study and Expert Systems Analysis of a Difficult Perceptual-Learning Task]]
-
-
 
 
 [[https://eprint.iacr.org/2018/414.pdf][Aggregation of Gamma-Signatures and Applications to Bitcoin]]
