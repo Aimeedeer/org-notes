@@ -35,4 +35,6 @@ these signals, and we honor these signals and respect these signals,
 that we're going to begin to see the liberating, nourishing,
 deeper solutions. The cows that are waiting all around us.
 
+[Jordan Peterson: How To Deal With Depression](https://www.youtube.com/watch?v=Xm%5F2zmX6Akc)
+
 [Sir Ken Robinson: Finding Your Element](https://www.youtube.com/watch?v=17fbxRQgMlU)
