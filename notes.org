@@ -419,6 +419,12 @@ warning: crate `tbaSubstrate` should have a snake case name
 
 My mood is just like this post: [[https://fasterthanli.me/articles/frustrated-its-not-you-its-rust][Frustrated? It's not you, it's Rust]]
 
+**** TODO
+
+- [ ] Compare the caller's price and set/ornot the new message(hash)
+- [ ] Save or read from some ink API for the last message(hash string) and paid money (bignumber type?)
+- [ ] Withdraw() function
+
 *** TBA on Ethereum
 
 - Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]

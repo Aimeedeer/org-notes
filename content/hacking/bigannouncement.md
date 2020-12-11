@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [TBA's smart contract on Substrate](#tba-s-smart-contract-on-substrate)
+    - [TODO](#todo)
 - [TBA on Ethereum](#tba-on-ethereum)
 
 </div>
@@ -49,6 +50,13 @@ warning: crate `tbaSubstrate` should have a snake case name
 ```
 
 My mood is just like this post: [Frustrated? It's not you, it's Rust](https://fasterthanli.me/articles/frustrated-its-not-you-its-rust)
+
+
+### TODO {#todo}
+
+-   [ ] Compare the caller's price and set/ornot the new message(hash)
+-   [ ] Save or read from some ink API for the last message(hash string) and paid money (bignumber type?)
+-   [ ] Withdraw() function
 
 
 ## TBA on Ethereum {#tba-on-ethereum}
