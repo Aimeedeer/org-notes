@@ -58,11 +58,6 @@ warning: crate `tbaSubstrate` should have a snake case name
 
 My mood is just like this post: [Frustrated? It's not you, it's Rust](https://fasterthanli.me/articles/frustrated-its-not-you-its-rust)
 
-
-### TODO {#todo}
-
--   [ ] Withdraw() function
-
 **Failed of using `ink_prelude`:**
 
 I use `cargo add ink_prelude`, and it shows in the `Cargo.toml` as
@@ -148,4 +143,8 @@ It built but
 system.ExtrinsicFailed
 ```
 
-<span class="underline">TODO</span> figure it out
+
+### TODO {#todo}
+
+-   [ ] Withdraw() function
+-   [ ] Figure out the deployment bug
