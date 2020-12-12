@@ -1556,7 +1556,7 @@ they're probably a good enough choice to get started.
 Rust weaknesses:
 [[https://www.reddit.com/r/rust/comments/jia2xn/what_are_some_of_rusts_weaknesses_as_a_language/][This question got a bunch of discussions]]
 
-** Interesting Rust Projects
+** Interesting Rust Projects                                  :rust:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-projects
 :EXPORT_DATE: 2020-12-12

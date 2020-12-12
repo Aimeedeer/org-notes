@@ -3,6 +3,8 @@ title = "Interesting Rust Projects"
 author = ["Aimee Z"]
 description = "Some interesting Rust projects, which might be helpful for the rib-os project."
 date = 2020-12-12
+tags = ["rust"]
+categories = ["hacking"]
 draft = false
 [menu.main]
   weight = 2008
