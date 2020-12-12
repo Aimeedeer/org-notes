@@ -391,6 +391,12 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
+*** TBA on Ethereum
+
+- Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
+  - [[https://github.com/Aimeedeer/bigannouncement/blob/master/contracts/BigAnnouncement.sol][Solidity contract]]
+- [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
+
 
 *** TBA's smart contract on Substrate
 
@@ -421,15 +427,95 @@ My mood is just like this post: [[https://fasterthanli.me/articles/frustrated-it
 
 **** TODO
 
-- [ ] Compare the caller's price and set/ornot the new message(hash)
-- [ ] Save or read from some ink API for the last message(hash string) and paid money (bignumber type?)
 - [ ] Withdraw() function
 
-*** TBA on Ethereum
 
-- Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
-  - [[https://github.com/Aimeedeer/bigannouncement/blob/master/contracts/BigAnnouncement.sol][Solidity contract]]
-- [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
+*Failed of using ~ink_prelude~:*
+
+I use ~cargo add ink_prelude~, and it shows in the ~Cargo.toml~ as 
+
+#+begin_src rust
+ink_prelude = "0.0.0"
+#+end_src
+
+But the [[https://github.com/paritytech/ink/commit/75d3b99c3b86398acaef74b84e441da79a88c53f][newest released version]] is different, and I change it to 
+
+#+begin_src rust
+ink_prelude = "3.0.0-rc2"
+#+end_src
+
+Then build it, and there is a new error:
+
+#+begin_src shell
+$ cargo +nightly contract build
+ [1/3] Building cargo project
+   Compiling ink_prelude v3.0.0-rc2
+   Compiling ink_primitives v3.0.0-rc2
+error[E0463]: can't find crate for `std`
+  |
+  = note: the `wasm32-unknown-unknown` target may not be installed
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0463`.
+error: could not compile `ink_prelude`
+#+end_src
+
+Keep trying:
+
+#+begin_src shell
+$ rustup install nightly-2020-10-06
+info: syncing channel updates for 'nightly-2020-10-06-x86_64-apple-darwin'
+info: latest update on 2020-10-06, rust version 1.49.0-nightly (a1dfd2490 2020-10-05)
+...
+
+$ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-06
+info: downloading component 'rust-std' for 'wasm32-unknown-unknown'
+info: installing component 'rust-std' for 'wasm32-unknown-unknown'
+info: using up to 500.0 MiB of RAM to unpack components
+Aimees-MacBook-Pro:tbaSubstrate aimeez$ cargo +nightly-2020-10-06 build --release
+
+...
+
+warning: unused imports: `format`, `string`
+ --> lib.rs:4:19
+  |
+4 | use ink_prelude::{format, string};
+  |                   ^^^^^^  ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: 1 warning emitted
+
+    Finished release [optimized] target(s) in 1m 24s
+
+$ cargo contract build && cargo contract generate-metadata
+ [1/3] Building cargo project
+   Compiling ink_prelude v3.0.0-rc2
+error[E0463]: can't find crate for `std`
+  |
+  = note: the `wasm32-unknown-unknown` target may not be installed
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0463`.
+error: could not compile `ink_prelude`
+#+end_src
+
+At last, I use ~alloc~ instead of ~ink_prelude~:
+
+#+begin_src rust
+use alloc::{string::String, format};
+#+end_src
+
+It built but 
+*Deploy failed:*
+
+#+begin_src shell
+system.ExtrinsicFailed
+#+end_src
+
+_TODO_ figure it out
 
 
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
