@@ -1556,6 +1556,30 @@ they're probably a good enough choice to get started.
 Rust weaknesses:
 [[https://www.reddit.com/r/rust/comments/jia2xn/what_are_some_of_rusts_weaknesses_as_a_language/][This question got a bunch of discussions]]
 
+** Interesting Rust Projects
+:PROPERTIES:
+:EXPORT_FILE_NAME: rust-projects
+:EXPORT_DATE: 2020-12-12
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Some interesting Rust projects, which might be helpful for the rib-os project.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+
+[[https://github.com/mozilla/rust-android-gradle][rust-android-gradle]]. Cross compile Rust Cargo projects for Android targets.
+
+Rust windows: [[https://github.com/rust-windowing/android-ndk-rs][android-ndk-rs]]. Rust bindings to the Android NDK.
+
+[[https://github.com/MortimerGoro/gvr-sys][gvr-sys]]. Rust bindings for Google VR SDK.
+
+[[https://github.com/LEXUGE/dcompass][dcompass]]. High-performance DNS server with rule matching/DoT/DoH functionality built-in.
+
+[[https://www.areweguiyet.com/][Are we UI yet]]
+
+> As a low level language, Rust is perfectly suitable for making user interfaces the old fashioned way, with native APIs. However, competing in today's world typically means supporting many platforms, and that makes using native APIs an unattractive option for many.
+
+
+
 ** Error Handling                               :rust:errorhandling:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: error-handling
