@@ -20,6 +20,7 @@ draft = false
     - [References](#references)
     - [Examples](#examples)
 - [Git commands](#git-commands)
+    - [Git commit log](#git-commit-log)
     - [Remote .git](#remote-dot-git)
     - [Download a file from command line](#download-a-file-from-command-line)
     - [Cherry pick](#cherry-pick)
@@ -69,6 +70,15 @@ src_sh[:exports code]{echo -e "test"}
 
 
 ## Git commands {#git-commands}
+
+
+### Git commit log {#git-commit-log}
+
+It outputs a list of the email domains who have committed to the repository in the last 100,000 commits.
+
+```shell
+$ git log -n100000 --format="%ae" | cut -d@ -f2 | sort | uniq -c | sort -nr | less
+```
 
 
 ### Remote .git {#remote-dot-git}

@@ -1220,6 +1220,14 @@ src_sh[:exports code]{echo -e "test"}
 
 *** Git commands
 
+**** Git commit log
+
+It outputs a list of the email domains who have committed to the repository in the last 100,000 commits.
+
+#+begin_src shell
+$ git log -n100000 --format="%ae" | cut -d@ -f2 | sort | uniq -c | sort -nr | less
+#+end_src
+
 **** Remote .git
 
 #+begin_src shell
@@ -1577,7 +1585,6 @@ Rust windows: [[https://github.com/rust-windowing/android-ndk-rs][android-ndk-rs
 [[https://www.areweguiyet.com/][Are we UI yet]]
 
 > As a low level language, Rust is perfectly suitable for making user interfaces the old fashioned way, with native APIs. However, competing in today's world typically means supporting many platforms, and that makes using native APIs an unattractive option for many.
-
 
 
 ** Error Handling                               :rust:errorhandling:@hacking:
