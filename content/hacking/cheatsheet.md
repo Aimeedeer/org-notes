@@ -20,6 +20,7 @@ draft = false
     - [References](#references)
     - [Examples](#examples)
 - [Git commands](#git-commands)
+    - [Git tutorial](#git-tutorial)
     - [Git commit log](#git-commit-log)
     - [Remote .git](#remote-dot-git)
     - [Download a file from command line](#download-a-file-from-command-line)
@@ -70,6 +71,17 @@ src_sh[:exports code]{echo -e "test"}
 
 
 ## Git commands {#git-commands}
+
+
+### Git tutorial {#git-tutorial}
+
+<https://github.com/git/git/blob/master/Documentation/gittutorial.txt>
+
+```shell
+$ git show HEAD^  # to see the parent of HEAD
+$ git show HEAD^^ # to see the grandparent of HEAD
+$ git show HEAD~4 # to see the great-great grandparent of HEAD
+```
 
 
 ### Git commit log {#git-commit-log}

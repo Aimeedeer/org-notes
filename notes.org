@@ -516,6 +516,10 @@ system.ExtrinsicFailed
 - [ ] Figure out the deployment bug
 
 
+
+
+
+
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
@@ -1220,6 +1224,16 @@ src_sh[:exports code]{echo -e "test"}
 
 *** Git commands
 
+**** Git tutorial
+
+https://github.com/git/git/blob/master/Documentation/gittutorial.txt
+
+#+begin_src shell
+$ git show HEAD^  # to see the parent of HEAD
+$ git show HEAD^^ # to see the grandparent of HEAD
+$ git show HEAD~4 # to see the great-great grandparent of HEAD
+#+end_src
+
 **** Git commit log
 
 It outputs a list of the email domains who have committed to the repository in the last 100,000 commits.
@@ -1586,6 +1600,8 @@ Rust windows: [[https://github.com/rust-windowing/android-ndk-rs][android-ndk-rs
 
 > As a low level language, Rust is perfectly suitable for making user interfaces the old fashioned way, with native APIs. However, competing in today's world typically means supporting many platforms, and that makes using native APIs an unattractive option for many.
 
+Blog:
+[[https://caballerocoll.com/blog/bevy-chess-tutorial/][Chess game in Rust using Bevy]]
 
 ** Error Handling                               :rust:errorhandling:@hacking:
 :PROPERTIES:

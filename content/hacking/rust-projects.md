@@ -22,3 +22,6 @@ Rust windows: [android-ndk-rs](https://github.com/rust-windowing/android-ndk-rs)
 [Are we UI yet](https://www.areweguiyet.com/)
 
 > As a low level language, Rust is perfectly suitable for making user interfaces the old fashioned way, with native APIs. However, competing in today's world typically means supporting many platforms, and that makes using native APIs an unattractive option for many.
+
+Blog:
+[Chess game in Rust using Bevy](https://caballerocoll.com/blog/bevy-chess-tutorial/)
