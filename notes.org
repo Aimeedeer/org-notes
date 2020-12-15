@@ -511,13 +511,10 @@ system.ExtrinsicFailed
 #+end_src
 
 **** TODO
-
-- [ ] Withdraw() function
+- [ ] Withdraw() function & test
 - [ ] Figure out the deployment bug
 
-
-
-
+[[https://paritytech.github.io/ink/ink_env/][off-chain Test Functions]]
 
 
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
@@ -1111,6 +1108,26 @@ Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)
 **** Doc
 
 https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
+
+** Advent of Code                                             :rust:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: advent-of-code
+:EXPORT_DATE: 2020-12-14
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Rust programming practice
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*GitHub repo*: https://github.com/Aimeedeer/adventofcode
+
+
+*** Day1
+
+[[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
+
+- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day1
+- Question: a better performance solution than 3 loops?
+
 
 ** State Machines                                         :cs:state:@hacking:
 :PROPERTIES:
