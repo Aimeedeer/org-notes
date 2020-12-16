@@ -18,7 +18,8 @@ draft = false
 
 - [TBA on Ethereum](#tba-on-ethereum)
 - [TBA's smart contract on Substrate](#tba-s-smart-contract-on-substrate)
-    - [TODO](#todo)
+    - [Source code (WIP)](#source-code--wip)
+    - [Hacklog](#hacklog)
 
 </div>
 <!--endtoc-->
@@ -33,7 +34,16 @@ draft = false
 
 ## TBA's smart contract on Substrate {#tba-s-smart-contract-on-substrate}
 
-Ah oh...
+
+### Source code (WIP) {#source-code--wip}
+
+[tba-substrate](https://github.com/Aimeedeer/tba-substrate)
+
+
+### Hacklog {#hacklog}
+
+
+#### Contract naming {#contract-naming}
 
 ```shell
 $ cargo contract new bigannouncement-substrate
@@ -58,7 +68,8 @@ warning: crate `tbaSubstrate` should have a snake case name
 
 My mood is just like this post: [Frustrated? It's not you, it's Rust](https://fasterthanli.me/articles/frustrated-its-not-you-its-rust)
 
-**Failed of using `ink_prelude`:**
+
+#### Failed of using `ink_prelude` {#failed-of-using-ink-prelude}
 
 I use `cargo add ink_prelude`, and it shows in the `Cargo.toml` as
 
@@ -136,15 +147,89 @@ At last, I use `alloc` instead of `ink_prelude`:
 use alloc::{string::String, format};
 ```
 
-It built but
-**Deploy failed:**
+It built.
+
+
+#### Deploy failed: {#deploy-failed}
 
 ```shell
 system.ExtrinsicFailed
 ```
 
 
-### TODO {#todo}
+#### Run Rust test command {#run-rust-test-command}
 
--   [ ] Withdraw() function
--   [ ] Figure out the deployment bug
+```shell
+$ cargo +nightly test -- new_works # test new an instance
+```
+
+```shell
+$ RUST_BACKTRACE=1 cargo +nightly test -- new_works
+```
+
+
+#### Debug\_println {#debug-println}
+
+```rust
+let message = String::from("Initialize the Big Announcement contract");
+ink_env::debug_println(&format!("thanks for instantiation {:?}, and price {}", &message, price));
+```
+
+```shell
+$ cargo +nightly test -- --nocapture
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.08s
+     Running target/debug/deps/tba_substrate-6d0825befe66c5c8
+
+running 2 tests
+thanks for instantiation "Initialize the Big Announcement contract", and price 340282366920938463463374607431768211455
+thanks for instantiation "Initialize the Big Announcement contract", and price 1
+Thanks for posting the message "new message"
+test tba_substrate::tests::new_works ... ok
+test tba_substrate::tests::set_works ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+```
+
+```shell
+$ cargo +nightly test -- --nocapture set_works
+```
+
+
+#### Test ink's example: contract-transfer {#test-ink-s-example-contract-transfer}
+
+```rust
+#[ink::test]
+fn transfer_works() {
+    // given
+    let contract_balance = 100;
+    let accounts = default_accounts();
+    let mut give_me = create_contract(contract_balance);
+
+    println!("alice: {}", get_balance(accounts.alice));
+    // when
+    set_sender(accounts.eve);
+    set_balance(accounts.eve, 0);
+    println!("eve: {}", get_balance(accounts.eve));
+    assert_eq!(give_me.give_me(80), Ok(()));
+
+    println!("eve after: {}", get_balance(accounts.eve));
+    println!("alice after: {}", get_balance(accounts.alice));
+
+    // then
+    assert_eq!(get_balance(accounts.eve), 80);
+}
+```
+
+The printing shows that alice's balance didn't change
+while eve's balance changed.
+
+```shell
+$ cargo +nightly test -- --nocapture transfer_works
+running 1 test
+alice after: 170141183460469231731687303715884105727
+eve: 0
+eve after: 80
+alice after: 170141183460469231731687303715884105727
+test give_me::tests::transfer_works ... ok
+```
