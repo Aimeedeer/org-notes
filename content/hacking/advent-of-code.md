@@ -16,6 +16,7 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
+- [Read and Learned](#read-and-learned)
 - [Day1](#day1)
 - [Day2](#day2)
 - [Day3](#day3)
@@ -24,6 +25,14 @@ draft = false
 <!--endtoc-->
 
 **GitHub repo**: <https://github.com/Aimeedeer/adventofcode>
+
+
+## Read and Learned {#read-and-learned}
+
+-   [Rust Macro](https://doc.rust-lang.org/book/ch19-06-macros.html) & [Macros By Example](https://doc.rust-lang.org/reference/macros-by-example.html) & [Procedural Macros](https://doc.rust-lang.org/reference/procedural-macros.html)
+-   [Concise Control Flow with `if let`](https://doc.rust-lang.org/stable/book/ch06-03-if-let.html)
+-   Differences between runtime and compile time. Answers from
+    Stackoverflow: <https://stackoverflow.com/questions/846103/runtime-vs-compile-time>
 
 
 ## Day1 {#day1}
@@ -62,7 +71,7 @@ fn main() -> anyhow::Result<()> {
 [Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
 
 -   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day2>
--   Question:
+-   [ ] Questions
 
 
 ## Day3 {#day3}

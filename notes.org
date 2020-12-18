@@ -1196,6 +1196,13 @@ https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/intera
 
 *GitHub repo*: https://github.com/Aimeedeer/adventofcode
 
+*** Read and Learned
+
+- [[https://doc.rust-lang.org/book/ch19-06-macros.html][Rust Macro]] & [[https://doc.rust-lang.org/reference/macros-by-example.html][Macros By Example]] & [[https://doc.rust-lang.org/reference/procedural-macros.html][Procedural Macros]]
+- [[https://doc.rust-lang.org/stable/book/ch06-03-if-let.html][Concise Control Flow with ~if let~]]
+- Differences between runtime and compile time. Answers from
+  Stackoverflow: https://stackoverflow.com/questions/846103/runtime-vs-compile-time
+
 *** Day1
 
 [[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
@@ -1228,12 +1235,11 @@ fn main() -> anyhow::Result<()> {
 
 [[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
 - Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day2
-- Question: 
+- [ ] Questions
 
 *** Day3 
 
 [[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
-
 
 
 
