@@ -517,7 +517,6 @@ It built.
 system.ExtrinsicFailed
 #+end_src
 
-
 ***** Run Rust test command
 
 #+begin_src shell
@@ -592,6 +591,7 @@ eve after: 80
 alice after: 170141183460469231731687303715884105727
 test give_me::tests::transfer_works ... ok
 #+end_src 
+
 
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
@@ -1196,13 +1196,45 @@ https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/intera
 
 *GitHub repo*: https://github.com/Aimeedeer/adventofcode
 
-
 *** Day1
 
 [[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
 
 - Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day1
 - Question: a better performance solution than 3 loops?
+- [[https://fasterthanli.me/series/advent-of-code-2020/part-1][Other one's practice]]. Good to learn a totally different approach.
+His code:
+#+begin_src rust
+use itertools::Itertools;
+
+fn main() -> anyhow::Result<()> {
+    let (a, b, c) = include_str!("input.txt")
+        .split('\n')
+        .map(str::parse::<i64>)
+        .collect::<Result<Vec<_>, _>>()?
+        .into_iter()
+        .tuple_combinations()
+        .find(|(a, b, c)| a + b + c == 2020)
+        .expect("no tuple of length 3 had a sum of 2020");
+
+    dbg!(a + b + c);
+    dbg!(a * b * c);
+
+    Ok(())
+}
+#+end_src
+
+*** Day2
+
+[[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
+- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day2
+- Question: 
+
+*** Day3 
+
+[[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
+
+
 
 
 ** State Machines                                         :cs:state:@hacking:
