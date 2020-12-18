@@ -1668,6 +1668,8 @@ by considering interoperability of new features in accordance to it.
 [[https://github.com/cis198-2016s][CIS 198 - Rust - Spring 2016]]
 - [[https://cis198-2016s.github.io/projects/][Project page]]
 
+[[https://people.eecs.berkeley.edu/~alexch/classes/CS294-F2020.html][CS294: Foundations of Probabilistic Proofs (F2020)]]
+
 [[https://github.com/SmallPond/MIT6.828_OS][MIT6.828 Operating System Engineering]]
 
 Type system

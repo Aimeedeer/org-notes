@@ -7,7 +7,7 @@ tags = ["rust", "cs"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2007
+  weight = 2006
   identifier = "rust-and-computer-science"
 +++
 
@@ -33,6 +33,8 @@ draft = false
 [CIS 198 - Rust - Spring 2016](https://github.com/cis198-2016s)
 
 -   [Project page](https://cis198-2016s.github.io/projects/)
+
+[CS294: Foundations of Probabilistic Proofs (F2020)](https://people.eecs.berkeley.edu/~alexch/classes/CS294-F2020.html)
 
 [MIT6.828 Operating System Engineering](https://github.com/SmallPond/MIT6.828%5FOS)
 
