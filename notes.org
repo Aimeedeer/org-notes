@@ -1198,10 +1198,15 @@ https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/intera
 
 *** Read and Learned
 
-- [[https://doc.rust-lang.org/book/ch19-06-macros.html][Rust Macro]] & [[https://doc.rust-lang.org/reference/macros-by-example.html][Macros By Example]] & [[https://doc.rust-lang.org/reference/procedural-macros.html][Procedural Macros]]
+- [[https://doc.rust-lang.org/book/ch19-06-macros.html][Rust Macro]] 
+  - [[https://doc.rust-lang.org/reference/macros-by-example.html][Macros By Example]] 
+  - [[https://doc.rust-lang.org/reference/procedural-macros.html][Procedural Macros]]
+  - [[https://danielkeep.github.io/tlborm/book/README.html][The Little Book of Rust Macros]]
 - [[https://doc.rust-lang.org/stable/book/ch06-03-if-let.html][Concise Control Flow with ~if let~]]
 - Differences between runtime and compile time. Answers from
   Stackoverflow: https://stackoverflow.com/questions/846103/runtime-vs-compile-time
+- [[https://en.wikipedia.org/wiki/Abstract_syntax_tree][Abstract Syntax Tree (AST)]]
+
 
 *** Day1
 
@@ -1209,7 +1214,7 @@ https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/intera
 
 - Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day1
 - Question: a better performance solution than 3 loops?
-- [[https://fasterthanli.me/series/advent-of-code-2020/part-1][Other one's practice]]. Good to learn a totally different approach.
+- [[https://fasterthanli.me/series/advent-of-code-2020/part-1][Other one's practice]]. Good to learn another totally different approach.
 His code:
 #+begin_src rust
 use itertools::Itertools;
@@ -1231,15 +1236,24 @@ fn main() -> anyhow::Result<()> {
 }
 #+end_src
 
+From Rust std: [[https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map][std/iter/trait.Iterator]]
+> ~map()~ is conceptually similar to a ~for~ loop. 
+However, as ~map()~ is lazy, it is best used when you're already working 
+with other iterators. If you're doing some sort of looping 
+for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
+
+[[https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple_combinations][tuple_combinations]]
+
 *** Day2
 
 [[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
 - Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day2
-- [ ] Questions
+- [ ] Questions: better abstraction
 
 *** Day3 
 
 [[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
+
 
 
 

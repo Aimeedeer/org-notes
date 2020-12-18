@@ -29,10 +29,14 @@ draft = false
 
 ## Read and Learned {#read-and-learned}
 
--   [Rust Macro](https://doc.rust-lang.org/book/ch19-06-macros.html) & [Macros By Example](https://doc.rust-lang.org/reference/macros-by-example.html) & [Procedural Macros](https://doc.rust-lang.org/reference/procedural-macros.html)
+-   [Rust Macro](https://doc.rust-lang.org/book/ch19-06-macros.html)
+    -   [Macros By Example](https://doc.rust-lang.org/reference/macros-by-example.html)
+    -   [Procedural Macros](https://doc.rust-lang.org/reference/procedural-macros.html)
+    -   [The Little Book of Rust Macros](https://danielkeep.github.io/tlborm/book/README.html)
 -   [Concise Control Flow with `if let`](https://doc.rust-lang.org/stable/book/ch06-03-if-let.html)
 -   Differences between runtime and compile time. Answers from
     Stackoverflow: <https://stackoverflow.com/questions/846103/runtime-vs-compile-time>
+-   [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract%5Fsyntax%5Ftree)
 
 
 ## Day1 {#day1}
@@ -41,7 +45,7 @@ draft = false
 
 -   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day1>
 -   Question: a better performance solution than 3 loops?
--   [Other one's practice](https://fasterthanli.me/series/advent-of-code-2020/part-1). Good to learn a totally different approach.
+-   [Other one's practice](https://fasterthanli.me/series/advent-of-code-2020/part-1). Good to learn another totally different approach.
 
 His code:
 
@@ -65,13 +69,21 @@ fn main() -> anyhow::Result<()> {
 }
 ```
 
+From Rust std: [std/iter/trait.Iterator](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)
+> `map()` is conceptually similar to a `for` loop.
+However, as `map()` is lazy, it is best used when you're already working
+with other iterators. If you're doing some sort of looping
+for a side effect, it's considered more idiomatic to use `for` than `map()`.
+
+[tuple\_combinations](https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple%5Fcombinations)
+
 
 ## Day2 {#day2}
 
 [Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
 
 -   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day2>
--   [ ] Questions
+-   [ ] Questions: better abstraction
 
 
 ## Day3 {#day3}
