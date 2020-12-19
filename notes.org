@@ -1793,6 +1793,71 @@ Blog:
 
 *** anyhow::Result
 
+** Lisp-lang                                                  :lisp:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: lisp
+:EXPORT_DATE: 2020-12-19
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Lisp programming
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** Official 
+
+https://lisp-lang.org/
+
+- Style Guide: https://lisp-lang.org/style-guide/
+- Writing Libraries: https://lisp-lang.org/learn/writing-libraries
+- Test with Travis-CI: https://github.com/luismbo/cl-travis
+- SLIME is the “Superior Lisp Interaction Mode for Emacs”: 
+  https://common-lisp.net/project/slime/doc/html/
+
+*** Books
+
+- Book list: [[https://lisp-lang.org/books/][Lisp lang books]]
+- A chapter from *Practical Common Lisp*: [[http://www.gigamonkeys.com/book/macros-standard-control-constructs.html][Macros: Standard Control Constructs]]
+
+*** Posts
+
+- [[https://fare.livejournal.com/188429.html][Why I haven't jumped ship from Common Lisp to Racket (just yet)]]
+
+*** Videos
+
+- [[https://www.youtube.com/watch?v=SPgjgybGb5o][Common Lisp - How to Start a New Project]]
+
+*** Macros in Lisp
+
+[[https://lisp-lang.org/learn/macros][Lisp lang Macros]]
+
+
+
+** Lua-lang                                                    :lua:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: lua
+:EXPORT_DATE: 2020-12-19
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Lua programming
+:EXPORT_OPTIONS: toc:2
+:END:
+
+Paper: [[https://www.lua.org/doc/jucs05.pdf][The Implementation of Lua 5.0]]
+
+
+** Gamedev                                            :gamedev:game:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: gamedev
+:EXPORT_DATE: 2020-12-19
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Game programming
+:EXPORT_OPTIONS: toc:2
+:END:
+
+[[https://mfiano.net/posts/Gamedev-Sleep-Repeat.html][Gamedev, Sleep, Repeat]]
+> Game engines are large systems consisting of many moving parts. Good software engineering requires simplicity -- it is what allows a system to remain secure, stable, and coherent throughout its evolution. Simplicity itself requires a lot of work at the start of a project to reduce the idea to its essense, and lots of discipline over the lifetime of the project to be able to distinguish worthwhile changes from the pernicious ones. That is simply everything my game engine is not, because for such a complex piece of software such as a game engine, it is not easy to know HOW all the pieces fit together, just some vague idea. Complexity arises through the iterative process that is implementing and actually debugging problems with these features. Making a small change to get a engine feature to play nice with others could, and often does, adversely affects simplicity and elegance much later down the road during development.
+
+[[https://mfiano.net/posts/Follow-up-to-Gamedev-Sleep-Repeat.html][Follow up to Gamedev, Sleep, Repeat]]
+>  I am less interested in making games, and more interested in the design of game engines. A game engine is interesting to me because it requires discipline in many fields of study, and each implementation is different. The thing is, a game engine is a piece of software that manages the data flow for a particular game, or a particular category of games. It is nothing more than a set of choices someone made for you in order to write games in a particular way. Any given game engine could be productive or counter-productive in creating your game. Even using a general purpose game engine like Unity and Unreal is a trade-off, and for a significant game, you'll find you still have to work around or reimplement core engine features at the 11th hour to get your game shipped.
+
 ** PGP                                      :pgp:keybase:protonmail:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: pgp

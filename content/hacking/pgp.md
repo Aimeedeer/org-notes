@@ -7,7 +7,7 @@ tags = ["pgp", "keybase", "protonmail"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2009
+  weight = 2014
   identifier = "pgp"
 +++
 
