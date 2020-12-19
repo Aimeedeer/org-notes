@@ -1248,12 +1248,36 @@ for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 
 [[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
 - Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day2
-- [ ] Questions: better abstraction
+
+Use ~regex~ for parsing ~String~.
+#+begin_src rust
+let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
+#+end_src
+
+Use ~xx.get(index)~ instead of ~xx[index]~, in case that index number is out of range.
+#+begin_src rust
+let password = password.chars().collect::<Vec<char>>();
+	
+if password.get(index_1) == password.get(index_2) {
+    continue;
+}
+#+end_src
+
+~anyhow~ error handling.
+
+#+begin_src rust
+let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
+#+end_src
+
+~char~ counting.
+
+#+begin_src rust
+let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
+#+end_src
 
 *** Day3 
 
 [[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
-
 
 
 

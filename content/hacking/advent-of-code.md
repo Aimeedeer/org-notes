@@ -83,7 +83,34 @@ for a side effect, it's considered more idiomatic to use `for` than `map()`.
 [Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
 
 -   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day2>
--   [ ] Questions: better abstraction
+
+Use `regex` for parsing `String`.
+
+```rust
+let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
+```
+
+Use `xx.get(index)` instead of `xx[index]`, in case that index number is out of range.
+
+```rust
+let password = password.chars().collect::<Vec<char>>();
+
+if password.get(index_1) == password.get(index_2) {
+    continue;
+}
+```
+
+`anyhow` error handling.
+
+```rust
+let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
+```
+
+`char` counting.
+
+```rust
+let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
+```
 
 
 ## Day3 {#day3}
