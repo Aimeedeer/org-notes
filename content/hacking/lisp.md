@@ -28,9 +28,11 @@ draft = false
 
 ## Official {#official}
 
-<https://lisp-lang.org/>
+Website: <https://lisp-lang.org/>
 
--   Style Guide: <https://lisp-lang.org/style-guide/>
+-   Style Guide:
+    -   <https://lisp-lang.org/style-guide/>
+    -   <http://labs.ariel-networks.com/cl-style-guide.html>
 -   Writing Libraries: <https://lisp-lang.org/learn/writing-libraries>
 -   Test with Travis-CI: <https://github.com/luismbo/cl-travis>
 -   SLIME is the “Superior Lisp Interaction Mode for Emacs”:
@@ -40,7 +42,8 @@ draft = false
 ## Books {#books}
 
 -   Book list: [Lisp lang books](https://lisp-lang.org/books/)
--   A chapter from **Practical Common Lisp**: [Macros: Standard Control Constructs](http://www.gigamonkeys.com/book/macros-standard-control-constructs.html)
+-   **Structure and interpretation of computer programs**
+-   Onlisp
 
 
 ## Posts {#posts}
@@ -55,4 +58,7 @@ draft = false
 
 ## Macros in Lisp {#macros-in-lisp}
 
-[Lisp lang Macros](https://lisp-lang.org/learn/macros)
+-   [Lisp lang Macros](https://lisp-lang.org/learn/macros)
+-   Macro chapters from **Practical Common Lisp**:
+    -   [Macros: Standard Control Constructs](http://www.gigamonkeys.com/book/macros-standard-control-constructs.html)
+    -   [Macros: Defining Your Own](http://www.gigamonkeys.com/book/macros-defining-your-own.html)
