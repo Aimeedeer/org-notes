@@ -2,7 +2,7 @@
 title = "Haskell"
 author = ["Aimee Z"]
 description = "Haskell programming"
-date = 2020-12-21
+date = 2020-12-20
 draft = false
 [menu.main]
   weight = 2014

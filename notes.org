@@ -1796,7 +1796,7 @@ Blog:
 ** Macros                                                 :macro:cs:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: macros
-:EXPORT_DATE: 2020-12-21
+:EXPORT_DATE: 2020-12-20
 :EXPORT_HUGO_SECTION: hacking
 :EXPORT_DESCRIPTION: Dive in Macros
 :EXPORT_OPTIONS: toc:2
@@ -1814,11 +1814,11 @@ Blog:
 - [[http://www.greghendershott.com/2014/10/why-macros.html][Why macros?]] by Greg Hendershott in 2014
 > Later I remembered Matthias Felleisen boiling down macros into three main categories:
 >
-> - 1. *Binding forms*. You can make your own syntax for binding values to identifiers, including function definition forms. You may hear people say, in a Lisp you don’t have to wait for the language designers to add a feature (like ~lambda~ for Java?). Using macros you can add it yourself. Binding forms is one example.
+> 1. *Binding forms*. You can make your own syntax for binding values to identifiers, including function definition forms. You may hear people say, in a Lisp you don’t have to wait for the language designers to add a feature (like ~lambda~ for Java?). Using macros you can add it yourself. Binding forms is one example.
 >
-> - 2. *Changing order of evaluation*. Something like ~or~ or ~if~ can’t really be a function, because you want it to “short-circuit” — if the first test evaluates to true, don’t evaluate the other test at all.
+> 2. *Changing order of evaluation*. Something like ~or~ or ~if~ can’t really be a function, because you want it to “short-circuit” — if the first test evaluates to true, don’t evaluate the other test at all.
 >
-> - 3. *Abstractions like domain specific langagues (DSLs)*. You want to provide a special language, which is simpler and/or more task-specific than the full/raw Lisp you’re using. This DSL might be for users of your software, and/or it might be something that you use to help implement parts of your own program.
+> 3. *Abstractions like domain specific langagues (DSLs)*. You want to provide a special language, which is simpler and/or more task-specific than the full/raw Lisp you’re using. This DSL might be for users of your software, and/or it might be something that you use to help implement parts of your own program.
 >
 > Every macro is doing one of those three things. Only macros can really do the first two, at all1. Macros let you do the last one more elegantly.
 
@@ -1850,7 +1850,6 @@ Blog:
 > When a macro call appears in a Lisp program being compiled, the Lisp compiler calls the macro definition just as the interpreter would, and receives an expansion. But instead of evaluating this expansion, it compiles the expansion as if it had appeared directly in the program. As a result, the compiled code produces the value and side effects intended for the macro, but executes at full compiled speed. This would not work if the macro body computed the value and side effects itself—they would be computed at compile time, which is not useful.
 >
 > In order for compilation of macro calls to work, the macros must already be defined in Lisp when the calls to them are compiled. The compiler has a special feature to help you do this: if a file being compiled contains a defmacro form, the macro is defined temporarily for the rest of the compilation of that file.
-
 
 ** Lisp-lang                                                  :lisp:@hacking:
 :PROPERTIES:
@@ -1903,7 +1902,7 @@ Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.ht
 ** Haskell
 :PROPERTIES:
 :EXPORT_FILE_NAME: haskell
-:EXPORT_DATE: 2020-12-21
+:EXPORT_DATE: 2020-12-20
 :EXPORT_HUGO_SECTION: hacking
 :EXPORT_DESCRIPTION: Haskell programming
 :EXPORT_OPTIONS: toc:2
