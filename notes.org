@@ -1793,6 +1793,65 @@ Blog:
 
 *** anyhow::Result
 
+** Macros                                                 :macro:cs:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: macros
+:EXPORT_DATE: 2020-12-21
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Dive in Macros
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** Papers
+
+- [[https://www.cs.utah.edu/plt/publications/macromod.pdf][Composable and Compilable Macros]] by Matthew Flatt, University of Utah
+- [[https://www2.ccs.neu.edu/racket/pubs/icfp10-cf.pdf][Fortifying Macros]] by Ryan Culpepper & Matthias Felleisen, Northeastern University
+
+*** Posts
+
+- [[https://kevin.stravers.net/2017/11/practical-macros-in-racket-and-how-to-work-with-them.html][Practical macros in Racket and how to work with them]] by Kevin R. Stravers in 2017
+- [[http://www.greghendershott.com/fear-of-macros/][Fear of Macros]] by Greg Hendershott in 2020
+- [[http://www.greghendershott.com/2014/10/why-macros.html][Why macros?]] by Greg Hendershott in 2014
+> Later I remembered Matthias Felleisen boiling down macros into three main categories:
+>
+> - 1. *Binding forms*. You can make your own syntax for binding values to identifiers, including function definition forms. You may hear people say, in a Lisp you don’t have to wait for the language designers to add a feature (like ~lambda~ for Java?). Using macros you can add it yourself. Binding forms is one example.
+>
+> - 2. *Changing order of evaluation*. Something like ~or~ or ~if~ can’t really be a function, because you want it to “short-circuit” — if the first test evaluates to true, don’t evaluate the other test at all.
+>
+> - 3. *Abstractions like domain specific langagues (DSLs)*. You want to provide a special language, which is simpler and/or more task-specific than the full/raw Lisp you’re using. This DSL might be for users of your software, and/or it might be something that you use to help implement parts of your own program.
+>
+> Every macro is doing one of those three things. Only macros can really do the first two, at all1. Macros let you do the last one more elegantly.
+
+*** Rust
+
+- [[https://doc.rust-lang.org/book/ch19-06-macros.html][Rust Macros]]
+
+*** Racket
+
+- [[https://docs.racket-lang.org/guide/macros.html][Racket Macros guide]]
+- [[https://docs.racket-lang.org/reference/Macros.html][Racket Macros reference]]
+
+*** Emacs and orgmode
+
+- orgmode [[https://orgmode.org/manual/Macro-Replacement.html][Maro Replacement]]
+- [[https://orgmode.org/manual/Structure-of-Code-Blocks.html#Structure-of-Code-Blocks][Structure of Code Blocks]]
+- [[https://lepisma.xyz/wiki/emacs/org-mode/macros.html][lepisma.xyz's notes]]
+- [[https://github.com/fniessen/org-macros/][fniessen/org-macros]]
+
+*** Lisp
+
+- [[https://lisp-lang.org/learn/macros][Lisp lang Macros]]
+- Macro chapters from *Practical Common Lisp*:
+  - [[http://www.gigamonkeys.com/book/macros-standard-control-constructs.html][Macros: Standard Control Constructs]]
+  - [[http://www.gigamonkeys.com/book/macros-defining-your-own.html][Macros: Defining Your Own]]
+- [[https://www.gnu.org/software/emacs/manual/html_node/eintr/Lisp-macro.html#Lisp-macro][GNU Lisp macro]]
+- [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Macros.html#Macros][GNU Emacs Lisp Macros]]
+- [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Compiling-Macros.html#Compiling-Macros][Macros and Byte Compilation]]
+> When a macro call appears in a Lisp program being compiled, the Lisp compiler calls the macro definition just as the interpreter would, and receives an expansion. But instead of evaluating this expansion, it compiles the expansion as if it had appeared directly in the program. As a result, the compiled code produces the value and side effects intended for the macro, but executes at full compiled speed. This would not work if the macro body computed the value and side effects itself—they would be computed at compile time, which is not useful.
+>
+> In order for compilation of macro calls to work, the macros must already be defined in Lisp when the calls to them are compiled. The compiler has a special feature to help you do this: if a file being compiled contains a defmacro form, the macro is defined temporarily for the rest of the compilation of that file.
+
+
 ** Lisp-lang                                                  :lisp:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: lisp
@@ -1813,6 +1872,8 @@ Website: https://lisp-lang.org/
 - Test with Travis-CI: https://github.com/luismbo/cl-travis
 - SLIME is the “Superior Lisp Interaction Mode for Emacs”: 
   https://common-lisp.net/project/slime/doc/html/
+
+Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html][An Introduction to Programming in Emacs Lisp]]
 
 *** Books
 
@@ -1835,6 +1896,42 @@ Website: https://lisp-lang.org/
   - [[http://www.gigamonkeys.com/book/macros-standard-control-constructs.html][Macros: Standard Control Constructs]]
   - [[http://www.gigamonkeys.com/book/macros-defining-your-own.html][Macros: Defining Your Own]]
 
+*** History
+
+- [[http://www.lispworks.com/documentation/HyperSpec/Body/01_ab.htm][1.1.2 History]]
+
+** Haskell
+:PROPERTIES:
+:EXPORT_FILE_NAME: haskell
+:EXPORT_DATE: 2020-12-21
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Haskell programming
+:EXPORT_OPTIONS: toc:2
+:END:
+
+[[http://learnyouahaskell.com/chapters][Learn You a Haskell for Great Good!]]
+
+[[https://tryhaskell.org/][Try Haskell in your browser!]]
+
+[[https://haskell-via-sokoban.nomeata.de/][Haskell via Sokoban]]
+
+*** Pieces
+
+[[http://learnyouahaskell.com/types-and-typeclasses#believe-the-type][Types and Typeclasses]]. Believe the type.
+> Previously we mentioned that Haskell has a static type system. The type of every expression is known at compile time, which leads to safer code. If you write a program where you try to divide a boolean type with some number, it won't even compile. That's good because it's better to catch such errors at compile time instead of having your program crash. Everything in Haskell has a type, so the compiler can reason quite a lot about your program before compiling it.
+
+[[http://learnyouahaskell.com/recursion#thinking-recursively][Thinking recursively]]
+> So when trying to think of a recursive way to solve a problem, try to think of when a recursive solution doesn't apply and see if you can use that as an edge case, think about identities and think about whether you'll break apart the parameters of the function (for instance, lists are usually broken into a head and a tail via pattern matching) and on which part you'll use the recursive call.
+
+*** Tools
+
+[[https://docs.haskellstack.org/][Why Stack]]
+> Stack is a build tool for Haskell designed to answer the needs of Haskell users new and experienced alike. It has a strong focus on reproducible build plans, multi-package projects, and a consistent, easy-to-learn interface, while providing the customizability and power experienced developers need. As a build tool, Stack does not stand alone. It is built on the great work provided by:
+
+> The *Glasgow Haskell Compiler* (GHC), the premier Haskell compiler. Stack will manage your GHC installations and automatically select the appropriate compiler version for your project.
+> The *Cabal build system*, a specification for defining Haskell packages, together with a library for performing builds.
+> The *Hackage package repository*, providing more than ten thousand open source libraries and applications to help you get your work done.
+> The *Stackage package collection*, a curated set of packages from Hackage which are regularly tested for compatibility. Stack defaults to using Stackage package sets to avoid dependency problems.
 
 ** Lua-lang                                                    :lua:@hacking:
 :PROPERTIES:
@@ -1846,7 +1943,6 @@ Website: https://lisp-lang.org/
 :END:
 
 Paper: [[https://www.lua.org/doc/jucs05.pdf][The Implementation of Lua 5.0]]
-
 
 ** Gamedev                                            :gamedev:game:@hacking:
 :PROPERTIES:

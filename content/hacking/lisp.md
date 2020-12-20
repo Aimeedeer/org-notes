@@ -7,7 +7,7 @@ tags = ["lisp"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2012
+  weight = 2013
   identifier = "lisp-lang"
 +++
 
@@ -21,6 +21,7 @@ draft = false
 - [Posts](#posts)
 - [Videos](#videos)
 - [Macros in Lisp](#macros-in-lisp)
+- [History](#history)
 
 </div>
 <!--endtoc-->
@@ -37,6 +38,8 @@ Website: <https://lisp-lang.org/>
 -   Test with Travis-CI: <https://github.com/luismbo/cl-travis>
 -   SLIME is the “Superior Lisp Interaction Mode for Emacs”:
     <https://common-lisp.net/project/slime/doc/html/>
+
+Emacs Lisp: [An Introduction to Programming in Emacs Lisp](https://www.gnu.org/software/emacs/manual/html%5Fnode/eintr/index.html)
 
 
 ## Books {#books}
@@ -62,3 +65,8 @@ Website: <https://lisp-lang.org/>
 -   Macro chapters from **Practical Common Lisp**:
     -   [Macros: Standard Control Constructs](http://www.gigamonkeys.com/book/macros-standard-control-constructs.html)
     -   [Macros: Defining Your Own](http://www.gigamonkeys.com/book/macros-defining-your-own.html)
+
+
+## History {#history}
+
+-   [1.1.2 History](http://www.lispworks.com/documentation/HyperSpec/Body/01%5Fab.htm)
