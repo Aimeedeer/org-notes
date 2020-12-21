@@ -1899,6 +1899,12 @@ Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.ht
 
 - [[http://www.lispworks.com/documentation/HyperSpec/Body/01_ab.htm][1.1.2 History]]
 
+*** Lectures
+
+- [[https://www.youtube.com/watch?v=-J_xL4IGhJA&list=PLE18841CABEA24090][MIT 6.001 Structure and Interpretation, 1986]]
+- [[https://www.youtube.com/watch?v=IcZSFewqr9k&list=PLkEwH_Z2WOlppy8oUfrGwFVlOuKyo3RO_&index=1][SICP]] mirror with Chinese script
+
+
 ** Haskell
 :PROPERTIES:
 :EXPORT_FILE_NAME: haskell
@@ -1957,6 +1963,11 @@ Paper: [[https://www.lua.org/doc/jucs05.pdf][The Implementation of Lua 5.0]]
 
 [[https://mfiano.net/posts/Follow-up-to-Gamedev-Sleep-Repeat.html][Follow up to Gamedev, Sleep, Repeat]]
 >  I am less interested in making games, and more interested in the design of game engines. A game engine is interesting to me because it requires discipline in many fields of study, and each implementation is different. The thing is, a game engine is a piece of software that manages the data flow for a particular game, or a particular category of games. It is nothing more than a set of choices someone made for you in order to write games in a particular way. Any given game engine could be productive or counter-productive in creating your game. Even using a general purpose game engine like Unity and Unreal is a trade-off, and for a significant game, you'll find you still have to work around or reimplement core engine features at the 11th hour to get your game shipped.
+
+
+[[https://macoy.me/blog/programming/CakelispIntro][Cakelisp: a programming language for games]]
+
+[[https://en.wikipedia.org/wiki/Game_Oriented_Assembly_Lisp][Game Oriented Assembly Lisp]]
 
 ** PGP                                      :pgp:keybase:protonmail:@hacking:
 :PROPERTIES:

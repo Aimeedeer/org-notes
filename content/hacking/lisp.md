@@ -22,6 +22,7 @@ draft = false
 - [Videos](#videos)
 - [Macros in Lisp](#macros-in-lisp)
 - [History](#history)
+- [Lectures](#lectures)
 
 </div>
 <!--endtoc-->
@@ -70,3 +71,9 @@ Emacs Lisp: [An Introduction to Programming in Emacs Lisp](https://www.gnu.org/s
 ## History {#history}
 
 -   [1.1.2 History](http://www.lispworks.com/documentation/HyperSpec/Body/01%5Fab.htm)
+
+
+## Lectures {#lectures}
+
+-   [MIT 6.001 Structure and Interpretation, 1986](https://www.youtube.com/watch?v=-J%5FxL4IGhJA&list=PLE18841CABEA24090)
+-   [SICP](https://www.youtube.com/watch?v=IcZSFewqr9k&list=PLkEwH%5FZ2WOlppy8oUfrGwFVlOuKyo3RO%5F&index=1) mirror with Chinese script
