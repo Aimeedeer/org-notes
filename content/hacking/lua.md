@@ -7,7 +7,7 @@ tags = ["lua"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2013
+  weight = 2015
   identifier = "lua-lang"
 +++
 

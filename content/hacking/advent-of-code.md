@@ -7,7 +7,7 @@ tags = ["rust"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2003
+  weight = 2004
   identifier = "advent-of-code"
 +++
 
@@ -116,3 +116,33 @@ let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
 ## Day3 {#day3}
 
 [Day 3: Toboggan Trajectory](https://adventofcode.com/2020/day/3)
+
+-   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day3>
+
+Iterator:
+
+```rust
+// skip lines
+for line in reader.lines().step_by(move_down) { ... }
+
+// get interator's index while looping
+for (line_index, line_value) in reader.lines().enumerate() { ... }
+```
+
+Put mutable variables in the same block of code while changing their values.
+For example, the `index` below.
+
+```rust
+for line in reader.lines().step_by(move_down) {
+    let rules = line?;
+    let rules = rules.chars().collect::<Vec<char>>();
+    let char_num = rules.len();
+
+    if rules[index] == '#' {
+      tree_num += 1;
+    }
+
+    index += move_right;
+    index %= char_num;
+}
+```
