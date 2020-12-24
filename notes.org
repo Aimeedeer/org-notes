@@ -592,7 +592,6 @@ alice after: 170141183460469231731687303715884105727
 test give_me::tests::transfer_works ... ok
 #+end_src 
 
-
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
@@ -1254,6 +1253,8 @@ Use ~regex~ for parsing ~String~.
 let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
 #+end_src
 
+[[https://docs.rs/regex/1.4.2/regex/index.html#syntax][Regex Syntax]]
+
 Use ~xx.get(index)~ instead of ~xx[index]~, in case that index number is out of range.
 #+begin_src rust
 let password = password.chars().collect::<Vec<char>>();
@@ -1307,6 +1308,11 @@ For example, the ~index~ below.
 	index %= char_num;
     }
 #+end_src
+
+*** Day4
+
+[[https://adventofcode.com/2020/day/4][Day 4: Passport Processing]]
+- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day4
 
 ** State Machines                                         :cs:state:@hacking:
 :PROPERTIES:
@@ -1711,7 +1717,7 @@ by considering interoperability of new features in accordance to it.
 :EXPORT_OPTIONS: toc:2
 :END:
 
-*** CS
+*** CS lectures
 
 [[https://reberhardt.com/cs110l/spring-2020/][CS 110L: Safety in Systems Programming]]
 - [[https://reberhardt.com/cs110l/spring-2020/slides/lecture-18.pdf][Comparison between C and Rust]]
@@ -1723,21 +1729,23 @@ by considering interoperability of new features in accordance to it.
 
 [[https://github.com/SmallPond/MIT6.828_OS][MIT6.828 Operating System Engineering]]
 
-Type system
-- [[https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/][Things I Was Wrong About: Types]]
+*** Reads
+
+Type system: [[https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/][Things I Was Wrong About: Types]]
 
 [[https://arxiv.org/pdf/2010.07763.pdf][Refinement Types]]
 
-
 [[https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html][The Humble Programmer by Edsger W. Dijkstra]]
 
+Book: [[https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%_toc_start][Structure and Interpretation of Computer Programs]]
+- [[https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html][1.1  The Elements of Programming]]
+> *Primitive expressions*, which represent the simplest entities the language is concerned with,
+>
+> *Means of combination*, by which compound elements are built from simpler ones, and
+>
+> *means of abstraction*, by which compound elements can be named and manipulated as units
 
-[[https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html][1.1  The Elements of Programming]]
-> **Primitive expressions**, which represent the simplest entities the language is concerned with,
->
-> **Means of combination**, by which compound elements are built from simpler ones, and
->
-> **means of abstraction**, by which compound elements can be named and manipulated as units
+
 
 *** Rust language
 

@@ -20,6 +20,7 @@ draft = false
 - [Day1](#day1)
 - [Day2](#day2)
 - [Day3](#day3)
+- [Day4](#day4)
 
 </div>
 <!--endtoc-->
@@ -90,6 +91,8 @@ Use `regex` for parsing `String`.
 let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
 ```
 
+[Regex Syntax](https://docs.rs/regex/1.4.2/regex/index.html#syntax)
+
 Use `xx.get(index)` instead of `xx[index]`, in case that index number is out of range.
 
 ```rust
@@ -146,3 +149,10 @@ for line in reader.lines().step_by(move_down) {
     index %= char_num;
 }
 ```
+
+
+## Day4 {#day4}
+
+[Day 4: Passport Processing](https://adventofcode.com/2020/day/4)
+
+-   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day4>

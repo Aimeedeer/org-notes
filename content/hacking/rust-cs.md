@@ -7,7 +7,7 @@ tags = ["rust", "cs"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2006
+  weight = 2009
   identifier = "rust-and-computer-science"
 +++
 
@@ -16,7 +16,8 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [CS](#cs)
+- [CS lectures](#cs-lectures)
+- [Reads](#reads)
 - [Rust language](#rust-language)
 - [Rust discussion](#rust-discussion)
 
@@ -24,7 +25,7 @@ draft = false
 <!--endtoc-->
 
 
-## CS {#cs}
+## CS lectures {#cs-lectures}
 
 [CS 110L: Safety in Systems Programming](https://reberhardt.com/cs110l/spring-2020/)
 
@@ -38,20 +39,24 @@ draft = false
 
 [MIT6.828 Operating System Engineering](https://github.com/SmallPond/MIT6.828%5FOS)
 
-Type system
 
--   [Things I Was Wrong About: Types](https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/)
+## Reads {#reads}
+
+Type system: [Things I Was Wrong About: Types](https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/)
 
 [Refinement Types](https://arxiv.org/pdf/2010.07763.pdf)
 
 [The Humble Programmer by Edsger W. Dijkstra](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html)
 
-[1.1  The Elements of Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html)
-> ****Primitive expressions****, which represent the simplest entities the language is concerned with,
+Book: [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%%5Ftoc%5Fstart)
+
+-   [1.1  The Elements of Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html)
+
+> **Primitive expressions**, which represent the simplest entities the language is concerned with,
 >
-> ****Means of combination****, by which compound elements are built from simpler ones, and
+> **Means of combination**, by which compound elements are built from simpler ones, and
 >
-> ****means of abstraction****, by which compound elements can be named and manipulated as units
+> **means of abstraction**, by which compound elements can be named and manipulated as units
 
 
 ## Rust language {#rust-language}
