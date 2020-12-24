@@ -3,6 +3,8 @@ title = "Haskell"
 author = ["Aimee Z"]
 description = "Haskell programming"
 date = 2020-12-20
+tags = ["haskell"]
+categories = ["hacking"]
 draft = false
 [menu.main]
   weight = 2014
