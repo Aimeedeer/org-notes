@@ -156,3 +156,65 @@ for line in reader.lines().step_by(move_down) {
 [Day 4: Passport Processing](https://adventofcode.com/2020/day/4)
 
 -   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day4>
+
+Learned to organize a mod:
+
+-   `fn main` first
+-   Data types and their impls second
+-   Functions that are used in `fn main` follow
+-   Detailed functions(sub functions) that are used in previous functions
+
+Write a generic `fn` inside another function:
+
+```rust
+fn validate<T>(dest: &mut Option<T>,
+	     reference: &str,
+	     v: impl FnOnce(&str) -> Result<T>) {
+    *dest = v(reference).ok();
+}
+
+for raw_item in raw_passport {
+    let item = raw_item.split(':').collect::<Vec<_>>();
+    match item[0] {
+      "pid" => validate(&mut new_passport.pid, item[1], validate_pid),
+      "cid" => validate(&mut new_passport.cid, item[1], validate_cid),
+      "eyr" => validate(&mut new_passport.eyr, item[1], validate_eyr),
+      "byr" => validate(&mut new_passport.byr, item[1], validate_byr),
+      "iyr" => validate(&mut new_passport.iyr, item[1], validate_iyr),
+      "ecl" => validate(&mut new_passport.ecl, item[1], validate_ecl),
+      "hcl" => validate(&mut new_passport.hcl, item[1], validate_hcl),
+      "hgt" => validate(&mut new_passport.hgt, item[1], validate_hgt),
+      _ => {},
+    };
+}
+```
+
+Put parsing function in another method and make rules as a reference:
+
+```rust
+fn parse_and_capture<T: FromStr>(rule: &str, input: &str, msg: &str) -> Result<T> {
+    let re = Regex::new(rule).unwrap();
+    let caps = re.captures(input).ok_or(anyhow!("invalid {}: {}", msg, input))?;
+
+    let output = caps[1].parse::<T>().map_err(|_| anyhow!("error parsing {}: {}", msg, input))?;
+    Ok(output)
+}
+```
+
+We can also set Regex to a global varial so that it doesn't need to be
+created each time in the loop.
+[Burntsushi's code](https://github.com/BurntSushi/advent-of-code/blob/master/aoc04/src/main.rs) (in 2018) is a good example:
+
+```rust
+lazy_static! {
+    static ref RE: Regex = Regex::new(r"(?x)
+	\[
+	    (?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})
+	    \s+
+	    (?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})
+	\]
+	\s+
+	(?:Guard\ \#(?P<id>[0-9]+)\ begins\ shift|(?P<sleep>.+))
+    ").unwrap();
+}
+```
