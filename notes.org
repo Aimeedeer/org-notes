@@ -6,6 +6,216 @@
 :EXPORT_HUGO_SECTION: post
 :EXPORT_HUGO_MENU: :menu main
 :END:
+** Advent of Code                                             :rust:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: advent-of-code
+:EXPORT_DATE: 2020-12-14
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Rust programming practice
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*GitHub repo*: https://github.com/Aimeedeer/adventofcode
+
+*** Read and Learned
+
+- [[https://doc.rust-lang.org/book/ch19-06-macros.html][Rust Macro]] 
+  - [[https://doc.rust-lang.org/reference/macros-by-example.html][Macros By Example]] 
+  - [[https://doc.rust-lang.org/reference/procedural-macros.html][Procedural Macros]]
+  - [[https://danielkeep.github.io/tlborm/book/README.html][The Little Book of Rust Macros]]
+- [[https://doc.rust-lang.org/stable/book/ch06-03-if-let.html][Concise Control Flow with ~if let~]]
+- Differences between runtime and compile time. Answers from
+  Stackoverflow: https://stackoverflow.com/questions/846103/runtime-vs-compile-time
+- [[https://en.wikipedia.org/wiki/Abstract_syntax_tree][Abstract Syntax Tree (AST)]]
+
+
+*** Day1
+
+[[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
+
+- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day1
+- Question: a better performance solution than 3 loops?
+- [[https://fasterthanli.me/series/advent-of-code-2020/part-1][Other one's practice]]. Good to learn another totally different approach.
+His code:
+#+begin_src rust
+use itertools::Itertools;
+
+fn main() -> anyhow::Result<()> {
+    let (a, b, c) = include_str!("input.txt")
+        .split('\n')
+        .map(str::parse::<i64>)
+        .collect::<Result<Vec<_>, _>>()?
+        .into_iter()
+        .tuple_combinations()
+        .find(|(a, b, c)| a + b + c == 2020)
+        .expect("no tuple of length 3 had a sum of 2020");
+
+    dbg!(a + b + c);
+    dbg!(a * b * c);
+
+    Ok(())
+}
+#+end_src
+
+From Rust std: [[https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map][std/iter/trait.Iterator]]
+> ~map()~ is conceptually similar to a ~for~ loop. 
+However, as ~map()~ is lazy, it is best used when you're already working 
+with other iterators. If you're doing some sort of looping 
+for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
+
+[[https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple_combinations][tuple_combinations]]
+
+*** Day2
+
+[[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
+- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day2
+
+Use ~regex~ for parsing ~String~.
+#+begin_src rust
+let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
+#+end_src
+
+[[https://docs.rs/regex/1.4.2/regex/index.html#syntax][Regex Syntax]]
+
+Use ~xx.get(index)~ instead of ~xx[index]~, in case that index number is out of range.
+#+begin_src rust
+let password = password.chars().collect::<Vec<char>>();
+	
+if password.get(index_1) == password.get(index_2) {
+    continue;
+}
+#+end_src
+
+~anyhow~ error handling.
+
+#+begin_src rust
+let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
+#+end_src
+
+~char~ counting.
+
+#+begin_src rust
+let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
+#+end_src
+
+*** Day3 
+
+[[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
+- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day3
+
+Iterator: 
+
+#+begin_src rust
+// skip lines
+for line in reader.lines().step_by(move_down) { ... }
+
+// get interator's index while looping
+for (line_index, line_value) in reader.lines().enumerate() { ... }
+#+end_src
+
+Put mutable variables in the same block of code while changing their values.
+For example, the ~index~ below.
+
+#+begin_src rust
+    for line in reader.lines().step_by(move_down) {
+	let rules = line?;
+	let rules = rules.chars().collect::<Vec<char>>();
+	let char_num = rules.len();
+
+	if rules[index] == '#' {
+	    tree_num += 1;
+	} 
+
+	index += move_right;
+	index %= char_num;
+    }
+#+end_src
+
+*** Day4
+
+[[https://adventofcode.com/2020/day/4][Day 4: Passport Processing]]
+- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day4
+
+Learned to organize a mod:
+- ~fn main~ first
+- Data types and their impls second
+- Functions that are used in ~fn main~ follow
+- Detailed functions(sub functions) that are used in previous functions
+
+Write a generic ~fn~ inside another function:
+
+#+begin_src rust
+	fn validate<T>(dest: &mut Option<T>,
+		       reference: &str,
+		       v: impl FnOnce(&str) -> Result<T>) {
+	    *dest = v(reference).ok();	    	    
+	}
+	
+	for raw_item in raw_passport {
+	    let item = raw_item.split(':').collect::<Vec<_>>();
+	    match item[0] {	
+		"pid" => validate(&mut new_passport.pid, item[1], validate_pid),
+		"cid" => validate(&mut new_passport.cid, item[1], validate_cid),
+		"eyr" => validate(&mut new_passport.eyr, item[1], validate_eyr),
+		"byr" => validate(&mut new_passport.byr, item[1], validate_byr),
+		"iyr" => validate(&mut new_passport.iyr, item[1], validate_iyr),
+		"ecl" => validate(&mut new_passport.ecl, item[1], validate_ecl),
+		"hcl" => validate(&mut new_passport.hcl, item[1], validate_hcl),
+		"hgt" => validate(&mut new_passport.hgt, item[1], validate_hgt),
+		_ => {},
+	    };
+	}
+#+end_src
+
+Put parsing function in another method and make rules as a reference:
+
+#+begin_src rust
+fn parse_and_capture<T: FromStr>(rule: &str, input: &str, msg: &str) -> Result<T> {
+    let re = Regex::new(rule).unwrap();
+    let caps = re.captures(input).ok_or(anyhow!("invalid {}: {}", msg, input))?;
+
+    let output = caps[1].parse::<T>().map_err(|_| anyhow!("error parsing {}: {}", msg, input))?;
+    Ok(output)
+}
+#+end_src
+
+We can also set Regex to a global varial so that it doesn't need to be
+created each time in the loop.
+[[https://github.com/BurntSushi/advent-of-code/blob/master/aoc04/src/main.rs][Burntsushi's code]] (in 2018) is a good example:
+
+#+begin_src rust
+        lazy_static! {
+            static ref RE: Regex = Regex::new(r"(?x)
+                \[
+                    (?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})
+                    \s+
+                    (?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})
+                \]
+                \s+
+                (?:Guard\ \#(?P<id>[0-9]+)\ begins\ shift|(?P<sleep>.+))
+            ").unwrap();
+        }
+#+end_src
+
+** Captain Game                                 :rust:smartcontract:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: Captain Game
+:EXPORT_DATE: 2020-12-27
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: A captain game smart contract
+:EXPORT_OPTIONS: toc:2
+:END:
+
+*** My hacklog
+
+**** 2020-12-27
+
+Use ~ink!~ to create a contract template in our project (currently private).
+
+#+begin_src shell
+$ cargo contract check --manifest-path src/game/Cargo.toml
+#+end_src
+
 ** Walnuts Hacklog                     :rust:blockchain:walnuts:log:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: walnuts
@@ -1183,198 +1393,6 @@ Nov 15 18:04:48.014  INFO ✨ Imported #2 (0xe680…4d38)
 **** Doc
 
 https://substrate.dev/docs/en/tutorials/create-your-first-substrate-chain/interact
-
-** Advent of Code                                             :rust:@hacking:
-:PROPERTIES:
-:EXPORT_FILE_NAME: advent-of-code
-:EXPORT_DATE: 2020-12-14
-:EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: Rust programming practice
-:EXPORT_OPTIONS: toc:2
-:END:
-
-*GitHub repo*: https://github.com/Aimeedeer/adventofcode
-
-*** Read and Learned
-
-- [[https://doc.rust-lang.org/book/ch19-06-macros.html][Rust Macro]] 
-  - [[https://doc.rust-lang.org/reference/macros-by-example.html][Macros By Example]] 
-  - [[https://doc.rust-lang.org/reference/procedural-macros.html][Procedural Macros]]
-  - [[https://danielkeep.github.io/tlborm/book/README.html][The Little Book of Rust Macros]]
-- [[https://doc.rust-lang.org/stable/book/ch06-03-if-let.html][Concise Control Flow with ~if let~]]
-- Differences between runtime and compile time. Answers from
-  Stackoverflow: https://stackoverflow.com/questions/846103/runtime-vs-compile-time
-- [[https://en.wikipedia.org/wiki/Abstract_syntax_tree][Abstract Syntax Tree (AST)]]
-
-
-*** Day1
-
-[[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
-
-- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day1
-- Question: a better performance solution than 3 loops?
-- [[https://fasterthanli.me/series/advent-of-code-2020/part-1][Other one's practice]]. Good to learn another totally different approach.
-His code:
-#+begin_src rust
-use itertools::Itertools;
-
-fn main() -> anyhow::Result<()> {
-    let (a, b, c) = include_str!("input.txt")
-        .split('\n')
-        .map(str::parse::<i64>)
-        .collect::<Result<Vec<_>, _>>()?
-        .into_iter()
-        .tuple_combinations()
-        .find(|(a, b, c)| a + b + c == 2020)
-        .expect("no tuple of length 3 had a sum of 2020");
-
-    dbg!(a + b + c);
-    dbg!(a * b * c);
-
-    Ok(())
-}
-#+end_src
-
-From Rust std: [[https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map][std/iter/trait.Iterator]]
-> ~map()~ is conceptually similar to a ~for~ loop. 
-However, as ~map()~ is lazy, it is best used when you're already working 
-with other iterators. If you're doing some sort of looping 
-for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
-
-[[https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple_combinations][tuple_combinations]]
-
-*** Day2
-
-[[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
-- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day2
-
-Use ~regex~ for parsing ~String~.
-#+begin_src rust
-let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
-#+end_src
-
-[[https://docs.rs/regex/1.4.2/regex/index.html#syntax][Regex Syntax]]
-
-Use ~xx.get(index)~ instead of ~xx[index]~, in case that index number is out of range.
-#+begin_src rust
-let password = password.chars().collect::<Vec<char>>();
-	
-if password.get(index_1) == password.get(index_2) {
-    continue;
-}
-#+end_src
-
-~anyhow~ error handling.
-
-#+begin_src rust
-let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
-#+end_src
-
-~char~ counting.
-
-#+begin_src rust
-let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
-#+end_src
-
-*** Day3 
-
-[[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
-- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day3
-
-Iterator: 
-
-#+begin_src rust
-// skip lines
-for line in reader.lines().step_by(move_down) { ... }
-
-// get interator's index while looping
-for (line_index, line_value) in reader.lines().enumerate() { ... }
-#+end_src
-
-Put mutable variables in the same block of code while changing their values.
-For example, the ~index~ below.
-
-#+begin_src rust
-    for line in reader.lines().step_by(move_down) {
-	let rules = line?;
-	let rules = rules.chars().collect::<Vec<char>>();
-	let char_num = rules.len();
-
-	if rules[index] == '#' {
-	    tree_num += 1;
-	} 
-
-	index += move_right;
-	index %= char_num;
-    }
-#+end_src
-
-*** Day4
-
-[[https://adventofcode.com/2020/day/4][Day 4: Passport Processing]]
-- Source code: https://github.com/Aimeedeer/adventofcode/tree/master/day4
-
-Learned to organize a mod:
-- ~fn main~ first
-- Data types and their impls second
-- Functions that are used in ~fn main~ follow
-- Detailed functions(sub functions) that are used in previous functions
-
-Write a generic ~fn~ inside another function:
-
-#+begin_src rust
-	fn validate<T>(dest: &mut Option<T>,
-		       reference: &str,
-		       v: impl FnOnce(&str) -> Result<T>) {
-	    *dest = v(reference).ok();	    	    
-	}
-	
-	for raw_item in raw_passport {
-	    let item = raw_item.split(':').collect::<Vec<_>>();
-	    match item[0] {	
-		"pid" => validate(&mut new_passport.pid, item[1], validate_pid),
-		"cid" => validate(&mut new_passport.cid, item[1], validate_cid),
-		"eyr" => validate(&mut new_passport.eyr, item[1], validate_eyr),
-		"byr" => validate(&mut new_passport.byr, item[1], validate_byr),
-		"iyr" => validate(&mut new_passport.iyr, item[1], validate_iyr),
-		"ecl" => validate(&mut new_passport.ecl, item[1], validate_ecl),
-		"hcl" => validate(&mut new_passport.hcl, item[1], validate_hcl),
-		"hgt" => validate(&mut new_passport.hgt, item[1], validate_hgt),
-		_ => {},
-	    };
-	}
-#+end_src
-
-Put parsing function in another method and make rules as a reference:
-
-#+begin_src rust
-fn parse_and_capture<T: FromStr>(rule: &str, input: &str, msg: &str) -> Result<T> {
-    let re = Regex::new(rule).unwrap();
-    let caps = re.captures(input).ok_or(anyhow!("invalid {}: {}", msg, input))?;
-
-    let output = caps[1].parse::<T>().map_err(|_| anyhow!("error parsing {}: {}", msg, input))?;
-    Ok(output)
-}
-#+end_src
-
-We can also set Regex to a global varial so that it doesn't need to be
-created each time in the loop.
-[[https://github.com/BurntSushi/advent-of-code/blob/master/aoc04/src/main.rs][Burntsushi's code]] (in 2018) is a good example:
-
-#+begin_src rust
-        lazy_static! {
-            static ref RE: Regex = Regex::new(r"(?x)
-                \[
-                    (?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})
-                    \s+
-                    (?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})
-                \]
-                \s+
-                (?:Guard\ \#(?P<id>[0-9]+)\ begins\ shift|(?P<sleep>.+))
-            ").unwrap();
-        }
-#+end_src
-
 
 ** State Machines                                         :cs:state:@hacking:
 :PROPERTIES:
