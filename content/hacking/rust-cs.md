@@ -27,6 +27,10 @@ draft = false
 
 ## CS lectures {#cs-lectures}
 
+[CS140e](https://cs140e.sergio.bz/syllabus/#schedule): Stanford’s CS140e Winter 2018 course
+
+-   [Schedule, reads and code](https://cs140e.sergio.bz/syllabus/#schedule)
+
 [CS 110L: Safety in Systems Programming](https://reberhardt.com/cs110l/spring-2020/)
 
 -   [Comparison between C and Rust](https://reberhardt.com/cs110l/spring-2020/slides/lecture-18.pdf)

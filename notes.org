@@ -1853,6 +1853,9 @@ by considering interoperability of new features in accordance to it.
 
 *** CS lectures
 
+[[https://cs140e.sergio.bz/syllabus/#schedule][CS140e]]: Stanford’s CS140e Winter 2018 course
+- [[https://cs140e.sergio.bz/syllabus/#schedule][Schedule, reads and code]]
+
 [[https://reberhardt.com/cs110l/spring-2020/][CS 110L: Safety in Systems Programming]]
 - [[https://reberhardt.com/cs110l/spring-2020/slides/lecture-18.pdf][Comparison between C and Rust]]
 
@@ -1917,6 +1920,7 @@ they're probably a good enough choice to get started.
 
 Rust weaknesses:
 [[https://www.reddit.com/r/rust/comments/jia2xn/what_are_some_of_rusts_weaknesses_as_a_language/][This question got a bunch of discussions]]
+
 
 ** Interesting Rust Projects                                  :rust:@hacking:
 :PROPERTIES:
