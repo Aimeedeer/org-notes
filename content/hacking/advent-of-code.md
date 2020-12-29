@@ -7,7 +7,7 @@ tags = ["rust"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2004
+  weight = 2001
   identifier = "advent-of-code"
 +++
 
@@ -21,6 +21,7 @@ draft = false
 - [Day2](#day2)
 - [Day3](#day3)
 - [Day4](#day4)
+- [Day5](#day5)
 
 </div>
 <!--endtoc-->
@@ -218,3 +219,59 @@ lazy_static! {
     ").unwrap();
 }
 ```
+
+
+## Day5 {#day5}
+
+[Day 5: Binary Boarding](https://adventofcode.com/2020/day/5)
+
+-   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day5>
+
+Use const for `8`. The magical number is defined in the problem description.
+
+```rust
+const NUM_COLUMNS: u32 = 8;
+let seat_id = row_id * NUM_COLUMNS + column_id;
+```
+
+Abstract functions `get_row_id` and `get_column_id` as `search_id`.
+
+```rust
+fn get_row_id(input: &str) -> Result<u32> {
+    search_id(input, 128, 'F', 'B', "row id")
+}
+
+fn get_column_id(input: &str) -> Result<u32> {
+    search_id(input, 8, 'L', 'R', "column id")
+}
+
+fn search_id(
+    input: &str,
+    len: u32,
+    match_char_one: char,
+    match_char_two: char,
+    msg: &str
+) -> Result<u32> {
+    let range = (0..len).into_iter().collect::<Vec<_>>();
+    let mut range = range.as_slice();
+
+    for c in input.chars() {
+      let temp_len = range.len();
+      let (one, two) = range.split_at(temp_len/2);
+
+      if c == match_char_one {
+	  range = one;
+      } else if c == match_char_two {
+	  range = two;
+      } else {
+	  bail!("get {} failed", msg);
+      }
+    }
+
+    let id = range[0];
+    Ok(id)
+}
+```
+
+Learned `(0..10).into_iter()`,
+and `bail` instead of `anyhow` for returning a result with an error message.
