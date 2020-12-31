@@ -2037,6 +2037,8 @@ Blog:
 
 Website: https://lisp-lang.org/
 
+- [[http://sbcl.org/manual/index.html][SBCL 2.1.0 User Manual]]
+- [[https://www.cliki.net/Exercices][Common Lisp Programming Exercises]]
 - Style Guide: 
   - https://lisp-lang.org/style-guide/
   - http://labs.ariel-networks.com/cl-style-guide.html
@@ -2049,6 +2051,9 @@ Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.ht
 
 *** Books
 
+- [[https://www.cliki.net/Online%20tutorial][Recommended for beginners]]
+- [[https://www.cliki.net/Lisp%20books][A list of favorite Lisp books.]]
+- [[https://lispcookbook.github.io/cl-cookbook/][The Common Lisp Cookbook]]
 - Book list: [[https://lisp-lang.org/books/][Lisp lang books]]
 - *Structure and interpretation of computer programs*
 - Onlisp
@@ -2056,6 +2061,7 @@ Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.ht
 *** Posts
 
 - [[https://fare.livejournal.com/188429.html][Why I haven't jumped ship from Common Lisp to Racket (just yet)]]
+- [[https://www.xach.com/lisp/][Zach Beane's Lisp Resources]]
 
 *** Videos
 
@@ -2155,7 +2161,13 @@ Rustlisp for game dev: https://gamelisp.rs/
 
 Boos that are [[https://lostgarden.home.blog/worth-reading/][worth reading]]
 
-*** Advent of Code and other problem soloving stories
+*** Advent of Code and other puzzles
+
+[[https://www.cliki.net/Exercices][Common Lisp Programming Exercises]]
+
+[[https://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html][L-99: Ninety-Nine Lisp Problems]]
+
+[[http://www.informatimago.com/develop/lisp/l99/index.html][Solutions to Ninety-Nine Lisp Problems]]
 
 [[https://auth0.com/blog/advent-of-code-tips-tricks/][Tips and Tricks for Solving Advent of Code's Puzzles]]
 

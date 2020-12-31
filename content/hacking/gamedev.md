@@ -7,7 +7,7 @@ tags = ["gamedev", "game"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2016
+  weight = 2017
   identifier = "gamedev"
 +++
 
@@ -18,7 +18,7 @@ draft = false
 
 - [Languages](#languages)
 - [Posts](#posts)
-- [Advent of Code and other problem soloving stories](#advent-of-code-and-other-problem-soloving-stories)
+- [Advent of Code and other puzzles](#advent-of-code-and-other-puzzles)
 
 </div>
 <!--endtoc-->
@@ -51,7 +51,13 @@ Rustlisp for game dev: <https://gamelisp.rs/>
 Boos that are [worth reading](https://lostgarden.home.blog/worth-reading/)
 
 
-## Advent of Code and other problem soloving stories {#advent-of-code-and-other-problem-soloving-stories}
+## Advent of Code and other puzzles {#advent-of-code-and-other-puzzles}
+
+[Common Lisp Programming Exercises](https://www.cliki.net/Exercices)
+
+[L-99: Ninety-Nine Lisp Problems](https://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99%5FNinety-Nine%5FLisp%5FProblems.html)
+
+[Solutions to Ninety-Nine Lisp Problems](http://www.informatimago.com/develop/lisp/l99/index.html)
 
 [Tips and Tricks for Solving Advent of Code's Puzzles](https://auth0.com/blog/advent-of-code-tips-tricks/)
 

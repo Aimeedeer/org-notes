@@ -7,7 +7,7 @@ tags = ["lisp"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2013
+  weight = 2014
   identifier = "lisp-lang"
 +++
 
@@ -32,6 +32,8 @@ draft = false
 
 Website: <https://lisp-lang.org/>
 
+-   [SBCL 2.1.0 User Manual](http://sbcl.org/manual/index.html)
+-   [Common Lisp Programming Exercises](https://www.cliki.net/Exercices)
 -   Style Guide:
     -   <https://lisp-lang.org/style-guide/>
     -   <http://labs.ariel-networks.com/cl-style-guide.html>
@@ -45,6 +47,9 @@ Emacs Lisp: [An Introduction to Programming in Emacs Lisp](https://www.gnu.org/s
 
 ## Books {#books}
 
+-   [Recommended for beginners](https://www.cliki.net/Online%20tutorial)
+-   [A list of favorite Lisp books.](https://www.cliki.net/Lisp%20books)
+-   [The Common Lisp Cookbook](https://lispcookbook.github.io/cl-cookbook/)
 -   Book list: [Lisp lang books](https://lisp-lang.org/books/)
 -   **Structure and interpretation of computer programs**
 -   Onlisp
@@ -53,6 +58,7 @@ Emacs Lisp: [An Introduction to Programming in Emacs Lisp](https://www.gnu.org/s
 ## Posts {#posts}
 
 -   [Why I haven't jumped ship from Common Lisp to Racket (just yet)](https://fare.livejournal.com/188429.html)
+-   [Zach Beane's Lisp Resources](https://www.xach.com/lisp/)
 
 
 ## Videos {#videos}
