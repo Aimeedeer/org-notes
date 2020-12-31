@@ -7,7 +7,7 @@ tags = ["rust", "cs"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2009
+  weight = 2010
   identifier = "rust-and-computer-science"
 +++
 
@@ -17,7 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [CS lectures](#cs-lectures)
-- [Reads](#reads)
+- [Reads and videos](#reads-and-videos)
 - [Rust language](#rust-language)
 - [Rust discussion](#rust-discussion)
 
@@ -44,7 +44,7 @@ draft = false
 [MIT6.828 Operating System Engineering](https://github.com/SmallPond/MIT6.828%5FOS)
 
 
-## Reads {#reads}
+## Reads and videos {#reads-and-videos}
 
 Type system: [Things I Was Wrong About: Types](https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/)
 
@@ -61,6 +61,12 @@ Book: [Structure and Interpretation of Computer Programs](https://mitpress.mit.e
 > **Means of combination**, by which compound elements are built from simpler ones, and
 >
 > **means of abstraction**, by which compound elements can be named and manipulated as units
+
+[How to learn programming | Charles Isbell and Michael Littman and Lex Fridman](https://www.youtube.com/watch?v=j-BVv0XW1H8)
+
+[Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148](https://www.youtube.com/watch?v=yzMVEbs8Zz0)
+
+> joy
 
 
 ## Rust language {#rust-language}

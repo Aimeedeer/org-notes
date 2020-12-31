@@ -17,7 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [Languages](#languages)
-- [Posts](#posts)
+- [Posts and videos](#posts-and-videos)
 - [Advent of Code and other puzzles](#advent-of-code-and-other-puzzles)
 
 </div>
@@ -35,7 +35,33 @@ Game programming.
 Rustlisp for game dev: <https://gamelisp.rs/>
 
 
-## Posts {#posts}
+## Posts and videos {#posts-and-videos}
+
+[Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148](https://www.youtube.com/watch?v=yzMVEbs8Zz0)
+
+> joy
+
+Gamification concept.
+
+[The Future of Creativity and Innovation is Gamification: Gabe Zichermann at TEDxVilnius](https://www.youtube.com/watch?v=ZZvRw71Slew)
+
+> Gabe Zichermann
+>
+> Conquer a challenge -> feel great and feel successful -> do it more.
+> The more success we feel, we more we are willing to keep doing it
+
+[Gamification to improve our world: Yu-kai Chou at TEDxLausanne](https://www.youtube.com/watch?v=v5Qjuegtiyc)
+
+> Ownership: gamers feel they own something, making them want to improve it
+>
+> Social: The most effective way to chage a person's behavior is showing them
+> what their neighbours do
+
+Unity: [Devlog 2: Game architecture with ScriptableObjects | Open Projects](https://www.youtube.com/watch?v=WLDgtRNK2VE)
+
+[7 educational games that every developer should study](https://www.gamasutra.com/view/news/288343/7%5Feducational%5Fgames%5Fthat%5Fevery%5Fdeveloper%5Fshould%5Fstudy.php)
+
+[Learn Lua by writing a "guess the number" game](https://opensource.com/article/20/12/lua-guess-number-game)
 
 [Making Crash Bandicoot – GOOL – part 9](https://all-things-andy-gavin.com/2011/03/12/making-crash-bandicoot-gool-part-9/)
 

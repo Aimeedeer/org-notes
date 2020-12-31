@@ -1866,7 +1866,7 @@ by considering interoperability of new features in accordance to it.
 
 [[https://github.com/SmallPond/MIT6.828_OS][MIT6.828 Operating System Engineering]]
 
-*** Reads
+*** Reads and videos
 
 Type system: [[https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/][Things I Was Wrong About: Types]]
 
@@ -1882,6 +1882,11 @@ Book: [[https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-
 >
 > *means of abstraction*, by which compound elements can be named and manipulated as units
 
+[[https://www.youtube.com/watch?v=j-BVv0XW1H8][How to learn programming | Charles Isbell and Michael Littman and Lex Fridman]]
+
+[[https://www.youtube.com/watch?v=yzMVEbs8Zz0][Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148]]
+
+> joy
 
 
 *** Rust language
@@ -2146,7 +2151,33 @@ Game programming.
 
 Rustlisp for game dev: https://gamelisp.rs/
 
-*** Posts
+*** Posts and videos
+
+[[https://www.youtube.com/watch?v=yzMVEbs8Zz0][Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148]]
+
+> joy
+
+Gamification concept.
+
+[[https://www.youtube.com/watch?v=ZZvRw71Slew][The Future of Creativity and Innovation is Gamification: Gabe Zichermann at TEDxVilnius]]
+
+> Gabe Zichermann 
+>
+> Conquer a challenge -> feel great and feel successful -> do it more.
+> The more success we feel, we more we are willing to keep doing it
+
+[[https://www.youtube.com/watch?v=v5Qjuegtiyc][Gamification to improve our world: Yu-kai Chou at TEDxLausanne]]
+
+> Ownership: gamers feel they own something, making them want to improve it
+>
+> Social: The most effective way to chage a person's behavior is showing them 
+> what their neighbours do
+
+Unity: [[https://www.youtube.com/watch?v=WLDgtRNK2VE][Devlog 2: Game architecture with ScriptableObjects | Open Projects]]
+
+[[https://www.gamasutra.com/view/news/288343/7_educational_games_that_every_developer_should_study.php][7 educational games that every developer should study]]
+
+[[https://opensource.com/article/20/12/lua-guess-number-game][Learn Lua by writing a "guess the number" game]]
 
 [[https://all-things-andy-gavin.com/2011/03/12/making-crash-bandicoot-gool-part-9/][Making Crash Bandicoot – GOOL – part 9]]
 
