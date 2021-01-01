@@ -7,7 +7,7 @@ tags = ["haskell"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2014
+  weight = 2015
   identifier = "haskell"
 +++
 
@@ -36,6 +36,8 @@ draft = false
 
 [Thinking recursively](http://learnyouahaskell.com/recursion#thinking-recursively)
 > So when trying to think of a recursive way to solve a problem, try to think of when a recursive solution doesn't apply and see if you can use that as an edge case, think about identities and think about whether you'll break apart the parameters of the function (for instance, lists are usually broken into a head and a tail via pattern matching) and on which part you'll use the recursive call.
+
+[Learnings From Solving Advent Of Code 2020 In Haskell](https://notes.abhinavsarkar.net/2020/aoc-learnings)
 
 
 ## Tools {#tools}

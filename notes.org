@@ -28,7 +28,6 @@
   Stackoverflow: https://stackoverflow.com/questions/846103/runtime-vs-compile-time
 - [[https://en.wikipedia.org/wiki/Abstract_syntax_tree][Abstract Syntax Tree (AST)]]
 
-
 *** Day1
 
 [[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
@@ -253,14 +252,66 @@ and ~bail~ instead of ~anyhow~ for returning a result with an error message.
 
 ** Captain Game                                 :rust:smartcontract:@hacking:
 :PROPERTIES:
-:EXPORT_FILE_NAME: Captain Game
+:EXPORT_FILE_NAME: captain-game
 :EXPORT_DATE: 2020-12-27
 :EXPORT_HUGO_SECTION: hacking
 :EXPORT_DESCRIPTION: A captain game smart contract
 :EXPORT_OPTIONS: toc:2
 :END:
 
+TODO:
+
+- [ ] Game contract 0.05
+
 *** My hacklog
+
+**** 2020-12-31
+
+We can't use ~String~ directly.
+
+#+begin_src shell
+   Compiling game v0.1.0 (/private/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_GdJJAl)
+error[E0412]: cannot find type `String` in this scope
+  --> /Users/aimeez/github/contract-game/src/game/lib.rs:49:51
+   |
+49 |     pub fn create_game_account(&mut self, role_name: String) -> Result<(), Error> {
+   |                                                      ^^^^^^ not found in this scope
+
+error: aborting due to previous error
+#+end_src
+
+We need ~alloc~ here.
+
+#+begin_src rust
+extern crate alloc;
+
+#[ink::contract]
+mod game {
+    use ink_storage::collections::HashMap;
+    use alloc::{string::String, format};
+    ...
+}
+#+end_src
+
+**** 2020-12-29
+
+Added ~HashMap~, and it looks complicated.
+
+#+begin_src rust
+    use ink_storage::collections::HashMap;
+
+    #[ink(storage)]
+    pub struct Game {
+	game_accounts: HashMap<AccountId, GameAccount>,
+    }
+
+    #[derive(Debug, scale::Encode, scale::Decode, ink_storage_derive::PackedLayout, ink_storage_derive::SpreadLayout)]
+    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))] 
+    pub struct GameAccount {
+	game_account_id: [u32; 8],
+	level: u32,
+    }
+#+end_src
 
 **** 2020-12-27
 
@@ -2110,6 +2161,8 @@ Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.ht
 
 [[http://learnyouahaskell.com/recursion#thinking-recursively][Thinking recursively]]
 > So when trying to think of a recursive way to solve a problem, try to think of when a recursive solution doesn't apply and see if you can use that as an edge case, think about identities and think about whether you'll break apart the parameters of the function (for instance, lists are usually broken into a head and a tail via pattern matching) and on which part you'll use the recursive call.
+
+[[https://notes.abhinavsarkar.net/2020/aoc-learnings][Learnings From Solving Advent Of Code 2020 In Haskell]]
 
 *** Tools
 
