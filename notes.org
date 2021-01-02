@@ -2231,7 +2231,7 @@ Video: [[https://www.youtube.com/watch?v=IGMiCo2Ntsc][Bret Victor - The Future o
 
 > goals and constrains
 >
-> "What you want to do", not instructures about "How to do"
+> "What you want to do", not instructions about "How to do"
 >
 > Pattern matching
 

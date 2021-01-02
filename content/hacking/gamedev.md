@@ -43,7 +43,7 @@ Video: [Bret Victor - The Future of Programming](https://www.youtube.com/watch?v
 
 > goals and constrains
 >
-> "What you want to do", not instructures about "How to do"
+> "What you want to do", not instructions about "How to do"
 >
 > Pattern matching
 
