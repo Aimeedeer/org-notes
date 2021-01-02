@@ -265,6 +265,24 @@ TODO:
 
 *** My hacklog
 
+**** 2021-01-01
+
+In ink, ~clone~ can't be derived for nested ~HashMap~ type.
+We use ~BTreeMap~ instead.
+
+#+begin_src rust
+    use ink_storage::collections::HashMap;
+
+    pub struct Game {
+        game_accounts: HashMap<AccountId, GameAccount>,
+    }
+
+    pub struct GameAccount {
+        level: u32,
+        level_programs: BTreeMap<u32, AccountId>,
+    }
+#+end_src
+
 **** 2020-12-31
 
 We can't use ~String~ directly.
@@ -292,6 +310,7 @@ mod game {
     ...
 }
 #+end_src
+
 
 **** 2020-12-29
 
@@ -2194,7 +2213,7 @@ Paper: [[https://www.lua.org/doc/jucs05.pdf][The Implementation of Lua 5.0]]
 :EXPORT_OPTIONS: toc:2
 :END:
 
-Game programming.
+Gaming,learning and programming.
 
 *** Languages
 
@@ -2205,6 +2224,16 @@ Game programming.
 Rustlisp for game dev: https://gamelisp.rs/
 
 *** Posts and videos
+
+Video: [[https://www.youtube.com/watch?v=YyIQKBzIuBY][Alan Kay - Programming and Scaling]]
+
+Video: [[https://www.youtube.com/watch?v=IGMiCo2Ntsc][Bret Victor - The Future of Programming]]
+
+> goals and constrains
+>
+> "What you want to do", not instructures about "How to do"
+>
+> Pattern matching
 
 [[https://www.youtube.com/watch?v=yzMVEbs8Zz0][Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148]]
 

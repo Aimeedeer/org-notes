@@ -23,7 +23,7 @@ draft = false
 </div>
 <!--endtoc-->
 
-Game programming.
+Gaming,learning and programming.
 
 
 ## Languages {#languages}
@@ -36,6 +36,16 @@ Rustlisp for game dev: <https://gamelisp.rs/>
 
 
 ## Posts and videos {#posts-and-videos}
+
+Video: [Alan Kay - Programming and Scaling](https://www.youtube.com/watch?v=YyIQKBzIuBY)
+
+Video: [Bret Victor - The Future of Programming](https://www.youtube.com/watch?v=IGMiCo2Ntsc)
+
+> goals and constrains
+>
+> "What you want to do", not instructures about "How to do"
+>
+> Pattern matching
 
 [Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148](https://www.youtube.com/watch?v=yzMVEbs8Zz0)
 

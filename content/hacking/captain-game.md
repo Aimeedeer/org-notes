@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-01-01](#2021-01-01)
     - [2020-12-31](#2020-12-31)
     - [2020-12-29](#2020-12-29)
     - [2020-12-27](#2020-12-27)
@@ -30,6 +31,25 @@ TODO:
 
 
 ## My hacklog {#my-hacklog}
+
+
+### 2021-01-01 {#2021-01-01}
+
+In ink, `clone` can't be derived for nested `HashMap` type.
+We use `BTreeMap` instead.
+
+```rust
+use ink_storage::collections::HashMap;
+
+pub struct Game {
+    game_accounts: HashMap<AccountId, GameAccount>,
+}
+
+pub struct GameAccount {
+    level: u32,
+    level_programs: BTreeMap<u32, AccountId>,
+}
+```
 
 
 ### 2020-12-31 {#2020-12-31}
