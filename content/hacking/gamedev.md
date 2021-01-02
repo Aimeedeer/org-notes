@@ -37,6 +37,14 @@ Rustlisp for game dev: <https://gamelisp.rs/>
 
 ## Posts and videos {#posts-and-videos}
 
+[Learnable Programming](http://worrydream.com/#!/LearnableProgramming)
+
+> - Not only skills but also a way of thinking
+> - Get something on the screen as soon as possible
+> - Create by reacting
+
+[Two Games with Monte Carlo Tree Search](https://nullprogram.com/blog/2017/04/27/)
+
 Video: [Alan Kay - Programming and Scaling](https://www.youtube.com/watch?v=YyIQKBzIuBY)
 
 Video: [Bret Victor - The Future of Programming](https://www.youtube.com/watch?v=IGMiCo2Ntsc)
@@ -109,6 +117,12 @@ Boos that are [worth reading](https://lostgarden.home.blog/worth-reading/)
 > - Using a compiled language to solve the puzzles won’t give you any noticeable speed advantage over using an interpreted language. If your code is still working on a solution after about a minute, you’re probably taking the wrong approach. To quote the “About” page, “every problem has a solution that completes in at most 15 seconds on ten-year-old hardware”.
 
 [Advent of Code: How to Leaderboard](https://blog.vero.site/post/advent-leaderboard)
+
+> Another aspect is the unique two-part format of each puzzle. Even though they use the same input, you don’t get to see the second part until after you’ve solved the first one, a feature that Eric Wastl (AoC’s creator) has taken full advantage of in designing puzzles. The second part is often a surprising twist on the first part, which keeps you on your toes and challenges you to keep your code moderately general or refactorable in a way that I think almost no other programming challenges do. This sometimes even happens between days in a calendar, when a puzzle turns out to be about some model of computation you implemented two or five or ten days ago — hope you kept your code and remember how it works!
+
+[MIT Puzzle Club](http://web.mit.edu/puzzle/www/)
+
+[The Red and White Knights](https://web.mit.edu/puzzle/www/2014/round/knights/)
 
 [Awesome AoC](https://github.com/Bogdanp/awesome-advent-of-code)
 
