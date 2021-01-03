@@ -18,7 +18,7 @@ draft = false
 
 - [Languages](#languages)
 - [Posts and videos](#posts-and-videos)
-- [Advent of Code and other puzzles](#advent-of-code-and-other-puzzles)
+- [Programminguzzles](#programminguzzles)
 
 </div>
 <!--endtoc-->
@@ -36,6 +36,10 @@ Rustlisp for game dev: <https://gamelisp.rs/>
 
 
 ## Posts and videos {#posts-and-videos}
+
+[Shirky’s Law and why (most) social software fails](https://michaelnielsen.org/blog/shirkys-law-and-why-most-social-software-fails/)
+
+> The third reason developers fail to obey Shirky’s Law is that it’s difficult to do. The most successful social software starts out doing one task supremely well. That task is simple, useful, and original. It’s easy to come up with a task which is useful and original – just combine existing ideas in a new way, perhaps with some minor twists. But finding something that’s also simple is hard. It has to be a single task that can’t be reduced or explained in terms of existing tasks. Inventing or discovering such a task requires either a lot of hard work and social insight, or a great deal of luck. It’s no wonder most social software fails.
 
 [Learnable Programming](http://worrydream.com/#!/LearnableProgramming)
 
@@ -95,7 +99,11 @@ Unity: [Devlog 2: Game architecture with ScriptableObjects | Open Projects](http
 Boos that are [worth reading](https://lostgarden.home.blog/worth-reading/)
 
 
-## Advent of Code and other puzzles {#advent-of-code-and-other-puzzles}
+## Programminguzzles {#programminguzzles}
+
+[A toy algorithms problem](https://idyll.pub/post/blueberry-pancakes-28b1a2e1a8986c44ac091f08/)
+
+Tool: [Publish interactive blog posts and explorable explanations with Idyll's free hosting service.](https://idyll.pub/post/announcing-idyll-pub-0a3eff0661df3446a915700d/)
 
 [Common Lisp Programming Exercises](https://www.cliki.net/Exercices)
 

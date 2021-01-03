@@ -7,7 +7,7 @@ tags = ["writing"]
 categories = ["reading"]
 draft = false
 [menu.main]
-  weight = 2022
+  weight = 2031
   identifier = "how-to-read-and-write"
 +++
 
@@ -173,7 +173,6 @@ that covers [the entire spectrum of research skills](http://research.microsoft.c
 
 ## How to write {#how-to-write}
 
-Very well written, and I learned a lot from
 Timothy Roscoe’s paper on “[Writing reviews for systems conferences](http://people.inf.ethz.ch/troscoe/pubs/review-writing.pdf)”.
 This is the paper worth reading many times,
 and follow his practice.
@@ -239,6 +238,23 @@ paper can be rewarding if it forces you to explain concepts afresh in a new cont
 
 
 ## Articles about writing {#articles-about-writing}
+
+[Notes on writing well](https://github.com/mnielsen/notes-on-writing/blob/master/notes%5Fon%5Fwriting.md)
+by Michael Nielsen
+
+> On note-taking: Something I wish I'd understood earlier is how important it is to get good at note-taking. It is not trivial to do well. Rather, it is something that one can get better and better at. The payoff of improving is that it makes writing far easier. The better your notes, the easier the writing will be. There are several elements to it: (1) Primary note-taking; (2) Queueing; (3) Refactoring and organization. You need to get good at all.
+>
+> In "Structure and Interpretation of Computer Programs":
+>
+> - "Building Abstractions with Procedures"
+> - "Building Abstractions with Data"
+> - "Modularity, Objects, and State"
+> - "Metalinguistic Abstraction"
+> - "Computing with Register Machines"
+>
+> Chapter titles 1, 2 and 5 are verb phrases, while 3 and 4 are noun phrases. I prefer the more active titles, perhaps for the obvious reason that they create more of a sense of going someplace!
+>
+> Beware classic style if you've not yet mastered a subject: Sometimes, you wish to write about a subject, even though you haven't yet mastered that subject. It is difficult to write on such a subject in classic style, because the assumptions of classic style very nearly imply mastery. It is easier to instead slip occasionally into a personal style, explaining your exploration of the subject, and the limits of your knowledge. In such cases it may work to use a hybrid style, in which you alternate the personal with the classic. Feynman occasionally uses this style, either to explain his own thinking, or to explain the hypothetical thinking of others.
 
 [How to write usefully](http://www.paulgraham.com/useful.html)
 

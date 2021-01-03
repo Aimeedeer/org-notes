@@ -2225,6 +2225,10 @@ Rustlisp for game dev: https://gamelisp.rs/
 
 *** Posts and videos
 
+[[https://michaelnielsen.org/blog/shirkys-law-and-why-most-social-software-fails/][Shirky’s Law and why (most) social software fails]]
+
+> The third reason developers fail to obey Shirky’s Law is that it’s difficult to do. The most successful social software starts out doing one task supremely well. That task is simple, useful, and original. It’s easy to come up with a task which is useful and original – just combine existing ideas in a new way, perhaps with some minor twists. But finding something that’s also simple is hard. It has to be a single task that can’t be reduced or explained in terms of existing tasks. Inventing or discovering such a task requires either a lot of hard work and social insight, or a great deal of luck. It’s no wonder most social software fails.
+
 [[http://worrydream.com/#!/LearnableProgramming][Learnable Programming]]
 
 > - Not only skills but also a way of thinking
@@ -2282,7 +2286,11 @@ Unity: [[https://www.youtube.com/watch?v=WLDgtRNK2VE][Devlog 2: Game architectur
 
 Boos that are [[https://lostgarden.home.blog/worth-reading/][worth reading]]
 
-*** Advent of Code and other puzzles
+*** Programminguzzles
+
+[[https://idyll.pub/post/blueberry-pancakes-28b1a2e1a8986c44ac091f08/][A toy algorithms problem]]
+
+Tool: [[https://idyll.pub/post/announcing-idyll-pub-0a3eff0661df3446a915700d/][Publish interactive blog posts and explorable explanations with Idyll's free hosting service.]]
 
 [[https://www.cliki.net/Exercices][Common Lisp Programming Exercises]]
 
@@ -4035,7 +4043,6 @@ that covers [[http://research.microsoft.com/simonpj/Papers/givinga-talk/giving-a
 
 *** How to write
 
-Very well written, and I learned a lot from
 Timothy Roscoe’s paper on “[[http://people.inf.ethz.ch/troscoe/pubs/review-writing.pdf][Writing reviews for systems conferences]]”.
 This is the paper worth reading many times,
 and follow his practice.
@@ -4100,6 +4107,23 @@ of your peers. Surprisingly, it can also be fun – even writing a review for a 
 paper can be rewarding if it forces you to explain concepts afresh in a new context.
 
 *** Articles about writing
+
+[[https://github.com/mnielsen/notes-on-writing/blob/master/notes_on_writing.md][Notes on writing well]]
+by Michael Nielsen
+
+> On note-taking: Something I wish I'd understood earlier is how important it is to get good at note-taking. It is not trivial to do well. Rather, it is something that one can get better and better at. The payoff of improving is that it makes writing far easier. The better your notes, the easier the writing will be. There are several elements to it: (1) Primary note-taking; (2) Queueing; (3) Refactoring and organization. You need to get good at all.
+>
+> In "Structure and Interpretation of Computer Programs":
+>
+> - "Building Abstractions with Procedures"
+> - "Building Abstractions with Data"
+> - "Modularity, Objects, and State"
+> - "Metalinguistic Abstraction"
+> - "Computing with Register Machines"
+>
+> Chapter titles 1, 2 and 5 are verb phrases, while 3 and 4 are noun phrases. I prefer the more active titles, perhaps for the obvious reason that they create more of a sense of going someplace!
+>
+> Beware classic style if you've not yet mastered a subject: Sometimes, you wish to write about a subject, even though you haven't yet mastered that subject. It is difficult to write on such a subject in classic style, because the assumptions of classic style very nearly imply mastery. It is easier to instead slip occasionally into a personal style, explaining your exploration of the subject, and the limits of your knowledge. In such cases it may work to use a hybrid style, in which you alternate the personal with the classic. Feynman occasionally uses this style, either to explain his own thinking, or to explain the hypothetical thinking of others.
 
 [[http://www.paulgraham.com/useful.html][How to write usefully]]
 
