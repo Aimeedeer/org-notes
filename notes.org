@@ -265,6 +265,10 @@ TODO:
 
 *** My hacklog
 
+**** 2021-01-03
+
+Try cross-contract call.
+
 **** 2021-01-01
 
 In ink, ~clone~ can't be derived for nested ~HashMap~ type.
