@@ -17,6 +17,8 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-01-07](#2021-01-07)
+    - [2021-01-03](#2021-01-03)
     - [2021-01-01](#2021-01-01)
     - [2020-12-31](#2020-12-31)
     - [2020-12-29](#2020-12-29)
@@ -31,6 +33,51 @@ TODO:
 
 
 ## My hacklog {#my-hacklog}
+
+
+### 2021-01-07 {#2021-01-07}
+
+Test code:
+
+```rust
+#[ink(message, payable)]
+pub fn run_leve_test(&mut self) -> bool {
+    let program_id = "4cfac7f74c6233449b5e54ba070231dd94c71b89505482cd910000656258d3ed";
+
+    ink_env::debug_println(&format!("hash {:?}", program_id));
+
+    let program_id = hex::decode(program_id).unwrap();
+    ink_env::debug_println(&format!("decode {:?}", program_id));
+
+    let program_id = AccountId::try_from(&program_id[..]).unwrap();
+    ink_env::debug_println(&format!("AccountId {:?}", program_id));
+
+    true
+}
+```
+
+Run Canvas and print `debug` in console:
+
+```shell
+$ canvas --dev --tmp -lerror,runtime=debug
+
+2021-01-07 20:47:37.878  DEBUG event.loop0 runtime:hash "4cfac7f74c6233449b5e54ba070231dd94c71b89505482cd910000656258d3ed"
+2021-01-07 20:47:37.880  DEBUG event.loop0 runtime:decode [76, 250, 199, 247, 76, 98, 51, 68, 155, 94, 84, 186, 7, 2, 49, 221, 148, 199, 27, 137, 80, 84, 130, 205, 145, 0, 0, 101, 98, 88, 211, 237]
+2021-01-07 20:47:37.881  DEBUG event.loop0 runtime:AccountId AccountId([76, 250, 199, 247, 76, 98, 51, 68, 155, 94, 84, 186, 7, 2, 49, 221, 148, 199, 27, 137, 80, 84, 130, 205, 145, 0, 0, 101, 98, 88, 211, 237])
+```
+
+Test process:
+
+-   Run Canvas in Firefox
+-   Bob uploads Flipper contract (added `selector`)
+-   Add deployed Flipper contract address to Game contract test code, and build `cargo contract build`
+-   Deploy Game contract with Alice's account
+-   Bob calls Alice's Game contract
+
+
+### 2021-01-03 {#2021-01-03}
+
+Write code for cross-contract call.
 
 
 ### 2021-01-01 {#2021-01-01}
