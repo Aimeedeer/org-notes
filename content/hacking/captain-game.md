@@ -29,7 +29,7 @@ draft = false
 
 TODO:
 
--   [ ] Game contract 0.05
+-   [ ] Game contract demo
 
 
 ## My hacklog {#my-hacklog}
@@ -41,7 +41,7 @@ Test code:
 
 ```rust
 #[ink(message, payable)]
-pub fn run_leve_test(&mut self) -> bool {
+pub fn run_level_test(&mut self) -> bool {
     let program_id = "4cfac7f74c6233449b5e54ba070231dd94c71b89505482cd910000656258d3ed";
 
     ink_env::debug_println(&format!("hash {:?}", program_id));
