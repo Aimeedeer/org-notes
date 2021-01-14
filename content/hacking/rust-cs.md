@@ -7,7 +7,7 @@ tags = ["rust", "cs"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2010
+  weight = 2009
   identifier = "rust-and-computer-science"
 +++
 
@@ -70,6 +70,10 @@ Book: [Structure and Interpretation of Computer Programs](https://mitpress.mit.e
 
 
 ## Rust language {#rust-language}
+
+[The Little Book of Rust Books](https://lborb.github.io/book/)
+
+[Learn Rust With Entirely Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/index.html)
 
 [Understanding and Evolving the Rust Programming Language](https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf) August 2020
 

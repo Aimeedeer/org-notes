@@ -22,11 +22,13 @@ draft = false
 - [Day3](#day3)
 - [Day4](#day4)
 - [Day5](#day5)
+- [Day6](#day6)
+- [Day7](#day7)
 
 </div>
 <!--endtoc-->
 
-**GitHub repo**: <https://github.com/Aimeedeer/adventofcode>
+**GitHub repo**: <https://github.com/Aimeedeer/adventofcode-2020>
 
 
 ## Read and Learned {#read-and-learned}
@@ -45,7 +47,7 @@ draft = false
 
 [Day 1: Report Repair](https://adventofcode.com/2020/day/1)
 
--   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day1>
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day1>
 -   Question: a better performance solution than 3 loops?
 -   [Other one's practice](https://fasterthanli.me/series/advent-of-code-2020/part-1). Good to learn another totally different approach.
 
@@ -56,13 +58,13 @@ use itertools::Itertools;
 
 fn main() -> anyhow::Result<()> {
     let (a, b, c) = include_str!("input.txt")
-	.split('\n')
-	.map(str::parse::<i64>)
-	.collect::<Result<Vec<_>, _>>()?
-	.into_iter()
-	.tuple_combinations()
-	.find(|(a, b, c)| a + b + c == 2020)
-	.expect("no tuple of length 3 had a sum of 2020");
+        .split('\n')
+        .map(str::parse::<i64>)
+        .collect::<Result<Vec<_>, _>>()?
+        .into_iter()
+        .tuple_combinations()
+        .find(|(a, b, c)| a + b + c == 2020)
+        .expect("no tuple of length 3 had a sum of 2020");
 
     dbg!(a + b + c);
     dbg!(a * b * c);
@@ -84,7 +86,7 @@ for a side effect, it's considered more idiomatic to use `for` than `map()`.
 
 [Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
 
--   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day2>
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day2>
 
 Use `regex` for parsing `String`.
 
@@ -121,7 +123,7 @@ let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
 
 [Day 3: Toboggan Trajectory](https://adventofcode.com/2020/day/3)
 
--   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day3>
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day3>
 
 Iterator:
 
@@ -156,7 +158,7 @@ for line in reader.lines().step_by(move_down) {
 
 [Day 4: Passport Processing](https://adventofcode.com/2020/day/4)
 
--   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day4>
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day4>
 
 Learned to organize a mod:
 
@@ -169,8 +171,8 @@ Write a generic `fn` inside another function:
 
 ```rust
 fn validate<T>(dest: &mut Option<T>,
-	     reference: &str,
-	     v: impl FnOnce(&str) -> Result<T>) {
+             reference: &str,
+             v: impl FnOnce(&str) -> Result<T>) {
     *dest = v(reference).ok();
 }
 
@@ -209,13 +211,13 @@ created each time in the loop.
 ```rust
 lazy_static! {
     static ref RE: Regex = Regex::new(r"(?x)
-	\[
-	    (?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})
-	    \s+
-	    (?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})
-	\]
-	\s+
-	(?:Guard\ \#(?P<id>[0-9]+)\ begins\ shift|(?P<sleep>.+))
+        \[
+            (?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})
+            \s+
+            (?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})
+        \]
+        \s+
+        (?:Guard\ \#(?P<id>[0-9]+)\ begins\ shift|(?P<sleep>.+))
     ").unwrap();
 }
 ```
@@ -225,7 +227,7 @@ lazy_static! {
 
 [Day 5: Binary Boarding](https://adventofcode.com/2020/day/5)
 
--   Source code: <https://github.com/Aimeedeer/adventofcode/tree/master/day5>
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day5>
 
 Use const for `8`. The magical number is defined in the problem description.
 
@@ -260,11 +262,11 @@ fn search_id(
       let (one, two) = range.split_at(temp_len/2);
 
       if c == match_char_one {
-	  range = one;
+          range = one;
       } else if c == match_char_two {
-	  range = two;
+          range = two;
       } else {
-	  bail!("get {} failed", msg);
+          bail!("get {} failed", msg);
       }
     }
 
@@ -275,3 +277,34 @@ fn search_id(
 
 Learned `(0..10).into_iter()`,
 and `bail` instead of `anyhow` for returning a result with an error message.
+
+
+## Day6 {#day6}
+
+An easy puzzle, counting chars.
+
+
+## Day7 {#day7}
+
+Started using `lazy_static`:
+
+```rust
+extern crate lazy_static;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref RE: Regex = Regex::new(r"^(\w+ \w+) bags contain (.*)$").unwrap();
+}
+```
+
+Recursive functions in Rust:
+
+```rust
+fn is_my_bag_in_map(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> bool {
+    ...
+}
+
+fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> u32 {
+    ...
+}
+```

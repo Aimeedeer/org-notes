@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-01-14](#2021-01-14)
     - [2021-01-07](#2021-01-07)
     - [2021-01-03](#2021-01-03)
     - [2021-01-01](#2021-01-01)
@@ -33,6 +34,11 @@ TODO:
 
 
 ## My hacklog {#my-hacklog}
+
+
+### 2021-01-14 {#2021-01-14}
+
+-   [ ] figure out `contract trapped`
 
 
 ### 2021-01-07 {#2021-01-07}
