@@ -40,6 +40,39 @@ TODO:
 
 -   [ ] figure out `contract trapped`
 
+Debug:
+
+```shell
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:DispatchError
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:8
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:17
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:ContractTrapped
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:PostInfo:
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:actual_weight=
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:7172485790
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:pays_fee=
+2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:Yes
+```
+
+Found `DispatchError` from Substrate code:
+
+```rust
+/// Turn this GasMeter into a DispatchResult that contains the actually used gas.
+pub fn into_dispatch_result<R, E>(self, result: Result<R, E>) -> DispatchResultWithPostInfo
+where
+      E: Into<ExecError>,
+{
+      let post_info = PostDispatchInfo {
+              actual_weight: Some(self.gas_spent()),
+              pays_fee: Default::default(),
+      };
+
+      result
+              .map(|_| post_info)
+              .map_err(|e| DispatchErrorWithPostInfo { post_info, error: e.into().error })
+}
+```
+
 
 ### 2021-01-07 {#2021-01-07}
 
