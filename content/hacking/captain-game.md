@@ -38,9 +38,7 @@ TODO:
 
 ### 2021-01-14 {#2021-01-14}
 
--   [ ] figure out `contract trapped`
-
-Debug:
+Debug `contract trapped`
 
 ```shell
 2021-01-14 16:34:36.014  DEBUG tokio-runtime-worker runtime:DispatchError
