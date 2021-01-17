@@ -2173,6 +2173,16 @@ being able to work in the problem domain rather than at the low-level implementa
 - *Eliminate irrelevant classes*. If a class consists only of data but no behavior, ask your- self whether it’s really a class and consider demoting it so that its member data just becomes attributes of one or more other classes.
 - *Avoid classes named after verbs*. A class that has only behavior but no data is gener- ally not really a class. Consider turning a class like DatabaseInitialization() or String- Builder() into a routine on some other class.
 
+
+*** Videos: MIT 6.001 Structure and Interpretation, 1986
+
+I like this lecture a lot:
+[[https://www.youtube.com/watch?v=PEwZL3H2oKg&list=PLE18841CABEA24090&index=5][Lecture 3A: Henderson Escher Example]]
+
+The blur line between procedure and data.
+
+
+
 ** Smart Contracts                        :blockchain:smartcontract:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: smart-contracts
