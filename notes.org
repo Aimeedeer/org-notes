@@ -279,6 +279,11 @@ fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32
 }
 #+end_src
 
+*** Day8 
+
+Should I learn a bit of assembly language?
+
+Use a vector of tuple as the data structure.
 
 ** Captain Game                                 :rust:smartcontract:@hacking:
 :PROPERTIES:
@@ -289,11 +294,13 @@ fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32
 :EXPORT_OPTIONS: toc:2
 :END:
 
-TODO:
-
-- [ ] Game contract demo
 
 *** My hacklog
+
+**** 2021-01-16
+
+Create isolated environment for testing.
+[[https://github.com/Aimeedeer/game-test][Source code]].
 
 **** 2021-01-14
 
@@ -2042,6 +2049,7 @@ by considering interoperability of new features in accordance to it.
 [[https://people.eecs.berkeley.edu/~alexch/classes/CS294-F2020.html][CS294: Foundations of Probabilistic Proofs (F2020)]]
 
 [[https://github.com/SmallPond/MIT6.828_OS][MIT6.828 Operating System Engineering]]
+
 
 *** Reads and videos
 

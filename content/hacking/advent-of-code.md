@@ -24,6 +24,7 @@ draft = false
 - [Day5](#day5)
 - [Day6](#day6)
 - [Day7](#day7)
+- [Day8](#day8)
 
 </div>
 <!--endtoc-->
@@ -308,3 +309,10 @@ fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32
     ...
 }
 ```
+
+
+## Day8 {#day8}
+
+Should I learn a bit of assembly language?
+
+Use a vector of tuple as the data structure.

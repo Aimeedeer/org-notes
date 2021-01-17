@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-01-16](#2021-01-16)
     - [2021-01-14](#2021-01-14)
     - [2021-01-07](#2021-01-07)
     - [2021-01-03](#2021-01-03)
@@ -28,12 +29,14 @@ draft = false
 </div>
 <!--endtoc-->
 
-TODO:
-
--   [ ] Game contract demo
-
 
 ## My hacklog {#my-hacklog}
+
+
+### 2021-01-16 {#2021-01-16}
+
+Create isolated environment for testing.
+[Source code](https://github.com/Aimeedeer/game-test).
 
 
 ### 2021-01-14 {#2021-01-14}
