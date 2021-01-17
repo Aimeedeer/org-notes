@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [Book: Code Complete](#book-code-complete)
+- [Book: Structure and Interpretation of Computer Programs](#book-structure-and-interpretation-of-computer-programs)
 - [Videos: MIT 6.001 Structure and Interpretation, 1986](#videos-mit-6-dot-001-structure-and-interpretation-1986)
 
 </div>
@@ -73,6 +74,15 @@ being able to work in the problem domain rather than at the low-level implementa
 -   **Avoid creating god classes**. Avoid creating omniscient classes that are all-knowing and all-powerful. If a class spends its time retrieving data from other classes using Get() and Set() routines (that is, digging into their business and telling them what to do), ask whether that functionality might better be organized into those other classes rather than into the god class (Riel 1996).
 -   **Eliminate irrelevant classes**. If a class consists only of data but no behavior, ask your- self whether it’s really a class and consider demoting it so that its member data just becomes attributes of one or more other classes.
 -   **Avoid classes named after verbs**. A class that has only behavior but no data is gener- ally not really a class. Consider turning a class like DatabaseInitialization() or String- Builder() into a routine on some other class.
+
+
+## Book: [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%%5Ftoc%5Fstart) {#book-structure-and-interpretation-of-computer-programs}
+
+**[1.1  The Elements of Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html)**
+
+-   **Primitive expressions**, which represent the simplest entities the language is concerned with,
+-   **Means of combination**, by which compound elements are built from simpler ones, and
+-   **means of abstraction**, by which compound elements can be named and manipulated as units
 
 
 ## Videos: MIT 6.001 Structure and Interpretation, 1986 {#videos-mit-6-dot-001-structure-and-interpretation-1986}

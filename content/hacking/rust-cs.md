@@ -54,14 +54,6 @@ Type system: [Things I Was Wrong About: Types](https://v5.chriskrycho.com/journa
 
 Book: [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%%5Ftoc%5Fstart)
 
--   [1.1  The Elements of Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html)
-
-> **Primitive expressions**, which represent the simplest entities the language is concerned with,
->
-> **Means of combination**, by which compound elements are built from simpler ones, and
->
-> **means of abstraction**, by which compound elements can be named and manipulated as units
-
 [How to learn programming | Charles Isbell and Michael Littman and Lex Fridman](https://www.youtube.com/watch?v=j-BVv0XW1H8)
 
 [Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148](https://www.youtube.com/watch?v=yzMVEbs8Zz0)
