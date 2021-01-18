@@ -297,6 +297,16 @@ Use a vector of tuple as the data structure.
 
 *** My hacklog
 
+**** 2021-01-18
+
+It works today, for no reason. 
+[[https://github.com/Aimeedeer/game-test][Testing source code]].
+
+#+begin_src shell
+2021-01-18 17:21:12.010  DEBUG tokio-runtime-worker runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])    
+2021-01-18 17:21:12.010  DEBUG tokio-runtime-worker runtime:return value Ok(false)    
+#+end_src
+
 **** 2021-01-16
 
 Create isolated environment for testing.

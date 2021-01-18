@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-01-18](#2021-01-18)
     - [2021-01-16](#2021-01-16)
     - [2021-01-14](#2021-01-14)
     - [2021-01-07](#2021-01-07)
@@ -31,6 +32,17 @@ draft = false
 
 
 ## My hacklog {#my-hacklog}
+
+
+### 2021-01-18 {#2021-01-18}
+
+It works today, for no reason.
+[Testing source code](https://github.com/Aimeedeer/game-test).
+
+```shell
+2021-01-18 17:21:12.010  DEBUG tokio-runtime-worker runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-01-18 17:21:12.010  DEBUG tokio-runtime-worker runtime:return value Ok(false)
+```
 
 
 ### 2021-01-16 {#2021-01-16}
