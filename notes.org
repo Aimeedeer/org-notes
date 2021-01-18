@@ -2177,7 +2177,6 @@ being able to work in the problem domain rather than at the low-level implementa
 - *means of abstraction*, by which compound elements can be named and manipulated as units
 
 
-
 *** Videos: MIT 6.001 Structure and Interpretation, 1986
 
 I like this lecture a lot:
