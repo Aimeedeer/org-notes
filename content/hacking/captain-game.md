@@ -61,16 +61,16 @@ Found `DispatchError` from Substrate code:
 /// Turn this GasMeter into a DispatchResult that contains the actually used gas.
 pub fn into_dispatch_result<R, E>(self, result: Result<R, E>) -> DispatchResultWithPostInfo
 where
-      E: Into<ExecError>,
+        E: Into<ExecError>,
 {
-      let post_info = PostDispatchInfo {
-              actual_weight: Some(self.gas_spent()),
-              pays_fee: Default::default(),
-      };
+        let post_info = PostDispatchInfo {
+                actual_weight: Some(self.gas_spent()),
+                pays_fee: Default::default(),
+        };
 
-      result
-              .map(|_| post_info)
-              .map_err(|e| DispatchErrorWithPostInfo { post_info, error: e.into().error })
+        result
+                .map(|_| post_info)
+                .map_err(|e| DispatchErrorWithPostInfo { post_info, error: e.into().error })
 }
 ```
 

@@ -321,20 +321,20 @@ Debug ~contract trapped~
 Found ~DispatchError~ from Substrate code:
 
 #+begin_src rust
-	/// Turn this GasMeter into a DispatchResult that contains the actually used gas.
-	pub fn into_dispatch_result<R, E>(self, result: Result<R, E>) -> DispatchResultWithPostInfo
-	where
-		E: Into<ExecError>,
-	{
-		let post_info = PostDispatchInfo {
-			actual_weight: Some(self.gas_spent()),
-			pays_fee: Default::default(),
-		};
+/// Turn this GasMeter into a DispatchResult that contains the actually used gas.
+pub fn into_dispatch_result<R, E>(self, result: Result<R, E>) -> DispatchResultWithPostInfo
+where
+        E: Into<ExecError>,
+{
+        let post_info = PostDispatchInfo {
+                actual_weight: Some(self.gas_spent()),
+                pays_fee: Default::default(),
+        };
 
-		result
-			.map(|_| post_info)
-			.map_err(|e| DispatchErrorWithPostInfo { post_info, error: e.into().error })
-	}
+        result
+                .map(|_| post_info)
+                .map_err(|e| DispatchErrorWithPostInfo { post_info, error: e.into().error })
+}
 #+end_src
 
 **** 2021-01-07
@@ -342,20 +342,20 @@ Found ~DispatchError~ from Substrate code:
 Test code: 
 
 #+begin_src rust
-        #[ink(message, payable)]
-        pub fn run_level_test(&mut self) -> bool {
-            let program_id = "4cfac7f74c6233449b5e54ba070231dd94c71b89505482cd910000656258d3ed";
+#[ink(message, payable)]
+pub fn run_level_test(&mut self) -> bool {
+    let program_id = "4cfac7f74c6233449b5e54ba070231dd94c71b89505482cd910000656258d3ed";
 
-            ink_env::debug_println(&format!("hash {:?}", program_id));
-            
-            let program_id = hex::decode(program_id).unwrap();
-            ink_env::debug_println(&format!("decode {:?}", program_id));
-            
-            let program_id = AccountId::try_from(&program_id[..]).unwrap();
-            ink_env::debug_println(&format!("AccountId {:?}", program_id));
+    ink_env::debug_println(&format!("hash {:?}", program_id));
 
-            true
-        }
+    let program_id = hex::decode(program_id).unwrap();
+    ink_env::debug_println(&format!("decode {:?}", program_id));
+
+    let program_id = AccountId::try_from(&program_id[..]).unwrap();
+    ink_env::debug_println(&format!("AccountId {:?}", program_id));
+
+    true
+}
 #+end_src
 
 Run Canvas and print ~debug~ in console:
@@ -385,16 +385,16 @@ In ink, ~clone~ can't be derived for nested ~HashMap~ type.
 We use ~BTreeMap~ instead.
 
 #+begin_src rust
-    use ink_storage::collections::HashMap;
+use ink_storage::collections::HashMap;
 
-    pub struct Game {
-        game_accounts: HashMap<AccountId, GameAccount>,
-    }
+pub struct Game {
+    game_accounts: HashMap<AccountId, GameAccount>,
+}
 
-    pub struct GameAccount {
-        level: u32,
-        level_programs: BTreeMap<u32, AccountId>,
-    }
+pub struct GameAccount {
+    level: u32,
+    level_programs: BTreeMap<u32, AccountId>,
+}
 #+end_src
 
 **** 2020-12-31
@@ -431,19 +431,19 @@ mod game {
 Added ~HashMap~, and it looks complicated.
 
 #+begin_src rust
-    use ink_storage::collections::HashMap;
+use ink_storage::collections::HashMap;
 
-    #[ink(storage)]
-    pub struct Game {
-	game_accounts: HashMap<AccountId, GameAccount>,
-    }
+#[ink(storage)]
+pub struct Game {
+    game_accounts: HashMap<AccountId, GameAccount>,
+}
 
-    #[derive(Debug, scale::Encode, scale::Decode, ink_storage_derive::PackedLayout, ink_storage_derive::SpreadLayout)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))] 
-    pub struct GameAccount {
-	game_account_id: [u32; 8],
-	level: u32,
-    }
+#[derive(Debug, scale::Encode, scale::Decode, ink_storage_derive::PackedLayout, ink_storage_derive::SpreadLayout)]
+#[cfg_attr(feature = "std", derive(scale_info::TypeInfo))] 
+pub struct GameAccount {
+    game_account_id: [u32; 8],
+    level: u32,
+}
 #+end_src
 
 **** 2020-12-27
