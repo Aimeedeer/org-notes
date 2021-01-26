@@ -1062,16 +1062,34 @@ test give_me::tests::transfer_works ... ok
 
 Previous log is on [[https://gist.github.com/Aimeedeer/aae0d6759fb04bb30478cbf38d4d46ce][Gist]].
 
-References:
-- [[https://forum.dfinity.org/t/developer-experience-january-2021/1749][Developer Experience, January 2021]]
-- [[https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f][A Technical Overview of the Internet Computer]]
-- [[https://medium.com/dfinity/the-internet-computers-token-economics-an-overview-29e238bd1d83][The Internet Computer’s Token Economics: An Overview]]
+**** References
+
+[[https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f][A Technical Overview of the Internet Computer]]
+
+[[https://medium.com/dfinity/the-internet-computers-token-economics-an-overview-29e238bd1d83][The Internet Computer’s Token Economics: An Overview]]
+
+> You can do two things with ICP tokens:
+>
+> -  Lock them inside the NNS to create “neurons,” which can vote on proposals and earn voting rewards.
+> -  Convert them into cycles, which are used to power computation by software canisters running on the Internet Computer.
+>
 > Cycles
 >
 > Software canisters that run on the Internet Computer must be charged with cycles, which are used to 
 power computations and memory management, and are burned in the process. 
 The conversion of ICP tokens to cycles occurs at a variable rate, which is 
 constantly configured by the NNS in response to external markets.
+
+[[https://sdk.dfinity.org/docs/developers-guide/sample-apps.html][Sample Apps]]
+
+[[https://sdk.dfinity.org/docs/language-guide/motoko.html][Dfinity Motoko Programming Language]]
+
+> Motoko lets you declare certain variables as ~stable~. 
+The values of ~stable~ variables are automatically preserved across software upgrades.
+
+It's weird to use another name ~stable~ to replace a name that is in consensus ~static~.
+
+Forum post: [[https://forum.dfinity.org/t/developer-experience-january-2021/1749][Developer Experience, January 2021]]
 
 
 
