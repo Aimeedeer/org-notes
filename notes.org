@@ -849,12 +849,20 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
+The Big Announcement project on different chains.
+
+TODO:
+- [ ] TBA on Substrate
+- [ ] TBA on Dfinity
+- [ ] TBA on Solana
+- [ ] TBA on NEAR
+- [ ] TBA on Nervos
+
 *** TBA on Ethereum
 
 - Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
   - [[https://github.com/Aimeedeer/bigannouncement/blob/master/contracts/BigAnnouncement.sol][Solidity contract]]
 - [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
-
 
 *** TBA's smart contract on Substrate
 
@@ -1049,6 +1057,23 @@ eve after: 80
 alice after: 170141183460469231731687303715884105727
 test give_me::tests::transfer_works ... ok
 #+end_src 
+
+*** TBA on Dfinity
+
+Previous log is on [[https://gist.github.com/Aimeedeer/aae0d6759fb04bb30478cbf38d4d46ce][Gist]].
+
+References:
+- [[https://forum.dfinity.org/t/developer-experience-january-2021/1749][Developer Experience, January 2021]]
+- [[https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f][A Technical Overview of the Internet Computer]]
+- [[https://medium.com/dfinity/the-internet-computers-token-economics-an-overview-29e238bd1d83][The Internet Computer’s Token Economics: An Overview]]
+> Cycles
+>
+> Software canisters that run on the Internet Computer must be charged with cycles, which are used to 
+power computations and memory management, and are burned in the process. 
+The conversion of ICP tokens to cycles occurs at a variable rate, which is 
+constantly configured by the NNS in response to external markets.
+
+
 
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
@@ -2127,7 +2152,6 @@ Rust weaknesses:
 :EXPORT_OPTIONS: toc:2
 :END:
 
-
 *** Book: Code Complete
 
 *Abstract Data Types (ADTs)*
@@ -2199,8 +2223,7 @@ Coupled with the book: Structure and Interpretation of Computer Programs
 I like this lecture a lot:
 [[https://www.youtube.com/watch?v=PEwZL3H2oKg&list=PLE18841CABEA24090&index=5][Lecture 3A: Henderson Escher Example]]
 
-blur the line between what's data and what's a procedure.
-
+Blur the line between what's data and what's a procedure.
 
 ** Smart Contracts                        :blockchain:smartcontract:@reading:
 :PROPERTIES:
