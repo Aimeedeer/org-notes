@@ -16,17 +16,21 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
+- [Project intro](#project-intro)
 - [TBA on Ethereum](#tba-on-ethereum)
 - [TBA's smart contract on Substrate](#tba-s-smart-contract-on-substrate)
-    - [Source code (WIP)](#source-code--wip)
-    - [Hacklog](#hacklog)
+    - [Ink code (WIP)](#ink-code--wip)
+    - [Substrate Hacklog](#substrate-hacklog)
 - [TBA on Dfinity](#tba-on-dfinity)
-    - [Source code](#source-code)
-    - [Hacklog](#hacklog)
-    - [References](#references)
+    - [Motoko code](#motoko-code)
+    - [Dfinity Hacklog](#dfinity-hacklog)
+    - [Dfinity references](#dfinity-references)
 
 </div>
 <!--endtoc-->
+
+
+## Project intro {#project-intro}
 
 The Big Announcement project on different chains.
 
@@ -43,18 +47,18 @@ TODO:
 
 -   Source code: [bigannouncement.eth](https://github.com/Aimeedeer/bigannouncement)
     -   [Solidity contract](https://github.com/Aimeedeer/bigannouncement/blob/master/contracts/BigAnnouncement.sol)
--   [Hacklog](https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md)
+-   Ethereum [Hacklog](https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md)
 
 
 ## TBA's smart contract on Substrate {#tba-s-smart-contract-on-substrate}
 
 
-### Source code (WIP) {#source-code--wip}
+### Ink code (WIP) {#ink-code--wip}
 
 [tba-substrate](https://github.com/Aimeedeer/tba-substrate)
 
 
-### Hacklog {#hacklog}
+### Substrate Hacklog {#substrate-hacklog}
 
 
 #### Contract naming {#contract-naming}
@@ -252,12 +256,12 @@ test give_me::tests::transfer_works ... ok
 ## TBA on Dfinity {#tba-on-dfinity}
 
 
-### Source code {#source-code}
+### Motoko code {#motoko-code}
 
 TODO
 
 
-### Hacklog {#hacklog}
+### Dfinity Hacklog {#dfinity-hacklog}
 
 Previous log is on [Gist](https://gist.github.com/Aimeedeer/aae0d6759fb04bb30478cbf38d4d46ce).
 
@@ -536,7 +540,7 @@ $ dfx canister call tba loading_message
 ```
 
 
-### References {#references}
+### Dfinity references {#dfinity-references}
 
 [A Technical Overview of the Internet Computer](https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f)
 

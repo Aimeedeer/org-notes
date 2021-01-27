@@ -849,6 +849,8 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
+*** Project intro
+
 The Big Announcement project on different chains.
 
 TODO:
@@ -862,15 +864,15 @@ TODO:
 
 - Source code: [[https://github.com/Aimeedeer/bigannouncement][bigannouncement.eth]]
   - [[https://github.com/Aimeedeer/bigannouncement/blob/master/contracts/BigAnnouncement.sol][Solidity contract]]
-- [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
+- Ethereum [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
 
 *** TBA's smart contract on Substrate
 
-**** Source code (WIP)
+**** Ink code (WIP)
 
 [[https://github.com/Aimeedeer/tba-substrate][tba-substrate]]
 
-**** Hacklog
+**** Substrate Hacklog
 
 ***** Contract naming
 
@@ -1061,11 +1063,11 @@ test give_me::tests::transfer_works ... ok
 
 *** TBA on Dfinity
 
-**** Source code
+**** Motoko code
 
 TODO
 
-**** Hacklog
+**** Dfinity Hacklog
 
 Previous log is on [[https://gist.github.com/Aimeedeer/aae0d6759fb04bb30478cbf38d4d46ce][Gist]].
 
@@ -1345,7 +1347,7 @@ $ dfx canister call tba loading_message
 
 
 
-**** References
+**** Dfinity references
 
 [[https://medium.com/dfinity/a-technical-overview-of-the-internet-computer-f57c62abc20f][A Technical Overview of the Internet Computer]]
 
