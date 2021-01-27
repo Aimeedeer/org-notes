@@ -1288,15 +1288,13 @@ My processes are:
 - Create new project with ~dfx new <your project>~
 - Go into the project folder ~cd <your project>~
 - Install npm with ~npm install~
-- Open another terminal window, go to the project folder, and run
-a local node with ~dfx start~
+- Open another terminal window, go to the project folder, and run a local node with ~dfx start~
 - Go back to previous terminal window, and deploy my project: ~dfx deploy~.
-It seems that the deploy operation also builds the project before deploy it.
-
+It seems that the deployment operation also builds the project before deploy it.
 
 Now, I am going to write some code (change the default one).
 The default code in ~tba/src/tba/main.mo~ is:
-#+begin_src
+#+begin_src js
 actor {
     public func greet(name : Text) : async Text {
         return "Hello, " # name # "!";
@@ -1308,7 +1306,7 @@ The Motoko seems to be easy to use, its syntax looks strange, though.
 
 My contract code is:
 
-#+begin_src 
+#+begin_src js
 actor TBA {
     stable var tba_msg = "The Big Announcement";
 
@@ -1327,7 +1325,7 @@ actor TBA {
 };
 #+end_src
 
-Test with commandline:
+Test with command line:
 
 #+begin_src shell
 $ dfx canister call tba set_message My_Big_Announcement_Test
@@ -1339,15 +1337,6 @@ $ dfx canister call tba set_message_no_return My_Big_Announcement_Test_No_Return
 $ dfx canister call tba loading_message
 ("My_Big_Announcement_Test_No_Return")
 #+end_src
-
-
-
-
-
-
-
-
-
 
 
 
