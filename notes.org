@@ -1180,7 +1180,8 @@ binding to: V4(127.0.0.1:8000)
 replica(s): http://localhost:61644/
 #+end_src
 
-I go back to the first terminal window, and deploy (before ~build~ that I usually do):
+I go back to the first terminal window and deploy (before ~build~ that I usually do) it.
+Now there comes an error:
 
 #+begin_src shell
 $ dfx deploy
@@ -1244,6 +1245,13 @@ npm ERR! Failed at the tba_assets@0.1.0 build script.
 npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
 #+end_src
 
+I build directly, and still an error:
+
+#+begin_src shell
+$ dfx build
+Cannot find canister id. Please issue 'dfx canister create tba_assets'.
+#+end_src
+
 I don't know what to do with this error while checking back with 
 Dfinity's documentation. So I ~rm -rf tba~ and then
 use ~dfx new tba~ to re-create tba.
@@ -1286,19 +1294,50 @@ a local node with ~dfx start~
 It seems that the deploy operation also builds the project before deploy it.
 
 
+Now, I am going to write some code (change the default one).
+The default code in ~tba/src/tba/main.mo~ is:
+#+begin_src
+actor {
+    public func greet(name : Text) : async Text {
+        return "Hello, " # name # "!";
+    };
+};
+#+end_src
 
+The Motoko seems to be easy to use, its syntax looks strange, though.
 
+My contract code is:
 
+#+begin_src 
+actor TBA {
+    stable var tba_msg = "The Big Announcement";
 
+    public func set_message(msg : Text) : async Text {
+        tba_msg := msg;
+        return "Hello, " # tba_msg # "!";
+    };
 
+    public func set_message_no_return(msg : Text) {
+        tba_msg := msg;        
+    };
 
+    public func loading_message() : async Text {
+        return tba_msg;
+    };
+};
+#+end_src
 
+Test with commandline:
 
-
-Build:
 #+begin_src shell
-$ dfx build
-Cannot find canister id. Please issue 'dfx canister create tba_assets'.
+$ dfx canister call tba set_message My_Big_Announcement_Test
+("Hello, My_Big_Announcement_Test!")
+
+$ dfx canister call tba set_message_no_return My_Big_Announcement_Test_No_Return
+()
+
+$ dfx canister call tba loading_message
+("My_Big_Announcement_Test_No_Return")
 #+end_src
 
 
@@ -1351,8 +1390,6 @@ An interesting read.
 [[https://docs.rs/candid/0.6.13/candid/][Crate candid]]
 
 Forum post: [[https://forum.dfinity.org/t/developer-experience-january-2021/1749][Developer Experience, January 2021]]
-
-
 
 
 
