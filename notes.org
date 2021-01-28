@@ -1065,7 +1065,7 @@ test give_me::tests::transfer_works ... ok
 
 **** Motoko code
 
-TODO
+[[https://github.com/brson/rust-contract-comparison/tree/master/code/tba-dfinty/tba-motoko][TBA Motoko]]
 
 **** Dfinity Hacklog
 

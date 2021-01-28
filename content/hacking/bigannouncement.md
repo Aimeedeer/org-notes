@@ -259,7 +259,7 @@ test give_me::tests::transfer_works ... ok
 
 ### Motoko code {#motoko-code}
 
-TODO
+[TBA Motoko](https://github.com/brson/rust-contract-comparison/tree/master/code/tba-dfinty/tba-motoko)
 
 
 ### Dfinity Hacklog {#dfinity-hacklog}
