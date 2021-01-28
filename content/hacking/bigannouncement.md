@@ -590,7 +590,7 @@ and there is an error:
 
 ```shell
 $ cargo build
-error: failed to read `/<my_path>/tba_rust/src/rba_rust/Cargo.toml`
+error: failed to read `/<my_path>/tba_rust/src/tba_rust/Cargo.toml`
 
 Caused by:
   No such file or directory (os error 2)
@@ -601,7 +601,7 @@ The path is incorrect, and I change it in the root `Cargo.toml` file:
 ```rust
 [workspace]
 members = [
-    "src",
+    "src/",
 ]
 ```
 
@@ -628,6 +628,62 @@ warning: 1 warning emitted
 
     Finished dev [unoptimized + debuginfo] target(s) in 0.23s
 The post-build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: No such file or directory (os error 2)
+```
+
+Anyway, the config
+`members = ["src/",]`
+isn't right according to Rust configuration.
+I create another folder `tba_rust` under `/<my_path>/tba_rust/src/`,
+and move all the files from `src` to `src/tba_rust`.
+Then I add `cdylib` to my `/<my_path>/tba_rust/src/Cargo.toml` file.
+
+```rust
+[lib]
+path = "main.rs"
+crate-type = ["cdylib"]
+```
+
+Now both `cargo build` and `dfx build` work.
+The terminal prints:
+
+```shell
+$ dfx build
+Building canisters...
+Executing 'cargo build --target wasm32-unknown-unknown --package tba_rust'
+   Compiling tba_rust v0.1.0 (/<my_path>/tba_rust/src/tba_rust)
+warning: function is never used: `main`
+ --> src/tba_rust/main.rs:1:4
+  |
+1 | fn main() {
+  |    ^^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 1.37s
+```
+
+**The documentation has been misguiding so far.**
+
+Deploy it:
+
+```shell
+$ dfx canister install --all
+Installing code for canister tba_rust, with canister_id rwlgt-iiaaa-aaaaa-aaaaa-cai
+The Replica returned an error: code 5, message: "Canister rwlgt-iiaaa-aaaaa-aaaaa-cai cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead."
+
+$ dfx canister install --mode reinstall
+error: The following required arguments were not provided:
+    --all
+
+USAGE:
+    dfx canister install --mode <mode> --all
+
+For more information try --help
+
+$ dfx canister install --mode reinstall --all
+Installing code for canister tba_rust, with canister_id rwlgt-iiaaa-aaaaa-aaaaa-cai
 ```
 
 
