@@ -2536,6 +2536,8 @@ I like this lecture a lot:
 
 Blur the line between what's data and what's a procedure.
 
+
+
 ** Smart Contracts                        :blockchain:smartcontract:@reading:
 :PROPERTIES:
 :EXPORT_FILE_NAME: smart-contracts
