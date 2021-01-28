@@ -24,6 +24,7 @@ draft = false
 - [TBA on Dfinity](#tba-on-dfinity)
     - [Motoko code](#motoko-code)
     - [Dfinity Hacklog](#dfinity-hacklog)
+    - [Using Rust to write TBA](#using-rust-to-write-tba)
     - [Dfinity references](#dfinity-references)
 
 </div>
@@ -270,6 +271,7 @@ The README.md seems to be out of date --
 it starts a node `dfx start` before creating a project,
 while the tutorials, [Start the local network](https://sdk.dfinity.org/docs/quickstart/local-quickstart.html#start-the-local-network), need you to start
 a node inside a project.
+I don't think I would use Echo now.
 
 I'll create a tba folder, and start the node:
 
@@ -539,6 +541,95 @@ $ dfx canister call tba loading_message
 ("My_Big_Announcement_Test_No_Return")
 ```
 
+I have to mention that error messages are not useful.
+I try to change some code and build failed.
+The error messages are:
+
+```shell
+$ dfx build
+Building canisters...
+Building frontend...
+The build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: The command '"/Users/aimeez/.cache/dfinity/versions/0.6.20/moc" "/<my_path>/tba/src/tba/main.mo" "-o" "/<my_path>/tba/.dfx/local/canisters/tba/tba.did" "--idl" "--actor-idl" "/<my_path>/tba/.dfx/local/canisters/idl/" "--actor-alias" "tba" "rwlgt-iiaaa-aaaaa-aaaaa-cai" "--actor-alias" "tba_assets" "rrkah-fqaaa-aaaaa-aaaaq-cai" "--package" "base" "/Users/aimeez/.cache/dfinity/versions/0.6.20/base"' failed with exit status 'exit code: 1'.
+Stdout:
+
+Stderr:
+/<my_path>/tba/src/tba/main.mo:4.21-4.25: type error, unbound type Test
+```
+
+I have no clue where to start debugging, or guessing.
+Not fun.
+
+
+### Using Rust to write TBA {#using-rust-to-write-tba}
+
+Official tutorials: [Using Rust](https://sdk.dfinity.org/docs/developers-guide/work-with-languages.html)
+
+I'm glad I can use Rust command directly to create a project.
+But, that's all.
+
+```shell
+$ cargo new tba_rust
+     Created binary (application) `tba_rust` package
+Aimees-MacBook-Pro:dfinity-project aimeez$ cd tba_rust/
+Aimees-MacBook-Pro:tba_rust aimeez$ dfx build
+Command must be run in a project directory (with a dfx.json file).
+Aimees-MacBook-Pro:tba_rust aimeez$ cargo build
+   Compiling tba_rust v0.1.0 (/<my_path>/tba_rust)
+    Finished dev [unoptimized + debuginfo] target(s) in 3.51s
+```
+
+Then I need to copy `Cargo.toml` to another place according the tutorials:
+
+> Projects that run on the Internet Computer typically use
+one project-level `Cargo.toml` file to set up a workspace
+for the canister members of the project and a second `Cargo.toml` file
+in the source code directory to configure settings for each canister.
+
+After finishing the basic round of configuration, I use `cargo build`
+and there is an error:
+
+```shell
+$ cargo build
+error: failed to read `/<my_path>/tba_rust/src/rba_rust/Cargo.toml`
+
+Caused by:
+  No such file or directory (os error 2)
+```
+
+The path is incorrect, and I change it in the root `Cargo.toml` file:
+
+```rust
+[workspace]
+members = [
+    "src",
+]
+```
+
+`cargo build` works but `dfx build` doesn't work (I have started `dfx start`
+in another terminal window). The error is:
+
+```shell
+$ cargo build
+   Compiling tba_rust v0.1.0 (/<my_path>/tba_rust/src)
+
+$ dfx build
+Building canisters...
+Executing 'cargo build --target wasm32-unknown-unknown --package tba_rust'
+   Compiling tba_rust v0.1.0 (/<my_path>/tba_rust/src)
+warning: function is never used: `main`
+ --> src/main.rs:1:4
+  |
+1 | fn main() {
+  |    ^^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.23s
+The post-build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: No such file or directory (os error 2)
+```
+
 
 ### Dfinity references {#dfinity-references}
 
@@ -571,6 +662,8 @@ It's weird to use another name `stable` to replace a name that is in consensus `
 
 It brings some design thoughts, especially the section [Services](https://sdk.dfinity.org/docs/candid-spec/idl#%5Fservices).
 An interesting read.
+
+[Using Rust](https://sdk.dfinity.org/docs/developers-guide/work-with-languages.html)
 
 [Crate candid](https://docs.rs/candid/0.6.13/candid/)
 

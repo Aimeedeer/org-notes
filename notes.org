@@ -1076,6 +1076,7 @@ The README.md seems to be out of date --
 it starts a node ~dfx start~ before creating a project,
 while the tutorials, [[https://sdk.dfinity.org/docs/quickstart/local-quickstart.html#start-the-local-network][Start the local network]], need you to start
 a node inside a project.
+I don't think I would use Echo now.
 
 I'll create a tba folder, and start the node:
 
@@ -1343,9 +1344,93 @@ $ dfx canister call tba loading_message
 #+end_src
 
 
+I have to mention that error messages are not useful.
+I try to change some code and build failed. 
+The error messages are:
 
+#+begin_src shell
+$ dfx build
+Building canisters...
+Building frontend...
+The build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: The command '"/Users/aimeez/.cache/dfinity/versions/0.6.20/moc" "/<my_path>/tba/src/tba/main.mo" "-o" "/<my_path>/tba/.dfx/local/canisters/tba/tba.did" "--idl" "--actor-idl" "/<my_path>/tba/.dfx/local/canisters/idl/" "--actor-alias" "tba" "rwlgt-iiaaa-aaaaa-aaaaa-cai" "--actor-alias" "tba_assets" "rrkah-fqaaa-aaaaa-aaaaq-cai" "--package" "base" "/Users/aimeez/.cache/dfinity/versions/0.6.20/base"' failed with exit status 'exit code: 1'.
+Stdout:
 
+Stderr:
+/<my_path>/tba/src/tba/main.mo:4.21-4.25: type error, unbound type Test
+#+end_src
 
+I have no clue where to start debugging, or guessing.
+Not fun.
+
+**** Using Rust to write TBA
+
+Official tutorials: [[https://sdk.dfinity.org/docs/developers-guide/work-with-languages.html][Using Rust]]
+
+I'm glad I can use Rust command directly to create a project.
+But, that's all. 
+
+#+begin_src shell
+$ cargo new tba_rust
+     Created binary (application) `tba_rust` package
+Aimees-MacBook-Pro:dfinity-project aimeez$ cd tba_rust/
+Aimees-MacBook-Pro:tba_rust aimeez$ dfx build
+Command must be run in a project directory (with a dfx.json file).
+Aimees-MacBook-Pro:tba_rust aimeez$ cargo build
+   Compiling tba_rust v0.1.0 (/<my_path>/tba_rust)
+    Finished dev [unoptimized + debuginfo] target(s) in 3.51s
+#+end_src
+
+Then I need to copy ~Cargo.toml~ to another place according the tutorials:
+
+> Projects that run on the Internet Computer typically use 
+one project-level ~Cargo.toml~ file to set up a workspace 
+for the canister members of the project and a second ~Cargo.toml~ file 
+in the source code directory to configure settings for each canister.
+
+After finishing the basic round of configuration, I use ~cargo build~
+and there is an error:
+
+#+begin_src shell
+$ cargo build
+error: failed to read `/<my_path>/tba_rust/src/rba_rust/Cargo.toml`
+
+Caused by:
+  No such file or directory (os error 2)
+#+end_src
+
+The path is incorrect, and I change it in the root ~Cargo.toml~ file:
+
+#+begin_src rust
+[workspace]
+members = [
+    "src",
+]
+#+end_src
+
+~cargo build~ works but ~dfx build~ doesn't work (I have started ~dfx start~ 
+in another terminal window). The error is:
+
+#+begin_src shell
+$ cargo build
+   Compiling tba_rust v0.1.0 (/<my_path>/tba_rust/src)
+
+$ dfx build
+Building canisters...
+Executing 'cargo build --target wasm32-unknown-unknown --package tba_rust'
+   Compiling tba_rust v0.1.0 (/<my_path>/tba_rust/src)
+warning: function is never used: `main`
+ --> src/main.rs:1:4
+  |
+1 | fn main() {
+  |    ^^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.23s
+The post-build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: No such file or directory (os error 2)
+#+end_src
 
 **** Dfinity references
 
@@ -1379,6 +1464,8 @@ It's weird to use another name ~stable~ to replace a name that is in consensus ~
 
 It brings some design thoughts, especially the section [[https://sdk.dfinity.org/docs/candid-spec/idl#_services][Services]].
 An interesting read.
+
+[[https://sdk.dfinity.org/docs/developers-guide/work-with-languages.html][Using Rust]]
 
 [[https://docs.rs/candid/0.6.13/candid/][Crate candid]]
 
@@ -2535,7 +2622,6 @@ I like this lecture a lot:
 [[https://www.youtube.com/watch?v=PEwZL3H2oKg&list=PLE18841CABEA24090&index=5][Lecture 3A: Henderson Escher Example]]
 
 Blur the line between what's data and what's a procedure.
-
 
 
 ** Smart Contracts                        :blockchain:smartcontract:@reading:
