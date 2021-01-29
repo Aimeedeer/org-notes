@@ -866,9 +866,9 @@ TODO:
   - [[https://github.com/Aimeedeer/bigannouncement/blob/master/contracts/BigAnnouncement.sol][Solidity contract]]
 - Ethereum [[https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md][Hacklog]]
 
-*** TBA's smart contract on Substrate
+*** TBA on Substrate
 
-**** Ink code (WIP)
+**** Ink code
 
 [[https://github.com/Aimeedeer/tba-substrate][tba-substrate]]
 
@@ -1025,26 +1025,26 @@ $ cargo +nightly test -- --nocapture set_works
 ***** Test ink's example: contract-transfer
 
 #+begin_src rust
-        #[ink::test]
-        fn transfer_works() {
-            // given
-            let contract_balance = 100;
-            let accounts = default_accounts();
-            let mut give_me = create_contract(contract_balance);
+#[ink::test]
+fn transfer_works() {
+    // given
+    let contract_balance = 100;
+    let accounts = default_accounts();
+    let mut give_me = create_contract(contract_balance);
 
-	    println!("alice: {}", get_balance(accounts.alice));
-            // when
-            set_sender(accounts.eve);
-            set_balance(accounts.eve, 0);
-	    println!("eve: {}", get_balance(accounts.eve));
-            assert_eq!(give_me.give_me(80), Ok(()));
-	    
-	    println!("eve after: {}", get_balance(accounts.eve));
-	    println!("alice after: {}", get_balance(accounts.alice));
+    println!("alice: {}", get_balance(accounts.alice));
+    // when
+    set_sender(accounts.eve);
+    set_balance(accounts.eve, 0);
+    println!("eve: {}", get_balance(accounts.eve));
+    assert_eq!(give_me.give_me(80), Ok(()));
 
-            // then
-            assert_eq!(get_balance(accounts.eve), 80);
-        }
+    println!("eve after: {}", get_balance(accounts.eve));
+    println!("alice after: {}", get_balance(accounts.alice));
+
+    // then
+    assert_eq!(get_balance(accounts.eve), 80);
+}
 #+end_src
 
 The printing shows that alice's balance didn't change 
@@ -1432,7 +1432,7 @@ warning: 1 warning emitted
 The post-build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: No such file or directory (os error 2)
 #+end_src
 
-Anyway, the config
+However, the config
 ~members = ["src/",]~
 isn't right according to Rust configuration.
 I create another folder ~tba_rust~ under ~/<my_path>/tba_rust/src/~,
@@ -1487,6 +1487,8 @@ For more information try --help
 $ dfx canister install --mode reinstall --all
 Installing code for canister tba_rust, with canister_id rwlgt-iiaaa-aaaaa-aaaaa-cai
 #+end_src
+
+I am not going to move forward since there is no more tutorials about Rust programming on Dfinity.
 
 **** Dfinity references
 
@@ -2212,6 +2214,9 @@ treat the hash function as a black box (i.e., as a random oracle).
 - https://orgmode.org/org.html#Emphasis-and-monospace
 
 **** Examples
+
+Indent code:
+Ctrl + X, Tab, left/right
 
 src_sh[:exports code]{echo -e "test"}
 

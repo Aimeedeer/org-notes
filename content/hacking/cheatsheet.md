@@ -7,7 +7,7 @@ tags = ["git", "emacs", "orgmode"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2004
+  weight = 2007
   identifier = "cheatsheet"
 +++
 
@@ -50,6 +50,9 @@ draft = false
 
 
 ### Examples {#examples}
+
+Indent code:
+Ctrl + X, Tab, left/right
 
 `echo -e "test"`
 
