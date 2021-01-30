@@ -7,7 +7,7 @@ tags = ["substrate", "ethereum", "smartcontract"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2003
+  weight = 2004
   identifier = "project-the-big-announcement"
 +++
 
@@ -18,14 +18,16 @@ draft = false
 
 - [Project intro](#project-intro)
 - [TBA on Ethereum](#tba-on-ethereum)
-- [TBA's smart contract on Substrate](#tba-s-smart-contract-on-substrate)
-    - [Ink code (WIP)](#ink-code--wip)
+- [TBA on Substrate](#tba-on-substrate)
+    - [Ink code](#ink-code)
     - [Substrate Hacklog](#substrate-hacklog)
 - [TBA on Dfinity](#tba-on-dfinity)
     - [Motoko code](#motoko-code)
     - [Dfinity Hacklog](#dfinity-hacklog)
     - [Using Rust to write TBA](#using-rust-to-write-tba)
     - [Dfinity references](#dfinity-references)
+- [TBA on Solana](#tba-on-solana)
+- [Solana hacklog](#solana-hacklog)
 
 </div>
 <!--endtoc-->
@@ -38,7 +40,7 @@ The Big Announcement project on different chains.
 TODO:
 
 -   [ ] TBA on Substrate
--   [ ] TBA on Dfinity
+-   TBA on Dfinity
 -   [ ] TBA on Solana
 -   [ ] TBA on NEAR
 -   [ ] TBA on Nervos
@@ -51,10 +53,10 @@ TODO:
 -   Ethereum [Hacklog](https://github.com/Aimeedeer/bigannouncement/blob/master/doc/hacklog.md)
 
 
-## TBA's smart contract on Substrate {#tba-s-smart-contract-on-substrate}
+## TBA on Substrate {#tba-on-substrate}
 
 
-### Ink code (WIP) {#ink-code--wip}
+### Ink code {#ink-code}
 
 [tba-substrate](https://github.com/Aimeedeer/tba-substrate)
 
@@ -630,7 +632,7 @@ warning: 1 warning emitted
 The post-build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: No such file or directory (os error 2)
 ```
 
-Anyway, the config
+However, the config
 `members = ["src/",]`
 isn't right according to Rust configuration.
 I create another folder `tba_rust` under `/<my_path>/tba_rust/src/`,
@@ -686,6 +688,8 @@ $ dfx canister install --mode reinstall --all
 Installing code for canister tba_rust, with canister_id rwlgt-iiaaa-aaaaa-aaaaa-cai
 ```
 
+I am not going to move forward since there is no more tutorials about Rust programming on Dfinity.
+
 
 ### Dfinity references {#dfinity-references}
 
@@ -724,3 +728,168 @@ An interesting read.
 [Crate candid](https://docs.rs/candid/0.6.13/candid/)
 
 Forum post: [Developer Experience, January 2021](https://forum.dfinity.org/t/developer-experience-january-2021/1749)
+
+
+## TBA on Solana {#tba-on-solana}
+
+
+## Solana hacklog {#solana-hacklog}
+
+Doc: <https://docs.solana.com/cli/install-solana-cli-tools>
+
+Install Solana:
+
+```shell
+$ sh -c "$(curl -sSfL https://release.solana.com/v1.5.5/install)"
+downloading v1.5.5 installer
+Configuration: /<my_path>/.config/solana/install/config.yml
+Active release directory: /<my_path>/solana/install/active_release
+• Release version: 1.5.5
+• Release URL: https://github.com/solana-labs/solana/releases/download/v1.5.5/solana-release-x86_64-apple-darwin.tar.bz2
+  ✨ Update successful
+Adding export PATH="/<my_path>/solana/install/active_release/bin:$PATH" to /<my_other_path>/.profile
+Adding export PATH="/<my_path>/solana/install/active_release/bin:$PATH" to /<my_other_path>/.bash_profile
+
+Close and reopen your terminal to apply the PATH changes or run the following in your existing shell:
+  export PATH="/<my_path>/solana/install/active_release/bin:$PATH"
+```
+
+Run `export PATH` as the output says:
+
+```shell
+$ export PATH="/<my_path>/solana/install/active_release/bin:$PATH"
+```
+
+Close the current terminal and open a new one.
+Check Solana:
+
+```shell
+$ solana --version
+solana-cli 1.5.5 (src:10e12d14; feat:1043916741)
+```
+
+Try `update` command:
+
+```shell
+$ solana-install update
+Configuration: /<my_path>/.config/solana/install/config.yml
+Active release directory: /<my_path>/.local/share/solana/install/active_release
+• Release version: 1.5.5
+• Release URL: https://github.com/solana-labs/solana/releases/download/v1.5.5/solana-release-x86_64-apple-darwin.tar.bz2
+1.5.5 is present, no download required.
+  ✨ Update successful
+```
+
+I use a pre-build version, so I download it as the doc says:
+
+```shell
+$ cd solana-release/
+$ ls
+bin		version.yml
+
+$ export PATH=$PWD/bin:$PATH
+```
+
+`solana --help` shows a huge list of commands:
+
+```shell
+$ solana --help
+solana-cli 1.4.25 (src:893cc764; feat:2339469691)
+Blockchain, Rebuilt for Scale
+
+USAGE:
+    solana [FLAGS] [OPTIONS] <SUBCOMMAND>
+
+FLAGS:
+    -h, --help                           Prints help information
+        --no-address-labels              Do not use address labels in the output
+        --skip-seed-phrase-validation    Skip validation of seed phrases. Use this if your phrase does not use the BIP39
+                                         official English word list
+    -V, --version                        Prints version information
+    -v, --verbose                        Show additional information
+
+OPTIONS:
+        --commitment <COMMITMENT_LEVEL>    Return information at the selected commitment level [possible values: recent,
+                                           single, singleGossip, root, max]
+    -C, --config <FILEPATH>                Configuration file to use [default:
+                                           /<my_path>/.config/solana/cli/config.yml]
+    -u, --url <URL_OR_MONIKER>             URL for Solana's JSON RPC or moniker (or their first letter): [mainnet-beta,
+                                           testnet, devnet, localhost]
+    -k, --keypair <KEYPAIR>                Filepath or URL to a keypair
+        --output <FORMAT>                  Return information in specified output format [possible values: json, json-
+                                           compact]
+        --ws <URL>                         WebSocket URL for the solana cluster
+
+SUBCOMMANDS:
+    account                        Show the contents of an account
+    address                        Get your public key
+    airdrop                        Request lamports
+    authorize-nonce-account        Assign account authority to a new entity
+    balance                        Get your balance
+    block                          Get a confirmed block
+    block-height                   Get current block height
+    block-production               Show information about block production
+    block-time                     Get estimated production time of a block
+    catchup                        Wait for a validator to catch up to the cluster
+    cluster-date                   Get current cluster date, computed from genesis creation time and network time
+    cluster-version                Get the version of the cluster entrypoint
+    config                         Solana command-line tool configuration settings
+    confirm                        Confirm transaction by signature
+    create-address-with-seed       Generate a derived account address with a seed
+    create-nonce-account           Create a nonce account
+    create-stake-account           Create a stake account
+    create-vote-account            Create a vote account
+    deactivate-stake               Deactivate the delegated stake from the stake account
+    decode-transaction             Decode a base-58 binary transaction
+    delegate-stake                 Delegate stake to a vote account
+    deploy                         Deploy a program
+    epoch                          Get current epoch
+    epoch-info                     Get information about the current epoch
+    feature                        Runtime feature management
+    fees                           Display current cluster fees
+    first-available-block          Get the first available block in the storage
+    genesis-hash                   Get the genesis hash
+    gossip                         Show the current gossip network nodes
+    help                           Prints this message or the help of the given subcommand(s)
+    inflation                      Show inflation information
+    largest-accounts               Get addresses of largest cluster accounts
+    leader-schedule                Display leader schedule
+    live-slots                     Show information about the current slot progression
+    logs                           Stream transaction logs
+    merge-stake                    Merges one stake account into another
+    new-nonce                      Generate a new nonce, rendering the existing nonce useless
+    nonce                          Get the current nonce value
+    nonce-account                  Show the contents of a nonce account
+    pay                            Deprecated alias for the transfer command
+    ping                           Submit transactions sequentially
+    program                        Program management
+    rent                           Calculate per-epoch and rent-exempt-minimum values for a given account data
+                                   length.
+    resolve-signer                 Checks that a signer is valid, and returns its specific path; useful for signers
+                                   that may be specified generally, eg. usb://ledger
+    slot                           Get current slot
+    split-stake                    Duplicate a stake account, splitting the tokens between the two
+    stake-account                  Show the contents of a stake account
+    stake-authorize                Authorize a new signing keypair for the given stake account
+    stake-history                  Show the stake history
+    stake-set-lockup               Set Lockup for the stake account
+    stakes                         Show stake account information
+    supply                         Get information about the cluster supply of SOL
+    transaction-count              Get current transaction count
+    transaction-history            Show historical transactions affecting the given address from newest to oldest
+    transfer                       Transfer funds between system accounts
+    validator-info                 Publish/get Validator info on Solana
+    validators                     Show summary information about the current validators
+    vote-account                   Show the contents of a vote account
+    vote-authorize-voter           Authorize a new vote signing keypair for the given vote account
+    vote-authorize-withdrawer      Authorize a new withdraw signing keypair for the given vote account
+    vote-update-commission         Update the vote account's commission
+    vote-update-validator          Update the vote account's validator identity
+    wait-for-max-stake             Wait for the max stake of any one node to drop below a percentage of total.
+    withdraw-from-nonce-account    Withdraw SOL from the nonce account
+    withdraw-from-vote-account     Withdraw lamports from a vote account into a specified account
+    withdraw-stake                 Withdraw the unstaked SOL from the stake account
+```
+
+And then a lot of wallet explanations:
+[Using Solana CLI](https://docs.solana.com/cli/conventions)

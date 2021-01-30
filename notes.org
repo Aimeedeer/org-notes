@@ -855,7 +855,7 @@ The Big Announcement project on different chains.
 
 TODO:
 - [ ] TBA on Substrate
-- [ ] TBA on Dfinity
+- [x] TBA on Dfinity
 - [ ] TBA on Solana
 - [ ] TBA on NEAR
 - [ ] TBA on Nervos
@@ -1530,6 +1530,169 @@ An interesting read.
 Forum post: [[https://forum.dfinity.org/t/developer-experience-january-2021/1749][Developer Experience, January 2021]]
 
 
+
+*** TBA on Solana
+
+*** Solana hacklog
+
+Doc: https://docs.solana.com/cli/install-solana-cli-tools
+
+Install Solana:
+
+#+begin_src shell
+$ sh -c "$(curl -sSfL https://release.solana.com/v1.5.5/install)"
+downloading v1.5.5 installer
+Configuration: /<my_path>/.config/solana/install/config.yml
+Active release directory: /<my_path>/solana/install/active_release
+• Release version: 1.5.5
+• Release URL: https://github.com/solana-labs/solana/releases/download/v1.5.5/solana-release-x86_64-apple-darwin.tar.bz2
+  ✨ Update successful
+Adding export PATH="/<my_path>/solana/install/active_release/bin:$PATH" to /<my_other_path>/.profile
+Adding export PATH="/<my_path>/solana/install/active_release/bin:$PATH" to /<my_other_path>/.bash_profile
+
+Close and reopen your terminal to apply the PATH changes or run the following in your existing shell:
+  export PATH="/<my_path>/solana/install/active_release/bin:$PATH"
+#+end_src
+
+Run ~export PATH~ as the output says:
+
+#+begin_src shell
+$ export PATH="/<my_path>/solana/install/active_release/bin:$PATH"
+#+end_src
+
+Close the current terminal and open a new one.
+Check Solana:
+
+#+begin_src shell
+$ solana --version
+solana-cli 1.5.5 (src:10e12d14; feat:1043916741)
+#+end_src
+
+Try ~update~ command:
+
+#+begin_src shell
+$ solana-install update
+Configuration: /<my_path>/.config/solana/install/config.yml
+Active release directory: /<my_path>/.local/share/solana/install/active_release
+• Release version: 1.5.5
+• Release URL: https://github.com/solana-labs/solana/releases/download/v1.5.5/solana-release-x86_64-apple-darwin.tar.bz2
+1.5.5 is present, no download required.
+  ✨ Update successful
+#+end_src
+
+I use a pre-build version, so I download it as the doc says:
+
+#+begin_src shell
+$ cd solana-release/
+$ ls
+bin		version.yml
+
+$ export PATH=$PWD/bin:$PATH
+#+end_src
+
+~solana --help~ shows a huge list of commands:
+
+#+begin_src shell
+$ solana --help
+solana-cli 1.4.25 (src:893cc764; feat:2339469691)
+Blockchain, Rebuilt for Scale
+
+USAGE:
+    solana [FLAGS] [OPTIONS] <SUBCOMMAND>
+
+FLAGS:
+    -h, --help                           Prints help information
+        --no-address-labels              Do not use address labels in the output
+        --skip-seed-phrase-validation    Skip validation of seed phrases. Use this if your phrase does not use the BIP39
+                                         official English word list
+    -V, --version                        Prints version information
+    -v, --verbose                        Show additional information
+
+OPTIONS:
+        --commitment <COMMITMENT_LEVEL>    Return information at the selected commitment level [possible values: recent,
+                                           single, singleGossip, root, max]
+    -C, --config <FILEPATH>                Configuration file to use [default:
+                                           /<my_path>/.config/solana/cli/config.yml]
+    -u, --url <URL_OR_MONIKER>             URL for Solana's JSON RPC or moniker (or their first letter): [mainnet-beta,
+                                           testnet, devnet, localhost]
+    -k, --keypair <KEYPAIR>                Filepath or URL to a keypair
+        --output <FORMAT>                  Return information in specified output format [possible values: json, json-
+                                           compact]
+        --ws <URL>                         WebSocket URL for the solana cluster
+
+SUBCOMMANDS:
+    account                        Show the contents of an account
+    address                        Get your public key
+    airdrop                        Request lamports
+    authorize-nonce-account        Assign account authority to a new entity
+    balance                        Get your balance
+    block                          Get a confirmed block
+    block-height                   Get current block height
+    block-production               Show information about block production
+    block-time                     Get estimated production time of a block
+    catchup                        Wait for a validator to catch up to the cluster
+    cluster-date                   Get current cluster date, computed from genesis creation time and network time
+    cluster-version                Get the version of the cluster entrypoint
+    config                         Solana command-line tool configuration settings
+    confirm                        Confirm transaction by signature
+    create-address-with-seed       Generate a derived account address with a seed
+    create-nonce-account           Create a nonce account
+    create-stake-account           Create a stake account
+    create-vote-account            Create a vote account
+    deactivate-stake               Deactivate the delegated stake from the stake account
+    decode-transaction             Decode a base-58 binary transaction
+    delegate-stake                 Delegate stake to a vote account
+    deploy                         Deploy a program
+    epoch                          Get current epoch
+    epoch-info                     Get information about the current epoch
+    feature                        Runtime feature management
+    fees                           Display current cluster fees
+    first-available-block          Get the first available block in the storage
+    genesis-hash                   Get the genesis hash
+    gossip                         Show the current gossip network nodes
+    help                           Prints this message or the help of the given subcommand(s)
+    inflation                      Show inflation information
+    largest-accounts               Get addresses of largest cluster accounts
+    leader-schedule                Display leader schedule
+    live-slots                     Show information about the current slot progression
+    logs                           Stream transaction logs
+    merge-stake                    Merges one stake account into another
+    new-nonce                      Generate a new nonce, rendering the existing nonce useless
+    nonce                          Get the current nonce value
+    nonce-account                  Show the contents of a nonce account
+    pay                            Deprecated alias for the transfer command
+    ping                           Submit transactions sequentially
+    program                        Program management
+    rent                           Calculate per-epoch and rent-exempt-minimum values for a given account data
+                                   length.
+    resolve-signer                 Checks that a signer is valid, and returns its specific path; useful for signers
+                                   that may be specified generally, eg. usb://ledger
+    slot                           Get current slot
+    split-stake                    Duplicate a stake account, splitting the tokens between the two
+    stake-account                  Show the contents of a stake account
+    stake-authorize                Authorize a new signing keypair for the given stake account
+    stake-history                  Show the stake history
+    stake-set-lockup               Set Lockup for the stake account
+    stakes                         Show stake account information
+    supply                         Get information about the cluster supply of SOL
+    transaction-count              Get current transaction count
+    transaction-history            Show historical transactions affecting the given address from newest to oldest
+    transfer                       Transfer funds between system accounts
+    validator-info                 Publish/get Validator info on Solana
+    validators                     Show summary information about the current validators
+    vote-account                   Show the contents of a vote account
+    vote-authorize-voter           Authorize a new vote signing keypair for the given vote account
+    vote-authorize-withdrawer      Authorize a new withdraw signing keypair for the given vote account
+    vote-update-commission         Update the vote account's commission
+    vote-update-validator          Update the vote account's validator identity
+    wait-for-max-stake             Wait for the max stake of any one node to drop below a percentage of total.
+    withdraw-from-nonce-account    Withdraw SOL from the nonce account
+    withdraw-from-vote-account     Withdraw lamports from a vote account into a specified account
+    withdraw-stake                 Withdraw the unstaked SOL from the stake account
+#+end_src
+
+And then a lot of wallet explanations:
+[[https://docs.solana.com/cli/conventions][Using Solana CLI]]
 
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
@@ -4619,7 +4782,6 @@ and Friedrich Nietzsche's books.
 
 [[https://geon.usc.edu/~biederman/publications/Biederman_Shiffrar_1987.pdf][Sexing Day-Old Chicks: A Case Study and Expert Systems Analysis of a Difficult Perceptual-Learning Task]]
 
-
 [[https://eprint.iacr.org/2018/414.pdf][Aggregation of Gamma-Signatures and Applications to Bitcoin]]
 
 Not a great paper. I don't think it has strong proof of its point,
@@ -4665,6 +4827,53 @@ features simultaneously:
 plain public-key model with fully asynchronous communications.
 > – The underlying signature scheme has provable security, and moreover, is
 more efficient and flexible than EC-DSA.
+
+[[https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3715647][Freedom to (Smart) Contract: The Myth of Code and Blockchain Governance Law]]
+
+> The only thing a smart contract truly adds to traditional contracts is automated
+execution that is enforced by the blockchain’s consensus mechanism; this may provide some efficiency
+to the legal system by streamlining basic performance but it cannot be the only form of governance over
+smart contracts. 
+
+[[https://eprint.iacr.org/2020/1601][Adaptive layer-two dispute periods in blockchains]]
+
+> In the Ethereum Virtual Machine [41] (EVM), the computational, storage, and transmission efforts required to process
+a transaction are characterized by its gas consumption, where
+gas is a unit designed to capture the total cost of execution of
+a transaction. Consequently, an EVM transaction must specify
+both (i) a limit of how much gas the transaction may consume,
+and (ii) a price paid by the transaction sender per unit of
+gas the transaction consumes. Accordingly, the capacities of
+Ethereum blocks are decided by the network in terms of
+gas units. While some studies investigate the precision of
+gas as a measure of true transaction execution cost [42, 43],
+and others investigate how transaction gas prices can be set
+effectively [44], this paper, to the best of our knowledge, is
+the first to propose blockchain gas consumption as a measure
+of dispute opportunity.
+>
+> Plasma is an off-chain architecture [10] managed by a
+central operator. In Plasma MVP [2], the central operator
+periodically publishes a commitment to the state of the
+UTXO ledger on the parent-chain. Users must validate the
+full ledger with every commitment, and dispute any fake
+transactions or dishonestly minted funds. Plasma Cash [3]
+reduces the user verification overhead of Plasma MVP. Each
+deposit creates a new coin whose ownership can be transferred. 
+A user withdrawing m individual coins has to initiate
+m disputable withdrawals using the smart-contract. Plasma
+Debit [4] amends Plasma Cash by adding a numeric value
+a to each coin to denote what portion of the corresponding
+deposit belongs to the owning user, while the rest is owed to
+the operator, bringing it closer to a payment-channel design.
+Plasma Prime [5] reduces the sizes of disputes. NOCUST is
+an account-based Plasma design [7] where an operator that
+withholds the data behind its commitments must be forced to
+reveal it within a fixed-time period. In NOCUST-ZKP [8, 11]
+commitments are proven in zero-knowledge to be correct, but
+disputes to reveal data may only be performed within a fixed
+amount of time. Lastly, [12] analyses the lower bound on the
+number of disputes that must be made in such schemes.
 
 ** Books                                                      :book:@reading:
 :PROPERTIES:
