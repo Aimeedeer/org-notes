@@ -849,14 +849,13 @@ https://github.com/RustCrypto/hashes
 :EXPORT_OPTIONS: toc:2
 :END:
 
-*** Project intro
+*** Project intro and status
 
 The Big Announcement project on different chains.
 
 TODO:
-- [ ] TBA on Substrate
-- [x] TBA on Dfinity
-- [ ] TBA on Solana
+- [ ] TBA on Substrate (WIP)
+- [ ] TBA on Solana (WIP)
 - [ ] TBA on NEAR
 - [ ] TBA on Nervos
 
@@ -2754,6 +2753,16 @@ they're probably a good enough choice to get started.
 > - Maps: HashMap, BTreeMap
 > - Sets: HashSet, BTreeSet
 > - Misc: BinaryHeap
+
+*** Copy and Clone in Rust
+
+[[https://doc.rust-lang.org/core/clone/index.html][Module core::clone]]
+
+> Differs from ~Copy~ in that ~Copy~ is implicit and extremely inexpensive, 
+while ~Clone~ is always explicit and may or may not be expensive. 
+In order to enforce these characteristics, Rust does not allow you to reimplement ~Copy~, 
+but you may reimplement ~Clone~ and run arbitrary code.
+
 
 
 *** Rust discussion
@@ -4917,6 +4926,21 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 - [[https://www.goodreads.com/book/show/35561327][一本小小的红色写作书]]
 - [[https://www.amazon.cn/dp/B01HRYE86S/ref=sr_1_1][血疫:埃博拉的故事]]
   - ref: origin [[https://www.amazon.com/Hot-Zone-Terrifying-Story-Origins-ebook/dp/B007DCU4IQ/ref=sr_1_1][The Hot Zone: The Terrifying True Story of the Origins of the Ebola Virus]]
+
+** Posts I Really Really Like                                 :post:@reading:
+:PROPERTIES:
+:EXPORT_FILE_NAME: posts-i-really-really-like
+:EXPORT_DATE: 2021-01-29
+:EXPORT_HUGO_SECTION: reading
+:EXPORT_DESCRIPTION: Posts I really really like ❤️  
+:EXPORT_OPTIONS: toc:2
+:END:
+
+[[http://calteches.library.caltech.edu/51/2/CargoCult.htm][Cargo Cult Science]] by Richard P. Feynman
+
+> Some remarks on science, pseudoscience, and learning how to not fool yourself. Caltech’s 1974 commencement address.
+
+
 
 ** Note Management                                           :notes:@reading:
 :PROPERTIES:

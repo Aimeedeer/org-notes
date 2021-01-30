@@ -16,7 +16,7 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [Project intro](#project-intro)
+- [Project intro and status](#project-intro-and-status)
 - [TBA on Ethereum](#tba-on-ethereum)
 - [TBA on Substrate](#tba-on-substrate)
     - [Ink code](#ink-code)
@@ -33,15 +33,14 @@ draft = false
 <!--endtoc-->
 
 
-## Project intro {#project-intro}
+## Project intro and status {#project-intro-and-status}
 
 The Big Announcement project on different chains.
 
 TODO:
 
--   [ ] TBA on Substrate
--   TBA on Dfinity
--   [ ] TBA on Solana
+-   [ ] TBA on Substrate (WIP)
+-   [ ] TBA on Solana (WIP)
 -   [ ] TBA on NEAR
 -   [ ] TBA on Nervos
 

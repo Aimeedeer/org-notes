@@ -19,6 +19,7 @@ draft = false
 - [CS lectures](#cs-lectures)
 - [Reads and videos](#reads-and-videos)
 - [Rust language](#rust-language)
+- [Copy and Clone in Rust](#copy-and-clone-in-rust)
 - [Rust discussion](#rust-discussion)
 
 </div>
@@ -93,6 +94,16 @@ they're probably a good enough choice to get started.
 > - Maps: HashMap, BTreeMap
 > - Sets: HashSet, BTreeSet
 > - Misc: BinaryHeap
+
+
+## Copy and Clone in Rust {#copy-and-clone-in-rust}
+
+[Module core::clone](https://doc.rust-lang.org/core/clone/index.html)
+
+> Differs from `Copy` in that `Copy` is implicit and extremely inexpensive,
+while `Clone` is always explicit and may or may not be expensive.
+In order to enforce these characteristics, Rust does not allow you to reimplement `Copy`,
+but you may reimplement `Clone` and run arbitrary code.
 
 
 ## Rust discussion {#rust-discussion}
