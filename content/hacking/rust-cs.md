@@ -98,12 +98,23 @@ they're probably a good enough choice to get started.
 
 ## Copy and Clone in Rust {#copy-and-clone-in-rust}
 
+[What Is Ownership?](https://doc.rust-lang.org/stable/book/ch04-01-what-is-ownership.html)
+
+This chapter is really good. The stack and heap are well explained.
+
+[Clone and Copy for Duplicating Values](https://doc.rust-lang.org/stable/book/appendix-03-derivable-traits.html?highlight=clone#clone-and-copy-for-duplicating-values)
+
 [Module core::clone](https://doc.rust-lang.org/core/clone/index.html)
 
 > Differs from `Copy` in that `Copy` is implicit and extremely inexpensive,
 while `Clone` is always explicit and may or may not be expensive.
 In order to enforce these characteristics, Rust does not allow you to reimplement `Copy`,
 but you may reimplement `Clone` and run arbitrary code.
+
+Blog post:
+[Moves, copies and clones in Rust](https://hashrust.com/blog/moves-copies-and-clones-in-rust/)
+
+Not much new in this post if you've already read Rust book.
 
 
 ## Rust discussion {#rust-discussion}

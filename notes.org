@@ -28,107 +28,94 @@
   Stackoverflow: https://stackoverflow.com/questions/846103/runtime-vs-compile-time
 - [[https://en.wikipedia.org/wiki/Abstract_syntax_tree][Abstract Syntax Tree (AST)]]
 
-*** Day1
 
-[[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
+*** Day8 
 
-- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day1
-- Question: a better performance solution than 3 loops?
-- [[https://fasterthanli.me/series/advent-of-code-2020/part-1][Other one's practice]]. Good to learn another totally different approach.
-His code:
+Assembly-like program. Learned a bit CS.
+
+I am not happy with my code, though.
+
+*** Day7
+
+Started using ~lazy_static~:
+
 #+begin_src rust
-use itertools::Itertools;
+extern crate lazy_static;
+use lazy_static::lazy_static;
 
-fn main() -> anyhow::Result<()> {
-    let (a, b, c) = include_str!("input.txt")
-        .split('\n')
-        .map(str::parse::<i64>)
-        .collect::<Result<Vec<_>, _>>()?
-        .into_iter()
-        .tuple_combinations()
-        .find(|(a, b, c)| a + b + c == 2020)
-        .expect("no tuple of length 3 had a sum of 2020");
-
-    dbg!(a + b + c);
-    dbg!(a * b * c);
-
-    Ok(())
+lazy_static! {
+    static ref RE: Regex = Regex::new(r"^(\w+ \w+) bags contain (.*)$").unwrap();
 }
 #+end_src
 
-From Rust std: [[https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map][std/iter/trait.Iterator]]
-> ~map()~ is conceptually similar to a ~for~ loop. 
-However, as ~map()~ is lazy, it is best used when you're already working 
-with other iterators. If you're doing some sort of looping 
-for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
+Recursive functions in Rust:
 
-[[https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple_combinations][tuple_combinations]]
-
-*** Day2
-
-[[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
-- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day2
-
-Use ~regex~ for parsing ~String~.
 #+begin_src rust
-let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
-#+end_src
+fn is_my_bag_in_map(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> bool {
+    ...
+}
 
-[[https://docs.rs/regex/1.4.2/regex/index.html#syntax][Regex Syntax]]
-
-Use ~xx.get(index)~ instead of ~xx[index]~, in case that index number is out of range.
-#+begin_src rust
-let password = password.chars().collect::<Vec<char>>();
-	
-if password.get(index_1) == password.get(index_2) {
-    continue;
+fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> u32 {
+    ...
 }
 #+end_src
 
-~anyhow~ error handling.
+*** Day6
+
+An easy puzzle, counting chars.
+*** Day5
+
+[[https://adventofcode.com/2020/day/5][Day 5: Binary Boarding]]
+- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day5
+
+Use const for ~8~. The magical number is defined in the problem description.
 
 #+begin_src rust
-let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
+	const NUM_COLUMNS: u32 = 8; 
+	let seat_id = row_id * NUM_COLUMNS + column_id;
 #+end_src
 
-~char~ counting.
+Abstract functions ~get_row_id~ and ~get_column_id~ as ~search_id~.
 
 #+begin_src rust
-let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
-#+end_src
+fn get_row_id(input: &str) -> Result<u32> {
+    search_id(input, 128, 'F', 'B', "row id")
+}
 
-*** Day3 
+fn get_column_id(input: &str) -> Result<u32> {
+    search_id(input, 8, 'L', 'R', "column id")
+}
 
-[[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
-- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day3
+fn search_id(
+    input: &str,
+    len: u32,
+    match_char_one: char,
+    match_char_two: char,
+    msg: &str	     
+) -> Result<u32> {
+    let range = (0..len).into_iter().collect::<Vec<_>>();
+    let mut range = range.as_slice();
 
-Iterator: 
+    for c in input.chars() {
+	let temp_len = range.len();
+	let (one, two) = range.split_at(temp_len/2);
 
-#+begin_src rust
-// skip lines
-for line in reader.lines().step_by(move_down) { ... }
-
-// get interator's index while looping
-for (line_index, line_value) in reader.lines().enumerate() { ... }
-#+end_src
-
-Put mutable variables in the same block of code while changing their values.
-For example, the ~index~ below.
-
-#+begin_src rust
-    for line in reader.lines().step_by(move_down) {
-	let rules = line?;
-	let rules = rules.chars().collect::<Vec<char>>();
-	let char_num = rules.len();
-
-	if rules[index] == '#' {
-	    tree_num += 1;
-	} 
-
-	index += move_right;
-	index %= char_num;
+	if c == match_char_one {
+	    range = one;
+	} else if c == match_char_two {
+	    range = two;
+	} else {
+	    bail!("get {} failed", msg); 
+	}
     }
+    
+    let id = range[0];    
+    Ok(id)
+}
 #+end_src
+
+Learned ~(0..10).into_iter()~, 
+and ~bail~ instead of ~anyhow~ for returning a result with an error message.
 
 *** Day4
 
@@ -195,95 +182,107 @@ created each time in the loop.
             ").unwrap();
         }
 #+end_src
+*** Day3 
 
-*** Day5
+[[https://adventofcode.com/2020/day/3][Day 3: Toboggan Trajectory]]
+- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day3
 
-[[https://adventofcode.com/2020/day/5][Day 5: Binary Boarding]]
-- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day5
-
-Use const for ~8~. The magical number is defined in the problem description.
+Iterator: 
 
 #+begin_src rust
-	const NUM_COLUMNS: u32 = 8; 
-	let seat_id = row_id * NUM_COLUMNS + column_id;
+// skip lines
+for line in reader.lines().step_by(move_down) { ... }
+
+// get interator's index while looping
+for (line_index, line_value) in reader.lines().enumerate() { ... }
 #+end_src
 
-Abstract functions ~get_row_id~ and ~get_column_id~ as ~search_id~.
+Put mutable variables in the same block of code while changing their values.
+For example, the ~index~ below.
 
 #+begin_src rust
-fn get_row_id(input: &str) -> Result<u32> {
-    search_id(input, 128, 'F', 'B', "row id")
-}
+    for line in reader.lines().step_by(move_down) {
+	let rules = line?;
+	let rules = rules.chars().collect::<Vec<char>>();
+	let char_num = rules.len();
 
-fn get_column_id(input: &str) -> Result<u32> {
-    search_id(input, 8, 'L', 'R', "column id")
-}
+	if rules[index] == '#' {
+	    tree_num += 1;
+	} 
 
-fn search_id(
-    input: &str,
-    len: u32,
-    match_char_one: char,
-    match_char_two: char,
-    msg: &str	     
-) -> Result<u32> {
-    let range = (0..len).into_iter().collect::<Vec<_>>();
-    let mut range = range.as_slice();
-
-    for c in input.chars() {
-	let temp_len = range.len();
-	let (one, two) = range.split_at(temp_len/2);
-
-	if c == match_char_one {
-	    range = one;
-	} else if c == match_char_two {
-	    range = two;
-	} else {
-	    bail!("get {} failed", msg); 
-	}
+	index += move_right;
+	index %= char_num;
     }
-    
-    let id = range[0];    
-    Ok(id)
+#+end_src
+*** Day2
+
+[[https://adventofcode.com/2020/day/2][Day 2: Password Philosophy]]
+- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day2
+
+Use ~regex~ for parsing ~String~.
+#+begin_src rust
+let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
+#+end_src
+
+[[https://docs.rs/regex/1.4.2/regex/index.html#syntax][Regex Syntax]]
+
+Use ~xx.get(index)~ instead of ~xx[index]~, in case that index number is out of range.
+#+begin_src rust
+let password = password.chars().collect::<Vec<char>>();
+	
+if password.get(index_1) == password.get(index_2) {
+    continue;
 }
 #+end_src
 
-Learned ~(0..10).into_iter()~, 
-and ~bail~ instead of ~anyhow~ for returning a result with an error message.
-
-*** Day6
-
-An easy puzzle, counting chars.
-
-*** Day7
-
-Started using ~lazy_static~:
+~anyhow~ error handling.
 
 #+begin_src rust
-extern crate lazy_static;
-use lazy_static::lazy_static;
-
-lazy_static! {
-    static ref RE: Regex = Regex::new(r"^(\w+ \w+) bags contain (.*)$").unwrap();
-}
+let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
 #+end_src
 
-Recursive functions in Rust:
+~char~ counting.
 
 #+begin_src rust
-fn is_my_bag_in_map(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> bool {
-    ...
-}
+let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
+#+end_src
 
-fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> u32 {
-    ...
+*** Day1
+
+[[https://adventofcode.com/2020/day/1][Day 1: Report Repair]]
+
+- Source code: https://github.com/Aimeedeer/adventofcode-2020/tree/master/day1
+- Question: a better performance solution than 3 loops?
+- [[https://fasterthanli.me/series/advent-of-code-2020/part-1][Other one's practice]]. Good to learn another totally different approach.
+His code:
+#+begin_src rust
+use itertools::Itertools;
+
+fn main() -> anyhow::Result<()> {
+    let (a, b, c) = include_str!("input.txt")
+        .split('\n')
+        .map(str::parse::<i64>)
+        .collect::<Result<Vec<_>, _>>()?
+        .into_iter()
+        .tuple_combinations()
+        .find(|(a, b, c)| a + b + c == 2020)
+        .expect("no tuple of length 3 had a sum of 2020");
+
+    dbg!(a + b + c);
+    dbg!(a * b * c);
+
+    Ok(())
 }
 #+end_src
 
-*** Day8 
+From Rust std: [[https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map][std/iter/trait.Iterator]]
+> ~map()~ is conceptually similar to a ~for~ loop. 
+However, as ~map()~ is lazy, it is best used when you're already working 
+with other iterators. If you're doing some sort of looping 
+for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 
-Should I learn a bit of assembly language?
+[[https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple_combinations][tuple_combinations]]
 
-Use a vector of tuple as the data structure.
 
 ** Captain Game                                 :rust:smartcontract:@hacking:
 :PROPERTIES:
@@ -2764,6 +2763,8 @@ they're probably a good enough choice to get started.
 
 [[https://doc.rust-lang.org/stable/book/ch04-01-what-is-ownership.html][What Is Ownership?]]
 
+This chapter is really good. The stack and heap are well explained.
+
 [[https://doc.rust-lang.org/stable/book/appendix-03-derivable-traits.html?highlight=clone#clone-and-copy-for-duplicating-values][Clone and Copy for Duplicating Values]]
 
 [[https://doc.rust-lang.org/core/clone/index.html][Module core::clone]]
@@ -2775,6 +2776,8 @@ but you may reimplement ~Clone~ and run arbitrary code.
 
 Blog post:
 [[https://hashrust.com/blog/moves-copies-and-clones-in-rust/][Moves, copies and clones in Rust]]
+
+Not much new in this post if you've already read Rust book.
 
 
 *** Rust discussion

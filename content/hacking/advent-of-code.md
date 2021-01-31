@@ -17,14 +17,14 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [Read and Learned](#read-and-learned)
-- [Day1](#day1)
-- [Day2](#day2)
-- [Day3](#day3)
-- [Day4](#day4)
-- [Day5](#day5)
-- [Day6](#day6)
-- [Day7](#day7)
 - [Day8](#day8)
+- [Day7](#day7)
+- [Day6](#day6)
+- [Day5](#day5)
+- [Day4](#day4)
+- [Day3](#day3)
+- [Day2](#day2)
+- [Day1](#day1)
 
 </div>
 <!--endtoc-->
@@ -44,115 +44,98 @@ draft = false
 -   [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract%5Fsyntax%5Ftree)
 
 
-## Day1 {#day1}
+## Day8 {#day8}
 
-[Day 1: Report Repair](https://adventofcode.com/2020/day/1)
+Assembly-like program. Learned a bit CS.
 
--   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day1>
--   Question: a better performance solution than 3 loops?
--   [Other one's practice](https://fasterthanli.me/series/advent-of-code-2020/part-1). Good to learn another totally different approach.
+I am not happy with my code, though.
 
-His code:
+
+## Day7 {#day7}
+
+Started using `lazy_static`:
 
 ```rust
-use itertools::Itertools;
+extern crate lazy_static;
+use lazy_static::lazy_static;
 
-fn main() -> anyhow::Result<()> {
-    let (a, b, c) = include_str!("input.txt")
-        .split('\n')
-        .map(str::parse::<i64>)
-        .collect::<Result<Vec<_>, _>>()?
-        .into_iter()
-        .tuple_combinations()
-        .find(|(a, b, c)| a + b + c == 2020)
-        .expect("no tuple of length 3 had a sum of 2020");
-
-    dbg!(a + b + c);
-    dbg!(a * b * c);
-
-    Ok(())
+lazy_static! {
+    static ref RE: Regex = Regex::new(r"^(\w+ \w+) bags contain (.*)$").unwrap();
 }
 ```
 
-From Rust std: [std/iter/trait.Iterator](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)
-> `map()` is conceptually similar to a `for` loop.
-However, as `map()` is lazy, it is best used when you're already working
-with other iterators. If you're doing some sort of looping
-for a side effect, it's considered more idiomatic to use `for` than `map()`.
-
-[tuple\_combinations](https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple%5Fcombinations)
-
-
-## Day2 {#day2}
-
-[Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
-
--   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day2>
-
-Use `regex` for parsing `String`.
+Recursive functions in Rust:
 
 ```rust
-let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
-```
+fn is_my_bag_in_map(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> bool {
+    ...
+}
 
-[Regex Syntax](https://docs.rs/regex/1.4.2/regex/index.html#syntax)
-
-Use `xx.get(index)` instead of `xx[index]`, in case that index number is out of range.
-
-```rust
-let password = password.chars().collect::<Vec<char>>();
-
-if password.get(index_1) == password.get(index_2) {
-    continue;
+fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> u32 {
+    ...
 }
 ```
 
-`anyhow` error handling.
+
+## Day6 {#day6}
+
+An easy puzzle, counting chars.
+
+
+## Day5 {#day5}
+
+[Day 5: Binary Boarding](https://adventofcode.com/2020/day/5)
+
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day5>
+
+Use const for `8`. The magical number is defined in the problem description.
 
 ```rust
-let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
+const NUM_COLUMNS: u32 = 8;
+let seat_id = row_id * NUM_COLUMNS + column_id;
 ```
 
-`char` counting.
+Abstract functions `get_row_id` and `get_column_id` as `search_id`.
 
 ```rust
-let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
-```
+fn get_row_id(input: &str) -> Result<u32> {
+    search_id(input, 128, 'F', 'B', "row id")
+}
 
+fn get_column_id(input: &str) -> Result<u32> {
+    search_id(input, 8, 'L', 'R', "column id")
+}
 
-## Day3 {#day3}
+fn search_id(
+    input: &str,
+    len: u32,
+    match_char_one: char,
+    match_char_two: char,
+    msg: &str
+) -> Result<u32> {
+    let range = (0..len).into_iter().collect::<Vec<_>>();
+    let mut range = range.as_slice();
 
-[Day 3: Toboggan Trajectory](https://adventofcode.com/2020/day/3)
+    for c in input.chars() {
+      let temp_len = range.len();
+      let (one, two) = range.split_at(temp_len/2);
 
--   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day3>
-
-Iterator:
-
-```rust
-// skip lines
-for line in reader.lines().step_by(move_down) { ... }
-
-// get interator's index while looping
-for (line_index, line_value) in reader.lines().enumerate() { ... }
-```
-
-Put mutable variables in the same block of code while changing their values.
-For example, the `index` below.
-
-```rust
-for line in reader.lines().step_by(move_down) {
-    let rules = line?;
-    let rules = rules.chars().collect::<Vec<char>>();
-    let char_num = rules.len();
-
-    if rules[index] == '#' {
-      tree_num += 1;
+      if c == match_char_one {
+          range = one;
+      } else if c == match_char_two {
+          range = two;
+      } else {
+          bail!("get {} failed", msg);
+      }
     }
 
-    index += move_right;
-    index %= char_num;
+    let id = range[0];
+    Ok(id)
 }
 ```
+
+Learned `(0..10).into_iter()`,
+and `bail` instead of `anyhow` for returning a result with an error message.
 
 
 ## Day4 {#day4}
@@ -224,95 +207,112 @@ lazy_static! {
 ```
 
 
-## Day5 {#day5}
+## Day3 {#day3}
 
-[Day 5: Binary Boarding](https://adventofcode.com/2020/day/5)
+[Day 3: Toboggan Trajectory](https://adventofcode.com/2020/day/3)
 
--   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day5>
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day3>
 
-Use const for `8`. The magical number is defined in the problem description.
+Iterator:
 
 ```rust
-const NUM_COLUMNS: u32 = 8;
-let seat_id = row_id * NUM_COLUMNS + column_id;
+// skip lines
+for line in reader.lines().step_by(move_down) { ... }
+
+// get interator's index while looping
+for (line_index, line_value) in reader.lines().enumerate() { ... }
 ```
 
-Abstract functions `get_row_id` and `get_column_id` as `search_id`.
+Put mutable variables in the same block of code while changing their values.
+For example, the `index` below.
 
 ```rust
-fn get_row_id(input: &str) -> Result<u32> {
-    search_id(input, 128, 'F', 'B', "row id")
-}
+for line in reader.lines().step_by(move_down) {
+    let rules = line?;
+    let rules = rules.chars().collect::<Vec<char>>();
+    let char_num = rules.len();
 
-fn get_column_id(input: &str) -> Result<u32> {
-    search_id(input, 8, 'L', 'R', "column id")
-}
-
-fn search_id(
-    input: &str,
-    len: u32,
-    match_char_one: char,
-    match_char_two: char,
-    msg: &str
-) -> Result<u32> {
-    let range = (0..len).into_iter().collect::<Vec<_>>();
-    let mut range = range.as_slice();
-
-    for c in input.chars() {
-      let temp_len = range.len();
-      let (one, two) = range.split_at(temp_len/2);
-
-      if c == match_char_one {
-          range = one;
-      } else if c == match_char_two {
-          range = two;
-      } else {
-          bail!("get {} failed", msg);
-      }
+    if rules[index] == '#' {
+      tree_num += 1;
     }
 
-    let id = range[0];
-    Ok(id)
+    index += move_right;
+    index %= char_num;
 }
 ```
 
-Learned `(0..10).into_iter()`,
-and `bail` instead of `anyhow` for returning a result with an error message.
 
+## Day2 {#day2}
 
-## Day6 {#day6}
+[Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
 
-An easy puzzle, counting chars.
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day2>
 
-
-## Day7 {#day7}
-
-Started using `lazy_static`:
+Use `regex` for parsing `String`.
 
 ```rust
-extern crate lazy_static;
-use lazy_static::lazy_static;
-
-lazy_static! {
-    static ref RE: Regex = Regex::new(r"^(\w+ \w+) bags contain (.*)$").unwrap();
-}
+let re = Regex::new(r"(\d+)-(\d+) ([[:alpha:]]): ([[:alpha:]]+)")?;
 ```
 
-Recursive functions in Rust:
+[Regex Syntax](https://docs.rs/regex/1.4.2/regex/index.html#syntax)
+
+Use `xx.get(index)` instead of `xx[index]`, in case that index number is out of range.
 
 ```rust
-fn is_my_bag_in_map(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> bool {
-    ...
-}
+let password = password.chars().collect::<Vec<char>>();
 
-fn bags_contained(candidate_bag: &str, map: &HashMap<String, HashMap<String, u32>>) -> u32 {
-    ...
+if password.get(index_1) == password.get(index_2) {
+    continue;
 }
 ```
 
+`anyhow` error handling.
 
-## Day8 {#day8}
+```rust
+let caps = re.captures(&line).ok_or(anyhow!("parse line"))?;
+```
 
-Should I learn a bit of assembly language?
+`char` counting.
 
-Use a vector of tuple as the data structure.
+```rust
+let num_valid_char = password.chars().filter(|c| *c == valid_char).count();
+```
+
+
+## Day1 {#day1}
+
+[Day 1: Report Repair](https://adventofcode.com/2020/day/1)
+
+-   Source code: <https://github.com/Aimeedeer/adventofcode-2020/tree/master/day1>
+-   Question: a better performance solution than 3 loops?
+-   [Other one's practice](https://fasterthanli.me/series/advent-of-code-2020/part-1). Good to learn another totally different approach.
+
+His code:
+
+```rust
+use itertools::Itertools;
+
+fn main() -> anyhow::Result<()> {
+    let (a, b, c) = include_str!("input.txt")
+        .split('\n')
+        .map(str::parse::<i64>)
+        .collect::<Result<Vec<_>, _>>()?
+        .into_iter()
+        .tuple_combinations()
+        .find(|(a, b, c)| a + b + c == 2020)
+        .expect("no tuple of length 3 had a sum of 2020");
+
+    dbg!(a + b + c);
+    dbg!(a * b * c);
+
+    Ok(())
+}
+```
+
+From Rust std: [std/iter/trait.Iterator](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map)
+> `map()` is conceptually similar to a `for` loop.
+However, as `map()` is lazy, it is best used when you're already working
+with other iterators. If you're doing some sort of looping
+for a side effect, it's considered more idiomatic to use `for` than `map()`.
+
+[tuple\_combinations](https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple%5Fcombinations)
