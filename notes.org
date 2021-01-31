@@ -294,8 +294,14 @@ Use a vector of tuple as the data structure.
 :EXPORT_OPTIONS: toc:2
 :END:
 
-
 *** My hacklog
+
+**** 2021-01-30
+
+After about two weeks without working on it,
+I need to restore previous log in my memory to start with.
+
+
 
 **** 2021-01-18
 
