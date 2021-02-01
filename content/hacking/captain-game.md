@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-02-01](#2021-02-01)
     - [2021-01-18](#2021-01-18)
     - [2021-01-16](#2021-01-16)
     - [2021-01-14](#2021-01-14)
@@ -32,6 +33,77 @@ draft = false
 
 
 ## My hacklog {#my-hacklog}
+
+
+### 2021-02-01 {#2021-02-01}
+
+After about two weeks without working on it,
+I need to restore my previous log in my memory to start with.
+
+I build my Game contract and Example-levels contract respectively: `cargo contract build`,
+and run a Substrate node: `canvas --dev --tmp -lerror,runtime=debug`,
+then visit Canvas from browser: <https://paritytech.github.io/canvas-ui/#/upload>
+
+Test process from Canvas:
+
+-   Alice deploys Game contract
+-   Bob deploys Flipper(Example-levels) contract
+-   Bob call Alice's Game contract
+    -   RPC call: have\_player\_account
+        -   return false
+    -   Tx call: creat\_player\_account
+    -   RPC call: have\_player\_account
+        -   return true
+    -   RPC call: get\_player\_account (Error below)
+
+<!--listend-->
+
+```shell
+Uncaught error. Something went wrong with the query and rendering of this component. createType(Result):: Cannot construct unknown type Result
+```
+
+-   Tx call: submit\_level
+-   Tx call: run\_level
+
+<!--listend-->
+
+```shell
+contracts.call
+inblock
+
+system.ExtrinsicSuccess
+extrinsic event
+```
+
+We print a lot of activities in our code:
+
+```rust
+ink_env::debug_println(&format!("print_some_thing {:?}", print_content));~
+```
+
+The node terminal prints below.
+I don't know why it prints three times.
+
+```shell
+2021-02-01 11:26:05.699  DEBUG          event.loop0 runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])} }
+2021-02-01 11:26:05.700  DEBUG          event.loop0 runtime:program id: AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:05.701  DEBUG          event.loop0 runtime:dispatch level: calling flip on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:05.703  DEBUG          event.loop0 runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:05.704  DEBUG          event.loop0 runtime:get method call success
+2021-02-01 11:26:05.704  DEBUG          event.loop0 runtime:get return value true
+2021-02-01 11:26:05.712  DEBUG          event.loop0 runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])} }
+2021-02-01 11:26:05.713  DEBUG          event.loop0 runtime:program id: AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:05.714  DEBUG          event.loop0 runtime:dispatch level: calling flip on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:05.716  DEBUG          event.loop0 runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:05.717  DEBUG          event.loop0 runtime:get method call success
+2021-02-01 11:26:05.717  DEBUG          event.loop0 runtime:get return value true
+2021-02-01 11:26:18.012  DEBUG tokio-runtime-worker runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])} }
+2021-02-01 11:26:18.013  DEBUG tokio-runtime-worker runtime:program id: AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:18.014  DEBUG tokio-runtime-worker runtime:dispatch level: calling flip on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:18.016  DEBUG tokio-runtime-worker runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-01 11:26:18.016  DEBUG tokio-runtime-worker runtime:get method call success
+2021-02-01 11:26:18.016  DEBUG tokio-runtime-worker runtime:get return value true
+```
 
 
 ### 2021-01-18 {#2021-01-18}
