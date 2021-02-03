@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-02-03](#2021-02-03)
     - [2021-02-01](#2021-02-01)
     - [2021-01-18](#2021-01-18)
     - [2021-01-16](#2021-01-16)
@@ -33,6 +34,29 @@ draft = false
 
 
 ## My hacklog {#my-hacklog}
+
+-   [ ] Finish the game demo (backend and frontend, multi levels)
+
+
+### 2021-02-03 {#2021-02-03}
+
+Ink team seems to plan to implement trait for  cross-contract calls:
+[[Feature] Dynamic trait based contract calling #631](https://github.com/paritytech/ink/issues/631).
+We currently use hard-coded code in method attributes, called `Selector`.
+
+While our game contract needs to allow players upload their programs for
+each multiple level challenges, I plan to use multiple ~Selector~s for
+different programs.
+I changed the code a bit:
+
+```rust
+let selector;
+match level {
+    0 => selector = Selector::new([0xDE, 0xAD, 0xBE, 0xEF]),
+    1 => selector = Selector::new([0xDE, 0xAD, 0xEE, 0xEE]),
+    _ => unreachable!(),
+}
+```
 
 
 ### 2021-02-01 {#2021-02-01}

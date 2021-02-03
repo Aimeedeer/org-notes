@@ -303,8 +303,27 @@ for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 
 **** 2021-02-03
 
-- Let user submit a program: let Bob submit his program 
-  and call Alice's game contract to run his program
+Ink team seems to plan to implement trait for  cross-contract calls:
+[[https://github.com/paritytech/ink/issues/631][[Feature] Dynamic trait based contract calling #631]].
+We currently use hard-coded code in method attributes, called ~Selector~.
+
+While our game contract needs to allow players upload their programs for 
+each multiple level challenges, I plan to use multiple ~Selector~s for 
+different programs.
+I changed the code a bit:
+
+#+begin_src rust
+let selector;
+match level {
+    0 => selector = Selector::new([0xDE, 0xAD, 0xBE, 0xEF]),
+    1 => selector = Selector::new([0xDE, 0xAD, 0xEE, 0xEE]),
+    _ => unreachable!(),
+}
+#+end_src
+
+Call method failed, and I couldn't know what's wrong from the error message.
+I'll run the previous game-test example again later.
+
 
 **** 2021-02-01
 
