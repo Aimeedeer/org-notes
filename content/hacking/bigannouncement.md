@@ -30,6 +30,7 @@ draft = false
     - [Solana hacklog](#solana-hacklog)
 - [TBA on Aleo](#tba-on-aleo)
     - [Aleo hacklog](#aleo-hacklog)
+    - [Aleo references](#aleo-references)
 
 </div>
 <!--endtoc-->
@@ -908,8 +909,6 @@ TODO:
 
 ### Aleo hacklog {#aleo-hacklog}
 
--   <https://github.com/AleoHQ/aleo>
-
 **Install Aleo**
 
 ```shell
@@ -1079,3 +1078,12 @@ $ leo run
  Verifying Proof is valid
       Done Finished in 2 milliseconds
 ```
+
+
+### Aleo references {#aleo-references}
+
+-   Doc: <https://developer.aleo.org/aleo/getting%5Fstarted/overview/>
+-   SDK: <https://github.com/AleoHQ/aleo>
+-   Package manager: <https://aleo.pm/>
+-   Node: <https://github.com/AleoHQ/snarkOS>
+-   VM: <https://github.com/AleoHQ/snarkVM>

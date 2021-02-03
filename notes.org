@@ -301,6 +301,11 @@ for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 
 - [ ] Finish the game demo (backend and frontend, multi levels)
 
+**** 2021-02-03
+
+- Let user submit a program: let Bob submit his program 
+  and call Alice's game contract to run his program
+
 **** 2021-02-01
 
 After about two weeks without working on it,
@@ -1771,8 +1776,6 @@ TODO:
 
 **** Aleo hacklog
 
-- https://github.com/AleoHQ/aleo
-
 *Install Aleo*
 
 #+begin_src shell
@@ -1942,6 +1945,15 @@ $ leo run
  Verifying Proof is valid
       Done Finished in 2 milliseconds
 #+end_src
+
+
+**** Aleo references
+
+- Doc: https://developer.aleo.org/aleo/getting_started/overview/
+- SDK: https://github.com/AleoHQ/aleo
+- Package manager: https://aleo.pm/
+- Node: https://github.com/AleoHQ/snarkOS
+- VM: https://github.com/AleoHQ/snarkVM
 
 
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
