@@ -2752,6 +2752,22 @@ $ git stash
 $ git stash pop 
 #+end_src
 
+**** Merge a PR and edit it
+
+#+begin_src shell
+$ git remote add <someones_github_id> https://github.com/<someones_github_id>/rust-in-blockchain.git
+$ git fetch <someones_github_id>
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 8 (delta 4), reused 6 (delta 2), pack-reused 0
+Unpacking objects: 100% (8/8), done.
+From https://github.com/<someones_github_id>/rust-in-blockchain
+ * [new branch]      master     -> <someones_github_id>/master # this one is on master branch
+
+$ git merge <someones_github_id>/master
+#+end_src
+
 **** Add submodule to rib
 
 #+begin_src shell

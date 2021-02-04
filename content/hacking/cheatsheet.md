@@ -7,7 +7,7 @@ tags = ["git", "emacs", "orgmode"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2007
+  weight = 2006
   identifier = "cheatsheet"
 +++
 
@@ -28,6 +28,7 @@ draft = false
     - [Reset a commit](#reset-a-commit)
     - [Hide changes and do not commit](#hide-changes-and-do-not-commit)
     - [Cancel hiding](#cancel-hiding)
+    - [Merge a PR and edit it](#merge-a-pr-and-edit-it)
     - [Add submodule to rib](#add-submodule-to-rib)
     - [Creat an aliase for syncing file](#creat-an-aliase-for-syncing-file)
     - [Recover to previous clean code](#recover-to-previous-clean-code)
@@ -151,6 +152,23 @@ $ git stash
 
 ```shell
 $ git stash pop
+```
+
+
+### Merge a PR and edit it {#merge-a-pr-and-edit-it}
+
+```shell
+$ git remote add <someones_github_id> https://github.com/<someones_github_id>/rust-in-blockchain.git
+$ git fetch <someones_github_id>
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 8 (delta 4), reused 6 (delta 2), pack-reused 0
+Unpacking objects: 100% (8/8), done.
+From https://github.com/<someones_github_id>/rust-in-blockchain
+ * [new branch]      master     -> <someones_github_id>/master # this one is on master branch
+
+$ git merge <someones_github_id>/master
 ```
 
 
