@@ -301,6 +301,14 @@ for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 
 - [ ] Finish the game demo (backend and frontend, multi levels)
 
+**** 2021-02-04
+
+I try to run the same process as I did yesterday, but the terminal doesn't
+print debug messages now.
+
+
+
+
 **** 2021-02-03
 
 Ink team seems to plan to implement trait for  cross-contract calls:
@@ -321,7 +329,7 @@ match level {
 }
 #+end_src
 
-Call method failed, and I couldn't know what's wrong from the error message.
+Call method failed, and I don't know what's wrong from the error message.
 I'll run the previous game-test example again later.
 
 
