@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-02-04](#2021-02-04)
     - [2021-02-03](#2021-02-03)
     - [2021-02-01](#2021-02-01)
     - [2021-01-18](#2021-01-18)
@@ -32,10 +33,119 @@ draft = false
 </div>
 <!--endtoc-->
 
+TODO:
+
+-   [ ] Verify before creating a new player account (if that identity already has one)
+-   [ ] Verification for submiting a new level
+-   [ ] Verification run\_level
+-   [ ] Multi levels and programs
+
 
 ## My hacklog {#my-hacklog}
 
--   [ ] Finish the game demo (backend and frontend, multi levels)
+
+### 2021-02-04 {#2021-02-04}
+
+Is this a network problem?
+
+```shell
+contracts.call
+1014: Priority is too low: (133148198758 vs 133148198758): The transaction has too low priority to replace another transaction already in the pool.
+```
+
+Again, this time, our demo doesn't work:
+
+```shell
+2021-02-04 11:44:06.057  DEBUG          event.loop0 runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+2021-02-04 11:44:06.058  DEBUG          event.loop0 runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 11:44:06.059  DEBUG          event.loop0 runtime:dispatch level: 0, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 11:44:06.060  DEBUG          event.loop0 runtime:contract selector: Selector { bytes: [222, 173, 190, 239] }
+2021-02-04 11:44:06.061  DEBUG          event.loop0 runtime:get method call failed: Decode(Error)
+2021-02-04 11:44:06.069  DEBUG          event.loop0 runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+2021-02-04 11:44:06.070  DEBUG          event.loop0 runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 11:44:06.072  DEBUG          event.loop0 runtime:dispatch level: 0, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 11:44:06.072  DEBUG          event.loop0 runtime:contract selector: Selector { bytes: [222, 173, 190, 239] }
+2021-02-04 11:44:06.073  DEBUG          event.loop0 runtime:get method call failed: Decode(Error)
+2021-02-04 11:44:18.011  DEBUG tokio-runtime-worker runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+2021-02-04 11:44:18.013  DEBUG tokio-runtime-worker runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 11:44:18.014  DEBUG tokio-runtime-worker runtime:dispatch level: 0, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 11:44:18.015  DEBUG tokio-runtime-worker runtime:contract selector: Selector { bytes: [222, 173, 190, 239] }
+2021-02-04 11:44:18.015  DEBUG tokio-runtime-worker runtime:get method call failed: Decode(Error)
+```
+
+Why it prints three rounds debug messages?
+
+I go back to our previous sample test, and it doesn't work either:
+
+```shell
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:DispatchError
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:8
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:6
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:OutOfGas
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:PostInfo:
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:actual_weight=
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:6113641282
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:pays_fee=
+2021-02-04 11:47:18.005  DEBUG tokio-runtime-worker runtime:Yes
+```
+
+I change the sample code and remove
+`.gas_limit(0)` and `.transferred_value(0)`,
+then it works!
+I don't understand.
+
+```shell
+2021-02-04 11:59:12.124  DEBUG          event.loop0 runtime:calling get on AccountId([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+2021-02-04 11:59:12.124  DEBUG          event.loop0 runtime:return value Err(NotCallable)
+2021-02-04 11:59:12.130  DEBUG          event.loop0 runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-04 11:59:12.132  DEBUG          event.loop0 runtime:return value Ok(false)
+2021-02-04 11:59:14.451  DEBUG          event.loop0 runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-04 11:59:14.451  DEBUG          event.loop0 runtime:return value Ok(false)
+2021-02-04 11:59:30.002  DEBUG tokio-runtime-worker runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-04 11:59:30.003  DEBUG tokio-runtime-worker runtime:return value Ok(false)
+2021-02-04 11:59:36.004  DEBUG tokio-runtime-worker runtime:calling get on AccountId([143, 23, 140, 104, 129, 87, 181, 199, 82, 222, 77, 198, 172, 231, 178, 249, 251, 156, 129, 233, 134, 167, 114, 60, 101, 73, 245, 85, 139, 84, 27, 156])
+2021-02-04 11:59:36.005  DEBUG tokio-runtime-worker runtime:return value Ok(false)
+```
+
+Now I am going to test the game contract **again**.
+`run_level` call prints debug messages:
+
+```shell
+# call submit_level method
+
+2021-02-04 12:03:53.456  DEBUG          event.loop0 runtime:insert level 0, and contract AccountId([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+2021-02-04 12:03:53.483  DEBUG          event.loop0 runtime:insert level 0, and contract AccountId([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+2021-02-04 12:03:53.490  DEBUG          event.loop0 runtime:insert level 0, and contract AccountId([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+2021-02-04 12:03:53.495  DEBUG          event.loop0 runtime:insert level 0, and contract AccountId([142, 175, 4, 21, 22, 135, 115, 99, 38, 201, 254, 161, 126, 37, 252, 82, 135, 97, 54, 147, 201, 18, 144, 156, 178, 38, 170, 71, 148, 242, 106, 72])
+2021-02-04 12:04:21.854  DEBUG          event.loop0 runtime:insert level 0, and contract AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 12:04:36.010  DEBUG tokio-runtime-worker runtime:insert level 0, and contract AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+
+
+# choose run_level method from Canvas UI
+
+2021-02-04 12:06:35.054  DEBUG          event.loop0 runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+2021-02-04 12:06:35.055  DEBUG          event.loop0 runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 12:06:35.056  DEBUG          event.loop0 runtime:dispatch level: 0, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 12:06:35.056  DEBUG          event.loop0 runtime:contract selector: Selector { bytes: [222, 173, 190, 239] }
+2021-02-04 12:06:35.057  DEBUG          event.loop0 runtime:get method call failed: Decode(Error)
+2021-02-04 12:06:35.065  DEBUG          event.loop0 runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+2021-02-04 12:06:35.066  DEBUG          event.loop0 runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 12:06:35.067  DEBUG          event.loop0 runtime:dispatch level: 0, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 12:06:35.067  DEBUG          event.loop0 runtime:contract selector: Selector { bytes: [222, 173, 190, 239] }
+2021-02-04 12:06:35.068  DEBUG          event.loop0 runtime:get method call failed: Decode(Error)
+
+
+# click call button and sign it
+
+2021-02-04 12:07:18.008  DEBUG tokio-runtime-worker runtime:game account: PlayerAccount { level: 0, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+2021-02-04 12:07:18.009  DEBUG tokio-runtime-worker runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 12:07:18.011  DEBUG tokio-runtime-worker runtime:dispatch level: 0, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-04 12:07:18.011  DEBUG tokio-runtime-worker runtime:contract selector: Selector { bytes: [222, 173, 190, 239] }
+2021-02-04 12:07:18.012  DEBUG tokio-runtime-worker runtime:get method call failed: Decode(Error)
+```
+
+Seems there is something wrong with my changed code.
 
 
 ### 2021-02-03 {#2021-02-03}
@@ -57,6 +167,9 @@ match level {
     _ => unreachable!(),
 }
 ```
+
+Call method failed, and I don't know what's wrong from the error message.
+I'll run the previous game-test example again later.
 
 
 ### 2021-02-01 {#2021-02-01}
