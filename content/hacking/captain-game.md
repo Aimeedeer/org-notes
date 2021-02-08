@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [](#)
     - [2021-02-06](#2021-02-06)
     - [2021-02-04](#2021-02-04)
     - [2021-02-03](#2021-02-03)
@@ -39,10 +40,13 @@ TODO:
 -   [ ] Verify before creating a new player account (if that identity already has one)
 -   [ ] Verification for submiting a new level
 -   [ ] Verification run\_level
--   [ ] Multi levels and programs
+-   [ ] Multi levels and programs: currently use flipper contract for every level
 
 
 ## My hacklog {#my-hacklog}
+
+
+###  {#}
 
 
 ### 2021-02-06 {#2021-02-06}
@@ -91,6 +95,14 @@ $ canvas --dev --tmp -lerror,runtime=debug
 2021-02-06 13:23:06.015  DEBUG tokio-runtime-worker runtime:contract selector: [222, 173, 190, 239]
 2021-02-06 13:23:06.015  DEBUG tokio-runtime-worker runtime:get method call failed: Decode(Error)
 ```
+
+I have wasted so much time only because I didn't pay attention to
+the two selectors and the different method return values.
+Cross contract call works finally after I corrected the selector.
+
+I add more prints for verification in the `run_level` method,
+and create run\_level\_0, run\_level\_1, and more levels.
+Each one uses the same flipper contract for testing.
 
 
 ### 2021-02-04 {#2021-02-04}
