@@ -5412,6 +5412,9 @@ Aimee's [goodreads](https://www.goodreads.com/user/show/90889710-aimee-zhu)
 
 > Some remarks on science, pseudoscience, and learning how to not fool yourself. Caltech’s 1974 commencement address.
 
+[[https://blog.rust-lang.org/2017/03/02/lang-ergonomics.html][Rust's language ergonomics initiative]] by Aaron Turon
+
+> Empathy
 
 
 ** Note Management                                           :notes:@reading:
