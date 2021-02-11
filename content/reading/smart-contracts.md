@@ -7,7 +7,7 @@ tags = ["blockchain", "smartcontract"]
 categories = ["reading"]
 draft = false
 [menu.main]
-  weight = 2011
+  weight = 2012
   identifier = "smart-contracts"
 +++
 
@@ -151,3 +151,6 @@ bug bounties.
 > Serpent is an assembly language that compiles to EVM code that is extended with various high-level features. It can be useful for writing code that requires low-level opcode manipulation as well as access to high-level primitives like the ABI.
 >
 > Being a low-level language, Serpent is NOT RECOMMENDED for building applications unless you really really know what you're doing. The creator recommends Solidity as a default choice, LLL if you want close-to-the-metal optimizations, or Viper if you like its features though it is still experimental.
+
+Building Better Systems Podcast:
+[Episode #6 Dan Guido - What the hell are the blockchain people doing & why isn't it a dumpster fire?](https://www.youtube.com/watch?v=wT-AmR7wtI8)

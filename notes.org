@@ -305,6 +305,9 @@ TODO:
 
 *** My hacklog
 
+**** 2021-02-11    
+
+
 
 **** 2021-02-06
 
@@ -3479,6 +3482,8 @@ bug bounties.
 >
 > Being a low-level language, Serpent is NOT RECOMMENDED for building applications unless you really really know what you're doing. The creator recommends Solidity as a default choice, LLL if you want close-to-the-metal optimizations, or Viper if you like its features though it is still experimental.
 
+Building Better Systems Podcast:
+[[https://www.youtube.com/watch?v=wT-AmR7wtI8][Episode #6 Dan Guido - What the hell are the blockchain people doing & why isn't it a dumpster fire?]]
 
 ** Interesting Rust Projects                                  :rust:@hacking:
 :PROPERTIES:
