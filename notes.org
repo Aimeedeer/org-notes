@@ -297,16 +297,28 @@ for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 :EXPORT_OPTIONS: toc:2
 :END:
 
-TODO:
-- [ ] Verify before creating a new player account (if that identity already has one)
-- [ ] Verification for submiting a new level
-- [ ] Verification run_level
-- [ ] Multi levels and programs: currently use flipper contract for every level
+Captain game with Parity ink.
 
 *** My hacklog
 
-**** 2021-02-11    
+**** 2021-02-13
 
+Test with submit_level and run_level + level_up after run_level succeed:
+
+#+begin_src shell
+2021-02-13 12:26:36.009  DEBUG tokio-runtime-worker runtime:game account: PlayerAccount { level: 1, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230]), 1: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }    
+2021-02-13 12:26:36.010  DEBUG tokio-runtime-worker runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])    
+2021-02-13 12:26:36.011  DEBUG tokio-runtime-worker runtime:dispatch level: 1, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])    
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:run_level_1_flipper, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])    
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:get method call success    
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:get return value true    
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:verified flipper current state    
+2021-02-13 12:26:36.013  DEBUG tokio-runtime-worker runtime:get method call success    
+2021-02-13 12:26:36.013  DEBUG tokio-runtime-worker runtime:get return value false    
+2021-02-13 12:26:36.013  DEBUG tokio-runtime-worker runtime:verify flipper new state    
+2021-02-13 12:26:36.014  DEBUG tokio-runtime-worker runtime:run_level_1_flipper call success    
+2021-02-13 12:26:36.015  DEBUG tokio-runtime-worker runtime:player_account: PlayerAccount { level: 2, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230]), 1: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }    
+#+end_src
 
 
 **** 2021-02-06
@@ -2847,6 +2859,7 @@ src_sh[:exports code]{echo -e "test"}
 #+end_src
 
 *** Git commands
+
 
 **** Git tutorial
 

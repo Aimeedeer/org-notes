@@ -17,7 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
-    - [](#)
+    - [2021-02-13](#2021-02-13)
     - [2021-02-06](#2021-02-06)
     - [2021-02-04](#2021-02-04)
     - [2021-02-03](#2021-02-03)
@@ -38,15 +38,29 @@ draft = false
 TODO:
 
 -   [ ] Verify before creating a new player account (if that identity already has one)
--   [ ] Verification for submiting a new level
--   [ ] Verification run\_level
--   [ ] Multi levels and programs: currently use flipper contract for every level
 
 
 ## My hacklog {#my-hacklog}
 
 
-###  {#}
+### 2021-02-13 {#2021-02-13}
+
+Test with submit\_level and run\_level + level\_up after run\_level succeed:
+
+```shell
+2021-02-13 12:26:36.009  DEBUG tokio-runtime-worker runtime:game account: PlayerAccount { level: 1, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230]), 1: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+2021-02-13 12:26:36.010  DEBUG tokio-runtime-worker runtime:program id: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-13 12:26:36.011  DEBUG tokio-runtime-worker runtime:dispatch level: 1, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:run_level_1_flipper, calling contract: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:get method call success
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:get return value true
+2021-02-13 12:26:36.012  DEBUG tokio-runtime-worker runtime:verified flipper current state
+2021-02-13 12:26:36.013  DEBUG tokio-runtime-worker runtime:get method call success
+2021-02-13 12:26:36.013  DEBUG tokio-runtime-worker runtime:get return value false
+2021-02-13 12:26:36.013  DEBUG tokio-runtime-worker runtime:verify flipper new state
+2021-02-13 12:26:36.014  DEBUG tokio-runtime-worker runtime:run_level_1_flipper call success
+2021-02-13 12:26:36.015  DEBUG tokio-runtime-worker runtime:player_account: PlayerAccount { level: 2, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230]), 1: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
+```
 
 
 ### 2021-02-06 {#2021-02-06}
