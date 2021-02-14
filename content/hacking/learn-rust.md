@@ -1,14 +1,14 @@
 +++
-title = "Rust, Cargo and More"
+title = "Learn Rust"
 author = ["Aimee Z"]
-description = "Understand Rust programming language."
+description = "Learn Rust programming."
 date = 2020-11-14
-tags = ["rust", "cargo", "rustup", "log"]
+tags = ["rust", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
   weight = 2008
-  identifier = "rust-cargo-and-more"
+  identifier = "learn-rust"
 +++
 
 <div class="ox-hugo-toc toc">

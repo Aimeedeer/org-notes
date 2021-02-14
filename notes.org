@@ -2996,12 +2996,12 @@ $ ssh-keygen -C your@email.com
 #+begin_src shell
 $ git mv www/contracts .
 #+end_src
-** Rust, Cargo and More                      :rust:cargo:rustup:log:@hacking:
+** Learn Rust                                             :rust:log:@hacking:
 :PROPERTIES:
-:EXPORT_FILE_NAME: rust-cargo-etc
+:EXPORT_FILE_NAME: learn-rust
 :EXPORT_DATE: 2020-11-14
 :EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: Understand Rust programming language.
+:EXPORT_DESCRIPTION: Learn Rust programming.
 :EXPORT_OPTIONS: toc:2
 :END:
 
@@ -3227,10 +3227,10 @@ by considering interoperability of new features in accordance to it.
 
 ** Computer Science                                        :cs:@hacking:
 :PROPERTIES:
-:EXPORT_FILE_NAME: rust-cs
+:EXPORT_FILE_NAME: cs
 :EXPORT_DATE: 2020-11-21
 :EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: Rust and CS resources.
+:EXPORT_DESCRIPTION: CS learning and some resource
 :EXPORT_OPTIONS: toc:2
 :END:
 

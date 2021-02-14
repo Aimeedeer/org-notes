@@ -1,7 +1,7 @@
 +++
 title = "Computer Science"
 author = ["Aimee Z"]
-description = "Rust and CS resources."
+description = "CS learning and some resource"
 date = 2020-11-21
 tags = ["cs"]
 categories = ["hacking"]
