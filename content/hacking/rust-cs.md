@@ -1,14 +1,14 @@
 +++
-title = "Rust and Computer Science"
+title = "Computer Science"
 author = ["Aimee Z"]
 description = "Rust and CS resources."
 date = 2020-11-21
-tags = ["rust", "cs"]
+tags = ["cs"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2009
-  identifier = "rust-and-computer-science"
+  weight = 2010
+  identifier = "computer-science"
 +++
 
 <div class="ox-hugo-toc toc">
@@ -16,17 +16,64 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
-- [CS lectures](#cs-lectures)
-- [Reads and videos](#reads-and-videos)
-- [Rust language](#rust-language)
-- [Copy and Clone in Rust](#copy-and-clone-in-rust)
-- [Rust discussion](#rust-discussion)
+- [Books I am reading](#books-i-am-reading)
+- [Lectures about algorithms](#lectures-about-algorithms)
+- [About types](#about-types)
+- [Random blog posts, podcasts](#random-blog-posts-podcasts)
+- [References](#references)
+    - [CS lectures](#cs-lectures)
 
 </div>
 <!--endtoc-->
 
 
-## CS lectures {#cs-lectures}
+## Books I am reading {#books-i-am-reading}
+
+Scheme: [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%%5Ftoc%5Fstart)
+
+The Rust Book
+
+Code Complete
+
+Clean Code
+
+
+## Lectures about algorithms {#lectures-about-algorithms}
+
+[CSE373 - Analysis of Algorithms 2016 SBU](https://www.youtube.com/watch?v=A2bFN3MyNDA&list=PLOtl7M3yp-DX32N0fVIyvn7ipWKNGmwpp&index=1)
+by Steven Skiena
+
+Expressing algorithms: pseudocode
+
+-   <http://www.cs.cornell.edu/courses/cs482/2003su/handouts/pseudocode.pdf>
+
+The videos' quality isn't great, and I give up.
+Then I move to another lecture:
+[MIT 6.006 Introduction to Algorithms, Fall 2011](https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V%5FF-5jb5L2iHb&index=1)
+
+
+## About types {#about-types}
+
+Type system: [Things I Was Wrong About: Types](https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/)
+
+[Refinement Types](https://arxiv.org/pdf/2010.07763.pdf)
+
+
+## Random blog posts, podcasts {#random-blog-posts-podcasts}
+
+[The Humble Programmer by Edsger W. Dijkstra](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html)
+
+[How to learn programming | Charles Isbell and Michael Littman and Lex Fridman](https://www.youtube.com/watch?v=j-BVv0XW1H8)
+
+[Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148](https://www.youtube.com/watch?v=yzMVEbs8Zz0)
+
+> joy
+
+
+## References {#references}
+
+
+### CS lectures {#cs-lectures}
 
 [CS140e](https://cs140e.sergio.bz/syllabus/#schedule): Stanford’s CS140e Winter 2018 course
 
@@ -43,85 +90,3 @@ draft = false
 [CS294: Foundations of Probabilistic Proofs (F2020)](https://people.eecs.berkeley.edu/~alexch/classes/CS294-F2020.html)
 
 [MIT6.828 Operating System Engineering](https://github.com/SmallPond/MIT6.828%5FOS)
-
-
-## Reads and videos {#reads-and-videos}
-
-Type system: [Things I Was Wrong About: Types](https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/)
-
-[Refinement Types](https://arxiv.org/pdf/2010.07763.pdf)
-
-[The Humble Programmer by Edsger W. Dijkstra](https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html)
-
-Book: [Structure and Interpretation of Computer Programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%%5Ftoc%5Fstart)
-
-[How to learn programming | Charles Isbell and Michael Littman and Lex Fridman](https://www.youtube.com/watch?v=j-BVv0XW1H8)
-
-[Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148](https://www.youtube.com/watch?v=yzMVEbs8Zz0)
-
-> joy
-
-
-## Rust language {#rust-language}
-
-[The Little Book of Rust Books](https://lborb.github.io/book/)
-
-[Learn Rust With Entirely Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/index.html)
-
-[Understanding and Evolving the Rust Programming Language](https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf) August 2020
-
-[Rust Starter Kit 2020](https://wiki.alopex.li/RustStarterKit2020)
-
-Video: [Pascal Hertleif - Writing Idiomatic Libraries in Rust](https://www.youtube.com/watch?v=0zOg8%5FB71gE)
-
-Collections:
-
--   Rust book: [Common Collections](https://doc.rust-lang.org/stable/book/ch08-00-common-collections.html)
--   [Module std::collections](https://doc.rust-lang.org/stable/std/collections/index.html)
-
-> To get this out of the way: you should probably just use `Vec` or `HashMap`.
-These two collections cover most use cases for generic data storage and processing.
-They are exceptionally good at doing what they do.
-All the other collections in the standard library have
-specific use cases where they are the optimal choice,
-but these cases are borderline niche in comparison.
-Even when Vec and HashMap are technically suboptimal,
-they're probably a good enough choice to get started.
->
-> Rust's collections can be grouped into four major categories:
->
-> - Sequences: Vec, VecDeque, LinkedList
-> - Maps: HashMap, BTreeMap
-> - Sets: HashSet, BTreeSet
-> - Misc: BinaryHeap
-
-
-## Copy and Clone in Rust {#copy-and-clone-in-rust}
-
-[What Is Ownership?](https://doc.rust-lang.org/stable/book/ch04-01-what-is-ownership.html)
-
-This chapter is really good. The stack and heap are well explained.
-
-[Clone and Copy for Duplicating Values](https://doc.rust-lang.org/stable/book/appendix-03-derivable-traits.html?highlight=clone#clone-and-copy-for-duplicating-values)
-
-[Module core::clone](https://doc.rust-lang.org/core/clone/index.html)
-
-> Differs from `Copy` in that `Copy` is implicit and extremely inexpensive,
-while `Clone` is always explicit and may or may not be expensive.
-In order to enforce these characteristics, Rust does not allow you to reimplement `Copy`,
-but you may reimplement `Clone` and run arbitrary code.
-
-Blog post:
-[Moves, copies and clones in Rust](https://hashrust.com/blog/moves-copies-and-clones-in-rust/)
-
-Not much new in this post if you've already read Rust book.
-
-
-## Rust discussion {#rust-discussion}
-
-[ReadRust: Computer Science](https://readrust.net/computer-science)
-
-[Reddit discussion: Opinions about using Rust instead of C in Computer Science courses](https://www.reddit.com/r/rust/comments/6nw22d/opinions%5Fabout%5Fusing%5Frust%5Finstead%5Fof%5Fc%5Fin/)
-
-Rust weaknesses:
-[This question got a bunch of discussions](https://www.reddit.com/r/rust/comments/jia2xn/what%5Fare%5Fsome%5Fof%5Frusts%5Fweaknesses%5Fas%5Fa%5Flanguage/)

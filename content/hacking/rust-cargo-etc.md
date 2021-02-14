@@ -1,5 +1,5 @@
 +++
-title = "Rust Cargo and More"
+title = "Rust, Cargo and More"
 author = ["Aimee Z"]
 description = "Understand Rust programming language."
 date = 2020-11-14
@@ -7,7 +7,7 @@ tags = ["rust", "cargo", "rustup", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2005
+  weight = 2008
   identifier = "rust-cargo-and-more"
 +++
 
@@ -16,12 +16,80 @@ draft = false
 
 <div class="heading">Table of Contents</div>
 
+- [Rust language](#rust-language)
+- [Copy and Clone in Rust](#copy-and-clone-in-rust)
+- [Rust discussion](#rust-discussion)
 - [Cargo bin](#cargo-bin)
 - [Rustup toolchains](#rustup-toolchains)
 - [Rust lang entry](#rust-lang-entry)
 
 </div>
 <!--endtoc-->
+
+
+## Rust language {#rust-language}
+
+[The Little Book of Rust Books](https://lborb.github.io/book/)
+
+[Learn Rust With Entirely Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/index.html)
+
+[Understanding and Evolving the Rust Programming Language](https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf) August 2020
+
+[Rust Starter Kit 2020](https://wiki.alopex.li/RustStarterKit2020)
+
+Video: [Pascal Hertleif - Writing Idiomatic Libraries in Rust](https://www.youtube.com/watch?v=0zOg8%5FB71gE)
+
+Collections:
+
+-   Rust book: [Common Collections](https://doc.rust-lang.org/stable/book/ch08-00-common-collections.html)
+-   [Module std::collections](https://doc.rust-lang.org/stable/std/collections/index.html)
+
+> To get this out of the way: you should probably just use `Vec` or `HashMap`.
+These two collections cover most use cases for generic data storage and processing.
+They are exceptionally good at doing what they do.
+All the other collections in the standard library have
+specific use cases where they are the optimal choice,
+but these cases are borderline niche in comparison.
+Even when Vec and HashMap are technically suboptimal,
+they're probably a good enough choice to get started.
+>
+> Rust's collections can be grouped into four major categories:
+>
+> - Sequences: Vec, VecDeque, LinkedList
+> - Maps: HashMap, BTreeMap
+> - Sets: HashSet, BTreeSet
+> - Misc: BinaryHeap
+
+
+## Copy and Clone in Rust {#copy-and-clone-in-rust}
+
+[What Is Ownership?](https://doc.rust-lang.org/stable/book/ch04-01-what-is-ownership.html)
+
+This chapter is really good. The stack and heap are well explained.
+
+[Clone and Copy for Duplicating Values](https://doc.rust-lang.org/stable/book/appendix-03-derivable-traits.html?highlight=clone#clone-and-copy-for-duplicating-values)
+
+[Module core::clone](https://doc.rust-lang.org/core/clone/index.html)
+
+> Differs from `Copy` in that `Copy` is implicit and extremely inexpensive,
+while `Clone` is always explicit and may or may not be expensive.
+In order to enforce these characteristics, Rust does not allow you to reimplement `Copy`,
+but you may reimplement `Clone` and run arbitrary code.
+
+Blog post:
+[Moves, copies and clones in Rust](https://hashrust.com/blog/moves-copies-and-clones-in-rust/)
+
+Not much new in this post if you've already read Rust book.
+
+
+## Rust discussion {#rust-discussion}
+
+[ReadRust: Computer Science](https://readrust.net/computer-science)
+
+[Reddit discussion: Opinions about using Rust instead of C in Computer Science courses](https://www.reddit.com/r/rust/comments/6nw22d/opinions%5Fabout%5Fusing%5Frust%5Finstead%5Fof%5Fc%5Fin/)
+
+Rust weaknesses:
+[This question got a bunch of discussions](https://www.reddit.com/r/rust/comments/jia2xn/what%5Fare%5Fsome%5Fof%5Frusts%5Fweaknesses%5Fas%5Fa%5Flanguage/)
 
 
 ## Cargo bin {#cargo-bin}

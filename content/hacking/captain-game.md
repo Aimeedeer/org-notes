@@ -35,9 +35,7 @@ draft = false
 </div>
 <!--endtoc-->
 
-TODO:
-
--   [ ] Verify before creating a new player account (if that identity already has one)
+Captain game with Parity ink.
 
 
 ## My hacklog {#my-hacklog}
@@ -61,6 +59,10 @@ Test with submit\_level and run\_level + level\_up after run\_level succeed:
 2021-02-13 12:26:36.014  DEBUG tokio-runtime-worker runtime:run_level_1_flipper call success
 2021-02-13 12:26:36.015  DEBUG tokio-runtime-worker runtime:player_account: PlayerAccount { level: 2, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230]), 1: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }
 ```
+
+Now a player can submit (and run) programs up to 3 levels.
+
+I also add more `Debugging` log.
 
 
 ### 2021-02-06 {#2021-02-06}

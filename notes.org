@@ -320,6 +320,11 @@ Test with submit_level and run_level + level_up after run_level succeed:
 2021-02-13 12:26:36.015  DEBUG tokio-runtime-worker runtime:player_account: PlayerAccount { level: 2, level_contracts: {0: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230]), 1: AccountId([154, 109, 9, 43, 214, 19, 68, 75, 177, 212, 196, 5, 184, 224, 248, 107, 32, 56, 240, 228, 240, 158, 222, 41, 53, 1, 138, 195, 219, 58, 141, 230])} }    
 #+end_src
 
+Now a player can submit (and run) programs up to 3 levels.
+
+I also add more ~Debugging~ log.
+
+
 **** 2021-02-06
 
 First log:
@@ -2991,7 +2996,7 @@ $ ssh-keygen -C your@email.com
 #+begin_src shell
 $ git mv www/contracts .
 #+end_src
-** Rust Cargo and More                       :rust:cargo:rustup:log:@hacking:
+** Rust, Cargo and More                      :rust:cargo:rustup:log:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-cargo-etc
 :EXPORT_DATE: 2020-11-14
@@ -2999,6 +3004,68 @@ $ git mv www/contracts .
 :EXPORT_DESCRIPTION: Understand Rust programming language.
 :EXPORT_OPTIONS: toc:2
 :END:
+
+*** Rust language
+
+[[https://lborb.github.io/book/][The Little Book of Rust Books]]
+
+[[https://rust-unofficial.github.io/too-many-lists/index.html][Learn Rust With Entirely Too Many Linked Lists]]
+
+[[https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf][Understanding and Evolving the Rust Programming Language]] August 2020
+
+[[https://wiki.alopex.li/RustStarterKit2020][Rust Starter Kit 2020]]
+
+Video: [[https://www.youtube.com/watch?v=0zOg8_B71gE][Pascal Hertleif - Writing Idiomatic Libraries in Rust]]
+
+Collections:
+- Rust book: [[https://doc.rust-lang.org/stable/book/ch08-00-common-collections.html][Common Collections]]
+- [[https://doc.rust-lang.org/stable/std/collections/index.html][Module std::collections]]
+> To get this out of the way: you should probably just use ~Vec~ or ~HashMap~. 
+These two collections cover most use cases for generic data storage and processing. 
+They are exceptionally good at doing what they do. 
+All the other collections in the standard library have 
+specific use cases where they are the optimal choice, 
+but these cases are borderline niche in comparison. 
+Even when Vec and HashMap are technically suboptimal, 
+they're probably a good enough choice to get started.
+>
+> Rust's collections can be grouped into four major categories:
+>
+> - Sequences: Vec, VecDeque, LinkedList
+> - Maps: HashMap, BTreeMap
+> - Sets: HashSet, BTreeSet
+> - Misc: BinaryHeap
+
+*** Copy and Clone in Rust
+
+[[https://doc.rust-lang.org/stable/book/ch04-01-what-is-ownership.html][What Is Ownership?]]
+
+This chapter is really good. The stack and heap are well explained.
+
+[[https://doc.rust-lang.org/stable/book/appendix-03-derivable-traits.html?highlight=clone#clone-and-copy-for-duplicating-values][Clone and Copy for Duplicating Values]]
+
+[[https://doc.rust-lang.org/core/clone/index.html][Module core::clone]]
+
+> Differs from ~Copy~ in that ~Copy~ is implicit and extremely inexpensive, 
+while ~Clone~ is always explicit and may or may not be expensive. 
+In order to enforce these characteristics, Rust does not allow you to reimplement ~Copy~, 
+but you may reimplement ~Clone~ and run arbitrary code.
+
+Blog post:
+[[https://hashrust.com/blog/moves-copies-and-clones-in-rust/][Moves, copies and clones in Rust]]
+
+Not much new in this post if you've already read Rust book.
+
+
+*** Rust discussion
+
+[[https://readrust.net/computer-science][ReadRust: Computer Science]]
+
+[[https://www.reddit.com/r/rust/comments/6nw22d/opinions_about_using_rust_instead_of_c_in/][Reddit discussion: Opinions about using Rust instead of C in Computer Science courses]]
+
+Rust weaknesses:
+[[https://www.reddit.com/r/rust/comments/jia2xn/what_are_some_of_rusts_weaknesses_as_a_language/][This question got a bunch of discussions]]
+
 
 *** Cargo bin
 
@@ -3158,7 +3225,7 @@ While developing the Fleetwood technology stack
 we are trying to uphold this future goal 
 by considering interoperability of new features in accordance to it.
 
-** Rust and Computer Science                               :rust:cs:@hacking:
+** Computer Science                                        :cs:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-cs
 :EXPORT_DATE: 2020-11-21
@@ -3167,7 +3234,51 @@ by considering interoperability of new features in accordance to it.
 :EXPORT_OPTIONS: toc:2
 :END:
 
-*** CS lectures
+*** Books I am reading
+
+Scheme: [[https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%_toc_start][Structure and Interpretation of Computer Programs]]
+
+The Rust Book
+
+Code Complete
+
+Clean Code
+
+*** Lectures about algorithms 
+
+[[https://www.youtube.com/watch?v=A2bFN3MyNDA&list=PLOtl7M3yp-DX32N0fVIyvn7ipWKNGmwpp&index=1][CSE373 - Analysis of Algorithms 2016 SBU]]
+by Steven Skiena
+
+Expressing algorithms: pseudocode
+- http://www.cs.cornell.edu/courses/cs482/2003su/handouts/pseudocode.pdf
+
+The videos' quality isn't great, and I give up.
+Then I move to another lecture: 
+[[https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=1][MIT 6.006 Introduction to Algorithms, Fall 2011]]
+
+
+
+
+*** About types
+
+Type system: [[https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/][Things I Was Wrong About: Types]]
+
+[[https://arxiv.org/pdf/2010.07763.pdf][Refinement Types]]
+
+*** Random blog posts, podcasts
+
+[[https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html][The Humble Programmer by Edsger W. Dijkstra]]
+
+[[https://www.youtube.com/watch?v=j-BVv0XW1H8][How to learn programming | Charles Isbell and Michael Littman and Lex Fridman]]
+
+[[https://www.youtube.com/watch?v=yzMVEbs8Zz0][Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148]]
+
+> joy
+
+
+*** References
+
+**** CS lectures
 
 [[https://cs140e.sergio.bz/syllabus/#schedule][CS140e]]: Stanford’s CS140e Winter 2018 course
 - [[https://cs140e.sergio.bz/syllabus/#schedule][Schedule, reads and code]]
@@ -3182,83 +3293,6 @@ by considering interoperability of new features in accordance to it.
 
 [[https://github.com/SmallPond/MIT6.828_OS][MIT6.828 Operating System Engineering]]
 
-
-*** Reads and videos
-
-Type system: [[https://v5.chriskrycho.com/journal/things-i-was-wrong-about/1-types/][Things I Was Wrong About: Types]]
-
-[[https://arxiv.org/pdf/2010.07763.pdf][Refinement Types]]
-
-[[https://www.cs.utexas.edu/~EWD/transcriptions/EWD03xx/EWD340.html][The Humble Programmer by Edsger W. Dijkstra]]
-
-Book: [[https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html#%_toc_start][Structure and Interpretation of Computer Programs]]
-
-[[https://www.youtube.com/watch?v=j-BVv0XW1H8][How to learn programming | Charles Isbell and Michael Littman and Lex Fridman]]
-
-[[https://www.youtube.com/watch?v=yzMVEbs8Zz0][Charles Isbell and Michael Littman: Machine Learning and Education | Lex Fridman Podcast #148]]
-
-> joy
-
-*** Rust language
-
-[[https://lborb.github.io/book/][The Little Book of Rust Books]]
-
-[[https://rust-unofficial.github.io/too-many-lists/index.html][Learn Rust With Entirely Too Many Linked Lists]]
-
-[[https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf][Understanding and Evolving the Rust Programming Language]] August 2020
-
-[[https://wiki.alopex.li/RustStarterKit2020][Rust Starter Kit 2020]]
-
-Video: [[https://www.youtube.com/watch?v=0zOg8_B71gE][Pascal Hertleif - Writing Idiomatic Libraries in Rust]]
-
-Collections:
-- Rust book: [[https://doc.rust-lang.org/stable/book/ch08-00-common-collections.html][Common Collections]]
-- [[https://doc.rust-lang.org/stable/std/collections/index.html][Module std::collections]]
-> To get this out of the way: you should probably just use ~Vec~ or ~HashMap~. 
-These two collections cover most use cases for generic data storage and processing. 
-They are exceptionally good at doing what they do. 
-All the other collections in the standard library have 
-specific use cases where they are the optimal choice, 
-but these cases are borderline niche in comparison. 
-Even when Vec and HashMap are technically suboptimal, 
-they're probably a good enough choice to get started.
->
-> Rust's collections can be grouped into four major categories:
->
-> - Sequences: Vec, VecDeque, LinkedList
-> - Maps: HashMap, BTreeMap
-> - Sets: HashSet, BTreeSet
-> - Misc: BinaryHeap
-
-*** Copy and Clone in Rust
-
-[[https://doc.rust-lang.org/stable/book/ch04-01-what-is-ownership.html][What Is Ownership?]]
-
-This chapter is really good. The stack and heap are well explained.
-
-[[https://doc.rust-lang.org/stable/book/appendix-03-derivable-traits.html?highlight=clone#clone-and-copy-for-duplicating-values][Clone and Copy for Duplicating Values]]
-
-[[https://doc.rust-lang.org/core/clone/index.html][Module core::clone]]
-
-> Differs from ~Copy~ in that ~Copy~ is implicit and extremely inexpensive, 
-while ~Clone~ is always explicit and may or may not be expensive. 
-In order to enforce these characteristics, Rust does not allow you to reimplement ~Copy~, 
-but you may reimplement ~Clone~ and run arbitrary code.
-
-Blog post:
-[[https://hashrust.com/blog/moves-copies-and-clones-in-rust/][Moves, copies and clones in Rust]]
-
-Not much new in this post if you've already read Rust book.
-
-
-*** Rust discussion
-
-[[https://readrust.net/computer-science][ReadRust: Computer Science]]
-
-[[https://www.reddit.com/r/rust/comments/6nw22d/opinions_about_using_rust_instead_of_c_in/][Reddit discussion: Opinions about using Rust instead of C in Computer Science courses]]
-
-Rust weaknesses:
-[[https://www.reddit.com/r/rust/comments/jia2xn/what_are_some_of_rusts_weaknesses_as_a_language/][This question got a bunch of discussions]]
 
 ** Learn Programming                      :rust:lisp:programming:cs:@reading:
 :PROPERTIES:
