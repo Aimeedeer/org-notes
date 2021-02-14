@@ -1,7 +1,7 @@
 +++
 title = "Captain Game"
 author = ["Aimee Z"]
-description = "A captain game smart contract"
+description = "A game smart contract with Parity ink."
 date = 2020-12-27
 tags = ["rust", "smartcontract"]
 categories = ["hacking"]

@@ -293,7 +293,7 @@ for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 :EXPORT_FILE_NAME: captain-game
 :EXPORT_DATE: 2020-12-27
 :EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: A captain game smart contract
+:EXPORT_DESCRIPTION: A game smart contract with Parity ink.
 :EXPORT_OPTIONS: toc:2
 :END:
 
