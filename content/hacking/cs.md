@@ -51,6 +51,9 @@ The videos' quality isn't great, and I give up.
 Then I move to another lecture:
 [MIT 6.006 Introduction to Algorithms, Fall 2011](https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V%5FF-5jb5L2iHb&index=1)
 
+More lectures on MIT website:
+<https://ocw.mit.edu/courses/find-by-topic/>
+
 
 ## About types {#about-types}
 

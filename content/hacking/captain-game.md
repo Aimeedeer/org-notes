@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [My hacklog](#my-hacklog)
+    - [2021-02-14](#2021-02-14)
     - [2021-02-13](#2021-02-13)
     - [2021-02-06](#2021-02-06)
     - [2021-02-04](#2021-02-04)
@@ -41,6 +42,116 @@ Captain game with Parity ink.
 ## My hacklog {#my-hacklog}
 
 
+### 2021-02-14 {#2021-02-14}
+
+Some differences between ink's doc and my terminal:
+
+[ink's doc](https://paritytech.github.io/ink-docs/cargo-contract-cli):
+
+```shell
+cargo-contract 0.8.0
+Utilities to develop Wasm smart contracts.
+
+USAGE:
+    cargo contract <SUBCOMMAND>
+
+OPTIONS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    new                  Setup and create a new smart contract project
+    build                Compiles the contract, generates metadata, bundles both together in a '.contract' file
+    check                Check that the code builds as Wasm; does not output any build artifact to the top level `target/` directory
+    test                 Test the smart contract off-chain
+    deploy               Upload the smart contract code to the chain
+    instantiate          Instantiate a deployed smart contract
+    help                 Prints this message or the help of the given subcommand(s)
+```
+
+My terminal:
+
+```shell
+$ cargo contract --version
+cargo-contract 0.8.0
+
+$ cargo contract --help
+cargo-contract 0.8.0
+Utilities to develop Wasm smart contracts
+
+USAGE:
+    cargo contract <SUBCOMMAND>
+
+OPTIONS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+SUBCOMMANDS:
+    new                  Setup and create a new smart contract project
+    build                Compiles the contract, generates metadata, bundles both together in a `<name>.contract`
+                         file
+    generate-metadata    Command has been deprecated, use `cargo contract build` instead
+    check                Check that the code builds as Wasm; does not output any build artifact to the top level
+                         `target/` directory
+    test                 Test the smart contract off-chain
+    help                 Prints this message or the help of the given subcommand(s)
+
+$ cargo contract deploy
+error: Found argument 'deploy' which wasn't expected, or isn't valid in this context
+
+USAGE:
+    cargo contract <SUBCOMMAND>
+
+For more information try --help
+```
+
+While there isn't a `upgrade` or `update` command, I installed it again:
+
+```shell
+$ cargo install cargo-contract --vers 0.8.0 --force --locked
+```
+
+But, `cargo contract --help` doesn't show me any differences.
+
+Gladly, I find something from GitHub:
+[cargo-contract](https://github.com/paritytech/cargo-contract)
+
+**[Features](https://github.com/paritytech/cargo-contract#features)**
+
+> The \`deploy\` and \`instantiate\` subcommands are ****disabled by default****, since they are not fully stable yet and increase the build time.
+>
+> If you want to try them, you need to enable the \`extrinsics\` feature:
+>
+> \`cargo install --git <https://github.com/paritytech/cargo-contract> cargo-contract --features extrinsics --force\`
+>
+> Once they are stable and the compilation time is acceptable, we will consider removing the \`extrinsics\` feature.
+
+I am trying but it doesn't work: it's broken, and Brian has submitted a PR to fix it.
+
+```shell
+$ cargo install --git https://github.com/paritytech/cargo-contract cargo-contract --features extrinsics --force
+
+...
+error: aborting due to 60 previous errors
+
+Some errors have detailed explanations: E0034, E0308.
+For more information about an error, try `rustc --explain E0034`.
+error: could not compile `bitvec`
+
+To learn more, run the command again with --verbose.
+warning: build failed, waiting for other jobs to finish...
+error: failed to compile `cargo-contract v0.8.0 (https://github.com/paritytech/cargo-contract#79dbcb65)`, intermediate artifacts can be found at `/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-installBtwvjf`
+
+Caused by:
+  build failed
+```
+
+Changes in the smart contract:
+I add more verification in the run-highest-level logic that
+prints congratulations and
+**do not** level\_up once the player's run\_level\_2 is succeeded.
+
+
 ### 2021-02-13 {#2021-02-13}
 
 Test with submit\_level and run\_level + level\_up after run\_level succeed:
@@ -62,7 +173,7 @@ Test with submit\_level and run\_level + level\_up after run\_level succeed:
 
 Now a player can submit (and run) programs up to 3 levels.
 
-I also add more `Debugging` log.
+I also add more `Debugging` log, and clean up the code.
 
 
 ### 2021-02-06 {#2021-02-06}
