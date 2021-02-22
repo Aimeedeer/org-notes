@@ -7,7 +7,7 @@ tags = ["rust", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2008
+  weight = 2009
   identifier = "learn-rust"
 +++
 
@@ -17,6 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [Rust language](#rust-language)
+- [main.rs and lib.rs](#main-dot-rs-and-lib-dot-rs)
 - [Copy and Clone in Rust](#copy-and-clone-in-rust)
 - [Rust discussion](#rust-discussion)
 - [Cargo bin](#cargo-bin)
@@ -59,6 +60,21 @@ they're probably a good enough choice to get started.
 > - Maps: HashMap, BTreeMap
 > - Sets: HashSet, BTreeSet
 > - Misc: BinaryHeap
+
+
+## main.rs and lib.rs {#main-dot-rs-and-lib-dot-rs}
+
+[Separation of Concerns for Binary Projects](https://doc.rust-lang.org/stable/book/ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects)
+> The responsibilities that remain in the `main` function after this process should be limited to the following:
+>
+> - Calling the command line parsing logic with the argument values
+> - Setting up any other configuration
+> - Calling a `run` function in lib.rs
+> - Handling the error if `run` returns an error
+
+> This pattern is about separating concerns: _main.rs_ handles running the program, and _lib.rs_ handles all the logic of the task at hand.
+
+My code example: <https://github.com/Aimeedeer/minigrep-rust-practice>
 
 
 ## Copy and Clone in Rust {#copy-and-clone-in-rust}

@@ -3772,6 +3772,21 @@ they're probably a good enough choice to get started.
 > - Sets: HashSet, BTreeSet
 > - Misc: BinaryHeap
 
+
+*** main.rs and lib.rs
+
+[[https://doc.rust-lang.org/stable/book/ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects][Separation of Concerns for Binary Projects]]
+> The responsibilities that remain in the ~main~ function after this process should be limited to the following:
+>
+> - Calling the command line parsing logic with the argument values
+> - Setting up any other configuration
+> - Calling a ~run~ function in lib.rs
+> - Handling the error if ~run~ returns an error
+
+> This pattern is about separating concerns: /main.rs/ handles running the program, and /lib.rs/ handles all the logic of the task at hand. 
+
+My code example: https://github.com/Aimeedeer/minigrep-rust-practice
+
 *** Copy and Clone in Rust
 
 [[https://doc.rust-lang.org/stable/book/ch04-01-what-is-ownership.html][What Is Ownership?]]
