@@ -7,7 +7,7 @@ tags = ["git", "emacs", "orgmode"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2006
+  weight = 2008
   identifier = "cheatsheet"
 +++
 
@@ -215,6 +215,12 @@ $ ssh -T git@github.com
 
 ```shell
 $ ssh-keygen -C your@email.com
+```
+
+Copy it to GitHub settings:
+
+```shell
+$ cat ~/.ssh/id_rsa.pub
 ```
 
 

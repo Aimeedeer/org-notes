@@ -26,6 +26,7 @@ draft = false
 RISCV:
 
 -   <https://github.com/riscv/riscv-gnu-toolchain>
+-   <https://github.com/riscv/riscv-bitmanip/blob/master/bitmanip-draft.pdf>
 
 CKB-VM:
 

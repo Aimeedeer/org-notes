@@ -31,7 +31,7 @@
 
 *** Day9
 
-A Vector of integer as input.
+wait
 
 *** Day8 
 
@@ -2285,6 +2285,7 @@ $ leo run
 
 RISCV:
 - https://github.com/riscv/riscv-gnu-toolchain
+- https://github.com/riscv/riscv-bitmanip/blob/master/bitmanip-draft.pdf
 
 CKB-VM:
 - https://github.com/nervosnetwork/ckb-vm
@@ -3594,7 +3595,6 @@ src_sh[:exports code]{echo -e "test"}
 
 *** Git commands
 
-
 **** Git tutorial
 
 https://github.com/git/git/blob/master/Documentation/gittutorial.txt
@@ -3719,6 +3719,12 @@ $ ssh -T git@github.com
 
 #+begin_src shell
 $ ssh-keygen -C your@email.com 
+#+end_src
+
+Copy it to GitHub settings:
+
+#+begin_src shell
+$ cat ~/.ssh/id_rsa.pub
 #+end_src
 
 **** Move a file to current
