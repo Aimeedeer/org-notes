@@ -74,7 +74,7 @@ they're probably a good enough choice to get started.
 
 > This pattern is about separating concerns: _main.rs_ handles running the program, and _lib.rs_ handles all the logic of the task at hand.
 
-My code example: <https://github.com/Aimeedeer/minigrep-rust-practice>
+Code example: <https://github.com/Aimeedeer/minigrep-rust-practice>
 
 
 ## Copy and Clone in Rust {#copy-and-clone-in-rust}
