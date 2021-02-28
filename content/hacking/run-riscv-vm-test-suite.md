@@ -18,6 +18,8 @@ draft = false
 
 - [Install RISCV toolchain](#install-riscv-toolchain)
 - [Run ckb-vm-test-suite](#run-ckb-vm-test-suite)
+- [Run Miri in CKB-VM](#run-miri-in-ckb-vm)
+- [Run Miri in CKB-VM-Test-Suite](#run-miri-in-ckb-vm-test-suite)
 - [References](#references)
 
 </div>
@@ -622,6 +624,230 @@ All tests are passed.
 ```shell
 + echo 'All tests are passed!'
 All tests are passed!
+```
+
+
+## Run Miri in CKB-VM {#run-miri-in-ckb-vm}
+
+[Miri](https://github.com/rust-lang/miri)
+
+```shell
+$ ck ckb-vm/
+$ cargo +nightly-2021-02-27 miri test
+```
+
+An error:
+
+```shell
+test bits::tests::rounddown_proptest ... error: unsupported operation: can't call foreign function: SecRandomCopyBytes
+```
+
+Go to file: `ckb-vm/src/bits.rs` and add `ignore` on this test:
+
+```rust
+#[test]
+#[cfg_attr(miri, ignore)] // can't call foreign function: SecRandomCopyBytes
+fn rounddown_proptest(x: u64, round in (0u32..16).prop_map(|d| 2u64.pow(d))) {
+    ...
+}
+```
+
+Then run Miri test again, we met the same error on another test:
+
+```shell
+test bits::tests::roundup_proptest ... error: unsupported operation: can't call foreign function: SecRandomCopyBytes
+```
+
+Add `igore` to this test too:
+
+```rust
+#[test]
+#[cfg_attr(miri, ignore)] // can't call foreign function: SecRandomCopyBytes
+fn roundup_proptest(x: u64, round in (0u32..16).prop_map(|d| 2u64.pow(d))) {
+    ...
+}
+```
+
+Run Miri, and it comes to a new error:
+
+```shell
+test test_minimal_with_a ... error: unsupported operation: `open` not available when isolation is enabled
+```
+
+So we add `MIRIFLAGS` to the command:
+
+```shell
+$ MIRIFLAGS="-Zmiri-disable-isolation" cargo +nightly-2021-02-27 miri test
+```
+
+It seems to work now.
+While Miri is still running, the terminal stops showing updates.
+I killed the process and `ignore` that slow test:
+
+```shell
+running 15 tests
+test test_andi ... ok
+test test_custom_syscall ... ok
+test test_ebreak ... ok
+test test_flat_crash_64 ... ok
+test test_invalid_file_offset64 ... ok
+test test_jump0 ... ok
+test test_load_elf_crash_64 ... ok
+test test_misaligned_jump64 ... ok
+test test_mulw64 ... ok
+test test_nop ... ok
+test test_op_rvc_slli_crash_32 ... ^C
+```
+
+file: `ckb-vm/tests/test_misc.rs`:
+
+```rust
+#[test]
+#[cfg_attr(miri, ignore)] // too slow
+pub fn test_op_rvc_slli_crash_32() {
+    ...
+}
+```
+
+Run Miri, and it works!
+
+```shell
+warning: field is never read: `length`
+  --> src/machine/trace.rs:27:5
+   |
+27 |     length: usize,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+   Compiling ckb-vm v0.19.1 (/<my_path>/ckb-vm)
+    Finished test [unoptimized + debuginfo] target(s) in 0.11s
+     Running target/x86_64-apple-darwin/debug/deps/ckb_vm-80e7329f0b933349
+warning: field is never read: `length`
+  --> src/machine/trace.rs:27:5
+   |
+27 |     length: usize,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+
+running 8 tests
+test bits::tests::rounddown_proptest ... ignored
+test bits::tests::roundup_proptest ... ignored
+test bits::tests::test_rounddown ... ok
+test bits::tests::test_roundup ... ok
+test instructions::tests::test_instruction_op_should_fit_in_byte ... ok
+test machine::trace::tests::test_trace_constant_rules ... ok
+test tests::test_max_memory_must_be_multiple_of_pages ... ok
+test tests::test_page_size_be_power_of_2 ... ok
+
+test result: ok. 6 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_aot-7aefc093a57a98fc
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_asm-e2bfafc75bcc9e0b
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_minimal-d814a02b230c10cc
+
+running 3 tests
+test test_minimal_with_a ... ok
+test test_minimal_with_b ... ok
+test test_minimal_with_no_args ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_misc-53e72b596dcaadc0
+
+running 15 tests
+test test_andi ... ok
+test test_custom_syscall ... ok
+test test_ebreak ... ok
+test test_flat_crash_64 ... ok
+test test_invalid_file_offset64 ... ok
+test test_jump0 ... ok
+test test_load_elf_crash_64 ... ok
+test test_misaligned_jump64 ... ok
+test test_mulw64 ... ok
+test test_nop ... ok
+test test_op_rvc_slli_crash_32 ... ^C
+```
+
+
+## Run Miri in CKB-VM-Test-Suite {#run-miri-in-ckb-vm-test-suite}
+
+Direct to `ckb-vm-test-suite` folder, and change `test.sh` scripts:
+
+```shell
+# Test Rust code with Miri
+# TODO: find the general command for both macOS and Linux
+# Remove `-E` to run on Linux
+for i in $(find  -E . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i"); do
+    echo hello_miri_32
+    MIRIFLAGS="-Zmiri-disable-isolation" cargo +nightly-2021-02-27 miri run --manifest-path="../binary/Cargo.toml" --bin interpreter32 -- $i
+done
+
+for i in $(find -E . -regex ".*/rv64u[imc]-u-[a-z0-9_]+" | grep -v "fence_i"); do
+    echo hello_miri_64
+    MIRIFLAGS="-Zmiri-disable-isolation" cargo +nightly-2021-02-27 miri run --manifest-path="../binary/Cargo.toml" --bin interpreter64 -- $i
+done
+```
+
+Run `test.sh`:
+
+```shell
+$ ./test.sh
+
+++ find -E . -regex '.*/rv32u[imc]-u-[a-z0-9_]+'
+++ grep -v fence_i
++ for i in '$(find  -E . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i")'
++ echo hello_miri_32 # interpreter32
+hello_miri_32
++ MIRIFLAGS=-Zmiri-disable-isolation
++ cargo +nightly-2021-02-27 miri run --manifest-path=../binary/Cargo.toml --bin interpreter32 -- ./isa/rv32ui-u-sub
+warning: field is never read: `length`
+  --> /<my_path>/ckb-vm-test-suite/ckb-vm/src/machine/trace.rs:27:5
+   |
+27 |     length: usize,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.35s
+     Running `/<my_path>/.rustup/toolchains/nightly-2021-02-27-x86_64-apple-darwin/bin/cargo-miri /<my_path>/ckb-vm-test-suite/binary/target/x86_64-apple-darwin/debug/interpreter32 ./isa/rv32ui-u-sub`
++ for i in '$(find  -E . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i")'
++ echo hello_miri_32
+hello_miri_32
++ MIRIFLAGS=-Zmiri-disable-isolation
++ cargo +nightly-2021-02-27 miri run --manifest-path=../binary/Cargo.toml --bin interpreter32 -- ./isa/rv32ui-u-slti
+
+...
+
+++ find -E . -regex '.*/rv64u[imc]-u-[a-z0-9_]+'
+++ grep -v fence_i
++ for i in '$(find -E . -regex ".*/rv64u[imc]-u-[a-z0-9_]+" | grep -v "fence_i")'
++ echo hello_miri_64 # interpreter64
+hello_miri_64
++ MIRIFLAGS=-Zmiri-disable-isolation
++ cargo +nightly-2021-02-27 miri run --manifest-path=../binary/Cargo.toml --bin interpreter64 -- ./isa/rv64ui-u-sltiu
+
+...
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.03s
+     Running `/Users/aimeez/.rustup/toolchains/nightly-2021-02-27-x86_64-apple-darwin/bin/cargo-miri /Users/aimeez/github/ckb-vm-test-suite/binary/target/x86_64-apple-darwin/debug/interpreter64 ./isa/rv64um-u-mul`
++ exit
 ```
 
 

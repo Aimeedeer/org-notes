@@ -555,7 +555,7 @@ We can't use `String` directly.
 ```shell
    Compiling game v0.1.0 (/private/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_GdJJAl)
 error[E0412]: cannot find type `String` in this scope
-  --> /Users/aimeez/github/contract-game/src/game/lib.rs:49:51
+  --> /<my_path>/contract-game/src/game/lib.rs:49:51
    |
 49 |     pub fn create_game_account(&mut self, role_name: String) -> Result<(), Error> {
    |                                                      ^^^^^^ not found in this scope

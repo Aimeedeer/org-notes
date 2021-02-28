@@ -301,15 +301,6 @@ Captain game with Parity ink.
 
 *** My hacklog
 
-**** 2021-02-16
-
-Today, I want to write scripts for the deploy-test workflow.
-I know nothing about how to do it currently.
-
-
-
-
-
 **** 2021-02-14
 
 Some differences between ink's doc and my terminal:
@@ -805,7 +796,7 @@ We can't use ~String~ directly.
 #+begin_src shell
    Compiling game v0.1.0 (/private/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_GdJJAl)
 error[E0412]: cannot find type `String` in this scope
-  --> /Users/aimeez/github/contract-game/src/game/lib.rs:49:51
+  --> /<my_path>/contract-game/src/game/lib.rs:49:51
    |
 49 |     pub fn create_game_account(&mut self, role_name: String) -> Result<(), Error> {
    |                                                      ^^^^^^ not found in this scope
@@ -1567,9 +1558,9 @@ I start another terminal window for the node:
 
 #+begin_src shell
 $ dfx start
-Jan 27 16:01:01.798 INFO ic-starter. Configuration: ValidatedConfig { replica_path: Some("/Users/aimeez/.cache/dfinity/versions/0.6.20/replica"), replica_version: "0.1.0", log_level: Warning, subnet_id: fscpm-uiaaa-aaaaa-aaaap-yai, cargo_bin: "cargo", cargo_opts: "", state_dir: "/<my_path>/tba/.dfx/state/replicated_state", http_listen_addr: V4(127.0.0.1:0), http_port_file: Some("/<my_path>/tba/.dfx/replica-configuration/replica-1.port"), metrics_addr: None, hypervisor_create_funds_whitelist: "*", artifact_pool_dir: "/<my_path>/tba/.dfx/state/replicated_state/node-100/ic_consensus_pool", crypto_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/crypto", state_manager_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/state", registry_file: "/<my_path>/tba/.dfx/state/replicated_state/registry.proto", bootstrap_registry: None, state_dir_holder: None }, Application: starter
+Jan 27 16:01:01.798 INFO ic-starter. Configuration: ValidatedConfig { replica_path: Some("/<my_path>/.cache/dfinity/versions/0.6.20/replica"), replica_version: "0.1.0", log_level: Warning, subnet_id: fscpm-uiaaa-aaaaa-aaaap-yai, cargo_bin: "cargo", cargo_opts: "", state_dir: "/<my_path>/tba/.dfx/state/replicated_state", http_listen_addr: V4(127.0.0.1:0), http_port_file: Some("/<my_path>/tba/.dfx/replica-configuration/replica-1.port"), metrics_addr: None, hypervisor_create_funds_whitelist: "*", artifact_pool_dir: "/<my_path>/tba/.dfx/state/replicated_state/node-100/ic_consensus_pool", crypto_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/crypto", state_manager_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/state", registry_file: "/<my_path>/tba/.dfx/state/replicated_state/registry.proto", bootstrap_registry: None, state_dir_holder: None }, Application: starter
 Jan 27 16:01:01.799 INFO Initialize replica configuration "/<my_path>/tba/.dfx/state/replicated_state/ic.json5", Application: starter
-Jan 27 16:01:01.816 INFO Executing "/Users/aimeez/.cache/dfinity/versions/0.6.20/replica" "--replica-version" "0.1.0" "--config-file" "/<my_path>/tba/.dfx/state/replicated_state/ic.json5", Application: starter
+Jan 27 16:01:01.816 INFO Executing "/<my_path>/.cache/dfinity/versions/0.6.20/replica" "--replica-version" "0.1.0" "--config-file" "/<my_path>/tba/.dfx/state/replicated_state/ic.json5", Application: starter
 Jan 27 16:01:06.664 ERRO s:fscpm-uiaaa-aaaaa-aaaap-yai/n:owpmo-ykels-vijqd-6ql2q-gklnb-6oii4-2zkce-54jdn-vt7ob-hrn7h-hae/ic_messaging/xnet_endpoint No XNet configuration for node owpmo-ykels-vijqd-6ql2q-gklnb-6oii4-2zkce-54jdn-vt7ob-hrn7h-hae. This is an error in production, but may be ignored in single-subnet test deployments.
 Jan 27 16:01:07.671 WARN s:fscpm-uiaaa-aaaaa-aaaap-yai/n:owpmo-ykels-vijqd-6ql2q-gklnb-6oii4-2zkce-54jdn-vt7ob-hrn7h-hae/ic_http_handler/ic_http_handler NNS subnet not found in network topology. Skipping fetching the delegation.
 Starting webserver on port 61644 for replica at "http://localhost:61644"
@@ -1744,7 +1735,7 @@ The error messages are:
 $ dfx build
 Building canisters...
 Building frontend...
-The build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: The command '"/Users/aimeez/.cache/dfinity/versions/0.6.20/moc" "/<my_path>/tba/src/tba/main.mo" "-o" "/<my_path>/tba/.dfx/local/canisters/tba/tba.did" "--idl" "--actor-idl" "/<my_path>/tba/.dfx/local/canisters/idl/" "--actor-alias" "tba" "rwlgt-iiaaa-aaaaa-aaaaa-cai" "--actor-alias" "tba_assets" "rrkah-fqaaa-aaaaa-aaaaq-cai" "--package" "base" "/Users/aimeez/.cache/dfinity/versions/0.6.20/base"' failed with exit status 'exit code: 1'.
+The build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: The command '"/<my_path>/.cache/dfinity/versions/0.6.20/moc" "/<my_path>/tba/src/tba/main.mo" "-o" "/<my_path>/tba/.dfx/local/canisters/tba/tba.did" "--idl" "--actor-idl" "/<my_path>/tba/.dfx/local/canisters/idl/" "--actor-alias" "tba" "rwlgt-iiaaa-aaaaa-aaaaa-cai" "--actor-alias" "tba_assets" "rrkah-fqaaa-aaaaa-aaaaq-cai" "--package" "base" "/<my_path>/.cache/dfinity/versions/0.6.20/base"' failed with exit status 'exit code: 1'.
 Stdout:
 
 Stderr:
@@ -2104,7 +2095,7 @@ $ cargo install aleo
   ...
    Compiling aleo v0.2.0
     Finished release [optimized] target(s) in 3m 50s
-  Installing /Users/aimeez/.cargo/bin/aleo                                       Installed package `aleo v0.2.0` (executable `aleo`)
+  Installing /<my_path>/.cargo/bin/aleo                                       Installed package `aleo v0.2.0` (executable `aleo`)
 
 $ aleo
 aleo 0.2.0
@@ -2881,6 +2872,230 @@ All tests are passed.
 All tests are passed!
 #+end_src
 
+
+*** Run Miri in CKB-VM
+
+[[https://github.com/rust-lang/miri][Miri]]
+
+#+begin_src shell
+$ ck ckb-vm/
+$ cargo +nightly-2021-02-27 miri test
+#+end_src
+
+An error:
+
+#+begin_src shell
+test bits::tests::rounddown_proptest ... error: unsupported operation: can't call foreign function: SecRandomCopyBytes
+#+end_src
+
+Go to file: ~ckb-vm/src/bits.rs~ and add ~ignore~ on this test:
+
+#+begin_src rust
+#[test]
+#[cfg_attr(miri, ignore)] // can't call foreign function: SecRandomCopyBytes
+fn rounddown_proptest(x: u64, round in (0u32..16).prop_map(|d| 2u64.pow(d))) {
+    ...
+}
+#+end_src
+
+Then run Miri test again, we met the same error on another test:
+
+#+begin_src shell
+test bits::tests::roundup_proptest ... error: unsupported operation: can't call foreign function: SecRandomCopyBytes
+#+end_src
+
+Add ~igore~ to this test too:
+
+#+begin_src rust
+#[test]
+#[cfg_attr(miri, ignore)] // can't call foreign function: SecRandomCopyBytes
+fn roundup_proptest(x: u64, round in (0u32..16).prop_map(|d| 2u64.pow(d))) {
+    ...
+}
+#+end_src
+
+Run Miri, and it comes to a new error:
+
+#+begin_src shell
+test test_minimal_with_a ... error: unsupported operation: `open` not available when isolation is enabled
+#+end_src
+
+So we add ~MIRIFLAGS~ to the command:
+
+#+begin_src shell
+$ MIRIFLAGS="-Zmiri-disable-isolation" cargo +nightly-2021-02-27 miri test
+#+end_src
+
+It seems to work now.
+While Miri is still running, the terminal stops showing updates.
+I killed the process and ~ignore~ that slow test:
+
+#+begin_src shell
+running 15 tests
+test test_andi ... ok
+test test_custom_syscall ... ok
+test test_ebreak ... ok
+test test_flat_crash_64 ... ok
+test test_invalid_file_offset64 ... ok
+test test_jump0 ... ok
+test test_load_elf_crash_64 ... ok
+test test_misaligned_jump64 ... ok
+test test_mulw64 ... ok
+test test_nop ... ok
+test test_op_rvc_slli_crash_32 ... ^C
+#+end_src
+
+file: ~ckb-vm/tests/test_misc.rs~:
+
+#+begin_src rust
+#[test]
+#[cfg_attr(miri, ignore)] // too slow
+pub fn test_op_rvc_slli_crash_32() {
+    ...
+}
+#+end_src
+
+Run Miri, and it works!
+
+#+begin_src shell
+warning: field is never read: `length`
+  --> src/machine/trace.rs:27:5
+   |
+27 |     length: usize,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+   Compiling ckb-vm v0.19.1 (/<my_path>/ckb-vm)
+    Finished test [unoptimized + debuginfo] target(s) in 0.11s
+     Running target/x86_64-apple-darwin/debug/deps/ckb_vm-80e7329f0b933349
+warning: field is never read: `length`
+  --> src/machine/trace.rs:27:5
+   |
+27 |     length: usize,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+
+running 8 tests
+test bits::tests::rounddown_proptest ... ignored
+test bits::tests::roundup_proptest ... ignored
+test bits::tests::test_rounddown ... ok
+test bits::tests::test_roundup ... ok
+test instructions::tests::test_instruction_op_should_fit_in_byte ... ok
+test machine::trace::tests::test_trace_constant_rules ... ok
+test tests::test_max_memory_must_be_multiple_of_pages ... ok
+test tests::test_page_size_be_power_of_2 ... ok
+
+test result: ok. 6 passed; 0 failed; 2 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_aot-7aefc093a57a98fc
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_asm-e2bfafc75bcc9e0b
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_minimal-d814a02b230c10cc
+
+running 3 tests
+test test_minimal_with_a ... ok
+test test_minimal_with_b ... ok
+test test_minimal_with_no_args ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+     Running target/x86_64-apple-darwin/debug/deps/test_misc-53e72b596dcaadc0
+
+running 15 tests
+test test_andi ... ok
+test test_custom_syscall ... ok
+test test_ebreak ... ok
+test test_flat_crash_64 ... ok
+test test_invalid_file_offset64 ... ok
+test test_jump0 ... ok
+test test_load_elf_crash_64 ... ok
+test test_misaligned_jump64 ... ok
+test test_mulw64 ... ok
+test test_nop ... ok
+test test_op_rvc_slli_crash_32 ... ^C
+#+end_src
+
+*** Run Miri in CKB-VM-Test-Suite
+
+Direct to ~ckb-vm-test-suite~ folder, and change ~test.sh~ scripts:
+
+#+begin_src shell
+# Test Rust code with Miri
+# TODO: find the general command for both macOS and Linux
+# Remove `-E` to run on Linux
+for i in $(find  -E . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i"); do
+    echo hello_miri_32
+    MIRIFLAGS="-Zmiri-disable-isolation" cargo +nightly-2021-02-27 miri run --manifest-path="../binary/Cargo.toml" --bin interpreter32 -- $i
+done
+
+for i in $(find -E . -regex ".*/rv64u[imc]-u-[a-z0-9_]+" | grep -v "fence_i"); do
+    echo hello_miri_64
+    MIRIFLAGS="-Zmiri-disable-isolation" cargo +nightly-2021-02-27 miri run --manifest-path="../binary/Cargo.toml" --bin interpreter64 -- $i
+done
+#+end_src
+
+Run ~test.sh~:
+
+#+begin_src shell
+$ ./test.sh 
+
+++ find -E . -regex '.*/rv32u[imc]-u-[a-z0-9_]+'
+++ grep -v fence_i
++ for i in '$(find  -E . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i")'
++ echo hello_miri_32 # interpreter32
+hello_miri_32
++ MIRIFLAGS=-Zmiri-disable-isolation
++ cargo +nightly-2021-02-27 miri run --manifest-path=../binary/Cargo.toml --bin interpreter32 -- ./isa/rv32ui-u-sub
+warning: field is never read: `length`
+  --> /<my_path>/ckb-vm-test-suite/ckb-vm/src/machine/trace.rs:27:5
+   |
+27 |     length: usize,
+   |     ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.35s
+     Running `/<my_path>/.rustup/toolchains/nightly-2021-02-27-x86_64-apple-darwin/bin/cargo-miri /<my_path>/ckb-vm-test-suite/binary/target/x86_64-apple-darwin/debug/interpreter32 ./isa/rv32ui-u-sub`
++ for i in '$(find  -E . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i")'
++ echo hello_miri_32
+hello_miri_32
++ MIRIFLAGS=-Zmiri-disable-isolation
++ cargo +nightly-2021-02-27 miri run --manifest-path=../binary/Cargo.toml --bin interpreter32 -- ./isa/rv32ui-u-slti
+
+...
+
+++ find -E . -regex '.*/rv64u[imc]-u-[a-z0-9_]+'
+++ grep -v fence_i
++ for i in '$(find -E . -regex ".*/rv64u[imc]-u-[a-z0-9_]+" | grep -v "fence_i")'
++ echo hello_miri_64 # interpreter64
+hello_miri_64
++ MIRIFLAGS=-Zmiri-disable-isolation
++ cargo +nightly-2021-02-27 miri run --manifest-path=../binary/Cargo.toml --bin interpreter64 -- ./isa/rv64ui-u-sltiu
+
+...
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.03s
+     Running `/Users/aimeez/.rustup/toolchains/nightly-2021-02-27-x86_64-apple-darwin/bin/cargo-miri /Users/aimeez/github/ckb-vm-test-suite/binary/target/x86_64-apple-darwin/debug/interpreter64 ./isa/rv64um-u-mul`
++ exit
+#+end_src
+
+
 *** References
 
 - [[https://gist.github.com/dixson3/8360571][dixson3/workspace.sh]]
@@ -3005,7 +3220,7 @@ $ cargo contract build && cargo contract generate-metadata
  [1/3] Building cargo project
    Compiling mytest v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_p7eKiU)
 error[E0412]: cannot find type `String` in this scope
-  --> /Users/aimeez/github/mytest/lib.rs:11:16
+  --> /<my_path>/mytest/lib.rs:11:16
    |
 11 |         value: String,
    |                ^^^^^^ not found in this scope
@@ -3077,7 +3292,7 @@ reduce the size of your contract's Wasm binary.
 See https://github.com/WebAssembly/binaryen#tools
 	
 Your contract is ready. You can find it here:
-/Users/aimeez/github/mytest/target/mytest.wasm
+/<my_path>/mytest/target/mytest.wasm
   Generating metadata
  [1/3] Building cargo project
     Finished release [optimized] target(s) in 0.06s
@@ -3092,7 +3307,7 @@ See https://github.com/WebAssembly/binaryen#tools
      Running `target/release/metadata-gen`
 	Your metadata file is ready.
 You can find it here:
-/Users/aimeez/github/mytest/target/metadata.json
+/<my_path>/mytest/target/metadata.json
 #+end_src
 
 I want to deploy this contract that we need to run a Canvas node.
@@ -3169,14 +3384,14 @@ See https://github.com/WebAssembly/binaryen#tools
 $ cargo expand --no-default-features
 # Compiling...
 error: ink! only support compilation as `std` or `no_std` + `wasm32-unknown`
-  --> /Users/aimeez/.cargo/registry/src/github.com-1ecc6299db9ec823/ink_env-3.0.0-rc2/src/engine/mod.rs:39:9
+  --> /<my_path>/.cargo/registry/src/github.com-1ecc6299db9ec823/ink_env-3.0.0-rc2/src/engine/mod.rs:39:9
    |
 39 | /         compile_error! {
 40 | |             "ink! only support compilation as `std` or `no_std` + `wasm32-unknown`"
 41 | |         }
    | |_________^
 error[E0432]: unresolved import `crate::engine::EnvInstance`
-  --> /Users/aimeez/.cargo/registry/src/github.com-1ecc6299db9ec823/ink_env-3.0.0-rc2/src/api.rs:29:9
+  --> /<my_path>/.cargo/registry/src/github.com-1ecc6299db9ec823/ink_env-3.0.0-rc2/src/api.rs:29:9
    |
 29 |         EnvInstance,
    |         ^^^^^^^^^^^
@@ -3351,14 +3566,14 @@ to use ~cargo install~ and ~cargo build~ correctly with necessary arguments.
 
 #+begin_src shell
 $ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
-error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
+error: failed to run custom build command for `node-template-runtime v2.0.0 (/<my_path>/substrate-node-template/runtime)`
 
 Caused by:
-  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
+  process didn't exit successfully: `/<my_path>/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
   --- stderr
-     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
+     Compiling wasm-build-runner-impl v1.0.0 (/<my_path>/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
       Finished release [optimized] target(s) in 0.54s
-       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
+       Running `/<my_path>/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
   Rust nightly not installed, please install it!
 warning: build failed, waiting for other jobs to finish...
 error: build failed
@@ -3371,14 +3586,14 @@ $ rustup toolchain install nightly-2020-10-05
 
 $ WASM_BUILD_TOOLCHAIN=nightly-2020-10-05 cargo build --release
 
-error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
+error: failed to run custom build command for `node-template-runtime v2.0.0 (/<my_path>/substrate-node-template/runtime)`
 
 Caused by:
-  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
+  process didn't exit successfully: `/<my_path>/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
   --- stderr
-     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
+     Compiling wasm-build-runner-impl v1.0.0 (/<my_path>/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
       Finished release [optimized] target(s) in 0.39s
-       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
+       Running `/<my_path>/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
   Rust WASM toolchain not installed, please install it!
 
   Further error information:
@@ -3405,17 +3620,17 @@ error: build failed
 #+begin_src shell
 $ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-05
 
-error: failed to run custom build command for `node-template-runtime v2.0.0 (/Users/aimeez/github/substrate-node-template/runtime)`
+error: failed to run custom build command for `node-template-runtime v2.0.0 (/<my_path>/substrate-node-template/runtime)`
 
 Caused by:
-  process didn't exit successfully: `/Users/aimeez/github/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
+  process didn't exit successfully: `/<my_path>/substrate-node-template/target/release/build/node-template-runtime-329be64dd2778179/build-script-build` (exit code: 1)
   --- stdout
-  Executing build command: "/Users/aimeez/.rustup/toolchains/nightly-x86_64-apple-darwin/bin/cargo" "rustc" "--target=wasm32-unknown-unknown" "--manifest-path=/Users/aimeez/github/substrate-node-template/target/release/wbuild/node-template-runtime/Cargo.toml" "--color=always" "--release"
+  Executing build command: "/<my_path>/.rustup/toolchains/nightly-x86_64-apple-darwin/bin/cargo" "rustc" "--target=wasm32-unknown-unknown" "--manifest-path=/<my_path>/substrate-node-template/target/release/wbuild/node-template-runtime/Cargo.toml" "--color=always" "--release"
 
   --- stderr
-     Compiling wasm-build-runner-impl v1.0.0 (/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
+     Compiling wasm-build-runner-impl v1.0.0 (/<my_path>/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701)
       Finished release [optimized] target(s) in 0.45s
-       Running `/Users/aimeez/github/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
+       Running `/<my_path>/substrate-node-template/target/release/wbuild-runner/node-template-runtime3117747485089870701/target/x86_64-apple-darwin/release/wasm-build-runner-impl`
      Compiling sp-arithmetic v2.0.0
      Compiling sp-runtime-interface v2.0.0
      Compiling parity-util-mem v0.7.0
@@ -3822,7 +4037,7 @@ Rust weaknesses:
 
 #+begin_src shell
 $ ~/.cargo/bin
--bash: /Users/aimeez/.cargo/bin: is a directory
+-bash: /<my_path>/.cargo/bin: is a directory
 
 $ cd ~/.cargo/bin
 $ ls
@@ -3836,7 +4051,7 @@ cargo-fmt		cargo-web		rust-gdb		simple-http-server
 cargo-fuzz		clippy-driver		rust-lldb		sslocal
 
 $ which cargo
-/Users/aimeez/.cargo/bin/cargo
+/<my_path>/.cargo/bin/cargo
 
 $ ls -lh
 total 496760

@@ -7,7 +7,7 @@ tags = ["rust", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2009
+  weight = 2008
   identifier = "learn-rust"
 +++
 
@@ -112,7 +112,7 @@ Rust weaknesses:
 
 ```shell
 $ ~/.cargo/bin
--bash: /Users/aimeez/.cargo/bin: is a directory
+-bash: /<my_path>/.cargo/bin: is a directory
 
 $ cd ~/.cargo/bin
 $ ls
@@ -126,7 +126,7 @@ cargo-fmt		cargo-web		rust-gdb		simple-http-server
 cargo-fuzz		clippy-driver		rust-lldb		sslocal
 
 $ which cargo
-/Users/aimeez/.cargo/bin/cargo
+/<my_path>/.cargo/bin/cargo
 
 $ ls -lh
 total 496760

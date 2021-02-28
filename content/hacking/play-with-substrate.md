@@ -7,7 +7,7 @@ tags = ["rust", "substrate", "blockchain"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2003
+  weight = 2006
   identifier = "play-with-substrate"
 +++
 
@@ -144,7 +144,7 @@ $ cargo contract build && cargo contract generate-metadata
  [1/3] Building cargo project
    Compiling mytest v0.1.0 (/var/folders/g5/hf7q78jn0vngnqtqj_3qfm6r0000gn/T/cargo-contract_p7eKiU)
 error[E0412]: cannot find type `String` in this scope
-  --> /Users/aimeez/github/mytest/lib.rs:11:16
+  --> /<my_path>/mytest/lib.rs:11:16
    |
 11 |         value: String,
    |                ^^^^^^ not found in this scope
@@ -197,7 +197,7 @@ mod mytest {
 
     #[ink(storage)]
     pub struct Mytest {
-	value: String,
+        value: String,
     }
 
     impl Mytest {
@@ -349,76 +349,76 @@ extern crate compiler_builtins;
 use ink_lang as ink;
 mod flipper {
     impl ::ink_lang::ContractEnv for Flipper {
-	type Env = ::ink_env::DefaultEnvironment;
+        type Env = ::ink_env::DefaultEnvironment;
     }
     type Environment = <Flipper as ::ink_lang::ContractEnv>::Env;
     type AccountId =
-	<<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::AccountId;
+        <<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::AccountId;
     type Balance = <<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::Balance;
     type Hash = <<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::Hash;
     type Timestamp =
-	<<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::Timestamp;
+        <<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::Timestamp;
     type BlockNumber =
-	<<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::BlockNumber;
+        <<Flipper as ::ink_lang::ContractEnv>::Env as ::ink_env::Environment>::BlockNumber;
     #[cfg(not(feature = "ink-as-dependency"))]
     const _: () = {
-	impl<'a> ::ink_lang::Env for &'a Flipper {
-	    type EnvAccess = ::ink_lang::EnvAccess<'a, <Flipper as ::ink_lang::ContractEnv>::Env>;
-	    fn env(self) -> Self::EnvAccess {
-		Default::default()
-	    }
-	}
-	impl<'a> ::ink_lang::StaticEnv for Flipper {
-	    type EnvAccess =
-		::ink_lang::EnvAccess<'static, <Flipper as ::ink_lang::ContractEnv>::Env>;
-	    fn env() -> Self::EnvAccess {
-		Default::default()
-	    }
-	}
+        impl<'a> ::ink_lang::Env for &'a Flipper {
+            type EnvAccess = ::ink_lang::EnvAccess<'a, <Flipper as ::ink_lang::ContractEnv>::Env>;
+            fn env(self) -> Self::EnvAccess {
+                Default::default()
+            }
+        }
+        impl<'a> ::ink_lang::StaticEnv for Flipper {
+            type EnvAccess =
+                ::ink_lang::EnvAccess<'static, <Flipper as ::ink_lang::ContractEnv>::Env>;
+            fn env() -> Self::EnvAccess {
+                Default::default()
+            }
+        }
     };
     #[cfg(not(feature = "ink-as-dependency"))]
     /// Defines the storage of your contract.
     /// Add new fields to the below struct in order
     /// to add new static storage fields to your contract.
     pub struct Flipper {
-	/// Stores a single `bool` value on the storage.
-	value: bool,
+        /// Stores a single `bool` value on the storage.
+        value: bool,
     }
     const _: () = {
-	impl ::ink_storage::traits::SpreadLayout for Flipper {
-	    #[allow(unused_comparisons)]
-	    const FOOTPRINT: u64 = [
-		(0u64 + <bool as ::ink_storage::traits::SpreadLayout>::FOOTPRINT),
-		0u64,
-	    ][((0u64 + <bool as ::ink_storage::traits::SpreadLayout>::FOOTPRINT) < 0u64) as usize];
-	    const REQUIRES_DEEP_CLEAN_UP: bool = (false
-		|| (false
-		    || <bool as ::ink_storage::traits::SpreadLayout>::REQUIRES_DEEP_CLEAN_UP));
-	    fn pull_spread(__key_ptr: &mut ::ink_storage::traits::KeyPtr) -> Self {
-		Flipper {
-		    value: <bool as ::ink_storage::traits::SpreadLayout>::pull_spread(__key_ptr),
-		}
-	    }
-	    fn push_spread(&self, __key_ptr: &mut ::ink_storage::traits::KeyPtr) {
-		match self {
-		    Flipper { value: __binding_0 } => {
-			::ink_storage::traits::SpreadLayout::push_spread(__binding_0, __key_ptr);
-		    }
-		}
-	    }
-	    fn clear_spread(&self, __key_ptr: &mut ::ink_storage::traits::KeyPtr) {
-		match self {
-		    Flipper { value: __binding_0 } => {
-			::ink_storage::traits::SpreadLayout::clear_spread(__binding_0, __key_ptr);
-		    }
-		}
-	    }
-	}
+        impl ::ink_storage::traits::SpreadLayout for Flipper {
+            #[allow(unused_comparisons)]
+            const FOOTPRINT: u64 = [
+                (0u64 + <bool as ::ink_storage::traits::SpreadLayout>::FOOTPRINT),
+                0u64,
+            ][((0u64 + <bool as ::ink_storage::traits::SpreadLayout>::FOOTPRINT) < 0u64) as usize];
+            const REQUIRES_DEEP_CLEAN_UP: bool = (false
+                || (false
+                    || <bool as ::ink_storage::traits::SpreadLayout>::REQUIRES_DEEP_CLEAN_UP));
+            fn pull_spread(__key_ptr: &mut ::ink_storage::traits::KeyPtr) -> Self {
+                Flipper {
+                    value: <bool as ::ink_storage::traits::SpreadLayout>::pull_spread(__key_ptr),
+                }
+            }
+            fn push_spread(&self, __key_ptr: &mut ::ink_storage::traits::KeyPtr) {
+                match self {
+                    Flipper { value: __binding_0 } => {
+                        ::ink_storage::traits::SpreadLayout::push_spread(__binding_0, __key_ptr);
+                    }
+                }
+            }
+            fn clear_spread(&self, __key_ptr: &mut ::ink_storage::traits::KeyPtr) {
+                match self {
+                    Flipper { value: __binding_0 } => {
+                        ::ink_storage::traits::SpreadLayout::clear_spread(__binding_0, __key_ptr);
+                    }
+                }
+            }
+        }
     };
     #[cfg(not(feature = "ink-as-dependency"))]
     const _: () = {
-	#[allow(unused_imports)]
-	use ::ink_lang::{Env as _, StaticEnv as _};
+        #[allow(unused_imports)]
+        use ::ink_lang::{Env as _, StaticEnv as _};
     };
     #[cfg(not(test))]
     #[cfg(not(feature = "ink-as-dependency"))]
