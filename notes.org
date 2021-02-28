@@ -3811,6 +3811,14 @@ src_sh[:exports code]{echo -e "test"}
 
 *** Git commands
 
+**** Change the default editor for terminal
+
+Use Emacs instead of Vim as the default editor for opening a file in terminal:
+
+#+begin_src shell
+$ export EDITOR=emacs
+#+end_src
+
 **** Git tutorial
 
 https://github.com/git/git/blob/master/Documentation/gittutorial.txt
