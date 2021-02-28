@@ -2270,17 +2270,9 @@ $ leo run
 :EXPORT_FILE_NAME: run-riscv-vm-test-suite
 :EXPORT_DATE: 2021-02-20
 :EXPORT_HUGO_SECTION: hacking
-:EXPORT_DESCRIPTION: Nervos CKB-VM, a RISCV VM.
+:EXPORT_DESCRIPTION: Run and test CKB-VM, a RISCV virtual machine that runs on Nervos CKB.
 :EXPORT_OPTIONS: toc:2
 :END:
-
-RISCV:
-- https://github.com/riscv/riscv-gnu-toolchain
-- https://github.com/riscv/riscv-bitmanip/blob/master/bitmanip-draft.pdf
-
-CKB-VM:
-- https://github.com/nervosnetwork/ckb-vm
-- https://github.com/nervosnetwork/ckb-vm-test-suite
 
 *** Install RISCV toolchain
 
@@ -3098,6 +3090,15 @@ hello_miri_64
 
 *** References
 
+RISCV:
+- https://github.com/riscv/riscv-gnu-toolchain
+- https://github.com/riscv/riscv-bitmanip/blob/master/bitmanip-draft.pdf
+
+CKB-VM:
+- https://github.com/nervosnetwork/ckb-vm
+- https://github.com/nervosnetwork/ckb-vm-test-suite
+
+Others:
 - [[https://gist.github.com/dixson3/8360571][dixson3/workspace.sh]]
 - [[https://gist.github.com/scottsb/479bebe8b4b86bf17e2d][scottsb/casesafe.sh]]
 - [[https://github.com/riscv/riscv-tools/issues/316#issuecomment-667659789][RISCV-tools issue]]

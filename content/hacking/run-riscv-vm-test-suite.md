@@ -1,7 +1,7 @@
 +++
 title = "Run RISCV VM Test Suite"
 author = ["Aimee Z"]
-description = "Nervos CKB-VM, a RISCV VM."
+description = "Run and test CKB-VM, a RISCV virtual machine that runs on Nervos CKB."
 date = 2021-02-20
 tags = ["riscv", "vm", "ckb"]
 categories = ["hacking"]
@@ -24,16 +24,6 @@ draft = false
 
 </div>
 <!--endtoc-->
-
-RISCV:
-
--   <https://github.com/riscv/riscv-gnu-toolchain>
--   <https://github.com/riscv/riscv-bitmanip/blob/master/bitmanip-draft.pdf>
-
-CKB-VM:
-
--   <https://github.com/nervosnetwork/ckb-vm>
--   <https://github.com/nervosnetwork/ckb-vm-test-suite>
 
 
 ## Install RISCV toolchain {#install-riscv-toolchain}
@@ -852,6 +842,18 @@ hello_miri_64
 
 
 ## References {#references}
+
+RISCV:
+
+-   <https://github.com/riscv/riscv-gnu-toolchain>
+-   <https://github.com/riscv/riscv-bitmanip/blob/master/bitmanip-draft.pdf>
+
+CKB-VM:
+
+-   <https://github.com/nervosnetwork/ckb-vm>
+-   <https://github.com/nervosnetwork/ckb-vm-test-suite>
+
+Others:
 
 -   [dixson3/workspace.sh](https://gist.github.com/dixson3/8360571)
 -   [scottsb/casesafe.sh](https://gist.github.com/scottsb/479bebe8b4b86bf17e2d)
