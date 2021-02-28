@@ -2592,7 +2592,7 @@ $ ls Volumes/workspace/
 riscv-gnu-toolchain
 #+end_src
 
-*** Run ckb-vm-test-suite
+*** Run CKB-VM-Test-Suite
 
 Fetch GitHub repo:
 

@@ -17,7 +17,7 @@ draft = false
 <div class="heading">Table of Contents</div>
 
 - [Install RISCV toolchain](#install-riscv-toolchain)
-- [Run ckb-vm-test-suite](#run-ckb-vm-test-suite)
+- [Run CKB-VM-Test-Suite](#run-ckb-vm-test-suite)
 - [Run Miri in CKB-VM](#run-miri-in-ckb-vm)
 - [Run Miri in CKB-VM-Test-Suite](#run-miri-in-ckb-vm-test-suite)
 - [References](#references)
@@ -344,7 +344,7 @@ riscv-gnu-toolchain
 ```
 
 
-## Run ckb-vm-test-suite {#run-ckb-vm-test-suite}
+## Run CKB-VM-Test-Suite {#run-ckb-vm-test-suite}
 
 Fetch GitHub repo:
 
