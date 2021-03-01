@@ -2277,8 +2277,8 @@ $ leo run
 *** Install RISCV toolchain
 
 I spent a long time installing [[https://github.com/riscv/riscv-gnu-toolchain][RISCV GNU Toolchain]].
-Its instructions for macOS do not seem right, and I am not familiar with system-level programming.
-
+Its instructions for macOS seem to be incorrect, 
+though, I am not familiar with system-level programming.
 
 Follow the instructions from its GitHub.
 
@@ -3087,6 +3087,24 @@ hello_miri_64
 + exit
 #+end_src
 
+*** Fix regex expressions
+
+Fixed regex by replacing ~+~ with ~*~.
+Now it works on both macOS and Linux.
+
+Before:
+
+#+begin_src shell
+for i in $(find . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i"); do
+...
+#+end_src
+
+After:
+
+#+begin_src shell
+for i in $(find . -regex ".*/rv32u[imc]-u-[a-z0-9_]*" | grep -v "fence_i"); do
+...
+#+end_src
 
 *** References
 

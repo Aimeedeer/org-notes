@@ -20,6 +20,7 @@ draft = false
 - [Run CKB-VM-Test-Suite](#run-ckb-vm-test-suite)
 - [Run Miri in CKB-VM](#run-miri-in-ckb-vm)
 - [Run Miri in CKB-VM-Test-Suite](#run-miri-in-ckb-vm-test-suite)
+- [Fix regex expressions](#fix-regex-expressions)
 - [References](#references)
 
 </div>
@@ -29,7 +30,8 @@ draft = false
 ## Install RISCV toolchain {#install-riscv-toolchain}
 
 I spent a long time installing [RISCV GNU Toolchain](https://github.com/riscv/riscv-gnu-toolchain).
-Its instructions for macOS do not seem right, and I am not familiar with system-level programming.
+Its instructions for macOS seem to be incorrect,
+though, I am not familiar with system-level programming.
 
 Follow the instructions from its GitHub.
 
@@ -838,6 +840,26 @@ hello_miri_64
     Finished dev [unoptimized + debuginfo] target(s) in 0.03s
      Running `/Users/aimeez/.rustup/toolchains/nightly-2021-02-27-x86_64-apple-darwin/bin/cargo-miri /Users/aimeez/github/ckb-vm-test-suite/binary/target/x86_64-apple-darwin/debug/interpreter64 ./isa/rv64um-u-mul`
 + exit
+```
+
+
+## Fix regex expressions {#fix-regex-expressions}
+
+Fixed regex by replacing `+` with `*`.
+Now it works on both macOS and Linux.
+
+Before:
+
+```shell
+for i in $(find . -regex ".*/rv32u[imc]-u-[a-z0-9_]+" | grep -v "fence_i"); do
+...
+```
+
+After:
+
+```shell
+for i in $(find . -regex ".*/rv32u[imc]-u-[a-z0-9_]*" | grep -v "fence_i"); do
+...
 ```
 
 
