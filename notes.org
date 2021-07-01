@@ -7,6 +7,28 @@
 :EXPORT_HUGO_MENU: :menu main
 :END:
 
+** Syntax of method calls                                     :rust:@hacking:
+:PROPERTIES:
+:EXPORT_FILE_NAME: rust-method-syntax
+:EXPORT_DATE: 2021-07-01
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: Idiomatic way of method calls in Rust.
+:EXPORT_OPTIONS: toc:2
+:END:
+
+Method chaining while reading 
+- leftwards: ~a.foo().bar().whatever()~
+- rightwards: ~B::bar(A::foo(Z::whatever(something)))~
+
+
+a.foo() -> Type B {}
+
+b.bar() -> Type Z {}
+
+For the readability, you almost always use ~.~ to call a function. 
+This is the idiomatic way.
+
+
 ** Javascript slow, compared to wasm                          :wasm:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: wasm-js
