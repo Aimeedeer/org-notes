@@ -6,6 +6,27 @@
 :EXPORT_HUGO_SECTION: post
 :EXPORT_HUGO_MENU: :menu main
 :END:
+
+** Javascript slow, compared to wasm :wasm:@hacking
+:PROPERTIES:
+:EXPORT_FILE_NAME: wasm-js
+:EXPORT_DATE: 2021-07-01
+:EXPORT_HUGO_SECTION: hacking
+:EXPORT_DESCRIPTION: WASM vs Javascript
+:EXPORT_OPTIONS: toc:2
+:END:
+
+Javascript has dynamic types, which checks each step of types -- a lot of conditions. 
+Javascript GC needs time to run. Heap allocated everything. 
+Integers in Rust never touch the heap.
+
+Wasm is approaching as fast as native code.
+Wasm is basically machine code. 20% instructions to do checks.
+
+Both C++ and Rust do their type checking in compile time but not runtime. 
+C is fast too. But C has weak types and is extremely unsafe.
+
+
 ** Advent of Code                                             :rust:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: advent-of-code
@@ -300,6 +321,17 @@ for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 Captain game with Parity ink.
 
 *** My hacklog
+
+**** 2021-03-01
+
+Update [[https://github.com/paritytech/cargo-contract][cargo-contract]]:
+
+> ~cargo install --git https://github.com/paritytech/cargo-contract cargo-contract --features extrinsics --force~
+
+Update [[https://github.com/paritytech/canvas-node][canvas-node]].
+
+
+
 
 **** 2021-02-14
 
@@ -3121,7 +3153,6 @@ Others:
 - [[https://gist.github.com/scottsb/479bebe8b4b86bf17e2d][scottsb/casesafe.sh]]
 - [[https://github.com/riscv/riscv-tools/issues/316#issuecomment-667659789][RISCV-tools issue]]
 
-
 ** Play with Substrate                   :rust:substrate:blockchain:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: play-with-substrate
@@ -4181,6 +4212,11 @@ The LLVM code:
 define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {
 start:
 #+end_src
+
+
+*** Book: Programming Rust 
+
+
 
 ** Rust Smart Contract               :blockchain:rust:smartcontract:@hacking:
 :PROPERTIES:
