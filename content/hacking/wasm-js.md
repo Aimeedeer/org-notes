@@ -1,12 +1,14 @@
 +++
-title = "Javascript slow, compared to wasm :wasm:@hacking"
+title = "Javascript slow, compared to wasm"
 author = ["Aimee Z"]
 description = "WASM vs Javascript"
 date = 2021-07-01
+tags = ["wasm"]
+categories = ["hacking"]
 draft = false
 [menu.main]
   weight = 2001
-  identifier = "javascript-slow-compared-to-wasm-wasm-hacking"
+  identifier = "javascript-slow-compared-to-wasm"
 +++
 
 Javascript has dynamic types, which checks each step of types -- a lot of conditions.

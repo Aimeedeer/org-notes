@@ -7,7 +7,7 @@
 :EXPORT_HUGO_MENU: :menu main
 :END:
 
-** Javascript slow, compared to wasm :wasm:@hacking
+** Javascript slow, compared to wasm                          :wasm:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: wasm-js
 :EXPORT_DATE: 2021-07-01
