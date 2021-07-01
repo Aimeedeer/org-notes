@@ -28,7 +28,6 @@ b.bar() -> Type Z {}
 For the readability, you almost always use ~.~ to call a function. 
 This is the idiomatic way.
 
-
 ** Javascript slow, compared to wasm                          :wasm:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: wasm-js
@@ -47,7 +46,6 @@ Wasm is basically machine code. 20% instructions to do checks.
 
 Both C++ and Rust do their type checking in compile time but not runtime. 
 C is fast too. But C has weak types and is extremely unsafe.
-
 
 ** Advent of Code                                             :rust:@hacking:
 :PROPERTIES:
@@ -329,7 +327,6 @@ with other iterators. If you're doing some sort of looping
 for a side effect, it's considered more idiomatic to use ~for~ than ~map()~.
 
 [[https://docs.rs/itertools/0.9.0/itertools/trait.Itertools.html#method.tuple_combinations][tuple_combinations]]
-
 
 ** Captain Game                                 :rust:smartcontract:@hacking:
 :PROPERTIES:
