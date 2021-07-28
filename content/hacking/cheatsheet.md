@@ -7,7 +7,7 @@ tags = ["git", "emacs", "orgmode"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2008
+  weight = 2010
   identifier = "cheatsheet"
 +++
 
@@ -20,6 +20,7 @@ draft = false
     - [References](#references)
     - [Examples](#examples)
 - [Git commands](#git-commands)
+    - [Change the default editor for terminal](#change-the-default-editor-for-terminal)
     - [Git tutorial](#git-tutorial)
     - [Git commit log](#git-commit-log)
     - [Remote .git](#remote-dot-git)
@@ -75,6 +76,17 @@ src_sh[:exports code]{echo -e "test"}
 
 
 ## Git commands {#git-commands}
+
+
+### Change the default editor for terminal {#change-the-default-editor-for-terminal}
+
+Use Emacs instead of Vim as the default editor for opening a file in terminal:
+
+in the file "~/.bash\_profile":
+
+```shell
+$ export EDITOR=emacs
+```
 
 
 ### Git tutorial {#git-tutorial}
