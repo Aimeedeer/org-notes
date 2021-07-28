@@ -7,6 +7,25 @@
 :EXPORT_HUGO_MENU: :menu main
 :END:
 
+** Solana docs
+
+#+begin_src 
+
+$ git branch -d brson/docs-rpc-client
+error: The branch 'brson/docs-rpc-client' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D brson/docs-rpc-client'.
+$ git branch -D brson/docs-rpc-client
+Deleted branch brson/docs-rpc-client (was 8e0d43c0b).
+$ git branch -D ranch
+Deleted branch ranch (was 8e0d43c0b).
+$ git checkout -b docs-rpc-client brson/docs-rpc-client
+Branch 'docs-rpc-client' set up to track remote branch 'docs-rpc-client' from 'brson'.
+Switched to a new branch 'docs-rpc-client'
+$ cargo test --doc -p solana-client #--no-deps
+ 
+
+#+end_src
+
 ** Syntax of method calls                                     :rust:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-method-syntax
@@ -3883,6 +3902,8 @@ src_sh[:exports code]{echo -e "test"}
 
 Use Emacs instead of Vim as the default editor for opening a file in terminal:
 
+in the file "~/.bash_profile":
+
 #+begin_src shell
 $ export EDITOR=emacs
 #+end_src
@@ -4024,6 +4045,8 @@ $ cat ~/.ssh/id_rsa.pub
 #+begin_src shell
 $ git mv www/contracts .
 #+end_src
+
+
 ** Learn Rust                                             :rust:log:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: learn-rust
