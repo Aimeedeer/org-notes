@@ -28,6 +28,9 @@ draft = false
     - [Cherry pick](#cherry-pick)
     - [Reset a commit](#reset-a-commit)
     - [Hide changes and do not commit](#hide-changes-and-do-not-commit)
+    - [Rebase](#rebase)
+    - [Clean up changes](#clean-up-changes)
+    - [Ignore local changes](#ignore-local-changes)
     - [Cancel hiding](#cancel-hiding)
     - [Merge a PR and edit it](#merge-a-pr-and-edit-it)
     - [Add submodule to rib](#add-submodule-to-rib)
@@ -157,6 +160,57 @@ More: [Git Tools - Rewriting History](https://git-scm.com/book/en/v2/Git-Tools-R
 
 ```shell
 $ git stash
+```
+
+
+### Rebase {#rebase}
+
+```shell
+$ git log
+$ git rebase c7cf210cee5c664f8e8169226de4019daf3643b9^ -i
+$ git fetch origin
+$ git rebase origin/master
+# Remove some commits from the history
+```
+
+
+### Clean up changes {#clean-up-changes}
+
+```shell
+$ git status
+On branch docs-keypair
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+      modified:   sdk/src/genesis_config.rs
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+      sdk/src/#genesis_config.rs#
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Aimees-MacBook-Pro:solana aimeez$ git clean -df
+```
+
+
+### Ignore local changes {#ignore-local-changes}
+
+```shell
+$ git diff
+diff --git a/sdk/src/genesis_config.rs b/sdk/src/genesis_config.rs
+index 668f5d07b..1da23d35d 100644
+--- a/sdk/src/genesis_config.rs
++++ b/sdk/src/genesis_config.rs
+@@ -296,7 +296,7 @@ mod tests {
+     use super::*;
+     use crate::signature::{Keypair, Signer};
+     use std::path::PathBuf;
+-
++    use tempfile::{tempdir, tempfile, NamedTempFile};
+     fn make_tmp_path(name: &str) -> PathBuf {
+         let out_dir = std::env::var("FARF_DIR").unwrap_or_else(|_| "farf".to_string());
+         let keypair = Keypair::new();
+$ git checkout -f
 ```
 
 
