@@ -189,7 +189,8 @@ Untracked files:
       sdk/src/#genesis_config.rs#
 
 no changes added to commit (use "git add" and/or "git commit -a")
-Aimees-MacBook-Pro:solana aimeez$ git clean -df
+
+$ git clean -df
 ```
 
 

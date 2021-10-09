@@ -7,7 +7,7 @@ tags = ["substrate", "ethereum", "smartcontract"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2004
+  weight = 2006
   identifier = "project-the-big-announcement"
 +++
 
@@ -137,7 +137,7 @@ $ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-06
 info: downloading component 'rust-std' for 'wasm32-unknown-unknown'
 info: installing component 'rust-std' for 'wasm32-unknown-unknown'
 info: using up to 500.0 MiB of RAM to unpack components
-Aimees-MacBook-Pro:tbaSubstrate aimeez$ cargo +nightly-2020-10-06 build --release
+$ cargo +nightly-2020-10-06 build --release
 
 ...
 
@@ -376,9 +376,9 @@ I start another terminal window for the node:
 
 ```shell
 $ dfx start
-Jan 27 16:01:01.798 INFO ic-starter. Configuration: ValidatedConfig { replica_path: Some("/Users/aimeez/.cache/dfinity/versions/0.6.20/replica"), replica_version: "0.1.0", log_level: Warning, subnet_id: fscpm-uiaaa-aaaaa-aaaap-yai, cargo_bin: "cargo", cargo_opts: "", state_dir: "/<my_path>/tba/.dfx/state/replicated_state", http_listen_addr: V4(127.0.0.1:0), http_port_file: Some("/<my_path>/tba/.dfx/replica-configuration/replica-1.port"), metrics_addr: None, hypervisor_create_funds_whitelist: "*", artifact_pool_dir: "/<my_path>/tba/.dfx/state/replicated_state/node-100/ic_consensus_pool", crypto_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/crypto", state_manager_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/state", registry_file: "/<my_path>/tba/.dfx/state/replicated_state/registry.proto", bootstrap_registry: None, state_dir_holder: None }, Application: starter
+Jan 27 16:01:01.798 INFO ic-starter. Configuration: ValidatedConfig { replica_path: Some("/<my_path>/.cache/dfinity/versions/0.6.20/replica"), replica_version: "0.1.0", log_level: Warning, subnet_id: fscpm-uiaaa-aaaaa-aaaap-yai, cargo_bin: "cargo", cargo_opts: "", state_dir: "/<my_path>/tba/.dfx/state/replicated_state", http_listen_addr: V4(127.0.0.1:0), http_port_file: Some("/<my_path>/tba/.dfx/replica-configuration/replica-1.port"), metrics_addr: None, hypervisor_create_funds_whitelist: "*", artifact_pool_dir: "/<my_path>/tba/.dfx/state/replicated_state/node-100/ic_consensus_pool", crypto_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/crypto", state_manager_root: "/<my_path>/tba/.dfx/state/replicated_state/node-100/state", registry_file: "/<my_path>/tba/.dfx/state/replicated_state/registry.proto", bootstrap_registry: None, state_dir_holder: None }, Application: starter
 Jan 27 16:01:01.799 INFO Initialize replica configuration "/<my_path>/tba/.dfx/state/replicated_state/ic.json5", Application: starter
-Jan 27 16:01:01.816 INFO Executing "/Users/aimeez/.cache/dfinity/versions/0.6.20/replica" "--replica-version" "0.1.0" "--config-file" "/<my_path>/tba/.dfx/state/replicated_state/ic.json5", Application: starter
+Jan 27 16:01:01.816 INFO Executing "/<my_path>/.cache/dfinity/versions/0.6.20/replica" "--replica-version" "0.1.0" "--config-file" "/<my_path>/tba/.dfx/state/replicated_state/ic.json5", Application: starter
 Jan 27 16:01:06.664 ERRO s:fscpm-uiaaa-aaaaa-aaaap-yai/n:owpmo-ykels-vijqd-6ql2q-gklnb-6oii4-2zkce-54jdn-vt7ob-hrn7h-hae/ic_messaging/xnet_endpoint No XNet configuration for node owpmo-ykels-vijqd-6ql2q-gklnb-6oii4-2zkce-54jdn-vt7ob-hrn7h-hae. This is an error in production, but may be ignored in single-subnet test deployments.
 Jan 27 16:01:07.671 WARN s:fscpm-uiaaa-aaaaa-aaaap-yai/n:owpmo-ykels-vijqd-6ql2q-gklnb-6oii4-2zkce-54jdn-vt7ob-hrn7h-hae/ic_http_handler/ic_http_handler NNS subnet not found in network topology. Skipping fetching the delegation.
 Starting webserver on port 61644 for replica at "http://localhost:61644"
@@ -555,7 +555,7 @@ The error messages are:
 $ dfx build
 Building canisters...
 Building frontend...
-The build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: The command '"/Users/aimeez/.cache/dfinity/versions/0.6.20/moc" "/<my_path>/tba/src/tba/main.mo" "-o" "/<my_path>/tba/.dfx/local/canisters/tba/tba.did" "--idl" "--actor-idl" "/<my_path>/tba/.dfx/local/canisters/idl/" "--actor-alias" "tba" "rwlgt-iiaaa-aaaaa-aaaaa-cai" "--actor-alias" "tba_assets" "rrkah-fqaaa-aaaaa-aaaaq-cai" "--package" "base" "/Users/aimeez/.cache/dfinity/versions/0.6.20/base"' failed with exit status 'exit code: 1'.
+The build step failed for canister 'rwlgt-iiaaa-aaaaa-aaaaa-cai' with an embedded error: The command '"/<my_path>/.cache/dfinity/versions/0.6.20/moc" "/<my_path>/tba/src/tba/main.mo" "-o" "/<my_path>/tba/.dfx/local/canisters/tba/tba.did" "--idl" "--actor-idl" "/<my_path>/tba/.dfx/local/canisters/idl/" "--actor-alias" "tba" "rwlgt-iiaaa-aaaaa-aaaaa-cai" "--actor-alias" "tba_assets" "rrkah-fqaaa-aaaaa-aaaaq-cai" "--package" "base" "/<my_path>/.cache/dfinity/versions/0.6.20/base"' failed with exit status 'exit code: 1'.
 Stdout:
 
 Stderr:
@@ -576,10 +576,10 @@ But, that's all.
 ```shell
 $ cargo new tba_rust
      Created binary (application) `tba_rust` package
-Aimees-MacBook-Pro:dfinity-project aimeez$ cd tba_rust/
-Aimees-MacBook-Pro:tba_rust aimeez$ dfx build
+$ cd tba_rust/
+$ dfx build
 Command must be run in a project directory (with a dfx.json file).
-Aimees-MacBook-Pro:tba_rust aimeez$ cargo build
+$ cargo build
    Compiling tba_rust v0.1.0 (/<my_path>/tba_rust)
     Finished dev [unoptimized + debuginfo] target(s) in 3.51s
 ```
@@ -918,7 +918,7 @@ $ cargo install aleo
   ...
    Compiling aleo v0.2.0
     Finished release [optimized] target(s) in 3m 50s
-  Installing /Users/aimeez/.cargo/bin/aleo                                       Installed package `aleo v0.2.0` (executable `aleo`)
+  Installing /<my_path>/.cargo/bin/aleo                                       Installed package `aleo v0.2.0` (executable `aleo`)
 
 $ aleo
 aleo 0.2.0
@@ -943,7 +943,7 @@ Test some commands:
 ```shell
 aleo new --seed testtest
 error: Invalid value for '--seed <seed>': invalid digit found in string
-Aimees-MacBook-Pro:aleo aimeez$ aleo new --seed <my_test_seed>
+$ aleo new --seed <my_test_seed>
 
   Private Key  APrivateKey1yg4Nkz7waZ4Smte38XSg9a4tH7vydLCQCr2GPr7QArjhmiQ # only for test purposes
      View Key  AViewKey1cXkqYJ3exGTVhrMCJrQPCwcGFnsb1d153HSGk5U5b7Q4

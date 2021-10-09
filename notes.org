@@ -7,25 +7,6 @@
 :EXPORT_HUGO_MENU: :menu main
 :END:
 
-** Solana docs
-
-#+begin_src 
-
-$ git branch -d brson/docs-rpc-client
-error: The branch 'brson/docs-rpc-client' is not fully merged.
-If you are sure you want to delete it, run 'git branch -D brson/docs-rpc-client'.
-$ git branch -D brson/docs-rpc-client
-Deleted branch brson/docs-rpc-client (was 8e0d43c0b).
-$ git branch -D ranch
-Deleted branch ranch (was 8e0d43c0b).
-$ git checkout -b docs-rpc-client brson/docs-rpc-client
-Branch 'docs-rpc-client' set up to track remote branch 'docs-rpc-client' from 'brson'.
-Switched to a new branch 'docs-rpc-client'
-$ cargo test --doc -p solana-client #--no-deps
- 
-
-#+end_src
-
 ** Syntax of method calls                                     :rust:@hacking:
 :PROPERTIES:
 :EXPORT_FILE_NAME: rust-method-syntax
@@ -1395,7 +1376,7 @@ $ rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-06
 info: downloading component 'rust-std' for 'wasm32-unknown-unknown'
 info: installing component 'rust-std' for 'wasm32-unknown-unknown'
 info: using up to 500.0 MiB of RAM to unpack components
-Aimees-MacBook-Pro:tbaSubstrate aimeez$ cargo +nightly-2020-10-06 build --release
+$ cargo +nightly-2020-10-06 build --release
 
 ...
 
@@ -1825,10 +1806,10 @@ But, that's all.
 #+begin_src shell
 $ cargo new tba_rust
      Created binary (application) `tba_rust` package
-Aimees-MacBook-Pro:dfinity-project aimeez$ cd tba_rust/
-Aimees-MacBook-Pro:tba_rust aimeez$ dfx build
+$ cd tba_rust/
+$ dfx build
 Command must be run in a project directory (with a dfx.json file).
-Aimees-MacBook-Pro:tba_rust aimeez$ cargo build
+$ cargo build
    Compiling tba_rust v0.1.0 (/<my_path>/tba_rust)
     Finished dev [unoptimized + debuginfo] target(s) in 3.51s
 #+end_src
@@ -2190,7 +2171,7 @@ Test some commands:
 #+begin_src shell
 aleo new --seed testtest
 error: Invalid value for '--seed <seed>': invalid digit found in string
-Aimees-MacBook-Pro:aleo aimeez$ aleo new --seed <my_test_seed>
+$ aleo new --seed <my_test_seed>
 
   Private Key  APrivateKey1yg4Nkz7waZ4Smte38XSg9a4tH7vydLCQCr2GPr7QArjhmiQ # only for test purposes
      View Key  AViewKey1cXkqYJ3exGTVhrMCJrQPCwcGFnsb1d153HSGk5U5b7Q4
@@ -3997,7 +3978,8 @@ Untracked files:
 	sdk/src/#genesis_config.rs#
 
 no changes added to commit (use "git add" and/or "git commit -a")
-Aimees-MacBook-Pro:solana aimeez$ git clean -df
+
+$ git clean -df
 #+end_src
 
 **** Ignore local changes
