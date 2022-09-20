@@ -4455,8 +4455,6 @@ start:
 #+end_src
 
 
-*** Book: Programming Rust 
-
 *** Good blog posts
 
 - [[https://people.kernel.org/linusw/rust-in-perspective][Rust in Perspective]]
