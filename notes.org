@@ -4457,7 +4457,17 @@ start:
 
 *** Book: Programming Rust 
 
+*** Good blog posts
 
+- [[https://people.kernel.org/linusw/rust-in-perspective][Rust in Perspective]]
+- [[https://iris-project.org/pdfs/2021-rustbelt-cacm-final.pdf][Safe Systems Programming in Rust]]
+- [[https://www.reddit.com/r/rust/comments/7qels2/comment/dsqeh1d/?utm_source=share&utm_medium=web2x&context=3][Graydon Hoare's response on reddit about Rust, Swift and languages]]
+- [[https://graydon2.dreamwidth.org/253769.html][What next?]]
+  Graydon's post on people's question: After memory safety, what do you think is the next big step for compiled languages to take.
+- [[https://graydon2.dreamwidth.org/5785.html][Swift]]
+- [[https://graydon2.dreamwidth.org/259333.html][programming languages and empiricism]]
+- [[https://github.com/heathermiller/dist-prog-book][Programming Models for Distributed Computation]]
+- [[https://news.ycombinator.com/item?id=32747088][What makes a good REPL? (2017) (vvvvalvalval.github.io)]]
 
 ** Rust Smart Contract               :blockchain:rust:smartcontract:@hacking:
 :PROPERTIES:

@@ -7,7 +7,7 @@ tags = ["rust", "log"]
 categories = ["hacking"]
 draft = false
 [menu.main]
-  weight = 2008
+  weight = 2012
   identifier = "learn-rust"
 +++
 
@@ -23,6 +23,8 @@ draft = false
 - [Cargo bin](#cargo-bin)
 - [Rustup toolchains](#rustup-toolchains)
 - [Rust lang entry](#rust-lang-entry)
+- [Book: Programming Rust](#book-programming-rust)
+- [Good blog posts](#good-blog-posts)
 
 </div>
 <!--endtoc-->
@@ -231,3 +233,19 @@ The LLVM code:
 define hidden i64 @_ZN3std2rt10lang_start17hd0d6144126b78ac1E(void ()* nonnull %main, i64 %argc, i8** %argv) unnamed_addr #1 !dbg !42 {
 start:
 ```
+
+
+## Book: Programming Rust {#book-programming-rust}
+
+
+## Good blog posts {#good-blog-posts}
+
+-   [Rust in Perspective](https://people.kernel.org/linusw/rust-in-perspective)
+-   [Safe Systems Programming in Rust](https://iris-project.org/pdfs/2021-rustbelt-cacm-final.pdf)
+-   [Graydon Hoare's response on reddit about Rust, Swift and languages](https://www.reddit.com/r/rust/comments/7qels2/comment/dsqeh1d/?utm%5Fsource=share&utm%5Fmedium=web2x&context=3)
+-   [What next?](https://graydon2.dreamwidth.org/253769.html)
+    Graydon's post on people's question: After memory safety, what do you think is the next big step for compiled languages to take.
+-   [Swift](https://graydon2.dreamwidth.org/5785.html)
+-   [programming languages and empiricism](https://graydon2.dreamwidth.org/259333.html)
+-   [Programming Models for Distributed Computation](https://github.com/heathermiller/dist-prog-book)
+-   [What makes a good REPL? (2017) (vvvvalvalval.github.io)](https://news.ycombinator.com/item?id=32747088)
